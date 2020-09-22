@@ -1,0 +1,39 @@
+.arrivalNavigation {
+  width: 200rpx;
+  position: absolute;
+  right: 20rpx;
+  z-index: 1024;
+}
+.arrivalNavigation .sideNavigation {
+  width: 198rpx;
+  background-color: #4d4c4e;
+  color: #eee;
+  border-radius: 10rpx;
+}
+.arrivalNavigation .sideNavigation .menu-item {
+  height: 85rpx;
+  text-align: center;
+  line-height: 85rpx;
+  font-size: 27rpx;
+}
+.arrivalNavigation .sideNavigation .liBottomBorder {
+  border: 0.1rpx solid #373737;
+}
+.arrivalNavigation .d4 {
+  width: 0;
+  height: 0;
+  margin-left: 140rpx;
+  margin-top: -25rpx;
+  border-width: 20rpx;
+  border-style: solid;
+  border-color: transparent #333 transparent transparent;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  /*顺时针旋转90°*/
+}
+.icon_item {
+  margin-right: 8px;
+  font-size: 35rpx;
+  color: #FFFFFF;
+}
+

@@ -1,0 +1,64 @@
+{
+  "pages": [
+    "pages/chat/chat",
+    "pages/contacts/contacts",
+    "pages/discover/discover",
+    "pages/profile/profile",
+    "pages/chat/chatroom",
+    "pages/chat/chatsetting",
+    "pages/chat/request",
+    "pages/chat/newGroup",
+    "pages/discover/post",
+    "pages/contacts/requestList",
+    "pages/contacts/groupchat",
+    "pages/profile/myqrcode",
+    "pages/profile/bill",
+    "pages/profile/withdraw"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#1296db",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/chat/chat",
+        "text": "聊天",
+        "iconPath": "static/tabbar/chat.png",
+        "selectedIconPath": "static/tabbar/chat_active.png"
+      },
+      {
+        "pagePath": "pages/contacts/contacts",
+        "text": "通讯录",
+        "iconPath": "static/tabbar/contacts.png",
+        "selectedIconPath": "static/tabbar/contacts_active.png"
+      },
+      {
+        "pagePath": "pages/discover/discover",
+        "text": "发现",
+        "iconPath": "static/tabbar/discover.png",
+        "selectedIconPath": "static/tabbar/discover_active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我",
+        "iconPath": "static/tabbar/profile.png",
+        "selectedIconPath": "static/tabbar/profile_active.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "chat": "/pages/chat/chat",
+    "contacts": "/pages/contacts/contacts",
+    "discover": "/pages/discover/discover",
+    "profile": "/pages/profile/profile"
+  }
+}

@@ -1,0 +1,10 @@
+
+page{
+  padding-bottom: 100rpx;
+}
+.bg-selfContent {
+	background-color: #44df5d;
+	color: #000000;
+}
+
+

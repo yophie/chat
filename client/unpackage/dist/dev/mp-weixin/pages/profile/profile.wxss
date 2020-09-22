@@ -1,0 +1,48 @@
+
+.uni-list-chat__header {
+
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-content: center;
+	        align-content: center;
+
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-flex-wrap: wrap-reverse;
+	        flex-wrap: wrap-reverse;
+
+
+
+
+
+	width: 80rpx;
+	height: 80rpx;
+
+
+	border-radius: 5px;
+	border-color: #eee;
+	border-width: 1px;
+	border-style: solid;
+	overflow: hidden;
+	margin-right: 18rpx;
+}
+.uni-list-chat__header-image {
+	margin: 1px;
+
+
+
+
+
+	width: 80rpx;
+	height: 80rpx;
+}
+

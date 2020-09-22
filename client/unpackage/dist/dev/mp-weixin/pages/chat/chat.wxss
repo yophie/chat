@@ -1,0 +1,37 @@
+
+.text-box {
+
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-content: center;
+	        align-content: center;
+
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-flex-wrap: wrap-reverse;
+	        flex-wrap: wrap-reverse;
+	overflow: hidden;
+	padding-top: 300rpx;
+}
+.cpt-mask {  
+	position: fixed;  
+	top: 0;  
+	left: 0;  
+	width: 100%;  
+	height: 100%;    
+	opacity: 0;  
+	z-index: 1000;
+}
+.icon_item {
+	font-size: 40rpx;
+}
+

@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "uni-nav-bar": "/node-modules/@dcloudio/uni-ui/lib/uni-nav-bar/uni-nav-bar",
+    "uni-list-item": "/node-modules/@dcloudio/uni-ui/lib/uni-list-item/uni-list-item",
+    "uni-list": "/node-modules/@dcloudio/uni-ui/lib/uni-list/uni-list",
+    "uni-popup": "/node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup",
+    "uni-popup-message": "/node-modules/@dcloudio/uni-ui/lib/uni-popup-message/uni-popup-message",
+    "uni-icons": "/node-modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons"
+  }
+}
