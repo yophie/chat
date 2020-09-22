@@ -1,0 +1,14 @@
+2020-09-22 18:10:05,039 INFO  o.j.s.protocol.ProtocolManager[97]: start init protocol [J-IM]
+2020-09-22 18:10:05,040 INFO  o.j.s.p.tcp.TcpProtocolHandler[44]: Socket Protocol initialized
+2020-09-22 18:10:05,202 INFO  o.j.s.p.h.HttpProtocolHandler[73]: Http Protocol initialized
+2020-09-22 18:10:05,203 INFO  o.j.s.p.ws.WsProtocolHandler[65]: WebSocket Protocol  initialized
+2020-09-22 18:10:05,203 INFO  o.j.s.protocol.ProtocolManager[105]: init protocol is completed [J-IM]
+2020-09-22 18:10:20,788 INFO  c.b.m.c.l.ImDemoUserListener[22]: 绑定用户:{"avatar":"http://images.rednet.cn/articleimage/2013/01/23/1403536948.jpg","friends":[{"groupId":"1","name":"我的好友","users":[{"avatar":"http://images.rednet.cn/articleimage/2013/01/23/1403536948.jpg","nick":"赵子家","status":"offline","userId":"df5b7e79b5dd4e89853f0f708c5bb0f1"}]}],"groups":[{"groupId":"100","name":"J-IM朋友圈"}],"nick":"成亦菲","status":"online","terminal":"ws","userId":"test3"}
+2020-09-22 18:10:20,802 INFO  c.b.m.c.l.ImDemoGroupListener[24]: 群组:{"groupId":"100"},绑定成功!
+2020-09-22 18:10:20,809 INFO  c.b.m.c.s.LoginServiceProcessor[112]: 登录成功回调方法
+2020-09-22 18:10:23,688 INFO  c.b.m.c.l.ImDemoUserListener[22]: 绑定用户:{"avatar":"http://images.rednet.cn/articleimage/2013/01/23/1403536948.jpg","friends":[{"groupId":"1","name":"我的好友","users":[{"avatar":"http://images.rednet.cn/articleimage/2013/01/23/1403536948.jpg","nick":"韦佳","status":"offline","userId":"cbe6e87d6df14ebcb7a7ed5e34143cc3"}]}],"groups":[{"groupId":"100","name":"J-IM朋友圈"}],"nick":"苗燕","status":"online","terminal":"ws","userId":"test"}
+2020-09-22 18:10:23,690 INFO  c.b.m.c.l.ImDemoGroupListener[24]: 群组:{"groupId":"100"},绑定成功!
+2020-09-22 18:10:23,691 INFO  c.b.m.c.s.LoginServiceProcessor[112]: 登录成功回调方法
+2020-09-22 18:10:26,453 INFO  c.b.m.c.l.ImDemoUserListener[22]: 绑定用户:{"avatar":"http://images.rednet.cn/articleimage/2013/01/23/1403536948.jpg","friends":[{"groupId":"1","name":"我的好友","users":[{"avatar":"http://images.rednet.cn/articleimage/2013/01/23/1403536948.jpg","nick":"黄辰","status":"offline","userId":"04553ae4503f4ed789afee335c319caa"}]}],"groups":[{"groupId":"100","name":"J-IM朋友圈"}],"nick":"J-科神","status":"online","terminal":"ws","userId":"test2"}
+2020-09-22 18:10:26,456 INFO  c.b.m.c.l.ImDemoGroupListener[24]: 群组:{"groupId":"100"},绑定成功!
+2020-09-22 18:10:26,457 INFO  c.b.m.c.s.LoginServiceProcessor[112]: 登录成功回调方法

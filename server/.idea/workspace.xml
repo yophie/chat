@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3139559e-848f-4ee5-8616-2f9030cc944a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/service/ImgMnService.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/service/ImgMnService.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1h51WBXCfzOVaI5UcYiDdrC2pa1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.brother.myanmar.im.mapper" />
+      <recent name="com.brother.myanmar.im.bean" />
+      <recent name="com.brother.myanmar.im" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/myanmar/src/main/resources/mybatis" />
+      <recent name="$PROJECT_DIR$/myanmar/src/main/java/com/brother/myanmar/im" />
+      <recent name="$PROJECT_DIR$/myanmar/src/main/resources" />
+      <recent name="$PROJECT_DIR$/myanmar" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="ImServerStart" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.brother.myanmar.chat.ImServerStart" />
+      <module name="chat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.jim.server.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="$APPLICATION_HOME_DIR$/jbr/Contents/Home" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="org.jim.server.demo.ImServerDemoStart" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JarApplication">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="$APPLICATION_HOME_DIR$/jbr/Contents/Home" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Java Scratch">
+      <option name="MAIN_CLASS_NAME" value="org.jim.server.demo.ImServerDemoStart" />
+      <shortenClasspath name="CLASSPATH_FILE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ImServerStart" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3139559e-848f-4ee5-8616-2f9030cc944a" name="Default Changelist" comment="" />
+      <created>1599286168918</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1599286168918</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="474" y="188" key="#Inspections" timestamp="1600767857278">
+      <screen x="0" y="23" width="1680" height="960" />
+    </state>
+    <state x="474" y="188" key="#Inspections/0.23.1680.960@0.23.1680.960" timestamp="1600767857278" />
+    <state x="328" y="86" key="#Project_Structure" timestamp="1600766824699">
+      <screen x="0" y="23" width="1680" height="963" />
+    </state>
+    <state x="328" y="85" key="#Project_Structure/0.23.1680.949@0.23.1680.949" timestamp="1600034914251" />
+    <state x="328" y="86" key="#Project_Structure/0.23.1680.963@0.23.1680.963" timestamp="1600766824699" />
+    <state x="328" y="86" key="#Project_Structure/0.23.1680.965@0.23.1680.965" timestamp="1600766337139" />
+    <state x="306" y="23" width="1071" height="965" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600769399288">
+      <screen x="0" y="23" width="1680" height="961" />
+    </state>
+    <state x="306" y="163" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.949@0.23.1680.949" timestamp="1600034881149" />
+    <state x="306" y="164" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.958@0.23.1680.958" timestamp="1600075528482" />
+    <state x="308" y="147" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.960@0.23.1680.960" timestamp="1599354950462" />
+    <state x="306" y="23" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.961@0.23.1680.961" timestamp="1600769399288" />
+    <state x="306" y="23" width="1071" height="965" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.965@0.23.1680.965" timestamp="1600766407968" />
+    <state x="579" y="372" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1600766106972">
+      <screen x="0" y="23" width="1680" height="965" />
+    </state>
+    <state x="579" y="372" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1680.965@0.23.1680.965" timestamp="1600766106972" />
+    <state x="578" y="254" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600085689798">
+      <screen x="0" y="23" width="1680" height="956" />
+    </state>
+    <state x="578" y="254" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.956@0.23.1680.956" timestamp="1600085689798" />
+    <state width="1638" height="252" key="GridCell.Tab.0.bottom" timestamp="1600767217157">
+      <screen x="0" y="23" width="1680" height="963" />
+    </state>
+    <state width="1358" height="245" key="GridCell.Tab.0.bottom/0.23.1680.949@0.23.1680.949" timestamp="1600035052471" />
+    <state width="1638" height="254" key="GridCell.Tab.0.bottom/0.23.1680.952@0.23.1680.952" timestamp="1600080334469" />
+    <state width="1638" height="315" key="GridCell.Tab.0.bottom/0.23.1680.954@0.23.1680.954" timestamp="1600239599049" />
+    <state width="1638" height="315" key="GridCell.Tab.0.bottom/0.23.1680.956@0.23.1680.956" timestamp="1600239431666" />
+    <state width="1638" height="315" key="GridCell.Tab.0.bottom/0.23.1680.958@0.23.1680.958" timestamp="1600240562551" />
+    <state width="1638" height="252" key="GridCell.Tab.0.bottom/0.23.1680.961@0.23.1680.961" timestamp="1600759705021" />
+    <state width="1638" height="252" key="GridCell.Tab.0.bottom/0.23.1680.963@0.23.1680.963" timestamp="1600767217157" />
+    <state width="1638" height="252" key="GridCell.Tab.0.bottom/0.23.1680.965@0.23.1680.965" timestamp="1600766244088" />
+    <state width="1638" height="252" key="GridCell.Tab.0.center" timestamp="1600767217156">
+      <screen x="0" y="23" width="1680" height="963" />
+    </state>
+    <state width="1358" height="245" key="GridCell.Tab.0.center/0.23.1680.949@0.23.1680.949" timestamp="1600035052470" />
+    <state width="1638" height="254" key="GridCell.Tab.0.center/0.23.1680.952@0.23.1680.952" timestamp="1600080334468" />
+    <state width="1638" height="315" key="GridCell.Tab.0.center/0.23.1680.954@0.23.1680.954" timestamp="1600239599049" />
+    <state width="1638" height="315" key="GridCell.Tab.0.center/0.23.1680.956@0.23.1680.956" timestamp="1600239431665" />
+    <state width="1638" height="315" key="GridCell.Tab.0.center/0.23.1680.958@0.23.1680.958" timestamp="1600240562550" />
+    <state width="1638" height="252" key="GridCell.Tab.0.center/0.23.1680.961@0.23.1680.961" timestamp="1600759705020" />
+    <state width="1638" height="252" key="GridCell.Tab.0.center/0.23.1680.963@0.23.1680.963" timestamp="1600767217156" />
+    <state width="1638" height="252" key="GridCell.Tab.0.center/0.23.1680.965@0.23.1680.965" timestamp="1600766244087" />
+    <state width="1638" height="252" key="GridCell.Tab.0.left" timestamp="1600767217155">
+      <screen x="0" y="23" width="1680" height="963" />
+    </state>
+    <state width="1358" height="245" key="GridCell.Tab.0.left/0.23.1680.949@0.23.1680.949" timestamp="1600035052470" />
+    <state width="1638" height="254" key="GridCell.Tab.0.left/0.23.1680.952@0.23.1680.952" timestamp="1600080334468" />
+    <state width="1638" height="315" key="GridCell.Tab.0.left/0.23.1680.954@0.23.1680.954" timestamp="1600239599048" />
+    <state width="1638" height="315" key="GridCell.Tab.0.left/0.23.1680.956@0.23.1680.956" timestamp="1600239431663" />
+    <state width="1638" height="315" key="GridCell.Tab.0.left/0.23.1680.958@0.23.1680.958" timestamp="1600240562550" />
+    <state width="1638" height="252" key="GridCell.Tab.0.left/0.23.1680.961@0.23.1680.961" timestamp="1600759705019" />
+    <state width="1638" height="252" key="GridCell.Tab.0.left/0.23.1680.963@0.23.1680.963" timestamp="1600767217155" />
+    <state width="1638" height="252" key="GridCell.Tab.0.left/0.23.1680.965@0.23.1680.965" timestamp="1600766244087" />
+    <state width="1638" height="252" key="GridCell.Tab.0.right" timestamp="1600767217157">
+      <screen x="0" y="23" width="1680" height="963" />
+    </state>
+    <state width="1358" height="245" key="GridCell.Tab.0.right/0.23.1680.949@0.23.1680.949" timestamp="1600035052470" />
+    <state width="1638" height="254" key="GridCell.Tab.0.right/0.23.1680.952@0.23.1680.952" timestamp="1600080334468" />
+    <state width="1638" height="315" key="GridCell.Tab.0.right/0.23.1680.954@0.23.1680.954" timestamp="1600239599049" />
+    <state width="1638" height="315" key="GridCell.Tab.0.right/0.23.1680.956@0.23.1680.956" timestamp="1600239431665" />
+    <state width="1638" height="315" key="GridCell.Tab.0.right/0.23.1680.958@0.23.1680.958" timestamp="1600240562551" />
+    <state width="1638" height="252" key="GridCell.Tab.0.right/0.23.1680.961@0.23.1680.961" timestamp="1600759705020" />
+    <state width="1638" height="252" key="GridCell.Tab.0.right/0.23.1680.963@0.23.1680.963" timestamp="1600767217157" />
+    <state width="1638" height="252" key="GridCell.Tab.0.right/0.23.1680.965@0.23.1680.965" timestamp="1600766244088" />
+    <state width="1638" height="315" key="GridCell.Tab.1.bottom" timestamp="1600759165121">
+      <screen x="0" y="23" width="1680" height="961" />
+    </state>
+    <state width="1638" height="315" key="GridCell.Tab.1.bottom/0.23.1680.954@0.23.1680.954" timestamp="1600239604726" />
+    <state width="1638" height="315" key="GridCell.Tab.1.bottom/0.23.1680.956@0.23.1680.956" timestamp="1600239431430" />
+    <state width="1638" height="315" key="GridCell.Tab.1.bottom/0.23.1680.958@0.23.1680.958" timestamp="1600240562553" />
+    <state width="1638" height="315" key="GridCell.Tab.1.bottom/0.23.1680.961@0.23.1680.961" timestamp="1600759165121" />
+    <state width="1638" height="315" key="GridCell.Tab.1.center" timestamp="1600759165120">
+      <screen x="0" y="23" width="1680" height="961" />
+    </state>
+    <state width="1638" height="315" key="GridCell.Tab.1.center/0.23.1680.954@0.23.1680.954" timestamp="1600239604726" />
+    <state width="1638" height="315" key="GridCell.Tab.1.center/0.23.1680.956@0.23.1680.956" timestamp="1600239431429" />
+    <state width="1638" height="315" key="GridCell.Tab.1.center/0.23.1680.958@0.23.1680.958" timestamp="1600240562552" />
+    <state width="1638" height="315" key="GridCell.Tab.1.center/0.23.1680.961@0.23.1680.961" timestamp="1600759165120" />
+    <state width="1638" height="315" key="GridCell.Tab.1.left" timestamp="1600759165120">
+      <screen x="0" y="23" width="1680" height="961" />
+    </state>
+    <state width="1638" height="315" key="GridCell.Tab.1.left/0.23.1680.954@0.23.1680.954" timestamp="1600239604726" />
+    <state width="1638" height="315" key="GridCell.Tab.1.left/0.23.1680.956@0.23.1680.956" timestamp="1600239431429" />
+    <state width="1638" height="315" key="GridCell.Tab.1.left/0.23.1680.958@0.23.1680.958" timestamp="1600240562552" />
+    <state width="1638" height="315" key="GridCell.Tab.1.left/0.23.1680.961@0.23.1680.961" timestamp="1600759165120" />
+    <state width="1638" height="315" key="GridCell.Tab.1.right" timestamp="1600759165120">
+      <screen x="0" y="23" width="1680" height="961" />
+    </state>
+    <state width="1638" height="315" key="GridCell.Tab.1.right/0.23.1680.954@0.23.1680.954" timestamp="1600239604726" />
+    <state width="1638" height="315" key="GridCell.Tab.1.right/0.23.1680.956@0.23.1680.956" timestamp="1600239431429" />
+    <state width="1638" height="315" key="GridCell.Tab.1.right/0.23.1680.958@0.23.1680.958" timestamp="1600240562552" />
+    <state width="1638" height="315" key="GridCell.Tab.1.right/0.23.1680.961@0.23.1680.961" timestamp="1600759165120" />
+    <state x="378" y="159" key="Maven.ArtifactSearchDialog" timestamp="1600078745540">
+      <screen x="0" y="23" width="1680" height="956" />
+    </state>
+    <state x="378" y="159" key="Maven.ArtifactSearchDialog/0.23.1680.954@0.23.1680.954" timestamp="1600074952843" />
+    <state x="378" y="159" key="Maven.ArtifactSearchDialog/0.23.1680.956@0.23.1680.956" timestamp="1600078745540" />
+    <state x="378" y="159" key="Maven.ArtifactSearchDialog/0.23.1680.958@0.23.1680.958" timestamp="1600078512157" />
+    <state x="469" y="208" key="NewModule_or_Project.wizard" timestamp="1600766683072">
+      <screen x="0" y="23" width="1680" height="961" />
+    </state>
+    <state x="469" y="208" key="NewModule_or_Project.wizard/0.23.1680.961@0.23.1680.961" timestamp="1600766683072" />
+    <state x="328" y="83" key="SettingsEditor" timestamp="1600769328737">
+      <screen x="0" y="23" width="1680" height="963" />
+    </state>
+    <state x="638" y="182" key="SettingsEditor/0.23.1680.960@0.23.1680.960" timestamp="1600768106573" />
+    <state x="328" y="83" key="SettingsEditor/0.23.1680.961@0.23.1680.961" timestamp="1600768466125" />
+    <state x="328" y="83" key="SettingsEditor/0.23.1680.963@0.23.1680.963" timestamp="1600769328737" />
+    <state x="388" y="237" width="877" height="617" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1600167652938">
+      <screen x="0" y="23" width="1680" height="954" />
+    </state>
+    <state x="388" y="237" width="877" height="617" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.23.1680.954@0.23.1680.954" timestamp="1600167652938" />
+    <state x="233" y="120" key="new project wizard" timestamp="1600073530287">
+      <screen x="0" y="23" width="1680" height="952" />
+    </state>
+    <state x="233" y="120" key="new project wizard/0.23.1680.952@0.23.1680.952" timestamp="1600073530287" />
+    <state x="505" y="234" width="670" height="676" key="search.everywhere.popup" timestamp="1600768134084">
+      <screen x="0" y="23" width="1680" height="960" />
+    </state>
+    <state x="505" y="234" width="670" height="676" key="search.everywhere.popup/0.23.1680.960@0.23.1680.960" timestamp="1600768134084" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/command/handler/userInfo/NonPersistentUserInfo.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/command/handler/LoginReqHandler.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="org.jim.core.packets.User" memberName="groups" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+</project>
