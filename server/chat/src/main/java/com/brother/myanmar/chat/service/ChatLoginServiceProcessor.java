@@ -71,7 +71,7 @@ public class ChatLoginServiceProcessor extends AbstractProtocolCmdProcessor impl
 		if(Objects.nonNull(loginReqBody.getUserId()) && Objects.nonNull(loginReqBody.getPassword())){
 			com.brother.myanmar.chat.bean.User searchUser = new com.brother.myanmar.chat.bean.User();
 			searchUser.setOpenId(loginReqBody.getUserId());
-			searchUser.setPassword(loginReqBody.getPassword());
+			searchUser.setPassword(Md5.sign(loginReqBody.getPassword(), ImConst.AUTH_KEY, CHARSET));
 
 			com.brother.myanmar.chat.bean.User findUser = userdao.findUserByOpenId(searchUser);
 			if(findUser == null){
@@ -79,6 +79,8 @@ public class ChatLoginServiceProcessor extends AbstractProtocolCmdProcessor impl
 				searchUser.setName("newUser");
 				userdao.insert(searchUser);
 				findUser = userdao.findUserByOpenId(searchUser);;
+			} else if(searchUser.getPassword() != findUser.getPassword()){
+				return LoginRespBody.failed();
 			}
 			User.Builder builder = User.newBuilder()
 					.userId(String.valueOf(findUser.getId()))

@@ -11,11 +11,11 @@
     </select>
     <!--通过openId查找-->
     <select id="findUserByOpenId" parameterType="com.brother.myanmar.chat.bean.User" resultType="com.brother.myanmar.chat.bean.User">
-        select * from user where openId = #{openId} and password = #{password}
+        select * from user where openId = #{openId}
     </select>
     <!--通过name查找-->
     <select id="findUserByAccount" parameterType="com.brother.myanmar.chat.bean.User" resultType="com.brother.myanmar.chat.bean.User">
-        select * from user where account = #{account} and password = #{password}
+        select * from user where account = #{account}
     </select>
     <!--插入用户信息-->
     <insert id="insertUser" parameterType="com.brother.myanmar.chat.bean.User">

@@ -2,3 +2,5 @@
 /jim-core/target/
 /jim-server/target/
 /logs/
+/.idea/
+jim.iml
