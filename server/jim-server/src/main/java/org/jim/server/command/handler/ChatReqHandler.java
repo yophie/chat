@@ -31,6 +31,7 @@ public class ChatReqHandler extends AbstractCmdHandler {
 			throw new ImException("body is null");
 		}
 		ChatBody chatBody = ChatKit.toChatBody(packet.getBody(), channelContext);
+
 		packet.setBody(chatBody.toByte());
 		//聊天数据格式不正确
 		if(chatBody == null || ChatType.forNumber(chatBody.getChatType()) == null){
@@ -52,7 +53,7 @@ public class ChatReqHandler extends AbstractCmdHandler {
 			if(ChatKit.isOnline(toId, isStore)){
 				JimServerAPI.sendToUser(toId, chatPacket);
 				//发送成功响应包
-				return ProtocolManager.Packet.success(channelContext);
+				return ProtocolManager.Packet.success(channelContext, chatBody);
 			}else{
 				//用户不在线响应包
 				return ProtocolManager.Packet.offline(channelContext);
@@ -62,7 +63,7 @@ public class ChatReqHandler extends AbstractCmdHandler {
 			String groupId = chatBody.getGroupId();
 			JimServerAPI.sendToGroup(groupId, chatPacket);
 			//发送成功响应包
-			return ProtocolManager.Packet.success(channelContext);
+			return ProtocolManager.Packet.success(channelContext, chatBody);
 		}
 		return null;
 	}

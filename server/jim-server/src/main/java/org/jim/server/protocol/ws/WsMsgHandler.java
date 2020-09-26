@@ -42,7 +42,7 @@ public class WsMsgHandler implements IWsMsgHandler{
 		String toId = chatBody.getTo();
 		if(ChatKit.isOnline(toId,isStore)){
 			JimServerAPI.sendToUser(toId, wsRequestPacket);
-			ImPacket sendSuccessPacket = ProtocolManager.Packet.success(imChannelContext);
+			ImPacket sendSuccessPacket = ProtocolManager.Packet.success(imChannelContext, chatBody);
 			text = new String(sendSuccessPacket.getBody(), ImConst.Http.CHARSET_NAME);
 		}else{
 			ImPacket offlineRespPacket = ProtocolManager.Packet.offline(imChannelContext);

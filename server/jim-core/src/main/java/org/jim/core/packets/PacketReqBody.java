@@ -3,30 +3,34 @@ package org.jim.core.packets;
 public class PacketReqBody extends Message {
 
     private static final long serialVersionUID = 5731474214655476287L;
-    /**
-     * 用户id;
-     */
-    private String Userid;
-    /**
-     * 消息类型;(如：0:friend、1:group)
-     */
-    private Integer chatType;
+    private Integer type;
+    private String packetId;
+    private Integer reciver;
 
-    public String getUserid() {
-        return Userid;
+    public Integer getType() {
+        return type;
     }
 
-    public PacketReqBody setUserid(String Userid) {
-        this.Userid = Userid;
+    public PacketReqBody setType(Integer type) {
+        this.type = type;
         return this;
     }
 
-    public Integer getChatType() {
-        return chatType;
+    public String getPacketId() {
+        return packetId;
     }
 
-    public PacketReqBody setChatType(Integer chatType) {
-        this.chatType = chatType;
+    public PacketReqBody setPacketId(String packetId) {
+        this.packetId = packetId;
+        return this;
+    }
+
+    public Integer getReciver() {
+        return reciver;
+    }
+
+    public PacketReqBody setReciver(Integer reciver) {
+        this.reciver = reciver;
         return this;
     }
 }

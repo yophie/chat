@@ -1,22 +1,15 @@
 package com.brother.myanmar.chat.bean;
 
 public class Packet {
-    private String Id;
-    private Integer type;
+    private String id;
+    private Integer type;//0:normal 1:luck
     private Double amount;
     private Integer num;
     private Long time;
-    private Integer state;
+    private Integer state;//0:new 1:part 2:finished
     private Double returnAmount;
     private Long returnTime;
-
-    public String getId() {
-        return Id;
-    }
-
-    public void setId(String id) {
-        Id = id;
-    }
+    private Integer sender;
 
     public Integer getType() {
         return type;
@@ -72,5 +65,21 @@ public class Packet {
 
     public void setReturnTime(Long returnTime) {
         this.returnTime = returnTime;
+    }
+
+    public Integer getSender() {
+        return sender;
+    }
+
+    public void setSender(Integer sender) {
+        this.sender = sender;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

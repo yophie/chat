@@ -24,5 +24,6 @@
         <mapper resource="mybatis/chatWindow.xml" />
         <mapper resource="mybatis/friend.xml" />
         <mapper resource="mybatis/group.xml" />
+        <mapper resource="mybatis/packet.xml" />
     </mappers>
 </configuration>

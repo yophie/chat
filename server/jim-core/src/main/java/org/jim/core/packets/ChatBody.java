@@ -39,14 +39,17 @@ public class ChatBody extends Message {
 	private String groupId;
 
 	private Double packetAmount;
-	//系统命令 0:加好友通知，1：验证结果 2：加群通知
+	private Integer packetNum;
+	//系统命令时 0:加好友通知，1：验证结果
+	//红包时 0：普通红包 1：拼手气
 	private Integer systemCmd;
 	
 	private ChatBody(){}
 	
 	private ChatBody(String id , String from , String to , Integer msgType ,
 					 Integer chatType , String content , String groupId , Integer cmd ,
-					 Long createTime , JSONObject extras, Double packetAmount, Integer systemCmd){
+					 Long createTime , JSONObject extras, Double packetAmount,
+					 Integer packetNum, Integer systemCmd){
 		this.id = id;
 		this.from = from ;
 		this.to = to;
@@ -59,6 +62,7 @@ public class ChatBody extends Message {
 		this.extras = extras;
 		this.packetAmount = packetAmount;
 		this.systemCmd = systemCmd;
+		this.packetNum = packetNum;
 	}
 	
 	public static ChatBody.Builder newBuilder(){
@@ -134,6 +138,15 @@ public class ChatBody extends Message {
 		return this;
 	}
 
+	public Integer getPacketNum() {
+		return packetNum;
+	}
+
+	public ChatBody setPacketNum(Integer packetNum) {
+		this.packetNum = packetNum;
+		return this;
+	}
+
 	public static class Builder extends Message.Builder<ChatBody,ChatBody.Builder>{
 		/**
 		 * 来自user_id;
@@ -161,6 +174,7 @@ public class ChatBody extends Message {
 		private String groupId;
 
 		private Double packetAmount;
+		private Integer packetNum;
 		//系统命令
 		private Integer systemCmd;
 		
@@ -198,6 +212,11 @@ public class ChatBody extends Message {
 			this.systemCmd = systemCmd;
 			return this;
 		}
+
+		public Builder packetNum(Integer packetNum) {
+			this.packetNum = packetNum;
+			return this;
+		}
 		@Override
 		protected Builder getThis() {
 			return this;
@@ -205,7 +224,8 @@ public class ChatBody extends Message {
 
 		@Override
 		public ChatBody build(){
-			return new ChatBody(this.id , this.from , this.to , this.msgType , this.chatType , this.content , this.groupId ,this.cmd , this.createTime , this.extras, this.packetAmount, this.systemCmd);
+			return new ChatBody(this.id , this.from , this.to , this.msgType , this.chatType , this.content , this.groupId ,this.cmd ,
+					this.createTime , this.extras, this.packetAmount, this.packetNum, this.systemCmd);
 		}
 	}
 }

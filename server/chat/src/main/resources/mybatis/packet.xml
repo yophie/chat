@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 这边的namespace一定要写完整正确 -->
+<mapper namespace="com.brother.myanmar.chat.mapper.Packet2Mapper">
+    <select id="findPacket" parameterType="com.brother.myanmar.chat.bean.Packet" resultType="com.brother.myanmar.chat.bean.Packet">
+        select * from packet where id=#{id}
+    </select>
+    <insert id="insertPacket" parameterType="com.brother.myanmar.chat.bean.Packet">
+        insert into packet(id,type,amount,num,time,state,returnAmount,returnTime,sender)
+        values(#{id},#{type},#{amount},#{num},#{time},#{state},#{returnAmount},#{returnTime},#{sender})
+    </insert>
+    <delete id="deletePacket" parameterType="java.lang.String">
+        delete from packet where id=#{id}
+    </delete>
+    <update id="updatePacket" parameterType="com.brother.myanmar.chat.bean.Packet">
+        update packet set state=#{state} where id=#{id}
+    </update>
+
+    <select id="getPacketState" parameterType="com.brother.myanmar.chat.bean.PacketState" resultType="int">
+        select count(*) from packetState where packetId=#{packetId} and reciever=#{reciever}
+    </select>
+    <select id="getPacketList" parameterType="com.brother.myanmar.chat.bean.PacketState" resultType="com.brother.myanmar.chat.bean.PacketState">
+        select * from packetState where packetId=#{packetId} order by time desc
+    </select>
+    <insert id="insertPacketState" parameterType="com.brother.myanmar.chat.bean.PacketState">
+        insert into packetState(packetId, reciever, amount, time)
+        values(#{packetId},#{reciever},#{amount},#{time})
+    </insert>
+
+
+</mapper>

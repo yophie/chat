@@ -31,6 +31,7 @@ public class ChatListProcessor extends BaseChatListProcessor {
         if(Objects.isNull(req.getType())){
             chatWindowReqBody.setCode(ImStatus.C10014.getCode());
             chatWindowReqBody.setMsg(ImStatus.C10014.getMsg());
+            return;
         }
         Friend user = new Friend();
         List<Friend> friends;

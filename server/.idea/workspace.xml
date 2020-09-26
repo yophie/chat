@@ -28,37 +28,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3139559e-848f-4ee5-8616-2f9030cc944a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../im.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../im.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/bean/Packet.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/bean/Packet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/command/ChatListProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/command/ChatListProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/command/GroupProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/command/GroupProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/dao/GroupDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/dao/GroupDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/service/ChatLoginServiceProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/service/ChatLoginServiceProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/src/main/resources/mybatis/user.xml" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/resources/mybatis/user.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/target/classes/com/brother/myanmar/chat/ImServerStart.class" beforeDir="false" afterPath="$PROJECT_DIR$/chat/target/classes/com/brother/myanmar/chat/ImServerStart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/command/ChatMessageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/command/ChatMessageProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/command/PacketProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/command/PacketProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/src/main/resources/config/mybatis.xml" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/resources/config/mybatis.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/target/classes/com/brother/myanmar/chat/bean/Packet.class" beforeDir="false" afterPath="$PROJECT_DIR$/chat/target/classes/com/brother/myanmar/chat/bean/Packet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chat/target/classes/com/brother/myanmar/chat/command/ChatListProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/chat/target/classes/com/brother/myanmar/chat/command/ChatListProcessor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chat/target/classes/com/brother/myanmar/chat/command/ChatMessageProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/chat/target/classes/com/brother/myanmar/chat/command/ChatMessageProcessor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chat/target/classes/com/brother/myanmar/chat/command/PacketProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/chat/target/classes/com/brother/myanmar/chat/command/PacketProcessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/target/classes/com/brother/myanmar/chat/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/chat/target/classes/com/brother/myanmar/chat/dao/UserDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/target/classes/com/brother/myanmar/chat/service/ChatLoginServiceProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/chat/target/classes/com/brother/myanmar/chat/service/ChatLoginServiceProcessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/target/classes/mybatis/user.xml" beforeDir="false" afterPath="$PROJECT_DIR$/chat/target/classes/mybatis/user.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/target/classes/config/mybatis.xml" beforeDir="false" afterPath="$PROJECT_DIR$/chat/target/classes/config/mybatis.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-core/src/main/java/org/jim/core/ImStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/jim-core/src/main/java/org/jim/core/ImStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jim-core/src/main/java/org/jim/core/packets/ChatBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/jim-core/src/main/java/org/jim/core/packets/ChatBody.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jim-core/src/main/java/org/jim/core/packets/GroupReqBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/jim-core/src/main/java/org/jim/core/packets/GroupReqBody.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-core/src/main/java/org/jim/core/packets/PacketReqBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/jim-core/src/main/java/org/jim/core/packets/PacketReqBody.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/ImStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/ImStatus.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/packets/ChatBody$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/packets/ChatBody$Builder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/packets/ChatBody.class" beforeDir="false" afterPath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/packets/ChatBody.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/packets/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/packets/Command.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/packets/PacketRespBody.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/command/handler/CashReqHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/command/handler/CashReqHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/command/handler/FriendSocietyReqHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/command/handler/FriendSocietyReqHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/command/handler/GroupReqHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/command/handler/GroupReqHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/command/handler/ManagerReqHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/command/handler/ManagerReqHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jim-server/target/classes/org/jim/server/command/command.properties" beforeDir="false" afterPath="$PROJECT_DIR$/jim-server/target/classes/org/jim/server/command/command.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jim-server/target/classes/org/jim/server/command/handler/PacketReqHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/jim-server/target/classes/org/jim/server/command/handler/PacketReqHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jim-server/target/classes/org/jim/server/processor/chat/BasePacketProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/error.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/info.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/warn.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/warn.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/packets/PacketReqBody.class" beforeDir="false" afterPath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/packets/PacketReqBody.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/command/handler/ChatReqHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/command/handler/ChatReqHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/protocol/ProtocolManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/protocol/ProtocolManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/protocol/ws/WsMsgHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/protocol/ws/WsMsgHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-server/target/classes/org/jim/server/command/handler/ChatReqHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/jim-server/target/classes/org/jim/server/command/handler/ChatReqHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-server/target/classes/org/jim/server/protocol/ProtocolManager$Converter.class" beforeDir="false" afterPath="$PROJECT_DIR$/jim-server/target/classes/org/jim/server/protocol/ProtocolManager$Converter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-server/target/classes/org/jim/server/protocol/ProtocolManager$Packet.class" beforeDir="false" afterPath="$PROJECT_DIR$/jim-server/target/classes/org/jim/server/protocol/ProtocolManager$Packet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-server/target/classes/org/jim/server/protocol/ProtocolManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/jim-server/target/classes/org/jim/server/protocol/ProtocolManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-server/target/classes/org/jim/server/protocol/ws/WsMsgHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/jim-server/target/classes/org/jim/server/protocol/ws/WsMsgHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/debug.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error.2020-09-22.0.log.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error.2020-09-23.0.log.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error.2020-09-24.0.log.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error.2020-09-25.0.log.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info.2020-09-22.0.log.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info.2020-09-23.0.log.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info.2020-09-24.0.log.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info.2020-09-25.0.log.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/warn.2020-09-22.0.log.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/warn.2020-09-23.0.log.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/warn.2020-09-24.0.log.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/warn.2020-09-25.0.log.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/warn.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/artifacts/chat_jar/chat.jar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,11 +116,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.brother.myanmar.chat.bean" />
       <recent name="com.brother.myanmar.chat.dao" />
+      <recent name="com.brother.myanmar.chat.mapper" />
       <recent name="com.brother.myanmar.chat.command" />
       <recent name="org.jim.core.packets" />
-      <recent name="org.jim.server.command.handler" />
-      <recent name="com.brother.myanmar.chat.mapper" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/chat/src/main/resources/mybatis" />
@@ -219,100 +232,101 @@
     </state>
     <state x="578" y="254" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.956@0.23.1680.956" timestamp="1600085689798" />
     <state x="578" y="255" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.961@0.23.1680.961" timestamp="1601099200906" />
-    <state x="603" y="215" key="#xdebugger.evaluate" timestamp="1601022184227">
-      <screen x="0" y="23" width="1680" height="961" />
+    <state x="603" y="215" key="#xdebugger.evaluate" timestamp="1601116188466">
+      <screen x="0" y="23" width="1680" height="960" />
     </state>
+    <state x="603" y="215" key="#xdebugger.evaluate/0.23.1680.960@0.23.1680.960" timestamp="1601116188466" />
     <state x="603" y="215" key="#xdebugger.evaluate/0.23.1680.961@0.23.1680.961" timestamp="1601022184227" />
-    <state width="1638" height="251" key="GridCell.Tab.0.bottom" timestamp="1601109287726">
+    <state width="1638" height="315" key="GridCell.Tab.0.bottom" timestamp="1601139452520">
       <screen x="0" y="23" width="1680" height="960" />
     </state>
     <state width="1358" height="245" key="GridCell.Tab.0.bottom/0.23.1680.949@0.23.1680.949" timestamp="1600035052471" />
     <state width="1638" height="254" key="GridCell.Tab.0.bottom/0.23.1680.952@0.23.1680.952" timestamp="1600080334469" />
     <state width="1638" height="251" key="GridCell.Tab.0.bottom/0.23.1680.954@0.23.1680.954" timestamp="1600964857170" />
     <state width="1638" height="251" key="GridCell.Tab.0.bottom/0.23.1680.956@0.23.1680.956" timestamp="1601093931133" />
-    <state width="1638" height="251" key="GridCell.Tab.0.bottom/0.23.1680.958@0.23.1680.958" timestamp="1601097423354" />
-    <state width="1638" height="251" key="GridCell.Tab.0.bottom/0.23.1680.960@0.23.1680.960" timestamp="1601109287726" />
-    <state width="1638" height="251" key="GridCell.Tab.0.bottom/0.23.1680.961@0.23.1680.961" timestamp="1601099200951" />
-    <state width="1638" height="251" key="GridCell.Tab.0.bottom/0.23.1680.963@0.23.1680.963" timestamp="1601104444248" />
+    <state width="1638" height="251" key="GridCell.Tab.0.bottom/0.23.1680.958@0.23.1680.958" timestamp="1601138999180" />
+    <state width="1638" height="315" key="GridCell.Tab.0.bottom/0.23.1680.960@0.23.1680.960" timestamp="1601139452520" />
+    <state width="1638" height="251" key="GridCell.Tab.0.bottom/0.23.1680.961@0.23.1680.961" timestamp="1601136670639" />
+    <state width="1638" height="251" key="GridCell.Tab.0.bottom/0.23.1680.963@0.23.1680.963" timestamp="1601120804123" />
     <state width="1638" height="255" key="GridCell.Tab.0.bottom/0.23.1680.965@0.23.1680.965" timestamp="1600851247632" />
     <state width="1638" height="255" key="GridCell.Tab.0.bottom/0.23.1680.966@0.23.1680.966" timestamp="1600858493116" />
     <state width="1638" height="255" key="GridCell.Tab.0.bottom/0.23.1680.967@0.23.1680.967" timestamp="1600849004402" />
-    <state width="1638" height="251" key="GridCell.Tab.0.center" timestamp="1601109287725">
+    <state width="1638" height="315" key="GridCell.Tab.0.center" timestamp="1601139452520">
       <screen x="0" y="23" width="1680" height="960" />
     </state>
     <state width="1358" height="245" key="GridCell.Tab.0.center/0.23.1680.949@0.23.1680.949" timestamp="1600035052470" />
     <state width="1638" height="254" key="GridCell.Tab.0.center/0.23.1680.952@0.23.1680.952" timestamp="1600080334468" />
     <state width="1638" height="251" key="GridCell.Tab.0.center/0.23.1680.954@0.23.1680.954" timestamp="1600964857169" />
     <state width="1638" height="251" key="GridCell.Tab.0.center/0.23.1680.956@0.23.1680.956" timestamp="1601093931131" />
-    <state width="1638" height="251" key="GridCell.Tab.0.center/0.23.1680.958@0.23.1680.958" timestamp="1601097423353" />
-    <state width="1638" height="251" key="GridCell.Tab.0.center/0.23.1680.960@0.23.1680.960" timestamp="1601109287725" />
-    <state width="1638" height="251" key="GridCell.Tab.0.center/0.23.1680.961@0.23.1680.961" timestamp="1601099200950" />
-    <state width="1638" height="251" key="GridCell.Tab.0.center/0.23.1680.963@0.23.1680.963" timestamp="1601104444247" />
+    <state width="1638" height="251" key="GridCell.Tab.0.center/0.23.1680.958@0.23.1680.958" timestamp="1601138999178" />
+    <state width="1638" height="315" key="GridCell.Tab.0.center/0.23.1680.960@0.23.1680.960" timestamp="1601139452520" />
+    <state width="1638" height="251" key="GridCell.Tab.0.center/0.23.1680.961@0.23.1680.961" timestamp="1601136670638" />
+    <state width="1638" height="251" key="GridCell.Tab.0.center/0.23.1680.963@0.23.1680.963" timestamp="1601120804121" />
     <state width="1638" height="255" key="GridCell.Tab.0.center/0.23.1680.965@0.23.1680.965" timestamp="1600851247632" />
     <state width="1638" height="255" key="GridCell.Tab.0.center/0.23.1680.966@0.23.1680.966" timestamp="1600858493114" />
     <state width="1638" height="255" key="GridCell.Tab.0.center/0.23.1680.967@0.23.1680.967" timestamp="1600849004402" />
-    <state width="1638" height="251" key="GridCell.Tab.0.left" timestamp="1601109287725">
+    <state width="1638" height="315" key="GridCell.Tab.0.left" timestamp="1601139452520">
       <screen x="0" y="23" width="1680" height="960" />
     </state>
     <state width="1358" height="245" key="GridCell.Tab.0.left/0.23.1680.949@0.23.1680.949" timestamp="1600035052470" />
     <state width="1638" height="254" key="GridCell.Tab.0.left/0.23.1680.952@0.23.1680.952" timestamp="1600080334468" />
     <state width="1638" height="251" key="GridCell.Tab.0.left/0.23.1680.954@0.23.1680.954" timestamp="1600964857168" />
     <state width="1638" height="251" key="GridCell.Tab.0.left/0.23.1680.956@0.23.1680.956" timestamp="1601093931131" />
-    <state width="1638" height="251" key="GridCell.Tab.0.left/0.23.1680.958@0.23.1680.958" timestamp="1601097423352" />
-    <state width="1638" height="251" key="GridCell.Tab.0.left/0.23.1680.960@0.23.1680.960" timestamp="1601109287725" />
-    <state width="1638" height="251" key="GridCell.Tab.0.left/0.23.1680.961@0.23.1680.961" timestamp="1601099200949" />
-    <state width="1638" height="251" key="GridCell.Tab.0.left/0.23.1680.963@0.23.1680.963" timestamp="1601104444246" />
+    <state width="1638" height="251" key="GridCell.Tab.0.left/0.23.1680.958@0.23.1680.958" timestamp="1601138999177" />
+    <state width="1638" height="315" key="GridCell.Tab.0.left/0.23.1680.960@0.23.1680.960" timestamp="1601139452520" />
+    <state width="1638" height="251" key="GridCell.Tab.0.left/0.23.1680.961@0.23.1680.961" timestamp="1601136670638" />
+    <state width="1638" height="251" key="GridCell.Tab.0.left/0.23.1680.963@0.23.1680.963" timestamp="1601120804120" />
     <state width="1638" height="255" key="GridCell.Tab.0.left/0.23.1680.965@0.23.1680.965" timestamp="1600851247631" />
     <state width="1638" height="255" key="GridCell.Tab.0.left/0.23.1680.966@0.23.1680.966" timestamp="1600858493114" />
     <state width="1638" height="255" key="GridCell.Tab.0.left/0.23.1680.967@0.23.1680.967" timestamp="1600849004402" />
-    <state width="1638" height="251" key="GridCell.Tab.0.right" timestamp="1601109287726">
+    <state width="1638" height="315" key="GridCell.Tab.0.right" timestamp="1601139452520">
       <screen x="0" y="23" width="1680" height="960" />
     </state>
     <state width="1358" height="245" key="GridCell.Tab.0.right/0.23.1680.949@0.23.1680.949" timestamp="1600035052470" />
     <state width="1638" height="254" key="GridCell.Tab.0.right/0.23.1680.952@0.23.1680.952" timestamp="1600080334468" />
     <state width="1638" height="251" key="GridCell.Tab.0.right/0.23.1680.954@0.23.1680.954" timestamp="1600964857169" />
     <state width="1638" height="251" key="GridCell.Tab.0.right/0.23.1680.956@0.23.1680.956" timestamp="1601093931132" />
-    <state width="1638" height="251" key="GridCell.Tab.0.right/0.23.1680.958@0.23.1680.958" timestamp="1601097423354" />
-    <state width="1638" height="251" key="GridCell.Tab.0.right/0.23.1680.960@0.23.1680.960" timestamp="1601109287726" />
-    <state width="1638" height="251" key="GridCell.Tab.0.right/0.23.1680.961@0.23.1680.961" timestamp="1601099200950" />
-    <state width="1638" height="251" key="GridCell.Tab.0.right/0.23.1680.963@0.23.1680.963" timestamp="1601104444248" />
+    <state width="1638" height="251" key="GridCell.Tab.0.right/0.23.1680.958@0.23.1680.958" timestamp="1601138999179" />
+    <state width="1638" height="315" key="GridCell.Tab.0.right/0.23.1680.960@0.23.1680.960" timestamp="1601139452520" />
+    <state width="1638" height="251" key="GridCell.Tab.0.right/0.23.1680.961@0.23.1680.961" timestamp="1601136670639" />
+    <state width="1638" height="251" key="GridCell.Tab.0.right/0.23.1680.963@0.23.1680.963" timestamp="1601120804122" />
     <state width="1638" height="255" key="GridCell.Tab.0.right/0.23.1680.965@0.23.1680.965" timestamp="1600851247632" />
     <state width="1638" height="255" key="GridCell.Tab.0.right/0.23.1680.966@0.23.1680.966" timestamp="1600858493115" />
     <state width="1638" height="255" key="GridCell.Tab.0.right/0.23.1680.967@0.23.1680.967" timestamp="1600849004402" />
-    <state width="1638" height="315" key="GridCell.Tab.1.bottom" timestamp="1601105642222">
+    <state width="1638" height="315" key="GridCell.Tab.1.bottom" timestamp="1601139452521">
       <screen x="0" y="23" width="1680" height="960" />
     </state>
     <state width="1638" height="315" key="GridCell.Tab.1.bottom/0.23.1680.954@0.23.1680.954" timestamp="1600964277434" />
     <state width="1638" height="315" key="GridCell.Tab.1.bottom/0.23.1680.956@0.23.1680.956" timestamp="1601092207134" />
-    <state width="1638" height="315" key="GridCell.Tab.1.bottom/0.23.1680.958@0.23.1680.958" timestamp="1601039014470" />
-    <state width="1638" height="315" key="GridCell.Tab.1.bottom/0.23.1680.960@0.23.1680.960" timestamp="1601105642222" />
+    <state width="1638" height="315" key="GridCell.Tab.1.bottom/0.23.1680.958@0.23.1680.958" timestamp="1601138832730" />
+    <state width="1638" height="315" key="GridCell.Tab.1.bottom/0.23.1680.960@0.23.1680.960" timestamp="1601139452521" />
     <state width="1638" height="315" key="GridCell.Tab.1.bottom/0.23.1680.961@0.23.1680.961" timestamp="1601022996997" />
     <state width="1638" height="315" key="GridCell.Tab.1.bottom/0.23.1680.963@0.23.1680.963" timestamp="1601038979671" />
-    <state width="1638" height="315" key="GridCell.Tab.1.center" timestamp="1601105642220">
+    <state width="1638" height="315" key="GridCell.Tab.1.center" timestamp="1601139452521">
       <screen x="0" y="23" width="1680" height="960" />
     </state>
     <state width="1638" height="315" key="GridCell.Tab.1.center/0.23.1680.954@0.23.1680.954" timestamp="1600964277433" />
     <state width="1638" height="315" key="GridCell.Tab.1.center/0.23.1680.956@0.23.1680.956" timestamp="1601092207133" />
-    <state width="1638" height="315" key="GridCell.Tab.1.center/0.23.1680.958@0.23.1680.958" timestamp="1601039014469" />
-    <state width="1638" height="315" key="GridCell.Tab.1.center/0.23.1680.960@0.23.1680.960" timestamp="1601105642220" />
+    <state width="1638" height="315" key="GridCell.Tab.1.center/0.23.1680.958@0.23.1680.958" timestamp="1601138832728" />
+    <state width="1638" height="315" key="GridCell.Tab.1.center/0.23.1680.960@0.23.1680.960" timestamp="1601139452521" />
     <state width="1638" height="315" key="GridCell.Tab.1.center/0.23.1680.961@0.23.1680.961" timestamp="1601022996996" />
     <state width="1638" height="315" key="GridCell.Tab.1.center/0.23.1680.963@0.23.1680.963" timestamp="1601038979671" />
-    <state width="1638" height="315" key="GridCell.Tab.1.left" timestamp="1601105642219">
+    <state width="1638" height="315" key="GridCell.Tab.1.left" timestamp="1601139452520">
       <screen x="0" y="23" width="1680" height="960" />
     </state>
     <state width="1638" height="315" key="GridCell.Tab.1.left/0.23.1680.954@0.23.1680.954" timestamp="1600964277432" />
     <state width="1638" height="315" key="GridCell.Tab.1.left/0.23.1680.956@0.23.1680.956" timestamp="1601092207133" />
-    <state width="1638" height="315" key="GridCell.Tab.1.left/0.23.1680.958@0.23.1680.958" timestamp="1601039014469" />
-    <state width="1638" height="315" key="GridCell.Tab.1.left/0.23.1680.960@0.23.1680.960" timestamp="1601105642219" />
+    <state width="1638" height="315" key="GridCell.Tab.1.left/0.23.1680.958@0.23.1680.958" timestamp="1601138832728" />
+    <state width="1638" height="315" key="GridCell.Tab.1.left/0.23.1680.960@0.23.1680.960" timestamp="1601139452520" />
     <state width="1638" height="315" key="GridCell.Tab.1.left/0.23.1680.961@0.23.1680.961" timestamp="1601022996996" />
     <state width="1638" height="315" key="GridCell.Tab.1.left/0.23.1680.963@0.23.1680.963" timestamp="1601038979671" />
-    <state width="1638" height="315" key="GridCell.Tab.1.right" timestamp="1601105642220">
+    <state width="1638" height="315" key="GridCell.Tab.1.right" timestamp="1601139452521">
       <screen x="0" y="23" width="1680" height="960" />
     </state>
     <state width="1638" height="315" key="GridCell.Tab.1.right/0.23.1680.954@0.23.1680.954" timestamp="1600964277433" />
     <state width="1638" height="315" key="GridCell.Tab.1.right/0.23.1680.956@0.23.1680.956" timestamp="1601092207134" />
-    <state width="1638" height="315" key="GridCell.Tab.1.right/0.23.1680.958@0.23.1680.958" timestamp="1601039014470" />
-    <state width="1638" height="315" key="GridCell.Tab.1.right/0.23.1680.960@0.23.1680.960" timestamp="1601105642220" />
+    <state width="1638" height="315" key="GridCell.Tab.1.right/0.23.1680.958@0.23.1680.958" timestamp="1601138832729" />
+    <state width="1638" height="315" key="GridCell.Tab.1.right/0.23.1680.960@0.23.1680.960" timestamp="1601139452521" />
     <state width="1638" height="315" key="GridCell.Tab.1.right/0.23.1680.961@0.23.1680.961" timestamp="1601022996996" />
     <state width="1638" height="315" key="GridCell.Tab.1.right/0.23.1680.963@0.23.1680.963" timestamp="1601038979671" />
     <state x="378" y="160" key="Maven.ArtifactSearchDialog" timestamp="1600846795806">
@@ -384,9 +398,14 @@
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/command/handler/ChatReqHandler.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="45" />
+          <url>file://$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/command/GroupProcessor.java</url>
+          <line>106</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/command/PacketProcessor.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="57" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

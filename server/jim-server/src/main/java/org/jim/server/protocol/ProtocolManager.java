@@ -9,6 +9,7 @@ import org.jim.core.ImConst;
 import org.jim.core.ImPacket;
 import org.jim.core.ImStatus;
 import org.jim.core.exception.ImException;
+import org.jim.core.packets.ChatBody;
 import org.jim.core.packets.Command;
 import org.jim.core.packets.RespBody;
 import org.jim.core.protocol.IProtocolConverter;
@@ -200,10 +201,18 @@ public class ProtocolManager implements ImConst{
 		 * @return imPacket
 		 * @throws ImException
 		 */
-		public static ImPacket  success(ImChannelContext imChannelContext) throws ImException{
+		public static ImPacket  success(ImChannelContext imChannelContext, ChatBody chatBody) throws ImException{
 			RespBody chatDataInCorrectRespPacket = new RespBody(Command.COMMAND_CHAT_RESP, ImStatus.C10000);
 			ImPacket respPacket = Converter.respPacket(chatDataInCorrectRespPacket, imChannelContext);
 			respPacket.setStatus(ImStatus.C10000);
+			if(chatBody.getMsgType() == 2) {
+				BaseResponse resp = new BaseResponse();
+				resp.setCmd(Command.COMMAND_CHAT_RESP.getNumber());
+				resp.setId(chatBody.getId());
+				resp.setMsg(ImStatus.C10000.getMsg());
+				resp.setCode(ImStatus.C10000.getCode());
+				respPacket.setBody(resp.toByte());
+			}
 			return respPacket;
 		}
 
