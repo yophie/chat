@@ -1,9 +1,13 @@
 package com.brother.myanmar.chat.dao;
 
 import com.brother.myanmar.chat.SqlConnection;
+import com.brother.myanmar.chat.bean.Friend;
 import com.brother.myanmar.chat.bean.User;
+import com.brother.myanmar.chat.mapper.Friend2Mapper;
 import com.brother.myanmar.chat.mapper.User2Mapper;
 import org.apache.ibatis.session.SqlSession;
+
+import java.util.List;
 
 public class UserDao {
 
@@ -35,6 +39,12 @@ public class UserDao {
         User user = user2Mapper.findUserByAccount(suser);
         session.commit();
         return user;
+    }
+    public List<Friend> findFriendByState(Friend user){
+        Friend2Mapper mapper = session.getMapper(Friend2Mapper.class);
+        List<Friend> result = mapper.findFriendByState(user);
+        session.commit();
+        return result;
     }
 
 }

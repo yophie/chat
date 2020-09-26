@@ -6,6 +6,8 @@ public class GroupReqBody extends Message {
 
     private static final long serialVersionUID = 5731474214655476287L;
 
+    private Integer type;//0:加入 1：退出
+    private Integer groupId;
     private String groupName;
     private String avatar;
     private List<Integer> friends;
@@ -34,6 +36,24 @@ public class GroupReqBody extends Message {
 
     public GroupReqBody setAvatar(String avatar) {
         this.avatar = avatar;
+        return this;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public GroupReqBody setType(Integer type) {
+        this.type = type;
+        return this;
+    }
+
+    public Integer getGroupId() {
+        return groupId;
+    }
+
+    public GroupReqBody setGroupId(Integer groupId) {
+        this.groupId = groupId;
         return this;
     }
 }

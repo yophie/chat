@@ -3,14 +3,12 @@
  */
 package com.brother.myanmar.chat.service;
 
+import com.brother.myanmar.chat.bean.Friend;
 import com.brother.myanmar.chat.dao.UserDao;
 import org.jim.core.ImChannelContext;
 import org.jim.core.ImConst;
 import org.jim.core.ImStatus;
-import org.jim.core.packets.LoginReqBody;
-import org.jim.core.packets.LoginRespBody;
-import org.jim.core.packets.User;
-import org.jim.core.packets.UserStatusType;
+import org.jim.core.packets.*;
 import org.jim.core.session.id.impl.UUIDSessionIdGenerator;
 import org.jim.core.utils.Md5;
 import org.jim.server.processor.login.LoginCmdProcessor;
@@ -19,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -41,6 +40,7 @@ public class ChatLoginServiceProcessor extends AbstractProtocolCmdProcessor impl
 		String key = ImConst.AUTH_KEY;
 		String token = Md5.sign(text, key, CHARSET);
 		User user = getUser(token);
+
 		return user;
 	}
 	/**
@@ -85,6 +85,16 @@ public class ChatLoginServiceProcessor extends AbstractProtocolCmdProcessor impl
 					.nick(findUser.getName())
 					.avatar(findUser.getAvatar())
 					.status(UserStatusType.ONLINE.getStatus());
+
+			Friend me = new Friend();
+			me.setMyId(findUser.getId());
+			me.setState(0);
+			List<Friend> groups = userdao.findFriendByState(me);
+			for(int i=0;i<groups.size();i++){
+				builder.addGroup(Group.newBuilder().groupId(String.valueOf(groups.get(i).getFriendId())).
+						name(groups.get(i).getFriendNick()).build());
+			}
+
 			User user = builder.build();
 			String text = loginReqBody.getUserId()+loginReqBody.getPassword();
 			String key = ImConst.AUTH_KEY;

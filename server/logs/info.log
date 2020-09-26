@@ -49,3 +49,67 @@
 2020-09-26 13:17:04,299 INFO  o.j.s.p.h.HttpProtocolHandler[73]: Http Protocol initialized
 2020-09-26 13:17:04,300 INFO  o.j.s.p.ws.WsProtocolHandler[65]: WebSocket Protocol  initialized
 2020-09-26 13:17:04,300 INFO  o.j.s.protocol.ProtocolManager[105]: init protocol is completed [J-IM]
+2020-09-26 15:14:05,066 INFO  o.j.s.protocol.ProtocolManager[97]: start init protocol [J-IM]
+2020-09-26 15:14:05,067 INFO  o.j.s.p.tcp.TcpProtocolHandler[44]: Socket Protocol initialized
+2020-09-26 15:14:05,217 INFO  o.j.s.p.h.HttpProtocolHandler[73]: Http Protocol initialized
+2020-09-26 15:14:05,218 INFO  o.j.s.p.ws.WsProtocolHandler[65]: WebSocket Protocol  initialized
+2020-09-26 15:14:05,218 INFO  o.j.s.protocol.ProtocolManager[105]: init protocol is completed [J-IM]
+2020-09-26 15:16:59,935 INFO  o.j.s.protocol.ProtocolManager[97]: start init protocol [J-IM]
+2020-09-26 15:16:59,937 INFO  o.j.s.p.tcp.TcpProtocolHandler[44]: Socket Protocol initialized
+2020-09-26 15:17:00,134 INFO  o.j.s.p.h.HttpProtocolHandler[73]: Http Protocol initialized
+2020-09-26 15:17:00,136 INFO  o.j.s.p.ws.WsProtocolHandler[65]: WebSocket Protocol  initialized
+2020-09-26 15:17:00,136 INFO  o.j.s.protocol.ProtocolManager[105]: init protocol is completed [J-IM]
+2020-09-26 15:21:36,845 INFO  o.j.s.protocol.ProtocolManager[97]: start init protocol [J-IM]
+2020-09-26 15:21:36,846 INFO  o.j.s.p.tcp.TcpProtocolHandler[44]: Socket Protocol initialized
+2020-09-26 15:21:36,978 INFO  o.j.s.p.h.HttpProtocolHandler[73]: Http Protocol initialized
+2020-09-26 15:21:36,979 INFO  o.j.s.p.ws.WsProtocolHandler[65]: WebSocket Protocol  initialized
+2020-09-26 15:21:36,979 INFO  o.j.s.protocol.ProtocolManager[105]: init protocol is completed [J-IM]
+2020-09-26 15:22:20,049 INFO  o.j.s.protocol.ProtocolManager[97]: start init protocol [J-IM]
+2020-09-26 15:22:20,050 INFO  o.j.s.p.tcp.TcpProtocolHandler[44]: Socket Protocol initialized
+2020-09-26 15:22:20,225 INFO  o.j.s.p.h.HttpProtocolHandler[73]: Http Protocol initialized
+2020-09-26 15:22:20,226 INFO  o.j.s.p.ws.WsProtocolHandler[65]: WebSocket Protocol  initialized
+2020-09-26 15:22:20,227 INFO  o.j.s.protocol.ProtocolManager[105]: init protocol is completed [J-IM]
+2020-09-26 15:31:08,337 INFO  o.j.s.protocol.ProtocolManager[97]: start init protocol [J-IM]
+2020-09-26 15:31:08,339 INFO  o.j.s.p.tcp.TcpProtocolHandler[44]: Socket Protocol initialized
+2020-09-26 15:31:08,590 INFO  o.j.s.p.h.HttpProtocolHandler[73]: Http Protocol initialized
+2020-09-26 15:31:08,590 INFO  o.j.s.p.ws.WsProtocolHandler[65]: WebSocket Protocol  initialized
+2020-09-26 15:31:08,591 INFO  o.j.s.protocol.ProtocolManager[105]: init protocol is completed [J-IM]
+2020-09-26 15:34:03,524 INFO  o.j.s.protocol.ProtocolManager[97]: start init protocol [J-IM]
+2020-09-26 15:34:03,525 INFO  o.j.s.p.tcp.TcpProtocolHandler[44]: Socket Protocol initialized
+2020-09-26 15:34:03,734 INFO  o.j.s.p.h.HttpProtocolHandler[73]: Http Protocol initialized
+2020-09-26 15:34:03,739 INFO  o.j.s.p.ws.WsProtocolHandler[65]: WebSocket Protocol  initialized
+2020-09-26 15:34:03,739 INFO  o.j.s.protocol.ProtocolManager[105]: init protocol is completed [J-IM]
+2020-09-26 15:38:00,812 INFO  o.j.s.protocol.ProtocolManager[97]: start init protocol [J-IM]
+2020-09-26 15:38:00,813 INFO  o.j.s.p.tcp.TcpProtocolHandler[44]: Socket Protocol initialized
+2020-09-26 15:38:00,959 INFO  o.j.s.p.h.HttpProtocolHandler[73]: Http Protocol initialized
+2020-09-26 15:38:00,960 INFO  o.j.s.p.ws.WsProtocolHandler[65]: WebSocket Protocol  initialized
+2020-09-26 15:38:00,960 INFO  o.j.s.protocol.ProtocolManager[105]: init protocol is completed [J-IM]
+2020-09-26 15:57:23,294 INFO  o.j.s.protocol.ProtocolManager[97]: start init protocol [J-IM]
+2020-09-26 15:57:23,296 INFO  o.j.s.p.tcp.TcpProtocolHandler[44]: Socket Protocol initialized
+2020-09-26 15:57:23,454 INFO  o.j.s.p.h.HttpProtocolHandler[73]: Http Protocol initialized
+2020-09-26 15:57:23,454 INFO  o.j.s.p.ws.WsProtocolHandler[65]: WebSocket Protocol  initialized
+2020-09-26 15:57:23,455 INFO  o.j.s.protocol.ProtocolManager[105]: init protocol is completed [J-IM]
+2020-09-26 16:00:27,312 INFO  o.j.s.protocol.ProtocolManager[97]: start init protocol [J-IM]
+2020-09-26 16:00:27,313 INFO  o.j.s.p.tcp.TcpProtocolHandler[44]: Socket Protocol initialized
+2020-09-26 16:00:27,456 INFO  o.j.s.p.h.HttpProtocolHandler[73]: Http Protocol initialized
+2020-09-26 16:00:27,457 INFO  o.j.s.p.ws.WsProtocolHandler[65]: WebSocket Protocol  initialized
+2020-09-26 16:00:27,457 INFO  o.j.s.protocol.ProtocolManager[105]: init protocol is completed [J-IM]
+2020-09-26 16:03:48,688 INFO  o.tio.core.task.CloseRunnable[284]: ServerTioConfig [name=J-IM], server:127.0.0.1:8888, client:127.0.0.1:57135 准备关闭连接, isNeedRemove:true, 对方关闭了连接
+2020-09-26 16:03:48,701 INFO  org.tio.core.ChannelContext[592]: 关闭前server:127.0.0.1:8888, client:127.0.0.1:57135, 关闭后server:127.0.0.1:8888, client:$UNKNOWN:1
+2020-09-26 16:03:48,702 INFO  o.tio.core.task.CloseRunnable[284]: ServerTioConfig [name=J-IM], server:127.0.0.1:8888, client:127.0.0.1:57132 准备关闭连接, isNeedRemove:true, 对方关闭了连接
+2020-09-26 16:03:48,704 INFO  org.tio.core.ChannelContext[592]: 关闭前server:127.0.0.1:8888, client:127.0.0.1:57132, 关闭后server:127.0.0.1:8888, client:$UNKNOWN:2
+2020-09-26 16:34:48,578 INFO  o.j.s.protocol.ProtocolManager[97]: start init protocol [J-IM]
+2020-09-26 16:34:48,579 INFO  o.j.s.p.tcp.TcpProtocolHandler[44]: Socket Protocol initialized
+2020-09-26 16:34:48,724 INFO  o.j.s.p.h.HttpProtocolHandler[73]: Http Protocol initialized
+2020-09-26 16:34:48,724 INFO  o.j.s.p.ws.WsProtocolHandler[65]: WebSocket Protocol  initialized
+2020-09-26 16:34:48,724 INFO  o.j.s.protocol.ProtocolManager[105]: init protocol is completed [J-IM]
+2020-09-26 16:41:35,108 INFO  o.j.s.protocol.ProtocolManager[97]: start init protocol [J-IM]
+2020-09-26 16:41:35,109 INFO  o.j.s.p.tcp.TcpProtocolHandler[44]: Socket Protocol initialized
+2020-09-26 16:41:35,272 INFO  o.j.s.p.h.HttpProtocolHandler[73]: Http Protocol initialized
+2020-09-26 16:41:35,272 INFO  o.j.s.p.ws.WsProtocolHandler[65]: WebSocket Protocol  initialized
+2020-09-26 16:41:35,273 INFO  o.j.s.protocol.ProtocolManager[105]: init protocol is completed [J-IM]
+2020-09-26 16:42:04,716 INFO  o.j.s.protocol.ProtocolManager[97]: start init protocol [J-IM]
+2020-09-26 16:42:04,721 INFO  o.j.s.p.tcp.TcpProtocolHandler[44]: Socket Protocol initialized
+2020-09-26 16:42:05,022 INFO  o.j.s.p.h.HttpProtocolHandler[73]: Http Protocol initialized
+2020-09-26 16:42:05,025 INFO  o.j.s.p.ws.WsProtocolHandler[65]: WebSocket Protocol  initialized
+2020-09-26 16:42:05,026 INFO  o.j.s.protocol.ProtocolManager[105]: init protocol is completed [J-IM]

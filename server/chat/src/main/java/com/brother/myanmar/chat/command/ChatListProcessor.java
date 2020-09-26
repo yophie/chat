@@ -98,7 +98,7 @@ public class ChatListProcessor extends BaseChatListProcessor {
 
                     ChatBody chatBody = ChatBody.newBuilder().from(String.valueOf(user.getFriendId()))
                         .to(String.valueOf(user.getMyId())).chatType(ChatType.CHAT_TYPE_PRIVATE.getNumber())
-                        .msgType(6).content("加个朋友呗。").build();
+                        .msgType(6).systemCmd(0).content("加个朋友呗。").build();
                     ImPacket chatPacket = new ImPacket(Command.COMMAND_CHAT_REQ,new RespBody(Command.COMMAND_CHAT_REQ,chatBody).toByte());
                     JimServerAPI.sendToUser(String.valueOf(req.getApplyUser()), chatPacket);
                 }
@@ -129,7 +129,7 @@ public class ChatListProcessor extends BaseChatListProcessor {
 
                     ChatBody chatBody = ChatBody.newBuilder().from(String.valueOf(user.getFriendId()))
                             .to(String.valueOf(user.getMyId())).chatType(ChatType.CHAT_TYPE_PRIVATE.getNumber())
-                            .msgType(6).content("好友验证通过，可以开始聊天了。").build();
+                            .msgType(6).systemCmd(1).content("好友验证结束").build();
                     ImPacket chatPacket = new ImPacket(Command.COMMAND_CHAT_REQ,new RespBody(Command.COMMAND_CHAT_REQ,chatBody).toByte());
                     JimServerAPI.sendToUser(String.valueOf(req.getApplyUser()), chatPacket);
                 }

@@ -5,7 +5,7 @@ import org.jim.core.ImPacket;
 import org.jim.core.ImStatus;
 import org.jim.core.exception.ImException;
 import org.jim.core.packets.Command;
-import org.jim.core.packets.PacketReqBody;
+import org.jim.core.packets.GroupReqBody;
 import org.jim.core.packets.RespBody;
 import org.jim.core.utils.JsonKit;
 import org.jim.server.command.AbstractCmdHandler;
@@ -20,7 +20,7 @@ public class GroupReqHandler extends AbstractCmdHandler {
             RespBody respBody = new RespBody(Command.COMMAND_GROUP_RESP, ImStatus.C10030);
             return ProtocolManager.Converter.respPacket(respBody, channelContext);
         }
-        PacketReqBody reqBody = JsonKit.toBean(packet.getBody(), PacketReqBody.class);
+        GroupReqBody reqBody = JsonKit.toBean(packet.getBody(), GroupReqBody.class);
         BaseProcessor processor = this.getSingleProcessor(BaseProcessor.class);
         processor.process(channelContext,reqBody);
         return ProtocolManager.Converter.respPacket(processor.getRes(), channelContext);

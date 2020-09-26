@@ -9,7 +9,7 @@
     <select id="findUserById" parameterType="com.brother.myanmar.chat.bean.User" resultType="com.brother.myanmar.chat.bean.User">
         select * from user where id = #{id}
     </select>
-    <!--通过name查找-->
+    <!--通过openId查找-->
     <select id="findUserByOpenId" parameterType="com.brother.myanmar.chat.bean.User" resultType="com.brother.myanmar.chat.bean.User">
         select * from user where openId = #{openId} and password = #{password}
     </select>

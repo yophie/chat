@@ -48,11 +48,24 @@ public class GroupDao {
         return rint;
     }
 
-    public User findUserByOpenId(User suser){
+    public User findUserByAccount(User suser){
         User2Mapper user2Mapper = session.getMapper(User2Mapper.class);
-        User user = user2Mapper.findUserByOpenId(suser);
+        User user = user2Mapper.findUserByAccount(suser);
         session.commit();
         return user;
+    }
+    public int deleteFriend(Friend user){
+        Friend2Mapper mapper = session.getMapper(Friend2Mapper.class);
+        int rint = mapper.deleteFriend(user);
+        session.commit();
+        return rint;
+    }
+
+    public Friend findOneFriend(Friend user){
+        Friend2Mapper mapper = session.getMapper(Friend2Mapper.class);
+        Friend result = mapper.findOneFriend(user);
+        session.commit();
+        return result;
     }
 
 }

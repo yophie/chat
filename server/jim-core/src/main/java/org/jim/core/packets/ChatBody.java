@@ -39,19 +39,14 @@ public class ChatBody extends Message {
 	private String groupId;
 
 	private Double packetAmount;
-
-	public Double getPacketAmount() {
-		return packetAmount;
-	}
-
-	public ChatBody setPacketAmount(Double packetAmount) {
-		this.packetAmount = packetAmount;
-		return this;
-	}
+	//系统命令 0:加好友通知，1：验证结果 2：加群通知
+	private Integer systemCmd;
 	
 	private ChatBody(){}
 	
-	private ChatBody(String id , String from , String to , Integer msgType , Integer chatType , String content , String groupId , Integer cmd , Long createTime , JSONObject extras){
+	private ChatBody(String id , String from , String to , Integer msgType ,
+					 Integer chatType , String content , String groupId , Integer cmd ,
+					 Long createTime , JSONObject extras, Double packetAmount, Integer systemCmd){
 		this.id = id;
 		this.from = from ;
 		this.to = to;
@@ -62,6 +57,8 @@ public class ChatBody extends Message {
 		this.cmd = cmd;
 		this.createTime = createTime;
 		this.extras = extras;
+		this.packetAmount = packetAmount;
+		this.systemCmd = systemCmd;
 	}
 	
 	public static ChatBody.Builder newBuilder(){
@@ -118,7 +115,25 @@ public class ChatBody extends Message {
 		this.chatType = chatType;
 		return this;
 	}
-	
+
+	public Double getPacketAmount() {
+		return packetAmount;
+	}
+
+	public ChatBody setPacketAmount(Double packetAmount) {
+		this.packetAmount = packetAmount;
+		return this;
+	}
+
+	public Integer getSystemCmd() {
+		return systemCmd;
+	}
+
+	public ChatBody setSystemCmd(Integer systemCmd) {
+		this.systemCmd = systemCmd;
+		return this;
+	}
+
 	public static class Builder extends Message.Builder<ChatBody,ChatBody.Builder>{
 		/**
 		 * 来自user_id;
@@ -144,6 +159,10 @@ public class ChatBody extends Message {
 		 * 消息发到哪个群组;
 		 */
 		private String groupId;
+
+		private Double packetAmount;
+		//系统命令
+		private Integer systemCmd;
 		
 		public Builder(){};
 		
@@ -171,6 +190,14 @@ public class ChatBody extends Message {
 			this.groupId = groupId;
 			return this;
 		}
+		public Builder packetAmount(Double msgType) {
+			this.packetAmount = packetAmount;
+			return this;
+		}
+		public Builder systemCmd(Integer systemCmd) {
+			this.systemCmd = systemCmd;
+			return this;
+		}
 		@Override
 		protected Builder getThis() {
 			return this;
@@ -178,7 +205,7 @@ public class ChatBody extends Message {
 
 		@Override
 		public ChatBody build(){
-			return new ChatBody(this.id , this.from , this.to , this.msgType , this.chatType , this.content , this.groupId ,this.cmd , this.createTime , this.extras);
+			return new ChatBody(this.id , this.from , this.to , this.msgType , this.chatType , this.content , this.groupId ,this.cmd , this.createTime , this.extras, this.packetAmount, this.systemCmd);
 		}
 	}
 }
