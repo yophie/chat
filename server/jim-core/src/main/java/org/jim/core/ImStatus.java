@@ -31,7 +31,21 @@ public enum ImStatus implements Status{
 	C10017(10017,"cmd failed!","未知的cmd命令!"),
 	C10018(10018,"get user message ok!","获取历史消息成功!"),
 	C10020(10020,"Invalid verification!","不合法校验"),
-	C10021(10021,"close ok!","关闭成功");
+	C10021(10021,"close ok!","关闭成功"),
+	C10022(10022,"get chat list failed!","获取聊天列表失败!"),
+	C10023(10023,"get chat list ok!","获取聊天列表成功!"),
+	C10024(10024,"get packet state failed!","获取红包状态失败!"),
+	C10025(10025,"get packet state ok!","获取红包状态成功!"),
+	C10026(10026,"get friend list failed!","获取好友列表失败!"),
+	C10027(10027,"get friend list ok!","获取好友列表成功!"),
+	C10028(10028,"apply friend failed!","申请好友失败!"),
+	C10029(10029,"apply friend ok!","申请好友成功!"),
+	C10030(10030,"get group failed!","获取群聊列表失败!"),
+	C10031(10031,"get group ok!","获取群聊列表成功!"),
+	C10032(10032,"get Friend Society failed!","获取朋友圈列表失败!"),
+	C10033(10033,"get Friend Society ok!","获取朋友圈列表成功!"),
+	C10034(10034,"get Cash list failed!","获取提现列表失败!"),
+	C10035(10035,"get Cash list ok!","获取提现列表成功!");
 	
 	private int status;
 	

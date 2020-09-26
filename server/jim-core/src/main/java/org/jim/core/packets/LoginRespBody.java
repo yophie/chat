@@ -18,7 +18,7 @@ public class  LoginRespBody extends RespBody {
 	private User user;
 
 	public LoginRespBody(){
-		this.setCommand(Command.COMMAND_LOGIN_RESP);
+		this.setCmd(Command.COMMAND_LOGIN_RESP);
 	}
 
 	public LoginRespBody(Status status){

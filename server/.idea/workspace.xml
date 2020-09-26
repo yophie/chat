@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="chat:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
@@ -23,7 +28,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3139559e-848f-4ee5-8616-2f9030cc944a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/service/ImgMnService.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/service/ImgMnService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/chat.iml" beforeDir="false" afterPath="$PROJECT_DIR$/chat/chat.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/package.sh" beforeDir="false" afterPath="$PROJECT_DIR$/chat/package.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/chat/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/ImServerStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/ImServerStart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/service/ChatLoginServiceProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/service/ChatLoginServiceProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/src/main/java/com/brother/myanmar/chat/service/ImgMnService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/src/main/resources/config/jim.properties" beforeDir="false" afterPath="$PROJECT_DIR$/chat/src/main/resources/config/jim.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/startup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/chat/startup.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/target/classes/com/brother/myanmar/chat/ImServerStart.class" beforeDir="false" afterPath="$PROJECT_DIR$/chat/target/classes/com/brother/myanmar/chat/ImServerStart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/target/classes/com/brother/myanmar/chat/service/ChatLoginServiceProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/chat/target/classes/com/brother/myanmar/chat/service/ChatLoginServiceProcessor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/target/classes/com/brother/myanmar/chat/service/ImgMnService$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/target/classes/com/brother/myanmar/chat/service/ImgMnService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/target/classes/config/jim.properties" beforeDir="false" afterPath="$PROJECT_DIR$/chat/target/classes/config/jim.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/target/classes/page/imgs/mn.txt" beforeDir="false" afterPath="$PROJECT_DIR$/chat/target/classes/page/imgs/mn.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-core/src/main/java/org/jim/core/ImStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/jim-core/src/main/java/org/jim/core/ImStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-core/src/main/java/org/jim/core/packets/ChatBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/jim-core/src/main/java/org/jim/core/packets/ChatBody.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-core/src/main/java/org/jim/core/packets/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/jim-core/src/main/java/org/jim/core/packets/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-core/src/main/java/org/jim/core/packets/JoinGroupRespBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/jim-core/src/main/java/org/jim/core/packets/JoinGroupRespBody.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-core/src/main/java/org/jim/core/packets/LoginRespBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/jim-core/src/main/java/org/jim/core/packets/LoginRespBody.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-core/src/main/java/org/jim/core/packets/RespBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/jim-core/src/main/java/org/jim/core/packets/RespBody.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/ImStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/ImStatus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/packets/ChatBody$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/packets/ChatBody$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/packets/ChatBody.class" beforeDir="false" afterPath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/packets/ChatBody.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/packets/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/packets/Command.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/packets/JoinGroupRespBody.class" beforeDir="false" afterPath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/packets/JoinGroupRespBody.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/packets/LoginRespBody.class" beforeDir="false" afterPath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/packets/LoginRespBody.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/packets/RespBody.class" beforeDir="false" afterPath="$PROJECT_DIR$/jim-core/target/classes/org/jim/core/packets/RespBody.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/command/command.properties" beforeDir="false" afterPath="$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/command/command.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/command/handler/LoginReqHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/command/handler/LoginReqHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/helper/redis/RedisMessageHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/helper/redis/RedisMessageHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/protocol/ProtocolManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/protocol/ProtocolManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-server/target/classes/org/jim/server/command/command.properties" beforeDir="false" afterPath="$PROJECT_DIR$/jim-server/target/classes/org/jim/server/command/command.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-server/target/classes/org/jim/server/command/handler/LoginReqHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/jim-server/target/classes/org/jim/server/command/handler/LoginReqHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-server/target/classes/org/jim/server/helper/redis/RedisMessageHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/jim-server/target/classes/org/jim/server/helper/redis/RedisMessageHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim-server/target/classes/org/jim/server/protocol/ProtocolManager$Converter.class" beforeDir="false" afterPath="$PROJECT_DIR$/jim-server/target/classes/org/jim/server/protocol/ProtocolManager$Converter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jim.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/error.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/warn.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/warn.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,19 +107,22 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/chat/src/main/resources/mybatis" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.brother.myanmar.im.mapper" />
-      <recent name="com.brother.myanmar.im.bean" />
-      <recent name="com.brother.myanmar.im" />
+      <recent name="com.brother.myanmar.chat.dao" />
+      <recent name="com.brother.myanmar.chat.command" />
+      <recent name="org.jim.core.packets" />
+      <recent name="org.jim.server.command.handler" />
+      <recent name="com.brother.myanmar.chat.mapper" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/chat/src/main/resources/mybatis" />
       <recent name="$PROJECT_DIR$/myanmar/src/main/resources/mybatis" />
       <recent name="$PROJECT_DIR$/myanmar/src/main/java/com/brother/myanmar/im" />
       <recent name="$PROJECT_DIR$/myanmar/src/main/resources" />
@@ -163,102 +213,138 @@
     <state x="308" y="147" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.960@0.23.1680.960" timestamp="1599354950462" />
     <state x="306" y="23" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.961@0.23.1680.961" timestamp="1600769399288" />
     <state x="306" y="23" width="1071" height="965" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.965@0.23.1680.965" timestamp="1600766407968" />
-    <state x="579" y="372" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1600766106972">
+    <state x="0" y="427" key="#com.intellij.ide.util.MemberChooser" timestamp="1601027116993">
+      <screen x="0" y="23" width="1680" height="958" />
+    </state>
+    <state x="0" y="427" key="#com.intellij.ide.util.MemberChooser/0.23.1680.958@0.23.1680.958" timestamp="1601027116993" />
+    <state x="579" y="372" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1600851107010">
       <screen x="0" y="23" width="1680" height="965" />
     </state>
-    <state x="579" y="372" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1680.965@0.23.1680.965" timestamp="1600766106972" />
-    <state x="578" y="254" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600085689798">
-      <screen x="0" y="23" width="1680" height="956" />
+    <state x="579" y="372" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1680.965@0.23.1680.965" timestamp="1600851107010" />
+    <state x="605" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1601098415384">
+      <screen x="0" y="23" width="1680" height="961" />
+    </state>
+    <state x="605" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1680.954@0.23.1680.954" timestamp="1600964703197" />
+    <state x="605" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1680.961@0.23.1680.961" timestamp="1601098415384" />
+    <state x="578" y="255" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1601099200906">
+      <screen x="0" y="23" width="1680" height="961" />
     </state>
     <state x="578" y="254" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.956@0.23.1680.956" timestamp="1600085689798" />
-    <state width="1638" height="252" key="GridCell.Tab.0.bottom" timestamp="1600767217157">
-      <screen x="0" y="23" width="1680" height="963" />
+    <state x="578" y="255" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.961@0.23.1680.961" timestamp="1601099200906" />
+    <state x="603" y="215" key="#xdebugger.evaluate" timestamp="1601022184227">
+      <screen x="0" y="23" width="1680" height="961" />
+    </state>
+    <state x="603" y="215" key="#xdebugger.evaluate/0.23.1680.961@0.23.1680.961" timestamp="1601022184227" />
+    <state width="1638" height="251" key="GridCell.Tab.0.bottom" timestamp="1601099200951">
+      <screen x="0" y="23" width="1680" height="961" />
     </state>
     <state width="1358" height="245" key="GridCell.Tab.0.bottom/0.23.1680.949@0.23.1680.949" timestamp="1600035052471" />
     <state width="1638" height="254" key="GridCell.Tab.0.bottom/0.23.1680.952@0.23.1680.952" timestamp="1600080334469" />
-    <state width="1638" height="315" key="GridCell.Tab.0.bottom/0.23.1680.954@0.23.1680.954" timestamp="1600239599049" />
-    <state width="1638" height="315" key="GridCell.Tab.0.bottom/0.23.1680.956@0.23.1680.956" timestamp="1600239431666" />
-    <state width="1638" height="315" key="GridCell.Tab.0.bottom/0.23.1680.958@0.23.1680.958" timestamp="1600240562551" />
-    <state width="1638" height="252" key="GridCell.Tab.0.bottom/0.23.1680.961@0.23.1680.961" timestamp="1600759705021" />
-    <state width="1638" height="252" key="GridCell.Tab.0.bottom/0.23.1680.963@0.23.1680.963" timestamp="1600767217157" />
-    <state width="1638" height="252" key="GridCell.Tab.0.bottom/0.23.1680.965@0.23.1680.965" timestamp="1600766244088" />
-    <state width="1638" height="252" key="GridCell.Tab.0.center" timestamp="1600767217156">
-      <screen x="0" y="23" width="1680" height="963" />
+    <state width="1638" height="251" key="GridCell.Tab.0.bottom/0.23.1680.954@0.23.1680.954" timestamp="1600964857170" />
+    <state width="1638" height="251" key="GridCell.Tab.0.bottom/0.23.1680.956@0.23.1680.956" timestamp="1601093931133" />
+    <state width="1638" height="251" key="GridCell.Tab.0.bottom/0.23.1680.958@0.23.1680.958" timestamp="1601097423354" />
+    <state width="1638" height="315" key="GridCell.Tab.0.bottom/0.23.1680.960@0.23.1680.960" timestamp="1601036086201" />
+    <state width="1638" height="251" key="GridCell.Tab.0.bottom/0.23.1680.961@0.23.1680.961" timestamp="1601099200951" />
+    <state width="1638" height="315" key="GridCell.Tab.0.bottom/0.23.1680.963@0.23.1680.963" timestamp="1601038979828" />
+    <state width="1638" height="255" key="GridCell.Tab.0.bottom/0.23.1680.965@0.23.1680.965" timestamp="1600851247632" />
+    <state width="1638" height="255" key="GridCell.Tab.0.bottom/0.23.1680.966@0.23.1680.966" timestamp="1600858493116" />
+    <state width="1638" height="255" key="GridCell.Tab.0.bottom/0.23.1680.967@0.23.1680.967" timestamp="1600849004402" />
+    <state width="1638" height="251" key="GridCell.Tab.0.center" timestamp="1601099200950">
+      <screen x="0" y="23" width="1680" height="961" />
     </state>
     <state width="1358" height="245" key="GridCell.Tab.0.center/0.23.1680.949@0.23.1680.949" timestamp="1600035052470" />
     <state width="1638" height="254" key="GridCell.Tab.0.center/0.23.1680.952@0.23.1680.952" timestamp="1600080334468" />
-    <state width="1638" height="315" key="GridCell.Tab.0.center/0.23.1680.954@0.23.1680.954" timestamp="1600239599049" />
-    <state width="1638" height="315" key="GridCell.Tab.0.center/0.23.1680.956@0.23.1680.956" timestamp="1600239431665" />
-    <state width="1638" height="315" key="GridCell.Tab.0.center/0.23.1680.958@0.23.1680.958" timestamp="1600240562550" />
-    <state width="1638" height="252" key="GridCell.Tab.0.center/0.23.1680.961@0.23.1680.961" timestamp="1600759705020" />
-    <state width="1638" height="252" key="GridCell.Tab.0.center/0.23.1680.963@0.23.1680.963" timestamp="1600767217156" />
-    <state width="1638" height="252" key="GridCell.Tab.0.center/0.23.1680.965@0.23.1680.965" timestamp="1600766244087" />
-    <state width="1638" height="252" key="GridCell.Tab.0.left" timestamp="1600767217155">
-      <screen x="0" y="23" width="1680" height="963" />
+    <state width="1638" height="251" key="GridCell.Tab.0.center/0.23.1680.954@0.23.1680.954" timestamp="1600964857169" />
+    <state width="1638" height="251" key="GridCell.Tab.0.center/0.23.1680.956@0.23.1680.956" timestamp="1601093931131" />
+    <state width="1638" height="251" key="GridCell.Tab.0.center/0.23.1680.958@0.23.1680.958" timestamp="1601097423353" />
+    <state width="1638" height="315" key="GridCell.Tab.0.center/0.23.1680.960@0.23.1680.960" timestamp="1601036086200" />
+    <state width="1638" height="251" key="GridCell.Tab.0.center/0.23.1680.961@0.23.1680.961" timestamp="1601099200950" />
+    <state width="1638" height="315" key="GridCell.Tab.0.center/0.23.1680.963@0.23.1680.963" timestamp="1601038979827" />
+    <state width="1638" height="255" key="GridCell.Tab.0.center/0.23.1680.965@0.23.1680.965" timestamp="1600851247632" />
+    <state width="1638" height="255" key="GridCell.Tab.0.center/0.23.1680.966@0.23.1680.966" timestamp="1600858493114" />
+    <state width="1638" height="255" key="GridCell.Tab.0.center/0.23.1680.967@0.23.1680.967" timestamp="1600849004402" />
+    <state width="1638" height="251" key="GridCell.Tab.0.left" timestamp="1601099200949">
+      <screen x="0" y="23" width="1680" height="961" />
     </state>
     <state width="1358" height="245" key="GridCell.Tab.0.left/0.23.1680.949@0.23.1680.949" timestamp="1600035052470" />
     <state width="1638" height="254" key="GridCell.Tab.0.left/0.23.1680.952@0.23.1680.952" timestamp="1600080334468" />
-    <state width="1638" height="315" key="GridCell.Tab.0.left/0.23.1680.954@0.23.1680.954" timestamp="1600239599048" />
-    <state width="1638" height="315" key="GridCell.Tab.0.left/0.23.1680.956@0.23.1680.956" timestamp="1600239431663" />
-    <state width="1638" height="315" key="GridCell.Tab.0.left/0.23.1680.958@0.23.1680.958" timestamp="1600240562550" />
-    <state width="1638" height="252" key="GridCell.Tab.0.left/0.23.1680.961@0.23.1680.961" timestamp="1600759705019" />
-    <state width="1638" height="252" key="GridCell.Tab.0.left/0.23.1680.963@0.23.1680.963" timestamp="1600767217155" />
-    <state width="1638" height="252" key="GridCell.Tab.0.left/0.23.1680.965@0.23.1680.965" timestamp="1600766244087" />
-    <state width="1638" height="252" key="GridCell.Tab.0.right" timestamp="1600767217157">
-      <screen x="0" y="23" width="1680" height="963" />
+    <state width="1638" height="251" key="GridCell.Tab.0.left/0.23.1680.954@0.23.1680.954" timestamp="1600964857168" />
+    <state width="1638" height="251" key="GridCell.Tab.0.left/0.23.1680.956@0.23.1680.956" timestamp="1601093931131" />
+    <state width="1638" height="251" key="GridCell.Tab.0.left/0.23.1680.958@0.23.1680.958" timestamp="1601097423352" />
+    <state width="1638" height="315" key="GridCell.Tab.0.left/0.23.1680.960@0.23.1680.960" timestamp="1601036086200" />
+    <state width="1638" height="251" key="GridCell.Tab.0.left/0.23.1680.961@0.23.1680.961" timestamp="1601099200949" />
+    <state width="1638" height="315" key="GridCell.Tab.0.left/0.23.1680.963@0.23.1680.963" timestamp="1601038979826" />
+    <state width="1638" height="255" key="GridCell.Tab.0.left/0.23.1680.965@0.23.1680.965" timestamp="1600851247631" />
+    <state width="1638" height="255" key="GridCell.Tab.0.left/0.23.1680.966@0.23.1680.966" timestamp="1600858493114" />
+    <state width="1638" height="255" key="GridCell.Tab.0.left/0.23.1680.967@0.23.1680.967" timestamp="1600849004402" />
+    <state width="1638" height="251" key="GridCell.Tab.0.right" timestamp="1601099200950">
+      <screen x="0" y="23" width="1680" height="961" />
     </state>
     <state width="1358" height="245" key="GridCell.Tab.0.right/0.23.1680.949@0.23.1680.949" timestamp="1600035052470" />
     <state width="1638" height="254" key="GridCell.Tab.0.right/0.23.1680.952@0.23.1680.952" timestamp="1600080334468" />
-    <state width="1638" height="315" key="GridCell.Tab.0.right/0.23.1680.954@0.23.1680.954" timestamp="1600239599049" />
-    <state width="1638" height="315" key="GridCell.Tab.0.right/0.23.1680.956@0.23.1680.956" timestamp="1600239431665" />
-    <state width="1638" height="315" key="GridCell.Tab.0.right/0.23.1680.958@0.23.1680.958" timestamp="1600240562551" />
-    <state width="1638" height="252" key="GridCell.Tab.0.right/0.23.1680.961@0.23.1680.961" timestamp="1600759705020" />
-    <state width="1638" height="252" key="GridCell.Tab.0.right/0.23.1680.963@0.23.1680.963" timestamp="1600767217157" />
-    <state width="1638" height="252" key="GridCell.Tab.0.right/0.23.1680.965@0.23.1680.965" timestamp="1600766244088" />
-    <state width="1638" height="315" key="GridCell.Tab.1.bottom" timestamp="1600759165121">
-      <screen x="0" y="23" width="1680" height="961" />
-    </state>
-    <state width="1638" height="315" key="GridCell.Tab.1.bottom/0.23.1680.954@0.23.1680.954" timestamp="1600239604726" />
-    <state width="1638" height="315" key="GridCell.Tab.1.bottom/0.23.1680.956@0.23.1680.956" timestamp="1600239431430" />
-    <state width="1638" height="315" key="GridCell.Tab.1.bottom/0.23.1680.958@0.23.1680.958" timestamp="1600240562553" />
-    <state width="1638" height="315" key="GridCell.Tab.1.bottom/0.23.1680.961@0.23.1680.961" timestamp="1600759165121" />
-    <state width="1638" height="315" key="GridCell.Tab.1.center" timestamp="1600759165120">
-      <screen x="0" y="23" width="1680" height="961" />
-    </state>
-    <state width="1638" height="315" key="GridCell.Tab.1.center/0.23.1680.954@0.23.1680.954" timestamp="1600239604726" />
-    <state width="1638" height="315" key="GridCell.Tab.1.center/0.23.1680.956@0.23.1680.956" timestamp="1600239431429" />
-    <state width="1638" height="315" key="GridCell.Tab.1.center/0.23.1680.958@0.23.1680.958" timestamp="1600240562552" />
-    <state width="1638" height="315" key="GridCell.Tab.1.center/0.23.1680.961@0.23.1680.961" timestamp="1600759165120" />
-    <state width="1638" height="315" key="GridCell.Tab.1.left" timestamp="1600759165120">
-      <screen x="0" y="23" width="1680" height="961" />
-    </state>
-    <state width="1638" height="315" key="GridCell.Tab.1.left/0.23.1680.954@0.23.1680.954" timestamp="1600239604726" />
-    <state width="1638" height="315" key="GridCell.Tab.1.left/0.23.1680.956@0.23.1680.956" timestamp="1600239431429" />
-    <state width="1638" height="315" key="GridCell.Tab.1.left/0.23.1680.958@0.23.1680.958" timestamp="1600240562552" />
-    <state width="1638" height="315" key="GridCell.Tab.1.left/0.23.1680.961@0.23.1680.961" timestamp="1600759165120" />
-    <state width="1638" height="315" key="GridCell.Tab.1.right" timestamp="1600759165120">
-      <screen x="0" y="23" width="1680" height="961" />
-    </state>
-    <state width="1638" height="315" key="GridCell.Tab.1.right/0.23.1680.954@0.23.1680.954" timestamp="1600239604726" />
-    <state width="1638" height="315" key="GridCell.Tab.1.right/0.23.1680.956@0.23.1680.956" timestamp="1600239431429" />
-    <state width="1638" height="315" key="GridCell.Tab.1.right/0.23.1680.958@0.23.1680.958" timestamp="1600240562552" />
-    <state width="1638" height="315" key="GridCell.Tab.1.right/0.23.1680.961@0.23.1680.961" timestamp="1600759165120" />
-    <state x="378" y="159" key="Maven.ArtifactSearchDialog" timestamp="1600078745540">
+    <state width="1638" height="251" key="GridCell.Tab.0.right/0.23.1680.954@0.23.1680.954" timestamp="1600964857169" />
+    <state width="1638" height="251" key="GridCell.Tab.0.right/0.23.1680.956@0.23.1680.956" timestamp="1601093931132" />
+    <state width="1638" height="251" key="GridCell.Tab.0.right/0.23.1680.958@0.23.1680.958" timestamp="1601097423354" />
+    <state width="1638" height="315" key="GridCell.Tab.0.right/0.23.1680.960@0.23.1680.960" timestamp="1601036086201" />
+    <state width="1638" height="251" key="GridCell.Tab.0.right/0.23.1680.961@0.23.1680.961" timestamp="1601099200950" />
+    <state width="1638" height="315" key="GridCell.Tab.0.right/0.23.1680.963@0.23.1680.963" timestamp="1601038979827" />
+    <state width="1638" height="255" key="GridCell.Tab.0.right/0.23.1680.965@0.23.1680.965" timestamp="1600851247632" />
+    <state width="1638" height="255" key="GridCell.Tab.0.right/0.23.1680.966@0.23.1680.966" timestamp="1600858493115" />
+    <state width="1638" height="255" key="GridCell.Tab.0.right/0.23.1680.967@0.23.1680.967" timestamp="1600849004402" />
+    <state width="1638" height="315" key="GridCell.Tab.1.bottom" timestamp="1601092207134">
       <screen x="0" y="23" width="1680" height="956" />
+    </state>
+    <state width="1638" height="315" key="GridCell.Tab.1.bottom/0.23.1680.954@0.23.1680.954" timestamp="1600964277434" />
+    <state width="1638" height="315" key="GridCell.Tab.1.bottom/0.23.1680.956@0.23.1680.956" timestamp="1601092207134" />
+    <state width="1638" height="315" key="GridCell.Tab.1.bottom/0.23.1680.958@0.23.1680.958" timestamp="1601039014470" />
+    <state width="1638" height="315" key="GridCell.Tab.1.bottom/0.23.1680.960@0.23.1680.960" timestamp="1601036086203" />
+    <state width="1638" height="315" key="GridCell.Tab.1.bottom/0.23.1680.961@0.23.1680.961" timestamp="1601022996997" />
+    <state width="1638" height="315" key="GridCell.Tab.1.bottom/0.23.1680.963@0.23.1680.963" timestamp="1601038979671" />
+    <state width="1638" height="315" key="GridCell.Tab.1.center" timestamp="1601092207133">
+      <screen x="0" y="23" width="1680" height="956" />
+    </state>
+    <state width="1638" height="315" key="GridCell.Tab.1.center/0.23.1680.954@0.23.1680.954" timestamp="1600964277433" />
+    <state width="1638" height="315" key="GridCell.Tab.1.center/0.23.1680.956@0.23.1680.956" timestamp="1601092207133" />
+    <state width="1638" height="315" key="GridCell.Tab.1.center/0.23.1680.958@0.23.1680.958" timestamp="1601039014469" />
+    <state width="1638" height="315" key="GridCell.Tab.1.center/0.23.1680.960@0.23.1680.960" timestamp="1601036086202" />
+    <state width="1638" height="315" key="GridCell.Tab.1.center/0.23.1680.961@0.23.1680.961" timestamp="1601022996996" />
+    <state width="1638" height="315" key="GridCell.Tab.1.center/0.23.1680.963@0.23.1680.963" timestamp="1601038979671" />
+    <state width="1638" height="315" key="GridCell.Tab.1.left" timestamp="1601092207133">
+      <screen x="0" y="23" width="1680" height="956" />
+    </state>
+    <state width="1638" height="315" key="GridCell.Tab.1.left/0.23.1680.954@0.23.1680.954" timestamp="1600964277432" />
+    <state width="1638" height="315" key="GridCell.Tab.1.left/0.23.1680.956@0.23.1680.956" timestamp="1601092207133" />
+    <state width="1638" height="315" key="GridCell.Tab.1.left/0.23.1680.958@0.23.1680.958" timestamp="1601039014469" />
+    <state width="1638" height="315" key="GridCell.Tab.1.left/0.23.1680.960@0.23.1680.960" timestamp="1601036086202" />
+    <state width="1638" height="315" key="GridCell.Tab.1.left/0.23.1680.961@0.23.1680.961" timestamp="1601022996996" />
+    <state width="1638" height="315" key="GridCell.Tab.1.left/0.23.1680.963@0.23.1680.963" timestamp="1601038979671" />
+    <state width="1638" height="315" key="GridCell.Tab.1.right" timestamp="1601092207134">
+      <screen x="0" y="23" width="1680" height="956" />
+    </state>
+    <state width="1638" height="315" key="GridCell.Tab.1.right/0.23.1680.954@0.23.1680.954" timestamp="1600964277433" />
+    <state width="1638" height="315" key="GridCell.Tab.1.right/0.23.1680.956@0.23.1680.956" timestamp="1601092207134" />
+    <state width="1638" height="315" key="GridCell.Tab.1.right/0.23.1680.958@0.23.1680.958" timestamp="1601039014470" />
+    <state width="1638" height="315" key="GridCell.Tab.1.right/0.23.1680.960@0.23.1680.960" timestamp="1601036086202" />
+    <state width="1638" height="315" key="GridCell.Tab.1.right/0.23.1680.961@0.23.1680.961" timestamp="1601022996996" />
+    <state width="1638" height="315" key="GridCell.Tab.1.right/0.23.1680.963@0.23.1680.963" timestamp="1601038979671" />
+    <state x="378" y="160" key="Maven.ArtifactSearchDialog" timestamp="1600846795806">
+      <screen x="0" y="23" width="1680" height="965" />
     </state>
     <state x="378" y="159" key="Maven.ArtifactSearchDialog/0.23.1680.954@0.23.1680.954" timestamp="1600074952843" />
     <state x="378" y="159" key="Maven.ArtifactSearchDialog/0.23.1680.956@0.23.1680.956" timestamp="1600078745540" />
     <state x="378" y="159" key="Maven.ArtifactSearchDialog/0.23.1680.958@0.23.1680.958" timestamp="1600078512157" />
+    <state x="378" y="160" key="Maven.ArtifactSearchDialog/0.23.1680.965@0.23.1680.965" timestamp="1600846795806" />
     <state x="469" y="208" key="NewModule_or_Project.wizard" timestamp="1600766683072">
       <screen x="0" y="23" width="1680" height="961" />
     </state>
     <state x="469" y="208" key="NewModule_or_Project.wizard/0.23.1680.961@0.23.1680.961" timestamp="1600766683072" />
-    <state x="328" y="83" key="SettingsEditor" timestamp="1600769328737">
-      <screen x="0" y="23" width="1680" height="963" />
+    <state x="328" y="83" key="SettingsEditor" timestamp="1600851126833">
+      <screen x="0" y="23" width="1680" height="965" />
     </state>
     <state x="638" y="182" key="SettingsEditor/0.23.1680.960@0.23.1680.960" timestamp="1600768106573" />
     <state x="328" y="83" key="SettingsEditor/0.23.1680.961@0.23.1680.961" timestamp="1600768466125" />
     <state x="328" y="83" key="SettingsEditor/0.23.1680.963@0.23.1680.963" timestamp="1600769328737" />
+    <state x="328" y="83" key="SettingsEditor/0.23.1680.965@0.23.1680.965" timestamp="1600851126833" />
     <state x="388" y="237" width="877" height="617" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1600167652938">
       <screen x="0" y="23" width="1680" height="954" />
     </state>
@@ -281,9 +367,44 @@
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/command/handler/LoginReqHandler.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="24" />
+          <url>file://$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/helper/redis/RedisMessageHelper.java</url>
+          <line>136</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/helper/redis/RedisMessageHelper.java</url>
+          <line>104</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/helper/redis/RedisMessageHelper.java</url>
+          <line>103</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/helper/redis/RedisMessageHelper.java</url>
+          <line>105</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/processor/chat/DefaultAsyncChatMessageProcessor.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/command/handler/ChatReqHandler.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/protocol/ws/WsProtocolHandler.java</url>
+          <line>95</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/jim-server/src/main/java/org/jim/server/protocol/ws/WsProtocolHandler.java</url>
+          <line>94</line>
+          <option name="timeStamp" value="48" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

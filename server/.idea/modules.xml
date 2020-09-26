@@ -3,9 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/chat/chat.iml" filepath="$PROJECT_DIR$/chat/chat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jim.iml" filepath="$PROJECT_DIR$/jim.iml" />
       <module fileurl="file://$PROJECT_DIR$/jim-core/jim-core.iml" filepath="$PROJECT_DIR$/jim-core/jim-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/jim-server/jim-server.iml" filepath="$PROJECT_DIR$/jim-server/jim-server.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/server.iml" filepath="$PROJECT_DIR$/.idea/server.iml" />
     </modules>
   </component>
 </project>

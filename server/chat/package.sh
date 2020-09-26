@@ -1,6 +1,6 @@
 #!/bin/bash
 echo =================================
-echo J-IM自动化打包脚本启动...
+echo 自动化打包脚本启动...
 echo =================================
 curdir=${PWD##*/}
 echo 开始构建文件...
@@ -16,5 +16,5 @@ cp startup.sh build/$curdir/
 rm -rf target
 echo 打包完成...
 echo =================================
-echo J-IM自动打包完成,打包目录位置在当前build目录下:${PWD}/build
+echo 自动打包完成,打包目录位置在当前build目录下:${PWD}/build
 echo =================================

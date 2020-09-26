@@ -13,6 +13,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="chat" target="1.8" />
+      <module name="jim" target="1.5" />
       <module name="jim-core" target="1.8" />
       <module name="jim-server" target="1.8" />
       <module name="server" target="1.5" />

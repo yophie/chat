@@ -1,10 +1,8 @@
 package org.jim.server.helper.redis;
 
 import com.alibaba.fastjson.JSONObject;
-import com.google.common.collect.Lists;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.jim.core.ImChannelContext;
 import org.jim.core.cache.redis.JedisTemplate;
 import org.jim.core.cache.redis.RedisCache;
 import org.jim.core.cache.redis.RedisCacheManager;
@@ -113,8 +111,8 @@ public class RedisMessageHelper extends AbstractMessageHelper{
 				while(userKeyIterator.hasNext()){
 					String userKey = userKeyIterator.next();
 					userKey = userKey.substring(userKey.indexOf(USER+SUFFIX));
-					List<String> messages = RedisCacheManager.getCache(GROUP).sortSetGetAll(userKey);
-					RedisCacheManager.getCache(GROUP).remove(userKey);
+					List<String> messages = RedisCacheManager.getCache(PUSH).sortSetGetAll(userKey);
+					RedisCacheManager.getCache(PUSH).remove(userKey);
 					messageList.addAll(JsonKit.toArray(messages, ChatBody.class));
 				}
 				putFriendsMessage(messageData, messageList, null);

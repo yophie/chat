@@ -119,7 +119,7 @@ public class ProtocolManager implements ImConst{
 			if(Objects.isNull(respBody)) {
 				throw new ImException("响应包体不能为空!");
 			}
-			return respPacket(respBody.toByte(), respBody.getCommand(), imChannelContext);
+			return respPacket(respBody.toByte(), respBody.getCmd(), imChannelContext);
 		}
 
 		/**

@@ -3,7 +3,7 @@
  */
 package com.brother.myanmar.chat;
 
-import com.brother.myanmar.chat.command.ChatHandshakeProcessor;
+import com.brother.myanmar.chat.command.*;
 import com.brother.myanmar.chat.listener.ChatGroupListener;
 import com.brother.myanmar.chat.listener.ChatUserListener;
 import com.brother.myanmar.chat.service.ChatLoginServiceProcessor;
@@ -12,12 +12,9 @@ import org.jim.core.packets.Command;
 import org.jim.core.utils.PropUtil;
 import org.jim.server.JimServer;
 import org.jim.server.command.CommandManager;
-import org.jim.server.command.handler.ChatReqHandler;
-import org.jim.server.command.handler.HandshakeReqHandler;
-import org.jim.server.command.handler.LoginReqHandler;
+import org.jim.server.command.handler.*;
 import org.jim.server.config.ImServerConfig;
 import org.jim.server.config.PropertyImServerConfigBuilder;
-import org.jim.server.processor.chat.DefaultAsyncChatMessageProcessor;
 import org.tio.core.ssl.SslConfig;
 
 public class ImServerStart {
@@ -40,9 +37,28 @@ public class ImServerStart {
 		LoginReqHandler loginReqHandler = CommandManager.getCommand(Command.COMMAND_LOGIN_REQ,LoginReqHandler.class);
 		//添加登录业务处理器;
 		loginReqHandler.setSingleProcessor(new ChatLoginServiceProcessor());
-		//添加用户业务聊天记录处理器，用户自己继承抽象类BaseAsyncChatMessageProcessor即可，以下为内置默认的处理器！
+		//添加业务聊天记录处理器
 		ChatReqHandler chatReqHandler = CommandManager.getCommand(Command.COMMAND_CHAT_REQ, ChatReqHandler.class);
-		chatReqHandler.setSingleProcessor(new DefaultAsyncChatMessageProcessor());
+		chatReqHandler.setSingleProcessor(new ChatMessageProcessor());
+		//聊天窗口处理器
+		ChatListReqHandler chatListHandler = CommandManager.getCommand(Command.COMMAND_CHAT_List_REQ, ChatListReqHandler.class);
+		chatListHandler.setSingleProcessor(new ChatListProcessor());
+		//红包处理器
+		PacketReqHandler packetHandler = CommandManager.getCommand(Command.COMMAND_PACKET_REQ, PacketReqHandler.class);
+		packetHandler.setSingleProcessor(new PacketProcessor());
+		//群聊处理器
+		GroupReqHandler groupHandler = CommandManager.getCommand(Command.COMMAND_GROUP_REQ, GroupReqHandler.class);
+		groupHandler.setSingleProcessor(new GroupProcessor());
+		//朋友圈
+		FriendSocietyReqHandler friendSocietyHandler = CommandManager.getCommand(Command.COMMAND_FriendSociety_REQ, FriendSocietyReqHandler.class);
+		friendSocietyHandler.setSingleProcessor(new FriendSocietyProcessor());
+		//提现
+		CashReqHandler cashHandler = CommandManager.getCommand(Command.COMMAND_Cash_REQ, CashReqHandler.class);
+		cashHandler.setSingleProcessor(new CashProcessor());
+		//管理
+		ManagerReqHandler managerHandler = CommandManager.getCommand(Command.COMMAND_Manager_REQ, ManagerReqHandler.class);
+		managerHandler.setSingleProcessor(new ManagerProcessor());
+		//添加自定义握手处理器;
 		/*****************end *******************************************************************************************/
 		jimServer.start();
 	}

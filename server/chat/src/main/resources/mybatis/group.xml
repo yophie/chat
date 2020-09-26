@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 这边的namespace一定要写完整正确 -->
+<mapper namespace="com.brother.myanmar.chat.mapper.Group2Mapper">
+    <select id="findGroup" parameterType="java.lang.Integer" resultType="com.brother.myanmar.chat.bean.Group">
+        select * from chatGroup where groupId = #{id}
+    </select>
+    <insert id="insertGroup" parameterType="com.brother.myanmar.chat.bean.Group">
+        insert into chatGroup(groupId, groupName, avatar, owner)
+        values(#{groupId},#{groupName},#{avatar},#{owner})
+    </insert>
+    <!--删除用户信息-->
+    <delete id="deleteGroup" parameterType="java.lang.Integer">
+        delete from chatGroup where groupId=#{id}
+    </delete>
+    <!--更新用户信息-->
+    <update id="updateGroup" parameterType="com.brother.myanmar.chat.bean.Group">
+        update chatGroup set groupName=#{groupName},avatar=#{avatar} where groupId=#{groupId}
+    </update>
+
+</mapper>

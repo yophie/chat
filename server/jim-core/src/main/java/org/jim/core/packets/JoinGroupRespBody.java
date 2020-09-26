@@ -23,7 +23,7 @@ public class JoinGroupRespBody extends RespBody {
 
 	public JoinGroupRespBody(Integer code, String msg){
 		super(code, msg);
-		this.command = Command.COMMAND_JOIN_GROUP_RESP;
+		this.cmd = Command.COMMAND_JOIN_GROUP_RESP;
 	}
 
 	public JoinGroupRespBody(Status status){

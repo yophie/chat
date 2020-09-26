@@ -1,2 +1,18 @@
-2020-09-22 18:10:05,026 WARN  org.jim.server.JimServer[57]: J-IM Server start
-2020-09-22 18:10:05,262 WARN  org.jim.server.JimServer[60]: J-IM Server started at address: 127.0.0.1:8888 time:236ms
+2020-09-26 12:13:19,572 WARN  org.jim.server.JimServer[57]: J-IM Server start
+2020-09-26 12:13:20,069 WARN  org.jim.server.JimServer[60]: J-IM Server started at address: 127.0.0.1:8888 time:499ms
+2020-09-26 12:14:49,572 WARN  org.jim.server.JimServer[57]: J-IM Server start
+2020-09-26 12:14:49,757 WARN  org.jim.server.JimServer[60]: J-IM Server started at address: 127.0.0.1:8888 time:185ms
+2020-09-26 12:18:52,016 WARN  org.jim.server.JimServer[57]: J-IM Server start
+2020-09-26 12:18:52,413 WARN  org.jim.server.JimServer[60]: J-IM Server started at address: 127.0.0.1:8888 time:397ms
+2020-09-26 12:26:27,344 WARN  org.jim.server.JimServer[57]: J-IM Server start
+2020-09-26 12:26:27,731 WARN  org.jim.server.JimServer[60]: J-IM Server started at address: 127.0.0.1:8888 time:387ms
+2020-09-26 12:29:35,222 WARN  org.jim.server.JimServer[57]: J-IM Server start
+2020-09-26 12:29:35,567 WARN  org.jim.server.JimServer[60]: J-IM Server started at address: 127.0.0.1:8888 time:345ms
+2020-09-26 12:31:40,115 WARN  org.jim.server.JimServer[57]: J-IM Server start
+2020-09-26 12:31:40,463 WARN  org.jim.server.JimServer[60]: J-IM Server started at address: 127.0.0.1:8888 time:348ms
+2020-09-26 12:39:05,230 WARN  org.jim.server.JimServer[57]: J-IM Server start
+2020-09-26 12:39:05,594 WARN  org.jim.server.JimServer[60]: J-IM Server started at address: 127.0.0.1:8888 time:364ms
+2020-09-26 12:44:52,741 WARN  org.jim.server.JimServer[57]: J-IM Server start
+2020-09-26 12:44:53,156 WARN  org.jim.server.JimServer[60]: J-IM Server started at address: 127.0.0.1:8888 time:415ms
+2020-09-26 13:17:04,136 WARN  org.jim.server.JimServer[57]: J-IM Server start
+2020-09-26 13:17:04,537 WARN  org.jim.server.JimServer[60]: J-IM Server started at address: 127.0.0.1:8888 time:402ms

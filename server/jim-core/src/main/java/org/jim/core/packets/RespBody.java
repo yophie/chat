@@ -3,11 +3,11 @@
  */
 package org.jim.core.packets;
 
-import java.io.Serializable;
-import java.util.Objects;
-
 import org.jim.core.Status;
 import org.jim.core.utils.JsonKit;
+
+import java.io.Serializable;
+import java.util.Objects;
 /**
  * 版本: [1.0]
  * 功能说明: 
@@ -27,7 +27,7 @@ public class RespBody implements Serializable{
 	/**
 	 * 响应cmd命令码;
 	 */
-	protected Command command;
+	protected Command cmd;
 	/**
 	 * 响应数据;
 	 */
@@ -35,18 +35,18 @@ public class RespBody implements Serializable{
 
 	public RespBody(){}
 
-	public RespBody(Command command){
-		this.command = command;
+	public RespBody(Command cmd){
+		this.cmd = cmd;
 	}
 
-	public RespBody(Command command,Object data){
-		this(command);
+	public RespBody(Command cmd, Object data){
+		this(cmd);
 		this.data = data;
 	}
 
-	public RespBody(Command command , Status status){
+	public RespBody(Command cmd, Status status){
 		this(status);
-		this.command = command;
+		this.cmd = cmd;
 	}
 
 	public RespBody(Status status){
@@ -79,12 +79,12 @@ public class RespBody implements Serializable{
 		return this;
 	}
 
-	public Command getCommand() {
-		return command;
+	public Command getCmd() {
+		return cmd;
 	}
 
-	public RespBody setCommand(Command command) {
-		this.command = command;
+	public RespBody setCmd(Command cmd) {
+		this.cmd = cmd;
 		return this;
 	}
 

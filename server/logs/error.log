@@ -1,0 +1,65 @@
+2020-09-26 12:13:47,525 ERROR o.t.core.task.HandlerRunnable[265]: COMMAND_CHAT_List_REQ
+org.jim.core.exception.ImException: 响应包体不能为空!
+	at org.jim.server.protocol.ProtocolManager$Converter.respPacket(ProtocolManager.java:120)
+	at org.jim.server.command.handler.ChatListReqHandler.handler(ChatListReqHandler.java:26)
+	at org.jim.server.protocol.ws.WsProtocolHandler.handler(WsProtocolHandler.java:94)
+	at org.jim.server.handler.DefaultImServerHandler.handler(DefaultImServerHandler.java:36)
+	at org.jim.server.handler.ImServerHandlerAdapter.handler(ImServerHandlerAdapter.java:49)
+	at org.tio.core.task.HandlerRunnable.handler(HandlerRunnable.java:262)
+	at org.tio.core.task.DecodeRunnable.handler(DecodeRunnable.java:246)
+	at org.tio.core.task.DecodeRunnable.decode(DecodeRunnable.java:392)
+	at org.tio.core.ReadCompletionHandler.completed(ReadCompletionHandler.java:275)
+	at org.tio.core.ReadCompletionHandler.completed(ReadCompletionHandler.java:213)
+	at sun.nio.ch.Invoker.invokeUnchecked(Invoker.java:126)
+	at sun.nio.ch.Invoker$2.run(Invoker.java:218)
+	at sun.nio.ch.AsynchronousChannelGroupImpl$1.run(AsynchronousChannelGroupImpl.java:112)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2020-09-26 12:22:58,470 ERROR o.t.core.task.HandlerRunnable[265]: COMMAND_CHAT_List_REQ
+org.apache.ibatis.exceptions.PersistenceException: 
+### Error updating database.  Cause: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column 'applyTime' at row 1
+### The error may exist in mybatis/friend.xml
+### The error may involve com.brother.myanmar.chat.mapper.Friend2Mapper.insertFriend-Inline
+### The error occurred while setting parameters
+### SQL: insert into friend(myId, friendId, friendNick, state, applyTime)         values(?,?,?,?,?)
+### Cause: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column 'applyTime' at row 1
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:30)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:199)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:152)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:85)
+	at com.sun.proxy.$Proxy8.insertFriend(Unknown Source)
+	at com.brother.myanmar.chat.dao.WindowDao.insertFriend(WindowDao.java:76)
+	at com.brother.myanmar.chat.command.ChatListProcessor.process(ChatListProcessor.java:89)
+	at org.jim.server.command.handler.ChatListReqHandler.handler(ChatListReqHandler.java:25)
+	at org.jim.server.protocol.ws.WsProtocolHandler.handler(WsProtocolHandler.java:94)
+	at org.jim.server.handler.DefaultImServerHandler.handler(DefaultImServerHandler.java:36)
+	at org.jim.server.handler.ImServerHandlerAdapter.handler(ImServerHandlerAdapter.java:49)
+	at org.tio.core.task.HandlerRunnable.handler(HandlerRunnable.java:262)
+	at org.tio.core.task.DecodeRunnable.handler(DecodeRunnable.java:246)
+	at org.tio.core.task.DecodeRunnable.decode(DecodeRunnable.java:392)
+	at org.tio.core.ReadCompletionHandler.completed(ReadCompletionHandler.java:275)
+	at org.tio.core.ReadCompletionHandler.completed(ReadCompletionHandler.java:213)
+	at sun.nio.ch.Invoker.invokeUnchecked(Invoker.java:126)
+	at sun.nio.ch.Invoker$2.run(Invoker.java:218)
+	at sun.nio.ch.AsynchronousChannelGroupImpl$1.run(AsynchronousChannelGroupImpl.java:112)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column 'applyTime' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:104)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+	... 22 common frames omitted
+2020-09-26 12:31:48,744 ERROR org.jim.core.utils.JsonKit[69]: json解析失败:
+[123, 34, 99, 109, 100, 34, 58, 34, 50, 49, 34, 44, 10, 34, 116, 121, 112, 101, -30, -128, -99, 58, -30, -128, -99, 52, -30, -128, -99, 44, 10, -30, -128, -100, 97, 112, 112, 108, 121, 85, 115, 101, 114, -30, -128, -99, 58, -30, -128, -99, 56, -30, -128, -99, 10, 125]
+2020-09-26 12:32:04,023 ERROR org.jim.core.utils.JsonKit[69]: json解析失败:
+[123, 34, 99, 109, 100, 34, 58, 34, 50, 49, 34, 44, 10, 34, 116, 121, 112, 101, -30, -128, -99, 58, -30, -128, -99, 52, -30, -128, -99, 44, 10, -30, -128, -100, 97, 112, 112, 108, 121, 85, 115, 101, 114, -30, -128, -99, 58, -30, -128, -99, 56, -30, -128, -99, 10, 125]

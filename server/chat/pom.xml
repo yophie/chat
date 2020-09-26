@@ -10,6 +10,11 @@
   </parent>
   <dependencies>
 	  <dependency>
+		  <groupId>mysql</groupId>
+		  <artifactId>mysql-connector-java</artifactId>
+		  <version>${mysql.driver.version}</version>
+	  </dependency>
+	  <dependency>
 		  <groupId>org.apache.commons</groupId>
 		  <artifactId>commons-lang3</artifactId>
 		  <version>${commons-lang3.version}</version>
@@ -18,6 +23,11 @@
 			<groupId>org.j-im</groupId>
 			<artifactId>jim-server</artifactId>
 		</dependency>
+	  <dependency>
+		  <groupId>org.mybatis</groupId>
+		  <artifactId>mybatis</artifactId>
+		  <version>3.5.5</version>
+	  </dependency>
   </dependencies>
   <build>
 		<plugins>

@@ -22,7 +22,7 @@ public class ChatBody extends Message {
 	 */
 	private String to;
 	/**
-	 * 消息类型;(如：0:text、1:image、2:voice、3:vedio、4:music、5:news)
+	 * 消息类型;(如：0:text、1:forbidden、2：packet、3:image、4:sound、5：time、6：system)
 	 */
 	private Integer msgType;
 	/**
@@ -37,6 +37,17 @@ public class ChatBody extends Message {
 	 * 消息发到哪个群组;
 	 */
 	private String groupId;
+
+	private Double packetAmount;
+
+	public Double getPacketAmount() {
+		return packetAmount;
+	}
+
+	public ChatBody setPacketAmount(Double packetAmount) {
+		this.packetAmount = packetAmount;
+		return this;
+	}
 	
 	private ChatBody(){}
 	

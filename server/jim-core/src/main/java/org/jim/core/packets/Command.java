@@ -167,6 +167,18 @@ public enum Command{
    * <code>COMMAND_GET_MESSAGE_RESP = 20;</code>
    */
   COMMAND_GET_MESSAGE_RESP(20),
+  COMMAND_CHAT_List_REQ(21),
+  COMMAND_CHAT_List_RESP(22),
+  COMMAND_PACKET_REQ(23),
+  COMMAND_PACKET_RESP(24),
+  COMMAND_GROUP_REQ(25),
+  COMMAND_GROUP_RESP(26),
+  COMMAND_FriendSociety_REQ(27),
+  COMMAND_FriendSociety_RESP(28),
+  COMMAND_Cash_REQ(29),
+  COMMAND_Cash_RESP(30),
+  COMMAND_Manager_REQ(31),
+  COMMAND_Manager_RESP(32),
   ;
 
   public final int getNumber() {
