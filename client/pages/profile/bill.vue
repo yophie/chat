@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<uni-nav-bar fixed="true" left-icon="back" left-text="返回" @clickLeft="BackPage"
-			title="账单" background-color="#e7ebed" :status-bar="true"></uni-nav-bar>
+			title="账单" background-color="#f0f0f0" :status-bar="true" :border="false"></uni-nav-bar>
 		<uni-list :border="true">
 			<uni-list-item v-for="item in list" :key="item.id"
 				:title="item.title" :thumb="item.avatar" :note="item.time" thumb-size="lg" >

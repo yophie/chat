@@ -1,6 +1,6 @@
 <template>
   <view>
-	<uni-nav-bar fixed="true" title="发现" background-color="#e7ebed" :status-bar="true">
+	<uni-nav-bar fixed="true" title="发现" background-color="#f0f0f0" :status-bar="true" :border="false">
 		<view slot="right" @click="toPost">
 			<span class="iconfont iconplus icon_item"></span>
 		</view>	

@@ -2126,7 +2126,7 @@ button.cuIcon.lg {
 	top: 20upx;
 	transform: rotate(45deg);
 	position: absolute;
-	z-index: 100;
+	z-index: 50;
 	display: inline-block;
 	overflow: hidden;
 	width: 16upx;
@@ -2194,7 +2194,7 @@ button.cuIcon.lg {
 	top: 20upx;
 	transform: rotate(45deg);
 	position: absolute;
-	z-index: 100;
+	z-index: 50;
 	display: inline-block;
 	overflow: hidden;
 	width: 16upx;

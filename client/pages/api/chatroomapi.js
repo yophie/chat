@@ -11,9 +11,11 @@ export default {
 			type: i%3, // 0 text 1 forbidden 2 packet 3 image 4 sound 5 time 6 system
 			senderAvatar: '/static/icon/avatar.png',
 			id: i,
-			sendderId: i,
+			senderId: i,
+			senderNick: '发红包' + i,
 			content: '测试测试测试测试',
-			isSelf: i%2 === 0
+			isSelf: i%2 === 0,
+			isRemain: true
 		}
 		let time = new Date('2020/09/20 18:20').getTime()
 		if (lastShowTime + 5*60*1000 < time) {

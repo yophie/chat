@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<uni-nav-bar fixed="true" left-icon="back" left-text="返回"  @clickLeft="BackPage"
-				title="发起群聊" background-color="#e7ebed" :status-bar="true">
+				title="发起群聊" background-color="#f0f0f0" :status-bar="true" :border="false">
 				<view slot="right">
 					<button class="cu-btn bg-green nm" :disabled="createDisabled"
 							@click="create">完成</button>

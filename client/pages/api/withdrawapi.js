@@ -5,8 +5,7 @@ export default {
 	data.least = 1
 	data.balance = 1000
   },
-  withdraw(amount, data) {
-	  console.log("提现" + amount)
-	  data.balance = 1000
+  withdraw(amount) {
+	  console.log("提现")
   }
 }

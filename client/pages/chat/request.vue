@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<uni-nav-bar fixed="true" left-icon="back" left-text="返回"  @clickLeft="BackPage"
-				title="添加朋友" background-color="#e7ebed" :status-bar="true"></uni-nav-bar>
+				title="添加朋友" background-color="#f0f0f0" :status-bar="true" :border="false"></uni-nav-bar>
 		<uni-search-bar placeholder="请输入手机号" @confirm="search" v-model="keyword"></uni-search-bar>
 		
 		<uni-list :border="true">
