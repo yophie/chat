@@ -68,7 +68,6 @@ CREATE TABLE `chatGroup` (
 
 LOCK TABLES `chatGroup` WRITE;
 /*!40000 ALTER TABLE `chatGroup` DISABLE KEYS */;
-INSERT INTO `chatGroup` VALUES (13,'我的群聊','test avatar',8),(14,'我的群聊','test avatar',8);
 /*!40000 ALTER TABLE `chatGroup` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,7 +118,7 @@ CREATE TABLE `friend` (
   `state` int NOT NULL,
   `applyTime` bigint NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,7 +127,6 @@ CREATE TABLE `friend` (
 
 LOCK TABLES `friend` WRITE;
 /*!40000 ALTER TABLE `friend` DISABLE KEYS */;
-INSERT INTO `friend` VALUES (7,8,9,NULL,1,1601097444126),(8,9,8,NULL,1,1601097444126),(10,9,13,'我的群聊',0,1601105897205),(11,8,14,'我的群聊',0,1601107650404),(12,9,14,'我的群聊',0,1601107650404);
 /*!40000 ALTER TABLE `friend` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -186,7 +184,6 @@ CREATE TABLE `packet` (
 
 LOCK TABLES `packet` WRITE;
 /*!40000 ALTER TABLE `packet` DISABLE KEYS */;
-INSERT INTO `packet` VALUES ('0832e497adf740b1b4a5ae4f035b7eac',0,88.88,NULL,NULL,1,1601119809019,0,NULL,NULL,8),('08fcb60fa8c34f5093238530e8365f83',0,88.88,NULL,NULL,1,1601119802840,0,NULL,NULL,9),('26137e2013474fc691460fe88013980f',0,88.88,NULL,NULL,1,1601119466607,0,NULL,NULL,8),('2aa080bd0f4e4fc8a1197f17f40db46d',0,88.88,NULL,NULL,1,1601120219808,0,NULL,NULL,8),('330ad158de0244ec99becba9fcf3fea7',NULL,88.88,NULL,NULL,4,1601136765485,0,NULL,NULL,8),('388a15bbd011415986f86f276597bda7',0,88.88,NULL,NULL,1,1601119536130,0,NULL,NULL,8),('8:9:1601119188082',0,88.88,NULL,NULL,1,1601119188082,NULL,NULL,NULL,8),('8:9:1601119215901',0,88.88,NULL,NULL,1,1601119215901,NULL,NULL,NULL,8),('b81e4b17a9bd4a5eb096e8c0048d4dd2',1,88.88,NULL,NULL,4,1601136896021,1,NULL,NULL,8),('c331232de9114439860b89e1dc839cd0',0,88.88,NULL,NULL,1,1601120819316,0,NULL,NULL,8);
 /*!40000 ALTER TABLE `packet` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -213,8 +210,35 @@ CREATE TABLE `packetState` (
 
 LOCK TABLES `packetState` WRITE;
 /*!40000 ALTER TABLE `packetState` DISABLE KEYS */;
-INSERT INTO `packetState` VALUES (2,'b81e4b17a9bd4a5eb096e8c0048d4dd2',8,38.99,1601139040040),(3,'b81e4b17a9bd4a5eb096e8c0048d4dd2',9,21.06,1601139065560);
 /*!40000 ALTER TABLE `packetState` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `superuser`
+--
+
+DROP TABLE IF EXISTS `superuser`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `superuser` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `account` varchar(50) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `avatar` varchar(50) DEFAULT NULL,
+  `phone` varchar(50) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `superuser`
+--
+
+LOCK TABLES `superuser` WRITE;
+/*!40000 ALTER TABLE `superuser` DISABLE KEYS */;
+INSERT INTO `superuser` VALUES (1,'admin','admin','admin','88888888888','1313886e2dc7bd73249ce844c3cc2231');
+/*!40000 ALTER TABLE `superuser` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -234,7 +258,7 @@ CREATE TABLE `user` (
   `password` varchar(50) DEFAULT NULL,
   `money` decimal(20,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -243,7 +267,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (4,'testaccount','testopenid','testname','testavatar','13388888888','test',8888.88),(8,'66d4591207034c41bbe62cd3a056e3d1','test1','newUser',NULL,NULL,'test',NULL),(9,'e9c4231e74c246f9a06a7819a3aca303','test2','newUser',NULL,NULL,'test',NULL),(11,NULL,'9','我的群聊','test avatar',NULL,'group',NULL),(12,NULL,'9','我的群聊','test avatar',NULL,'group',NULL),(13,'e71c9fe908f74956818c3e22036164c3','8','我的群聊','test avatar',NULL,'group',NULL),(14,'b2c23300cdcb437da15cb5c1db43aaaa','8','我的群聊','test avatar',NULL,'group',NULL);
+INSERT INTO `user` VALUES (16,'fad9e518796c4de88b1dc2daf688f4d3','test1','newUser',NULL,NULL,'64ae708c1fb209f0eb9b1436bd381343',NULL),(17,'8733e16cbdd84d62839f38064ce349de','test2','newUser',NULL,NULL,'64ae708c1fb209f0eb9b1436bd381343',NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -256,4 +280,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-09-27  0:59:15
+-- Dump completed on 2020-09-28 19:01:36
