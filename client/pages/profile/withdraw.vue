@@ -1,19 +1,19 @@
 <template>
 	<view>
 		<uni-nav-bar fixed="true" left-icon="back" left-text="返回" @clickLeft="BackPage"
-			title="提现" background-color="#e7ebed" :status-bar="true"></uni-nav-bar>
+			title="提现" background-color="#f0f0f0" :status-bar="true" :border="false"></uni-nav-bar>
 		<uni-card title="提现金额">
 			<text class="text-gray">当前余额{{balance}}元</text>
 			<view class="amount">
 			￥<input type="digit" v-model="amount" focus="true" style="font-size: 40upx;"
-			 @input="input"/>
+			 @input="input" placeholder="0.00"/>
 			 </view>
 			<view class="withdraw_message">
 				<view>
 					<text class="text-gray">最低可提现{{least}}元，提现手续费{{rate*100}}%</text>
 				</view>
 				<view>
-					<text class="text-gray">提现实际到账{{amount*(1-rate)}}元</text>
+					<text class="text-gray">提现实际到账{{actualAmount}}元</text>
 				</view>
 				<view v-if="errorMsg">
 					<text class="text-red">{{errorMsg}}</text>
@@ -40,7 +40,7 @@
 			let data = {
 				rate: 0,
 				least: 0,
-				amount: '',
+				amount: null,
 				balance: 0,
 				errorMsg: '',
 				disableWithdraw: true,
@@ -50,28 +50,37 @@
 			withdrawapi.init(data)
 			return data
 		},
+		computed: {
+			actualAmount() {
+				return Math.round(this.amount*(1-this.rate)*100)/100
+			}
+		},
 		methods: {
 			BackPage() {
 				common.BackPage()
 			},
 			input() {
-				if (this.amount < this.least) {
-					this.errorMsg = '提现金额不能少于' + this.least + '元'
-					this.disableWithdraw = true
-				} else if (this.amount > this.balance) {
-					this.errorMsg = '余额不足'
-					this.disableWithdraw = true
-				} else {
-					this.errorMsg = ''
-					this.disableWithdraw = false
-				}
+				this.$nextTick(function(){
+					let n = common.fixed(this.amount, 2)
+					this.amount = n >= 0 ? n : null
+					if (this.amount < this.least) {
+						this.errorMsg = '提现金额不能少于' + this.least + '元'
+						this.disableWithdraw = true
+					} else if (this.amount > this.balance) {
+						this.errorMsg = '余额不足'
+						this.disableWithdraw = true
+					} else {
+						this.errorMsg = ''
+						this.disableWithdraw = false
+					}
+				})
 			},
 			withdraw() {
 				if (this.amount >= this.least && this.amount <= this.balance) {
-					withdrawapi.withdraw(this.amount, this.$data);
+					withdrawapi.withdraw(this.amount,);
 					this.infoContent = '成功提现' + this.amount + '元'
 					this.$refs.popup.open()
-					this.amount = ''
+					this.amount = null
 					this.disableWithdraw = true
 					withdrawapi.init(this.$data)
 				}

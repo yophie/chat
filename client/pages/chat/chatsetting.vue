@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<uni-nav-bar fixed="true" left-icon="back" left-text="返回" @clickLeft="BackPage"
-			title="聊天设置" background-color="#e7ebed" :status-bar="true"></uni-nav-bar>
+			title="聊天设置" background-color="#f0f0f0" :status-bar="true" :border="false"></uni-nav-bar>
 		<view class="bg-white imglist_row">
 			<image class="imglist_item cu-avatar" v-for="item in memberList" :key="item.id" :src="item.avatar"></image>
 			<image class="imglist_item" src="../../static/icon/invite.png" @click="invite"></image>

@@ -1,7 +1,7 @@
 <template>
   <view>
 	<uni-nav-bar fixed="true" left-icon="back" left-text="返回"  @clickLeft="BackPage" 
-			title="我的群聊" background-color="#e7ebed" :status-bar="true"></uni-nav-bar>
+			title="我的群聊" background-color="#f0f0f0" :status-bar="true" :border="false"></uni-nav-bar>
 	<uni-list>
 		<uni-list-item v-for="item in list" :key="item.id" 
 			:title="item.name" :thumb="item.avatar" :clickable="true" :to="'/pages/chat/chatroom?id=' + item.id">

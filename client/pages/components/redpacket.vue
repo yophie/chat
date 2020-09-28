@@ -1,5 +1,5 @@
 <template>
-	<view class="redpacket_content bg-redpacketColor" :class="isRecived ? 'received' : ''" @click="_onClick">
+	<view class="redpacket_content bg-redpacketColor" :class="isRecived || !isRemain ? 'received' : ''" @click="_onClick">
 		 <view class="redpacket">
 			 <view class="redpacket_body">
 				 <view>
@@ -26,11 +26,28 @@
 			isRecived: {
 				type: Boolean,
 				default: false
+			},
+			isRemain: {
+				type: Boolean,
+				default: true
+			},
+			senderNick: {
+				type: String,
+				default: ''
+			},
+			senderAvatar: {
+				type: String,
+				default: ''
 			}
 		},
 		methods: {
 			_onClick() {
-				console.log("open packet" + this.id)
+				let param = {
+					id: this.id,
+					senderNick: this.senderNick,
+					senderAvatar: this.senderAvatar
+				}
+				this.$emit('click', param)
 			}
 		}
 	}

@@ -7,7 +7,7 @@ export default {
 	data.memberNum = 3
 	data.isGroup = true
   },
-  sendPacket(data) {
-	  console.log(data)
+  sendPacket(param) {
+	  console.log(param)
   }
 }

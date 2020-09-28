@@ -1,6 +1,9 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path": "pages/index/index"
+		},
+		{
 			"path": "pages/chat/chat"
 		},
 		{
@@ -26,6 +29,12 @@
 		},
 		{
 			"path": "pages/chat/sendPacket"
+		},
+		{
+			"path": "pages/chat/packetDetail"
+		},
+		{
+			"path": "pages/chat/qrcodeRequest"
 		},
 		{
 			"path": "pages/discover/post"
@@ -57,7 +66,7 @@
 		"color":"#8a8a8a",
 		"selectedColor":"#1296db",
 		"borderStyle":"black",
-		"backgroundColor":"#ffffff",
+		"backgroundColor":"#f0f0f0",
 		"list": [
 			{
 				"pagePath":"pages/chat/chat",

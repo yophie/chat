@@ -1,22 +1,27 @@
 <script>
 	import Vue from 'vue'
+	import wechatLogin from '@/pages/api/wechatLogin.js'
 	
 	export default {
 		onLaunch: function() { 
-			uni.connectSocket({
-			  url: 'wss://www.example.com/socket'
-			});
-			uni.onSocketMessage(function (res) {
-			  console.log('收到服务器内容：' + res.data);
-			});
-			uni.onSocketOpen(function (res) {
-			  Vue.prototype.socketOpen = true;
-			});
+			//wechatLogin.login()
+			uni.navigateTo({
+				url: 'pages/index/index?code=123' 
+			})
+			// uni.connectSocket({
+			//   url: 'wss://www.example.com/socket'
+			// });
+			// uni.onSocketMessage(function (res) {
+			//   console.log('收到服务器内容：' + res.data);
+			// });
+			// uni.onSocketOpen(function (res) {
+			//   Vue.prototype.socketOpen = true;
+			// });
 			
-			setTimeout(()=>{
-				console.log("ping url")
-			  uni.sendSocketMessage({type:'ping'})
-			},1000)
+			// setTimeout(()=>{
+			// 	console.log("ping url")
+			//   uni.sendSocketMessage({type:'ping'})
+			// },1000)
 		},
 		onShow: function() {
 			console.log('App Show')
