@@ -31,8 +31,12 @@ public class FriendControlller {
         Friend user = new Friend();
         List<Friend> friends;
         user.setMyId(request.getUserId());
-        user.setState(state);
-        friends = WindowDao.findFriendByState(user);
+        if(state == null || state == 0){
+            friends = WindowDao.findFriend(user);
+        }else {
+            user.setState(state);
+            friends = WindowDao.findFriendByState(user);
+        }
         User chatWindowReqBody = new User();
         chatWindowReqBody.setCode(ImStatus.C10027.getCode());
         chatWindowReqBody.setMsg(ImStatus.C10027.getMsg());
