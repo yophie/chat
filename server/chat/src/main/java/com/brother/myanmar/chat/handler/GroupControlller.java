@@ -125,7 +125,7 @@ public class GroupControlller {
             return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10030)));
         }
         Group group = GroupDao.findGroup(req.getGroupId());
-        if(group == null) {
+        if(group == null || group.getOwner() != request.getUserId()) {
             return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10030)));
         }
         List<Friend> members = GroupDao.findGroupMembers(req.getGroupId());

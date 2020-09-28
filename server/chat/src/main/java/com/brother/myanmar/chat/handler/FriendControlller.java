@@ -51,7 +51,7 @@ public class FriendControlller {
         Friend user = new Friend();
         List<Friend> friends;
         user.setMyId(request.getUserId());
-        user.setState(2);
+        user.setState(0);
         friends = WindowDao.findFriendByState(user);
         List<Group> groups = new ArrayList<>(friends.size());
         for(int i=0;i<groups.size();i++){
@@ -63,7 +63,7 @@ public class FriendControlller {
         User chatWindowReqBody = new User();
         chatWindowReqBody.setCode(ImStatus.C10027.getCode());
         chatWindowReqBody.setMsg(ImStatus.C10027.getMsg());
-        ((User)chatWindowReqBody).setGroups(groups);
+        chatWindowReqBody.setGroups(groups);
         return TokenFilter.crossOrigin(HttpResps.json(request, chatWindowReqBody));
     }
 

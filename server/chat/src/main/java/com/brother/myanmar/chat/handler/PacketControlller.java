@@ -64,6 +64,7 @@ public class PacketControlller {
         if(req.getPacketId() == null){
             return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10024)));
         }
+        PacketResp respBody = new PacketResp();
         Packet packet = new Packet();
         packet.setId(req.getPacketId());
         packet = PacketDao.findPacket(packet);
@@ -74,6 +75,11 @@ public class PacketControlller {
         if (Objects.isNull(packet) || (packet.getState() == 2)) {
             return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10024)));
         } else {
+            respBody.setId(packet.getId());
+            respBody.setAmount(packet.getAmount());
+            respBody.setSender(packet.getSender());
+            respBody.setType(packet.getType());
+            respBody.setTime(packet.getTime());
             List<PacketState> currentDrawList = PacketDao.getPacketList(packetState);
             int grabs = currentDrawList==null ? 0 : currentDrawList.size();
             if (packet.getNum() <= grabs) {
@@ -107,8 +113,9 @@ public class PacketControlller {
             }
         }
         List<PacketState> drawList = PacketDao.getPacketList(packetState);
-        PacketResp respBody = new PacketResp();
         respBody.setDrawList(drawList);
+        respBody.setCode(ImStatus.C10025.getCode());
+        respBody.setMsg(ImStatus.C10025.getMsg());
         return TokenFilter.crossOrigin(HttpResps.json(request, respBody));
     }
 
