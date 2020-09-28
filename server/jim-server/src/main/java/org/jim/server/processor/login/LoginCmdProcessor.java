@@ -22,11 +22,9 @@ public interface LoginCmdProcessor extends SingleProtocolCmdProcessor {
 	 LoginRespBody doLogin(LoginReqBody loginReqBody, ImChannelContext imChannelContext);
 	/**
 	 * 获取用户信息接口方法
-	 * @param loginReqBody
-	 * @param imChannelContext
 	 * @return
 	 */
-	User getUser(LoginReqBody loginReqBody, ImChannelContext imChannelContext);
+	User getUser(String token);
 	/**
 	 * 登录成功(指的是J-IM会在用户校验完登陆逻辑后进行J-IM内部绑定)回调方法
 	 * @param imChannelContext

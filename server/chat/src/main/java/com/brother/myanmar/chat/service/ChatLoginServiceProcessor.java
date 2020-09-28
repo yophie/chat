@@ -16,41 +16,21 @@ import org.jim.server.protocol.AbstractProtocolCmdProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 public class ChatLoginServiceProcessor extends AbstractProtocolCmdProcessor implements LoginCmdProcessor {
 
 	private Logger logger = LoggerFactory.getLogger(ChatLoginServiceProcessor.class);
 
-	public static final Map<String, User> tokenMap = new HashMap<>();
-
 	private UserDao userdao = new UserDao();
-	
-	/**
-	 * 根据用户名和密码获取用户
-	 * @param loginReqBody
-	 * @param imChannelContext
-	 * @return
-	 */
-	public User getUser(LoginReqBody loginReqBody, ImChannelContext imChannelContext) {
-		String text = loginReqBody.getUserId()+loginReqBody.getPassword();
-		String key = ImConst.AUTH_KEY;
-		String token = Md5.sign(text, key, CHARSET);
-		User user = getUser(token);
-
-		return user;
-	}
 	/**
 	 * 根据token获取用户信息
 	 * @param token
 	 * @return
 	 */
 	public User getUser(String token) {
-		//demo中用map，生产环境需要用cache
-		User user = tokenMap.get(token);
+		User user = UserTokenRedis.getToken(token);
 		if(Objects.nonNull(user)){
 			return user;
 		}
@@ -65,8 +45,10 @@ public class ChatLoginServiceProcessor extends AbstractProtocolCmdProcessor impl
 	@Override
 	public LoginRespBody doLogin(LoginReqBody loginReqBody, ImChannelContext imChannelContext) {
 		if(Objects.nonNull(loginReqBody.getToken())){
-			tokenMap.containsKey(loginReqBody.getToken());
-			return new LoginRespBody(ImStatus.C10007, getUser(loginReqBody.getToken()), loginReqBody.getToken());
+			User me = UserTokenRedis.getToken(loginReqBody.getToken());
+			if(me!=null) {
+				return new LoginRespBody(ImStatus.C10007, me, loginReqBody.getToken());
+			}
 		}
 		if(Objects.nonNull(loginReqBody.getUserId()) && Objects.nonNull(loginReqBody.getPassword())){
 			com.brother.myanmar.chat.bean.User searchUser = new com.brother.myanmar.chat.bean.User();
@@ -79,7 +61,7 @@ public class ChatLoginServiceProcessor extends AbstractProtocolCmdProcessor impl
 				searchUser.setName("newUser");
 				userdao.insert(searchUser);
 				findUser = userdao.findUserByOpenId(searchUser);;
-			} else if(searchUser.getPassword() != findUser.getPassword()){
+			} else if(!searchUser.getPassword().equals(findUser.getPassword())){
 				return LoginRespBody.failed();
 			}
 			User.Builder builder = User.newBuilder()
@@ -98,10 +80,10 @@ public class ChatLoginServiceProcessor extends AbstractProtocolCmdProcessor impl
 			}
 
 			User user = builder.build();
-			String text = loginReqBody.getUserId()+loginReqBody.getPassword();
+			String text = loginReqBody.getUserId()+loginReqBody.getPassword()+System.currentTimeMillis();
 			String key = ImConst.AUTH_KEY;
 			String token = Md5.sign(text, key, CHARSET);
-			tokenMap.put(token, user);
+			UserTokenRedis.putToken(token, user);
 			return new LoginRespBody(ImStatus.C10007, user, token);
 		}else {
 			return LoginRespBody.failed();

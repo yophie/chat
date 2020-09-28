@@ -19,11 +19,11 @@
     </environments>
 
     <mappers>
-        <!--将操作配置文件User.xml系添加进mapper-->
         <mapper resource="mybatis/user.xml" />
         <mapper resource="mybatis/chatWindow.xml" />
         <mapper resource="mybatis/friend.xml" />
         <mapper resource="mybatis/group.xml" />
         <mapper resource="mybatis/packet.xml" />
+        <mapper resource="mybatis/superuser.xml" />
     </mappers>
 </configuration>

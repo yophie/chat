@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.brother.myanmar.chat.mapper.SuperUser2Mapper">
+    <select id="findUserById" parameterType="com.brother.myanmar.chat.bean.SuperUser" resultType="com.brother.myanmar.chat.bean.SuperUser">
+        select * from superuser where id = #{id}
+    </select>
+    <select id="findUserByAccount" parameterType="com.brother.myanmar.chat.bean.SuperUser" resultType="com.brother.myanmar.chat.bean.SuperUser">
+        select * from superuser where account = #{account}
+    </select>
+    <insert id="insertUser" parameterType="com.brother.myanmar.chat.bean.SuperUser">
+        insert into superuser(account, name, avatar, phone, openId, password)
+        values(#{account},#{name},#{avatar},#{phone},#{openId},#{password})
+    </insert>
+    <delete id="deleteUser" parameterType="java.lang.Integer">
+        delete from superuser where id=#{id}
+    </delete>
+    <update id="updateUser" parameterType="com.brother.myanmar.chat.bean.SuperUser">
+        update superuser set name=#{name},password=#{password} where id=#{id}
+    </update>
+
+</mapper>

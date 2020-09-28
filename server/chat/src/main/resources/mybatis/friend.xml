@@ -9,7 +9,11 @@
         select * from friend where myId = #{myId} and state != 0 order by applyTime desc
     </select>
     <select id="findFriendByState" parameterType="com.brother.myanmar.chat.bean.Friend" resultType="com.brother.myanmar.chat.bean.Friend">
-        select * from friend where myId = #{myId} and state = #{state} order by friendId
+        select * from friend where myId = #{myId}
+        <if test="state!=null">
+            AND state = #{state}
+        </if>
+         order by friendId
     </select>
     <insert id="insertFriend" parameterType="com.brother.myanmar.chat.bean.Friend">
         insert into friend(myId, friendId, friendNick, state, applyTime)

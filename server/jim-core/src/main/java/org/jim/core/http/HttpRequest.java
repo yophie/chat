@@ -1,17 +1,17 @@
 package org.jim.core.http;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import org.apache.commons.lang3.StringUtils;
 import org.jim.core.http.session.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tio.core.Node;
 import org.tio.utils.hutool.ArrayUtil;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 /**
  *
@@ -50,6 +50,7 @@ public class HttpRequest extends HttpPacket {
 	private HttpSession httpSession;
 	private Node remote;
 	private HttpConfig httpConfig;
+	private Integer userId;
 
 	/**
 	 *
@@ -329,4 +330,11 @@ public class HttpRequest extends HttpPacket {
 		this.requestLine = requestLine;
 	}
 
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
 }

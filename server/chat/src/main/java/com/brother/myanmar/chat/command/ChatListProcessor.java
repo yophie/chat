@@ -60,6 +60,7 @@ public class ChatListProcessor extends BaseChatListProcessor {
                     friend = friends.get(i);
                     Group group = dao.findGroup(friend.getFriendId());
                     group.setMembers(dao.findGroupMembers(friend.getFriendId()));
+                    groups.add(group);
                 }
                 chatWindowReqBody = new User();
                 chatWindowReqBody.setCode(ImStatus.C10027.getCode());

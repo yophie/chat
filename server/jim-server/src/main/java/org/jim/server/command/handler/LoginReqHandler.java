@@ -75,7 +75,7 @@ public class LoginReqHandler extends AbstractCmdHandler {
 		loginRespBody.setCmd(loginResp.getCmd());
 		loginRespBody.setData(loginResp.getData());
 		loginRespBody.setMsg(loginResp.getMsg());
-		return loginProcessor.getUser(loginReqBody, imChannelContext);
+		return loginProcessor.getUser(loginResp.getToken());
 	}
 
 	/**
