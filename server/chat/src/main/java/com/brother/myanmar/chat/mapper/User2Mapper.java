@@ -8,6 +8,6 @@ public interface User2Mapper {
     User findUserByOpenId(User user);
     User findUserByAccount(User user);
     int insertUser(User user);
-    int deleteUser(User user);
+    int deleteUser(int id);
     int updateUser(User user);
 }

@@ -10,46 +10,46 @@ import java.util.List;
 
 public class PacketDao {
 
-    SqlSession session = SqlConnection.getSession();
-    public Packet findPacket(Packet packet){
+    static SqlSession session = SqlConnection.getSession();
+    public static Packet findPacket(Packet packet){
         Packet2Mapper mapper = session.getMapper(Packet2Mapper.class);
         Packet result = mapper.findPacket(packet);
         session.commit();
         return result;
     }
 
-    public int insertPacket(Packet packet){
+    public static int insertPacket(Packet packet){
         Packet2Mapper mapper = session.getMapper(Packet2Mapper.class);
         int rint = mapper.insertPacket(packet);
         session.commit();
         return rint;
     }
-    public int deletePacket(Packet packet){
+    public static int deletePacket(Packet packet){
         Packet2Mapper mapper = session.getMapper(Packet2Mapper.class);
         int rint = mapper.deletePacket(packet);
         session.commit();
         return rint;
     }
-    public int updatePacket(Packet packet){
+    public static int updatePacket(Packet packet){
         Packet2Mapper mapper = session.getMapper(Packet2Mapper.class);
         int rint = mapper.updatePacket(packet);
         session.commit();
         return rint;
     }
-    public int getPacketState(PacketState packet){
+    public static int getPacketState(PacketState packet){
         Packet2Mapper mapper = session.getMapper(Packet2Mapper.class);
         int result = mapper.getPacketState(packet);
         session.commit();
         return result;
     }
-    public int insertPacketState(PacketState packet){
+    public static int insertPacketState(PacketState packet){
         Packet2Mapper mapper = session.getMapper(Packet2Mapper.class);
         int result = mapper.insertPacketState(packet);
         session.commit();
         return result;
     }
 
-    public List<PacketState> getPacketList(PacketState packet){
+    public static List<PacketState> getPacketList(PacketState packet){
         Packet2Mapper mapper = session.getMapper(Packet2Mapper.class);
         List<PacketState> result = mapper.getPacketList(packet);
         session.commit();

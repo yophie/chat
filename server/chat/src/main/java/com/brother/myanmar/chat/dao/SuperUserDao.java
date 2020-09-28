@@ -7,23 +7,23 @@ import org.apache.ibatis.session.SqlSession;
 
 public class SuperUserDao {
 
-    SqlSession session = SqlConnection.getSession();
+    static SqlSession session = SqlConnection.getSession();
 
-    public int insert(SuperUser user){
+    public static int insert(SuperUser user){
         SuperUser2Mapper user2Mapper = session.getMapper(SuperUser2Mapper.class);
         int rint = user2Mapper.insertUser(user);
         session.commit();
         return rint;
     }
 
-    public SuperUser findUserById(SuperUser suser){
+    public static SuperUser findUserById(SuperUser suser){
         SuperUser2Mapper user2Mapper = session.getMapper(SuperUser2Mapper.class);
         SuperUser user = user2Mapper.findUserById(suser);
         session.commit();
         return user;
     }
 
-    public SuperUser findUserByAccount(SuperUser suser){
+    public static SuperUser findUserByAccount(SuperUser suser){
         SuperUser2Mapper user2Mapper = session.getMapper(SuperUser2Mapper.class);
         SuperUser user = user2Mapper.findUserByAccount(suser);
         session.commit();

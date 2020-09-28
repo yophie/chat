@@ -18,7 +18,6 @@ import java.util.Objects;
 
 @RequestPath(value = "/api/user")
 public class UserApiController {
-    private SuperUserDao userdao = new SuperUserDao();
 
     @RequestPath(value = "/login")
     public HttpResponse login(HttpRequest request) throws Exception {
@@ -38,7 +37,7 @@ public class UserApiController {
             searchUser.setAccount(username);
             searchUser.setPassword(Md5.sign(password, ImConst.AUTH_KEY, ImConst.CHARSET));
 
-            SuperUser findUser = userdao.findUserByAccount(searchUser);
+            SuperUser findUser = SuperUserDao.findUserByAccount(searchUser);
             if(findUser!=null && findUser.getPassword().equals(searchUser.getPassword())) {
                 String text = findUser.getId()+findUser.getPassword()+System.currentTimeMillis();
                 token = Md5.sign(text, ImConst.AUTH_KEY, ImConst.CHARSET);
