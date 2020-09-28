@@ -26,7 +26,7 @@ public class FriendControlller {
     public HttpResponse list(HttpRequest request) throws Exception {
         HttpResponse resp = TokenFilter.filter(request);
         if(resp != null) return resp;
-        //0:group,1:approved,2:applying,3:reject
+        //1:approved,2:applying,3:reject
         Integer state = request.getParams().get("state") == null ? null : Integer.parseInt((String) request.getParams().get("state")[0]);
         Friend user = new Friend();
         List<Friend> friends;
