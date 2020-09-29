@@ -1,6 +1,6 @@
 <template>
     <el-container>
-    <el-header> <!--hasBeenLogged-->
+    <el-header v-if="this.$route.path != '/login'">
       <el-menu
         default-active="/withdrawList"
         class="el-menu-demo"
@@ -31,7 +31,9 @@
 </template>
 
 <script>
-export default {
+  import loginApi from '@/api/loginApi.js'
+
+  export default {
   name: 'App',
   data() {
     return {
@@ -41,7 +43,7 @@ export default {
   methods: {
     logout() {
       this.dialogVisible = false
-      console.log("logout")
+      loginApi.logout()
     }
   }
 }
