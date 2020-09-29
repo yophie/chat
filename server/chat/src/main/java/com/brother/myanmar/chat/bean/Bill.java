@@ -12,6 +12,11 @@ public class Bill {
     private Integer type; // 0:send packet 1:grab packet 2:cash in 3:cash out
     private Integer oppsite;
 
+    private Long startApplyTime;
+    private Long endApplyTime;
+    private Long startApprovalTime;
+    private Long endApprovalTime;
+
     public Integer getId() {
         return id;
     }
@@ -90,5 +95,37 @@ public class Bill {
 
     public void setOppsite(Integer oppsite) {
         this.oppsite = oppsite;
+    }
+
+    public Long getStartApprovalTime() {
+        return startApprovalTime;
+    }
+
+    public void setStartApprovalTime(Long startApprovalTime) {
+        this.startApprovalTime = startApprovalTime;
+    }
+
+    public Long getEndApprovalTime() {
+        return endApprovalTime;
+    }
+
+    public void setEndApprovalTime(Long endApprovalTime) {
+        this.endApprovalTime = endApprovalTime;
+    }
+
+    public Long getStartApplyTime() {
+        return startApplyTime;
+    }
+
+    public void setStartApplyTime(Long startApplyTime) {
+        this.startApplyTime = startApplyTime;
+    }
+
+    public Long getEndApplyTime() {
+        return endApplyTime;
+    }
+
+    public void setEndApplyTime(Long endApplyTime) {
+        this.endApplyTime = endApplyTime;
     }
 }

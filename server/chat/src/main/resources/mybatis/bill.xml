@@ -22,6 +22,18 @@
         <if test="type!=null">
             AND type = #{type}
         </if>
+        <if test="startApplyTime!=null">
+            AND applyTime &gt;= #{startApplyTime}
+        </if>
+        <if test="endApplyTime!=null">
+            AND applyTime &lt;= #{endApplyTime}
+        </if>
+        <if test="startApprovalTime!=null">
+            AND approvalTime &gt;= #{startApprovalTime}
+        </if>
+        <if test="endApprovalTime!=null">
+            AND approvalTime &lt;= #{endApprovalTime}
+        </if>
         order by applyTime desc
     </select>
 
