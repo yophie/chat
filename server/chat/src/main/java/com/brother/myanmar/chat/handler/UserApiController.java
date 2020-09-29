@@ -2,8 +2,12 @@ package com.brother.myanmar.chat.handler;
 
 
 import com.brother.myanmar.chat.bean.LoginRes;
+import com.brother.myanmar.chat.bean.Settings;
 import com.brother.myanmar.chat.bean.SuperUser;
+import com.brother.myanmar.chat.bean.User;
+import com.brother.myanmar.chat.dao.SettingsDao;
 import com.brother.myanmar.chat.dao.SuperUserDao;
+import com.brother.myanmar.chat.dao.UserDao;
 import com.brother.myanmar.chat.service.RedisCache;
 import org.jim.core.ImConst;
 import org.jim.core.ImStatus;
@@ -57,11 +61,20 @@ public class UserApiController {
         return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10021)));
     }
 
-    @RequestPath(value = "/test")
-    public HttpResponse abtest(HttpRequest request) throws Exception {
+    @RequestPath(value = "/info")
+    public HttpResponse info(HttpRequest request) throws Exception {
         HttpResponse resp = TokenFilter.filter(request);
         if(resp != null) return resp;
-        HttpResponse ret = HttpResps.html(request, "test OK");
-        return TokenFilter.crossOrigin(ret);
+
+        User me = new User();
+        me.setId(request.getUserId());
+        me = UserDao.findUserById(me);
+        Settings settings = SettingsDao.getSettings();
+        me.setLowest(settings.getLowest());
+        me.setFee(settings.getFee());
+        me.setCode(ImStatus.C10003.getCode());
+        me.setMsg(ImStatus.C10003.getMsg());
+        return TokenFilter.crossOrigin(HttpResps.json(request, me));
     }
+
 }

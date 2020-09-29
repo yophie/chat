@@ -81,6 +81,11 @@ public class PacketControlller {
             respBody.setType(packet.getType());
             respBody.setTime(packet.getTime());
             List<PacketState> currentDrawList = PacketDao.getPacketList(packetState);
+            for(int i=0;i<currentDrawList.size();i++){
+                if(currentDrawList.get(i).getReciever() == request.getUserId()) {
+                    return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10024)));
+                }
+            }
             int grabs = currentDrawList==null ? 0 : currentDrawList.size();
             if (packet.getNum() <= grabs) {
                 return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10024)));

@@ -14,6 +14,8 @@ public class User extends ChatWindowRespBody {
     private Double money;
     private String password;
     private String name;
+    private Double lowest;
+    private Double fee;
 
     private List<Friend> friends;
     private List<Group> groups;
@@ -85,5 +87,21 @@ public class User extends ChatWindowRespBody {
     }
     public void setWindows(List<ChatWindow> friends) {
         this.windows = windows;
+    }
+
+    public Double getLowest() {
+        return lowest;
+    }
+
+    public void setLowest(Double lowest) {
+        this.lowest = lowest;
+    }
+
+    public Double getFee() {
+        return fee;
+    }
+
+    public void setFee(Double fee) {
+        this.fee = fee;
     }
 }
