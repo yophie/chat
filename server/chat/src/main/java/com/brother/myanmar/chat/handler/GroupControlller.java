@@ -27,10 +27,10 @@ public class GroupControlller {
         HttpResponse resp = TokenFilter.filter(request);
         if(resp != null) return resp;
         GroupReqBody req = JsonKit.toBean(request.getBody(), GroupReqBody.class);
-        if(req.getGroupName() == null) req.setGroupName("我的新群聊");
-        if(req.getFriends() == null || req.getFriends().size()<3){
+        if(req == null || req.getFriends() == null || req.getFriends().size()<3){
             return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10030)));
         }
+        if(req.getGroupName() == null) req.setGroupName("我的新群聊");
         User user = new User();
         user.setOpenId(String.valueOf(request.getUserId()));
         user.setName(req.getGroupName());
@@ -75,7 +75,7 @@ public class GroupControlller {
         HttpResponse resp = TokenFilter.filter(request);
         if (resp != null) return resp;
         GroupReqBody req = JsonKit.toBean(request.getBody(), GroupReqBody.class);
-        if (req.getGroupId() == null) {
+        if (req == null || req.getGroupId() == null) {
             return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10030)));
         }
         Friend friend = new Friend();
@@ -92,7 +92,7 @@ public class GroupControlller {
         HttpResponse resp = TokenFilter.filter(request);
         if (resp != null) return resp;
         GroupReqBody req = JsonKit.toBean(request.getBody(), GroupReqBody.class);
-        if(req.getGroupId() == null || req.getFriends() == null || req.getFriends().size()<1) {
+        if(req == null || req.getGroupId() == null || req.getFriends() == null || req.getFriends().size()<1) {
             return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10030)));
         }
         Group group = GroupDao.findGroup(req.getGroupId());
@@ -121,7 +121,7 @@ public class GroupControlller {
         HttpResponse resp = TokenFilter.filter(request);
         if (resp != null) return resp;
         GroupReqBody req = JsonKit.toBean(request.getBody(), GroupReqBody.class);
-        if(req.getGroupId() == null) {
+        if(req == null || req.getGroupId() == null) {
             return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10030)));
         }
         Group group = GroupDao.findGroup(req.getGroupId());

@@ -25,7 +25,7 @@ public class PacketControlller {
         HttpResponse resp = TokenFilter.filter(request);
         if(resp != null) return resp;
         PacketReqBody req = JsonKit.toBean(request.getBody(), PacketReqBody.class);
-        if(req.getPacketId() == null){
+        if(req == null || req.getPacketId() == null){
             return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10024)));
         }
         PacketResp respBody = new PacketResp();
@@ -43,7 +43,7 @@ public class PacketControlller {
         HttpResponse resp = TokenFilter.filter(request);
         if(resp != null) return resp;
         PacketReqBody req = JsonKit.toBean(request.getBody(), PacketReqBody.class);
-        if(req.getPacketId() == null){
+        if(req == null || req.getPacketId() == null){
             return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10024)));
         }
         PacketResp respBody = new PacketResp();
@@ -61,7 +61,7 @@ public class PacketControlller {
         HttpResponse resp = TokenFilter.filter(request);
         if(resp != null) return resp;
         PacketReqBody req = JsonKit.toBean(request.getBody(), PacketReqBody.class);
-        if(req.getPacketId() == null){
+        if(req == null || req.getPacketId() == null){
             return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10024)));
         }
         PacketResp respBody = new PacketResp();

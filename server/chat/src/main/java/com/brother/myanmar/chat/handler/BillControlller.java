@@ -23,6 +23,7 @@ public class BillControlller {
         if(resp != null) return resp;
 
         Bill req = JsonKit.toBean(request.getBody(), Bill.class);
+        if(req == null) req = new Bill();
         if(!request.isSuper()) {
             //normal user just can search self's bill
             req.setUserId(request.getUserId());
@@ -44,7 +45,7 @@ public class BillControlller {
 
         BillResp billResp = new BillResp();
         Bill req = JsonKit.toBean(request.getBody(), Bill.class);
-        if(req.getAmount() == null || req.getAmount() <= 0){
+        if(req == null || req.getAmount() == null || req.getAmount() <= 0){
             billResp.setCode(ImStatus.C10034.getCode());
             billResp.setMsg(ImStatus.C10034.getMsg());
             return TokenFilter.crossOrigin(HttpResps.json(request, billResp));
