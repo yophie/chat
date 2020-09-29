@@ -25,5 +25,7 @@
         <mapper resource="mybatis/group.xml" />
         <mapper resource="mybatis/packet.xml" />
         <mapper resource="mybatis/superuser.xml" />
+        <mapper resource="mybatis/bill.xml" />
+        <mapper resource="mybatis/settings.xml" />
     </mappers>
 </configuration>

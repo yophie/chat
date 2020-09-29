@@ -11,36 +11,36 @@ import java.util.List;
 
 public class UserDao {
 
-    SqlSession session = SqlConnection.getSession();
+    static SqlSession session = SqlConnection.getSession();
 
-    public int insert(User user){
+    public static int insert(User user){
         User2Mapper user2Mapper = session.getMapper(User2Mapper.class);
         int rint = user2Mapper.insertUser(user);
         session.commit();
         return rint;
     }
 
-    public User findUserById(User suser){
+    public static User findUserById(User suser){
         User2Mapper user2Mapper = session.getMapper(User2Mapper.class);
         User user = user2Mapper.findUserById(suser);
         session.commit();
         return user;
     }
 
-    public User findUserByOpenId(User suser){
+    public static User findUserByOpenId(User suser){
         User2Mapper user2Mapper = session.getMapper(User2Mapper.class);
         User user = user2Mapper.findUserByOpenId(suser);
         session.commit();
         return user;
     }
 
-    public User findUserByAccount(User suser){
+    public static User findUserByAccount(User suser){
         User2Mapper user2Mapper = session.getMapper(User2Mapper.class);
         User user = user2Mapper.findUserByAccount(suser);
         session.commit();
         return user;
     }
-    public List<Friend> findFriendByState(Friend user){
+    public static List<Friend> findFriendByState(Friend user){
         Friend2Mapper mapper = session.getMapper(Friend2Mapper.class);
         List<Friend> result = mapper.findFriendByState(user);
         session.commit();

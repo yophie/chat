@@ -30,5 +30,8 @@
     <update id="updateUser" parameterType="com.brother.myanmar.chat.bean.User">
         update user set name=#{name},password=#{password} where id=#{id}
     </update>
+    <update id="updateUserMoney" parameterType="com.brother.myanmar.chat.bean.User">
+        update user set money=money+#{money} where id=#{id}
+    </update>
 
 </mapper>

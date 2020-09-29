@@ -40,7 +40,7 @@ public class FriendControlller {
         User chatWindowReqBody = new User();
         chatWindowReqBody.setCode(ImStatus.C10027.getCode());
         chatWindowReqBody.setMsg(ImStatus.C10027.getMsg());
-        ((User)chatWindowReqBody).setFriends(friends);
+        chatWindowReqBody.setFriends(friends);
         return TokenFilter.crossOrigin(HttpResps.json(request, chatWindowReqBody));
     }
 
@@ -90,7 +90,7 @@ public class FriendControlller {
 
             ChatBody chatBody = ChatBody.newBuilder().from(String.valueOf(user.getFriendId()))
                     .to(String.valueOf(user.getMyId())).chatType(ChatType.CHAT_TYPE_PRIVATE.getNumber())
-                    .msgType(6).systemCmd(0).content("加个朋友呗").build();
+                    .msgType(6).packetType(0).content("加个朋友呗").build();
             ImPacket chatPacket = new ImPacket(Command.COMMAND_CHAT_REQ,new RespBody(Command.COMMAND_CHAT_REQ,chatBody).toByte());
             JimServerAPI.sendToUser(String.valueOf(applyUser), chatPacket);
         }
@@ -124,7 +124,7 @@ public class FriendControlller {
 
             ChatBody chatBody = ChatBody.newBuilder().from(String.valueOf(user.getFriendId()))
                     .to(String.valueOf(user.getMyId())).chatType(ChatType.CHAT_TYPE_PRIVATE.getNumber())
-                    .msgType(6).systemCmd(1).content("好友验证结束").build();
+                    .msgType(6).packetType(1).content("好友验证结束").build();
             ImPacket chatPacket = new ImPacket(Command.COMMAND_CHAT_REQ,new RespBody(Command.COMMAND_CHAT_REQ,chatBody).toByte());
             JimServerAPI.sendToUser(String.valueOf(applyUser), chatPacket);
         }

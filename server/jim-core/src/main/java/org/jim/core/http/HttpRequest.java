@@ -51,6 +51,7 @@ public class HttpRequest extends HttpPacket {
 	private Node remote;
 	private HttpConfig httpConfig;
 	private Integer userId;
+	private Boolean isSuper = false;
 
 	/**
 	 *
@@ -336,5 +337,13 @@ public class HttpRequest extends HttpPacket {
 
 	public void setUserId(Integer userId) {
 		this.userId = userId;
+	}
+
+	public Boolean isSuper() {
+		return isSuper;
+	}
+
+	public void setIsSuper(Boolean isSuper) {
+		this.isSuper = isSuper;
 	}
 }

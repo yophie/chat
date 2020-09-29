@@ -34,7 +34,7 @@ CREATE TABLE `cashout` (
   `type` int DEFAULT NULL,
   `oppsite` int DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `cashout_check` (`userId`),
+  KEY `f_userId` (`userId`),
   CONSTRAINT `cashout_check` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -73,7 +73,6 @@ CREATE TABLE `chatGroup` (
 
 LOCK TABLES `chatGroup` WRITE;
 /*!40000 ALTER TABLE `chatGroup` DISABLE KEYS */;
-INSERT INTO `chatGroup` VALUES (19,'我的群聊','test avatar',16);
 /*!40000 ALTER TABLE `chatGroup` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,11 +123,11 @@ CREATE TABLE `friend` (
   `state` int NOT NULL,
   `applyTime` bigint NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `my_id_check` (`myId`),
-  KEY `friend_id_check` (`friendId`),
+  KEY `f_myId` (`myId`),
+  KEY `f_friendId` (`friendId`),
   CONSTRAINT `friend_id_check` FOREIGN KEY (`friendId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `my_id_check` FOREIGN KEY (`myId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,35 +136,35 @@ CREATE TABLE `friend` (
 
 LOCK TABLES `friend` WRITE;
 /*!40000 ALTER TABLE `friend` DISABLE KEYS */;
-INSERT INTO `friend` VALUES (16,16,19,'我的群聊',0,1601302563581),(17,16,19,'我的群聊',0,1601302563581),(18,17,19,'我的群聊',0,1601302563581),(19,18,19,'我的群聊',0,1601302563581);
+INSERT INTO `friend` VALUES (20,16,17,NULL,1,1111),(21,16,18,NULL,1,1112);
 /*!40000 ALTER TABLE `friend` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `FriendSociety`
+-- Table structure for table `friendSociety`
 --
 
-DROP TABLE IF EXISTS `FriendSociety`;
+DROP TABLE IF EXISTS `friendSociety`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `FriendSociety` (
+CREATE TABLE `friendSociety` (
   `id` int NOT NULL AUTO_INCREMENT,
   `userId` int NOT NULL,
   `time` bigint DEFAULT NULL,
   `content` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `society_check` (`userId`),
+  KEY `f_userId` (`userId`),
   CONSTRAINT `society_check` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `FriendSociety`
+-- Dumping data for table `friendSociety`
 --
 
-LOCK TABLES `FriendSociety` WRITE;
-/*!40000 ALTER TABLE `FriendSociety` DISABLE KEYS */;
-/*!40000 ALTER TABLE `FriendSociety` ENABLE KEYS */;
+LOCK TABLES `friendSociety` WRITE;
+/*!40000 ALTER TABLE `friendSociety` DISABLE KEYS */;
+/*!40000 ALTER TABLE `friendSociety` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -214,7 +213,9 @@ CREATE TABLE `packetState` (
   `reciever` int DEFAULT NULL,
   `amount` decimal(20,2) DEFAULT NULL,
   `time` bigint DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `packet_check` (`packetId`),
+  CONSTRAINT `packet_check` FOREIGN KEY (`packetId`) REFERENCES `packet` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -226,6 +227,29 @@ LOCK TABLES `packetState` WRITE;
 /*!40000 ALTER TABLE `packetState` DISABLE KEYS */;
 INSERT INTO `packetState` VALUES (4,'1d41d293f03b40bba4f330b7bcfdee25',16,22.22,1601303316078);
 /*!40000 ALTER TABLE `packetState` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `settings`
+--
+
+DROP TABLE IF EXISTS `settings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `settings` (
+  `lowest` decimal(20,2) DEFAULT NULL,
+  `fee` decimal(20,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `settings`
+--
+
+LOCK TABLES `settings` WRITE;
+/*!40000 ALTER TABLE `settings` DISABLE KEYS */;
+INSERT INTO `settings` VALUES (0.00,0.02);
+/*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -273,7 +297,7 @@ CREATE TABLE `user` (
   `password` varchar(50) DEFAULT NULL,
   `money` decimal(20,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -282,7 +306,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (16,'fad9e518796c4de88b1dc2daf688f4d3','test1','newUser',NULL,NULL,'64ae708c1fb209f0eb9b1436bd381343',NULL),(17,'8733e16cbdd84d62839f38064ce349de','test2','newUser',NULL,NULL,'64ae708c1fb209f0eb9b1436bd381343',NULL),(18,'b86bc76b89d44429bc6ec72e36de391a','test3','newUser',NULL,NULL,'64ae708c1fb209f0eb9b1436bd381343',NULL),(19,'d24715bae7df4fefb733d7c8bb9d4105','16','我的群聊','test avatar',NULL,'group',NULL);
+INSERT INTO `user` VALUES (16,'fad9e518796c4de88b1dc2daf688f4d3','test1','newUser',NULL,NULL,'64ae708c1fb209f0eb9b1436bd381343',100.00),(17,'8733e16cbdd84d62839f38064ce349de','test2','newUser',NULL,NULL,'64ae708c1fb209f0eb9b1436bd381343',100.00),(18,'b86bc76b89d44429bc6ec72e36de391a','test3','newUser',NULL,NULL,'64ae708c1fb209f0eb9b1436bd381343',100.00),(19,'d24715bae7df4fefb733d7c8bb9d4105','16','我的群聊','test avatar',NULL,'group',90.00),(20,'cb755beb8e234b2f9df35747d902d51c','1601368182332','newUser',NULL,NULL,'9ece6f28502a3380969791b557ac5634',NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -295,4 +319,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-09-28 22:42:23
+-- Dump completed on 2020-09-29 21:57:53

@@ -22,15 +22,13 @@ import java.util.Objects;
 public class ChatLoginServiceProcessor extends AbstractProtocolCmdProcessor implements LoginCmdProcessor {
 
 	private Logger logger = LoggerFactory.getLogger(ChatLoginServiceProcessor.class);
-
-	private UserDao userdao = new UserDao();
 	/**
 	 * 根据token获取用户信息
 	 * @param token
 	 * @return
 	 */
 	public User getUser(String token) {
-		User user = UserTokenRedis.getToken(token);
+		User user = RedisCache.getToken(token);
 		if(Objects.nonNull(user)){
 			return user;
 		}
@@ -45,7 +43,7 @@ public class ChatLoginServiceProcessor extends AbstractProtocolCmdProcessor impl
 	@Override
 	public LoginRespBody doLogin(LoginReqBody loginReqBody, ImChannelContext imChannelContext) {
 		if(Objects.nonNull(loginReqBody.getToken())){
-			User me = UserTokenRedis.getToken(loginReqBody.getToken());
+			User me = RedisCache.getToken(loginReqBody.getToken());
 			if(me!=null) {
 				return new LoginRespBody(ImStatus.C10007, me, loginReqBody.getToken());
 			}
@@ -55,12 +53,12 @@ public class ChatLoginServiceProcessor extends AbstractProtocolCmdProcessor impl
 			searchUser.setOpenId(loginReqBody.getUserId());
 			searchUser.setPassword(Md5.sign(loginReqBody.getPassword(), ImConst.AUTH_KEY, CHARSET));
 
-			com.brother.myanmar.chat.bean.User findUser = userdao.findUserByOpenId(searchUser);
+			com.brother.myanmar.chat.bean.User findUser = UserDao.findUserByOpenId(searchUser);
 			if(findUser == null){
 				searchUser.setAccount(UUIDSessionIdGenerator.instance.sessionId(null));
 				searchUser.setName("newUser");
-				userdao.insert(searchUser);
-				findUser = userdao.findUserByOpenId(searchUser);;
+				UserDao.insert(searchUser);
+				findUser = UserDao.findUserByOpenId(searchUser);;
 			} else if(!searchUser.getPassword().equals(findUser.getPassword())){
 				return LoginRespBody.failed();
 			}
@@ -73,7 +71,7 @@ public class ChatLoginServiceProcessor extends AbstractProtocolCmdProcessor impl
 			Friend me = new Friend();
 			me.setMyId(findUser.getId());
 			me.setState(0);
-			List<Friend> groups = userdao.findFriendByState(me);
+			List<Friend> groups = UserDao.findFriendByState(me);
 			for(int i=0;i<groups.size();i++){
 				builder.addGroup(Group.newBuilder().groupId(String.valueOf(groups.get(i).getFriendId())).
 						name(groups.get(i).getFriendNick()).build());
@@ -83,7 +81,7 @@ public class ChatLoginServiceProcessor extends AbstractProtocolCmdProcessor impl
 			String text = loginReqBody.getUserId()+loginReqBody.getPassword()+System.currentTimeMillis();
 			String key = ImConst.AUTH_KEY;
 			String token = Md5.sign(text, key, CHARSET);
-			UserTokenRedis.putToken(token, user);
+			RedisCache.putToken(token, user);
 			return new LoginRespBody(ImStatus.C10007, user, token);
 		}else {
 			return LoginRespBody.failed();

@@ -3,14 +3,13 @@ package org.jim.core.packets;
 public class FriendSocietyReqBody extends Message {
 
     private static final long serialVersionUID = 5731474214655476287L;
-    /**
-     * 用户id;
-     */
+
+    private Integer type;
     private String Userid;
-    /**
-     * 消息类型;(如：0:friend、1:group)
-     */
-    private Integer chatType;
+    private String UserName;
+    private String UserAvatar;
+    private String content;
+    private Long time;
 
     public String getUserid() {
         return Userid;
@@ -21,12 +20,44 @@ public class FriendSocietyReqBody extends Message {
         return this;
     }
 
-    public Integer getChatType() {
-        return chatType;
+    public String getContent() {
+        return content;
     }
 
-    public FriendSocietyReqBody setChatType(Integer chatType) {
-        this.chatType = chatType;
+    public FriendSocietyReqBody setContent(String content) {
+        this.content = content;
         return this;
+    }
+
+    public Long getTime() {
+        return time;
+    }
+
+    public void setTime(Long time) {
+        this.time = time;
+    }
+
+    public String getUserName() {
+        return UserName;
+    }
+
+    public void setUserName(String userName) {
+        UserName = userName;
+    }
+
+    public String getUserAvatar() {
+        return UserAvatar;
+    }
+
+    public void setUserAvatar(String userAvatar) {
+        UserAvatar = userAvatar;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 }

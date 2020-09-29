@@ -40,16 +40,15 @@ public class ChatBody extends Message {
 
 	private Double packetAmount;
 	private Integer packetNum;
-	//系统命令时 0:加好友通知，1：验证结果
 	//红包时 0：普通红包 1：拼手气
-	private Integer systemCmd;
+	private Integer packetType;
 	
 	private ChatBody(){}
 	
 	private ChatBody(String id , String from , String to , Integer msgType ,
 					 Integer chatType , String content , String groupId , Integer cmd ,
 					 Long createTime , JSONObject extras, Double packetAmount,
-					 Integer packetNum, Integer systemCmd){
+					 Integer packetNum, Integer packetType){
 		this.id = id;
 		this.from = from ;
 		this.to = to;
@@ -61,7 +60,7 @@ public class ChatBody extends Message {
 		this.createTime = createTime;
 		this.extras = extras;
 		this.packetAmount = packetAmount;
-		this.systemCmd = systemCmd;
+		this.packetType = packetType;
 		this.packetNum = packetNum;
 	}
 	
@@ -129,12 +128,12 @@ public class ChatBody extends Message {
 		return this;
 	}
 
-	public Integer getSystemCmd() {
-		return systemCmd;
+	public Integer getPacketType() {
+		return packetType;
 	}
 
-	public ChatBody setSystemCmd(Integer systemCmd) {
-		this.systemCmd = systemCmd;
+	public ChatBody setPacketType(Integer packetType) {
+		this.packetType = packetType;
 		return this;
 	}
 
@@ -176,7 +175,7 @@ public class ChatBody extends Message {
 		private Double packetAmount;
 		private Integer packetNum;
 		//系统命令
-		private Integer systemCmd;
+		private Integer packetType;
 		
 		public Builder(){};
 		
@@ -208,8 +207,8 @@ public class ChatBody extends Message {
 			this.packetAmount = packetAmount;
 			return this;
 		}
-		public Builder systemCmd(Integer systemCmd) {
-			this.systemCmd = systemCmd;
+		public Builder packetType(Integer systemCmd) {
+			this.packetType = systemCmd;
 			return this;
 		}
 
@@ -225,7 +224,7 @@ public class ChatBody extends Message {
 		@Override
 		public ChatBody build(){
 			return new ChatBody(this.id , this.from , this.to , this.msgType , this.chatType , this.content , this.groupId ,this.cmd ,
-					this.createTime , this.extras, this.packetAmount, this.packetNum, this.systemCmd);
+					this.createTime , this.extras, this.packetAmount, this.packetNum, this.packetType);
 		}
 	}
 }

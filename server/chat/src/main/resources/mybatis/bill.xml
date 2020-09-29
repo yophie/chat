@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.brother.myanmar.chat.mapper.Bill2Mapper">
+    <insert id="insertBill" parameterType="com.brother.myanmar.chat.bean.Bill">
+        insert into cashout(userId,amount,state,applyTime,approvalTime,fee,approvalAmount,type,oppsite)
+        values(#{userId},#{amount},#{state},#{applyTime},#{approvalTime},#{fee},#{approvalAmount},#{type},#{oppsite})
+    </insert>
+    <update id="updateBill" parameterType="com.brother.myanmar.chat.bean.Bill">
+        update cashout set approvalTime=#{approvalTime},approvalAmount=#{approvalAmount},state=#{state} where id=#{id}
+    </update>
+    <select id="findBill" parameterType="com.brother.myanmar.chat.bean.Bill" resultType="com.brother.myanmar.chat.bean.Bill">
+        select * from cashout where 1 = 1
+        <if test="userId!=null">
+            AND userId = #{userId}
+        </if>
+        <if test="state!=null">
+            AND state = #{state}
+        </if>
+        <if test="type!=null">
+            AND type = #{type}
+        </if>
+        order by applyTime desc
+    </select>
+
+</mapper>

@@ -73,7 +73,7 @@ public class PacketProcessor extends BaseProcessor {
                         } else {
                             if (packet.getType() == 0) {
                                 packetState.setAmount(packet.getAmount() / packet.getNum());
-                                packetDao.insertPacketState(packetState);
+                                packetDao.insertPacketState(packet.getSender(),packetState);
                                 packet.setState(2);
                             } else {
                                 Double res = packet.getAmount();
@@ -88,7 +88,7 @@ public class PacketProcessor extends BaseProcessor {
                                     packetState.setAmount(a / (double) 100);
                                     packet.setState(1);
                                 }
-                                packetDao.insertPacketState(packetState);
+                                packetDao.insertPacketState(packet.getSender(),packetState);
                             }
                             packetDao.updatePacket(packet);
                             respBody.setCode(ImStatus.C10025.getCode());

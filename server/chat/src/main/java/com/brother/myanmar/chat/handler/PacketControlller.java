@@ -87,7 +87,7 @@ public class PacketControlller {
             } else {
                 if (packet.getType() == null || packet.getType() == 0) {
                     packetState.setAmount(packet.getAmount() / packet.getNum());
-                    PacketDao.insertPacketState(packetState);
+                    PacketDao.insertPacketState(packet.getSender(), packetState);
                     if(packet.getNum() == (grabs+1)) {
                         packet.setState(2);
                     }else{
@@ -107,7 +107,7 @@ public class PacketControlller {
                         packetState.setAmount(a / (double) 100);
                         packet.setState(1);
                     }
-                    PacketDao.insertPacketState(packetState);
+                    PacketDao.insertPacketState(packet.getSender(), packetState);
                 }
                 PacketDao.updatePacket(packet);
             }

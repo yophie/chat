@@ -10,4 +10,5 @@ public interface User2Mapper {
     int insertUser(User user);
     int deleteUser(int id);
     int updateUser(User user);
+    int updateUserMoney(User user);
 }
