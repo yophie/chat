@@ -14,12 +14,16 @@ public class RedisCache {
     private static final String SUPERTOKEN  = "super_token";
     private static final String SOCIETY="society";
     private static final String SOCIETYHISTORY="society_history";
+    private static final String GROUPFORBIDDEN="forbidden";
+    private static final String GROUPOWNER="group_owner";
 
     static{
         RedisCacheManager.register(TOKEN, 60*60*24, Integer.MAX_VALUE);
         RedisCacheManager.register(SUPERTOKEN, 60*60, Integer.MAX_VALUE);
         RedisCacheManager.register(SOCIETY, Integer.MAX_VALUE, Integer.MAX_VALUE);
         RedisCacheManager.register(SOCIETYHISTORY, Integer.MAX_VALUE, Integer.MAX_VALUE);
+        RedisCacheManager.register(GROUPFORBIDDEN, Integer.MAX_VALUE, Integer.MAX_VALUE);
+        RedisCacheManager.register(GROUPOWNER, Integer.MAX_VALUE, Integer.MAX_VALUE);
     }
 
     public static void putToken(String key, User user){
@@ -63,6 +67,23 @@ public class RedisCache {
         List<String> messageList = RedisCacheManager.getCache(SOCIETYHISTORY).sortSetGetAll(timelineId);
         List<FriendSocietyReqBody> messageDataList = JsonKit.toArray(messageList, FriendSocietyReqBody.class);
         return messageDataList;
+    }
+
+    public static void forbidden(String group, Boolean isForbidden){
+        RedisCacheManager.getCache(GROUPFORBIDDEN).put(group,isForbidden);
+    }
+
+    public static boolean isForbidden(String group){
+        Boolean result = RedisCacheManager.getCache(GROUPFORBIDDEN).get(group, Boolean.class);
+        return result == null?false:result;
+    }
+
+    public static void setGroupOwner(String key, String owner){
+        RedisCacheManager.getCache(GROUPOWNER).put(key,owner);
+    }
+
+    public static String getGroupOwner(String key){
+        return RedisCacheManager.getCache(GROUPOWNER).get(key, String.class);
     }
 
 }

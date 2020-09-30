@@ -35,6 +35,13 @@ public class GroupDao {
         return rint;
     }
 
+    public static int updateGroup(Group group){
+        Group2Mapper mapper = session.getMapper(Group2Mapper.class);
+        int rint = mapper.updateGroup(group);
+        session.commit();
+        return rint;
+    }
+
     public static int deleteGroup(int id){
         User2Mapper mapper = session.getMapper(User2Mapper.class);
         int rint = mapper.deleteUser(id);

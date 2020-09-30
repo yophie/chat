@@ -4,6 +4,8 @@ import com.brother.myanmar.chat.bean.Friend;
 import com.brother.myanmar.chat.bean.Group;
 import com.brother.myanmar.chat.bean.User;
 import com.brother.myanmar.chat.dao.GroupDao;
+import com.brother.myanmar.chat.dao.WindowDao;
+import com.brother.myanmar.chat.service.RedisCache;
 import org.jim.core.ImChannelContext;
 import org.jim.core.ImStatus;
 import org.jim.core.http.HttpRequest;
@@ -139,5 +141,55 @@ public class GroupControlller {
         return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10031)));
     }
 
+    @RequestPath(value = "/info")
+    public HttpResponse info(HttpRequest request) throws Exception {
+        HttpResponse resp = TokenFilter.filter(request);
+        if (resp != null) return resp;
+        GroupReqBody req = JsonKit.toBean(request.getBody(), GroupReqBody.class);
+        if (req == null || req.getGroupId() == null) {
+            return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10030)));
+        }
+        Group group = GroupDao.findGroup(req.getGroupId());
+        if (group == null) {
+            return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10030)));
+        }
+        if(group.getOwner() == request.getUserId()){
+            group.setIsOwner(true);
+        }else {
+            group.setIsOwner(false);
+        }
+        group.setMembers(GroupDao.findGroupMembers(req.getGroupId()));
+        group.setCode(ImStatus.C10031.getCode());
+        group.setMsg(ImStatus.C10031.getMsg());
+        return TokenFilter.crossOrigin(HttpResps.json(request, group));
+    }
+
+    @RequestPath(value = "/update")
+    public HttpResponse update(HttpRequest request) throws Exception {
+        HttpResponse resp = TokenFilter.filter(request);
+        if (resp != null) return resp;
+        Group req = JsonKit.toBean(request.getBody(), Group.class);
+        if (req == null || req.getGroupId() == null) {
+            return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10030)));
+        }
+        Group group = WindowDao.findGroup(req.getGroupId());
+        if (group == null || group.getOwner() != request.getUserId()) {
+            return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10030)));
+        }
+
+        Group updateGroup = new Group();
+        updateGroup.setGroupId(req.getGroupId());
+        updateGroup.setGroupName(req.getGroupName());
+        updateGroup.setAvatar(req.getAvatar());
+        updateGroup.setType(req.getType());
+        GroupDao.updateGroup(updateGroup);
+        if(req.getType()==1){
+            RedisCache.forbidden(String.valueOf(req.getGroupId()),true);
+            RedisCache.setGroupOwner(String.valueOf(req.getGroupId()),String.valueOf(group.getOwner()));
+        }
+        group.setCode(ImStatus.C10031.getCode());
+        group.setMsg(ImStatus.C10031.getMsg());
+        return TokenFilter.crossOrigin(HttpResps.json(request, group));
+    }
 
 }

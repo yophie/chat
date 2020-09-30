@@ -2,6 +2,7 @@ package org.jim.server.command.handler;
 
 import org.jim.core.ImChannelContext;
 import org.jim.core.ImPacket;
+import org.jim.core.cache.redis.RedisCacheManager;
 import org.jim.core.config.ImConfig;
 import org.jim.core.exception.ImException;
 import org.jim.core.packets.ChatBody;
@@ -61,7 +62,13 @@ public class ChatReqHandler extends AbstractCmdHandler {
 		//群聊
 		}else if(ChatType.CHAT_TYPE_PUBLIC.getNumber() == chatBody.getChatType()){
 			String groupId = chatBody.getGroupId();
-			JimServerAPI.sendToGroup(groupId, chatPacket);
+			Boolean result = RedisCacheManager.getCache("forbidden").get(groupId, Boolean.class);
+			if(result == null?false:result){
+				String owner = RedisCacheManager.getCache("group_owner").get(groupId, String.class);
+				JimServerAPI.sendToUser(owner, chatPacket);
+			}else {
+				JimServerAPI.sendToGroup(groupId, chatPacket);
+			}
 			//发送成功响应包
 			return ProtocolManager.Packet.success(channelContext, chatBody);
 		}

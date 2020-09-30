@@ -8,8 +8,13 @@ public class Group extends ChatWindowRespBody {
 
     private Integer groupId;
     private String groupName;
-    private Integer owner;
     private String avatar;
+    private Integer type;//0:正常 1：禁言
+    private Integer owner;
+    private String ownerName;
+    private String ownerAccount;
+    private String ownerAvatar;
+    private Boolean isOwner;
     private List<Friend> members;
 
     public Integer getGroupId() {
@@ -45,5 +50,45 @@ public class Group extends ChatWindowRespBody {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
+    }
+
+    public String getOwnerAvatar() {
+        return ownerAvatar;
+    }
+
+    public void setOwnerAvatar(String ownerAvatar) {
+        this.ownerAvatar = ownerAvatar;
+    }
+
+    public String getOwnerAccount() {
+        return ownerAccount;
+    }
+
+    public void setOwnerAccount(String ownerAccount) {
+        this.ownerAccount = ownerAccount;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public Boolean getIsOwner() {
+        return isOwner;
+    }
+
+    public void setIsOwner(Boolean isOwner) {
+        this.isOwner = isOwner;
     }
 }

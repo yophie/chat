@@ -48,4 +48,12 @@ public class Friend extends ChatWindowRespBody {
     public void setFriendNick(String friendNick){
         this.friendNick=friendNick;
     }
+
+    public String getFriendAvatar() {
+        return friendAvatar;
+    }
+
+    public void setFriendAvatar(String friendAvatar) {
+        this.friendAvatar = friendAvatar;
+    }
 }
