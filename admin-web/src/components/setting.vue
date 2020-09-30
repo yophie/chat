@@ -8,7 +8,7 @@
             </el-col>
             <el-button @click="submitLimit()"style="margin-left: 10px">保存</el-button>
           </el-form-item>
-          <el-form-item label="提现手续费" prop="rate">
+          <el-form-item label="提现手续费率" prop="rate">
             <el-col :span="6">
               <el-input v-model="rate" placeholder="0" max="100" min="0" type="number">
                 <template slot="append">%</template>

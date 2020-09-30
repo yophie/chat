@@ -1,25 +1,41 @@
+import {http,dateFormat} from "./common"
+
 export default {
   handleWithdraw(item) {
-    item.status = 1
-    console.log("handle withdraw " + item.id)
+    http.post('/api/bill/audit',{id:item.id, state:1}).then(function(res){
+      if (res.code == '10035') {
+        item.status = 1
+      }
+    })
   },
   query(param, callback) {
-    console.log(param)
-    let list = []
-    for (let i = 0; i< 20; i++) {
-      let item = {
-        id: i,
-        account: '提现人' + i,
-        amount: i*19,
-        rate: 0.02,
-        rateStr: 0.02*100 + '%',
-        actAmount: i*18,
-        applyDate: '2020-09-22',
-        completeDate: '2020-09-23',
-        status: i%2
-      }
-      list.push(item)
+    let p = {
+      type: 3,
+      state: param.status == -1 ? undefined : param.status,
+      startApplyTime: param.applyDateRange ? param.applyDateRange[0] : undefined,
+      endApplyTime: param.applyDateRange ? param.applyDateRange[1] : undefined,
+      startApprovalTime: param.completeDateRange ? param.completeDateRange[0] : undefined,
+      endApprovalTime: param.completeDateRange ? param.completeDateRange[1] : undefined,
+      pageSize: param.pageSize,
+      pageNo: param.page
     }
-    callback(list, 50)
+    http.post('/api/bill/list',p).then(function(res){
+      let list = []
+      for (let bill of res.data.billList.list) {
+        let b = {
+          id: bill.id,
+          account: bill.userName,
+          amount: bill.amount,
+          rate: bill.fee,
+          rateStr: bill.fee*100 + '%',
+          actAmount: bill.approvalAmount,
+          applyDate: dateFormat(bill.applyTime),
+          completeDate: dateFormat(bill.approvalTime),
+          status: bill.state
+        }
+        list.push(b)
+      }
+      callback(list, res.data.billList.total)
+    })
   }
 }
