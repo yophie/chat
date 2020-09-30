@@ -6,7 +6,8 @@
 <!-- 这边的namespace一定要写完整正确 -->
 <mapper namespace="com.brother.myanmar.chat.mapper.Packet2Mapper">
     <select id="findPacket" parameterType="com.brother.myanmar.chat.bean.Packet" resultType="com.brother.myanmar.chat.bean.Packet">
-        select * from packet where id=#{id}
+        select a.*,b.name as senderName,b.account as senderAccount,b.avatar as senderAvatar from packet a, user b
+        where a.id=#{id} and a.sender=b.id
     </select>
     <insert id="insertPacket" parameterType="com.brother.myanmar.chat.bean.Packet">
         insert into packet(id,type,amount,num,time,state,returnAmount,returnTime,sender)
@@ -24,7 +25,7 @@
     </select>
     <select id="getPacketList" parameterType="com.brother.myanmar.chat.bean.PacketState" resultType="com.brother.myanmar.chat.bean.PacketState">
         select a.*,b.name as recieverName,b.account as recieverAccount,b.avatar as recieverAvatar from packetState a, user b
-        where packetId=#{packetId} and a.reciever=b.id order by time desc
+        where a.packetId=#{packetId} and a.reciever=b.id order by time desc
     </select>
     <insert id="insertPacketState" parameterType="com.brother.myanmar.chat.bean.PacketState">
         insert into packetState(packetId, reciever, amount, time)

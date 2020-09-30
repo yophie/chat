@@ -13,6 +13,12 @@ public class PacketResp extends RespBody {
     private Long time;
     private Integer state;//0:new 1:part 2:finished
     private Integer sender;
+    private String senderName;
+    private String senderAccount;
+    private String senderAvatar;
+
+    private Double queryAmount;
+
 
     public List<PacketState> getDrawList() {
         return drawList;
@@ -77,5 +83,37 @@ public class PacketResp extends RespBody {
 
     public void setSender(Integer sender) {
         this.sender = sender;
+    }
+
+    public String getSenderName() {
+        return senderName;
+    }
+
+    public void setSenderName(String senderName) {
+        this.senderName = senderName;
+    }
+
+    public String getSenderAccount() {
+        return senderAccount;
+    }
+
+    public void setSenderAccount(String senderAccount) {
+        this.senderAccount = senderAccount;
+    }
+
+    public String getSenderAvatar() {
+        return senderAvatar;
+    }
+
+    public void setSenderAvatar(String senderAvatar) {
+        this.senderAvatar = senderAvatar;
+    }
+
+    public Double getQueryAmount() {
+        return queryAmount;
+    }
+
+    public void setQueryAmount(Double queryAmount) {
+        this.queryAmount = queryAmount;
     }
 }

@@ -29,10 +29,35 @@ public class PacketControlller {
             return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10024)));
         }
         PacketResp respBody = new PacketResp();
+        Packet packet = new Packet();
+        packet.setId(req.getPacketId());
+        packet = PacketDao.findPacket(packet);
+        if(packet == null){
+            return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10024)));
+        }
+        respBody.setId(packet.getId());
+        respBody.setType(packet.getType());
+        respBody.setTime(packet.getTime());
+        respBody.setAmount(packet.getAmount());
+        respBody.setNum(packet.getNum());
+        respBody.setSender(packet.getSender());
+        respBody.setSenderName(packet.getSenderName());
+        respBody.setSenderAccount(packet.getSenderAccount());
+        respBody.setSenderAvatar(packet.getSenderAvatar());
+
         PacketState packetState = new PacketState();
         packetState.setPacketId(req.getPacketId());
         List<PacketState> drawList = PacketDao.getPacketList(packetState);
         respBody.setDrawList(drawList);
+        respBody.setQueryAmount(0.0);
+        if(drawList!=null) {
+            for (int i = 0; i < drawList.size();i++){
+                if(drawList.get(i).getReciever() == request.getUserId()){
+                    respBody.setQueryAmount(drawList.get(i).getAmount());
+                    break;
+                }
+            }
+        }
         respBody.setCode(ImStatus.C10025.getCode());
         respBody.setMsg(ImStatus.C10025.getMsg());
         return TokenFilter.crossOrigin(HttpResps.json(request, respBody));
@@ -76,10 +101,14 @@ public class PacketControlller {
             return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10024)));
         } else {
             respBody.setId(packet.getId());
-            respBody.setAmount(packet.getAmount());
-            respBody.setSender(packet.getSender());
             respBody.setType(packet.getType());
             respBody.setTime(packet.getTime());
+            respBody.setAmount(packet.getAmount());
+            respBody.setNum(packet.getNum());
+            respBody.setSender(packet.getSender());
+            respBody.setSenderName(packet.getSenderName());
+            respBody.setSenderAccount(packet.getSenderAccount());
+            respBody.setSenderAvatar(packet.getSenderAvatar());
             List<PacketState> currentDrawList = PacketDao.getPacketList(packetState);
             for(int i=0;i<currentDrawList.size();i++){
                 if(currentDrawList.get(i).getReciever() == request.getUserId()) {
@@ -117,6 +146,7 @@ public class PacketControlller {
                 PacketDao.updatePacket(packet);
             }
         }
+        respBody.setQueryAmount(packetState.getAmount());
         List<PacketState> drawList = PacketDao.getPacketList(packetState);
         respBody.setDrawList(drawList);
         respBody.setCode(ImStatus.C10025.getCode());

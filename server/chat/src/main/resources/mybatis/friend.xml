@@ -6,12 +6,12 @@
 <!-- 这边的namespace一定要写完整正确 -->
 <mapper namespace="com.brother.myanmar.chat.mapper.Friend2Mapper">
     <select id="findFriend" parameterType="com.brother.myanmar.chat.bean.Friend" resultType="com.brother.myanmar.chat.bean.Friend">
-        select a.*,b.avatar as friendAvatar from friend a,user b where myId = #{myId} and state != 0 and a.friendId = b.id order by applyTime desc
+        select a.*,b.avatar as friendAvatar from friend a,user b where a.myId = #{myId} and a.state != 0 and a.friendId = b.id order by applyTime desc
     </select>
     <select id="findFriendByState" parameterType="com.brother.myanmar.chat.bean.Friend" resultType="com.brother.myanmar.chat.bean.Friend">
         select a.*,b.avatar as friendAvatar from friend a,user b where myId = #{myId}
         <if test="state!=null">
-            AND state = #{state}
+            AND a.state = #{state}
         </if>
         and a.friendId = b.id
          order by friendId
@@ -29,10 +29,10 @@
         update friend set state=#{state} where id=#{id}
     </update>
     <select id="findGroupMembers" parameterType="java.lang.Integer" resultType="com.brother.myanmar.chat.bean.Friend">
-        select a.*,b.avatar as friendAvatar from friend a,user b where state = 0 and friendId=#{id} and a.friendId = b.id order by applyTime desc
+        select a.*,b.avatar as friendAvatar from friend a,user b where a.state = 0 and a.friendId=#{id} and a.friendId = b.id order by applyTime desc
     </select>
     <select id="findOneFriend" parameterType="com.brother.myanmar.chat.bean.Friend" resultType="com.brother.myanmar.chat.bean.Friend">
-        select a.*,b.avatar as friendAvatar from friend a,user b where myId = #{myId} and friendId = #{friendId} and state!=3 and a.friendId = b.id
+        select a.*,b.avatar as friendAvatar from friend a,user b where a.myId = #{myId} and a.friendId = #{friendId} and a.state!=3 and a.friendId = b.id
     </select>
 
 </mapper>

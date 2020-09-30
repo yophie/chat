@@ -10,6 +10,9 @@ public class Packet {
     private Double returnAmount;
     private Long returnTime;
     private Integer sender;
+    private String senderName;
+    private String senderAccount;
+    private String senderAvatar;
 
     public Integer getType() {
         return type;
@@ -81,5 +84,29 @@ public class Packet {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getSenderName() {
+        return senderName;
+    }
+
+    public void setSenderName(String senderName) {
+        this.senderName = senderName;
+    }
+
+    public String getSenderAccount() {
+        return senderAccount;
+    }
+
+    public void setSenderAccount(String senderAccount) {
+        this.senderAccount = senderAccount;
+    }
+
+    public String getSenderAvatar() {
+        return senderAvatar;
+    }
+
+    public void setSenderAvatar(String senderAvatar) {
+        this.senderAvatar = senderAvatar;
     }
 }

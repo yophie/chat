@@ -18,25 +18,25 @@
     <select id="findBill" parameterType="com.brother.myanmar.chat.bean.Bill" resultType="com.brother.myanmar.chat.bean.Bill">
         select a.*,b.name as userName,b.account as userAccount from cashout a, user b where 1=1
         <if test="userId!=null">
-            AND userId = #{userId}
+            AND a.userId = #{userId}
         </if>
         <if test="state!=null">
-            AND state = #{state}
+            AND a.state = #{state}
         </if>
         <if test="type!=null">
-            AND type = #{type}
+            AND a.type = #{type}
         </if>
         <if test="startApplyTime!=null">
-            AND applyTime &gt;= #{startApplyTime}
+            AND a.applyTime &gt;= #{startApplyTime}
         </if>
         <if test="endApplyTime!=null">
-            AND applyTime &lt;= #{endApplyTime}
+            AND a.applyTime &lt;= #{endApplyTime}
         </if>
         <if test="startApprovalTime!=null">
-            AND approvalTime &gt;= #{startApprovalTime}
+            AND a.approvalTime &gt;= #{startApprovalTime}
         </if>
         <if test="endApprovalTime!=null">
-            AND approvalTime &lt;= #{endApprovalTime}
+            AND a.approvalTime &lt;= #{endApprovalTime}
         </if>
         and a.userId=b.id order by applyTime desc
     </select>

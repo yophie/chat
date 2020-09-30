@@ -27,15 +27,7 @@ public class UserApiController {
     public HttpResponse login(HttpRequest request) throws Exception {
         String username = request.getParams().get("username") == null ? null : (String)request.getParams().get("username")[0];
         String password = request.getParams().get("password") == null ? null : (String)request.getParams().get("password")[0];
-        String token = request.getParams().get("token") == null ? null : (String)request.getParams().get("token")[0];
         LoginRes resp = new LoginRes(ImStatus.C10007);
-        if(Objects.nonNull(token)){
-            SuperUser me = RedisCache.getSuperToken(token);
-            if(me!=null) {
-                resp.setToken(token);
-                return TokenFilter.crossOrigin(HttpResps.json(request, resp));
-            }
-        }
         if(Objects.nonNull(username) && Objects.nonNull(password)) {
             SuperUser searchUser = new SuperUser();
             searchUser.setAccount(username);
@@ -44,11 +36,13 @@ public class UserApiController {
             SuperUser findUser = SuperUserDao.findUserByAccount(searchUser);
             if(findUser!=null && findUser.getPassword().equals(searchUser.getPassword())) {
                 String text = findUser.getId()+findUser.getPassword()+System.currentTimeMillis();
-                token = Md5.sign(text, ImConst.AUTH_KEY, ImConst.CHARSET);
+                String token = Md5.sign(text, ImConst.AUTH_KEY, ImConst.CHARSET);
                 RedisCache.putSuperToken(token,findUser);
                 resp.setToken(token);
                 return TokenFilter.crossOrigin(HttpResps.json(request, resp));
             }
+        } else {
+            return TokenFilter.crossOrigin(HttpResps.json(request, resp));
         }
         return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10008)));
     }
