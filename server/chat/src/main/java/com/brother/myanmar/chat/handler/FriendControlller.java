@@ -3,6 +3,7 @@ package com.brother.myanmar.chat.handler;
 import com.brother.myanmar.chat.bean.Friend;
 import com.brother.myanmar.chat.bean.Group;
 import com.brother.myanmar.chat.bean.User;
+import com.brother.myanmar.chat.dao.UserDao;
 import com.brother.myanmar.chat.dao.WindowDao;
 import org.jim.core.ImPacket;
 import org.jim.core.ImStatus;
@@ -86,6 +87,10 @@ public class FriendControlller {
             user.setFriendId(request.getUserId());
             user.setState(2);
             user.setApplyTime(System.currentTimeMillis());
+            User me = new User();
+            me.setId(request.getUserId());
+            me = UserDao.findUserById(me);
+            user.setFriendNick(me.getName());
             WindowDao.insertFriend(user);
 
             ChatBody chatBody = ChatBody.newBuilder().from(String.valueOf(user.getFriendId()))
@@ -119,6 +124,10 @@ public class FriendControlller {
             if(answerState==1){
                 friend.setFriendId(friend.getMyId());
                 friend.setMyId(applyUser);
+                User me = new User();
+                me.setId(request.getUserId());
+                me = UserDao.findUserById(me);
+                friend.setFriendNick(me.getName());
                 WindowDao.insertFriend(friend);
             }
 

@@ -8,6 +8,7 @@ public class Friend extends ChatWindowRespBody {
     private Integer myId;
     private Integer friendId;
     private String friendNick;
+    private String friendAvatar;
     private Integer state;//0:group,1:approved,2:applying,3:reject
     private Long applyTime;
 

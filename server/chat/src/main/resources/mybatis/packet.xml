@@ -23,7 +23,8 @@
         select count(*) from packetState where packetId=#{packetId} and reciever=#{reciever}
     </select>
     <select id="getPacketList" parameterType="com.brother.myanmar.chat.bean.PacketState" resultType="com.brother.myanmar.chat.bean.PacketState">
-        select * from packetState where packetId=#{packetId} order by time desc
+        select a.*,b.name as recieverName,b.account as recieverAccount,b.avatar as recieverAvatar from packetState a, user b
+        where packetId=#{packetId} and a.reciever=b.id order by time desc
     </select>
     <insert id="insertPacketState" parameterType="com.brother.myanmar.chat.bean.PacketState">
         insert into packetState(packetId, reciever, amount, time)

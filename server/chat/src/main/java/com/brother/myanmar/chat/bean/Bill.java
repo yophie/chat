@@ -4,6 +4,7 @@ public class Bill {
     private Integer id;
     private Integer userId;
     private String userName;
+    private String userAccount;
     private Double amount;
     private Integer state; // 0:applying 1:approved 2:reject
     private Long applyTime;
@@ -154,5 +155,13 @@ public class Bill {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getUserAccount() {
+        return userAccount;
+    }
+
+    public void setUserAccount(String userAccount) {
+        this.userAccount = userAccount;
     }
 }
