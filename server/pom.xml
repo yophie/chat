@@ -250,6 +250,11 @@
                 <artifactId>mybatis</artifactId>
                 <version>3.5.5</version>
             </dependency>
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>5.2.0</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <!-- 插件配置 -->

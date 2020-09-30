@@ -7,6 +7,8 @@ import com.brother.myanmar.chat.bean.User;
 import com.brother.myanmar.chat.mapper.Bill2Mapper;
 import com.brother.myanmar.chat.mapper.Packet2Mapper;
 import com.brother.myanmar.chat.mapper.User2Mapper;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
@@ -15,11 +17,13 @@ public class BillDao {
 
     static SqlSession session = SqlConnection.getSession();
 
-    public static List<Bill> findBill(Bill bill){
+    public static PageInfo<Bill> findBill(Bill bill){
         Bill2Mapper mapper = session.getMapper(Bill2Mapper.class);
+        PageHelper.startPage(bill.getPageNo(),bill.getPageSize());
         List<Bill> result = mapper.findBill(bill);
+        PageInfo<Bill> pageInfo = new PageInfo<Bill>(result);
         session.commit();
-        return result;
+        return pageInfo;
     }
 
     public static int insertBill(Packet packet, Bill bill){

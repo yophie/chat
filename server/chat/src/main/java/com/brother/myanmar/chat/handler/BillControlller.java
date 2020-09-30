@@ -5,14 +5,13 @@ import com.brother.myanmar.chat.bean.BillResp;
 import com.brother.myanmar.chat.bean.Settings;
 import com.brother.myanmar.chat.dao.BillDao;
 import com.brother.myanmar.chat.dao.SettingsDao;
+import com.github.pagehelper.PageInfo;
 import org.jim.core.ImStatus;
 import org.jim.core.http.HttpRequest;
 import org.jim.core.http.HttpResponse;
 import org.jim.core.utils.JsonKit;
 import org.jim.server.protocol.http.annotation.RequestPath;
 import org.jim.server.util.HttpResps;
-
-import java.util.List;
 
 @RequestPath(value = "/api/bill")
 public class BillControlller {
@@ -29,8 +28,8 @@ public class BillControlller {
             req.setUserId(request.getUserId());
         }
         //state; // 0:applying 1:approved 2:reject
-        //type; // 0:send packet 1:grab packet 3:cash in 4:cash out
-        List<Bill> bills = BillDao.findBill(req);
+        //type; // 0:send packet 1:grab packet 2:cash in 3:cash out
+        PageInfo<Bill> bills = BillDao.findBill(req);
         BillResp billResp = new BillResp();
         billResp.setCode(ImStatus.C10035.getCode());
         billResp.setMsg(ImStatus.C10035.getMsg());

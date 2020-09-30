@@ -16,6 +16,8 @@ public class Bill {
     private Long endApplyTime;
     private Long startApprovalTime;
     private Long endApprovalTime;
+    private Integer pageNo;
+    private Integer pageSize;
 
     public Integer getId() {
         return id;
@@ -127,5 +129,21 @@ public class Bill {
 
     public void setEndApplyTime(Long endApplyTime) {
         this.endApplyTime = endApplyTime;
+    }
+
+    public Integer getPageNo() {
+        return pageNo;
+    }
+
+    public void setPageNo(Integer pageNo) {
+        this.pageNo = pageNo;
+    }
+
+    public Integer getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
     }
 }

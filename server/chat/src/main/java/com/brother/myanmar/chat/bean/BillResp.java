@@ -1,17 +1,16 @@
 package com.brother.myanmar.chat.bean;
 
+import com.github.pagehelper.PageInfo;
 import org.jim.core.packets.RespBody;
 
-import java.util.List;
-
 public class BillResp extends RespBody {
-    private List<Bill> billList;
+    private PageInfo<Bill> billList;
 
-    public List<Bill> getBillList() {
+    public PageInfo<Bill> getBillList() {
         return billList;
     }
 
-    public void setBillList(List<Bill> billList) {
+    public void setBillList(PageInfo<Bill> billList) {
         this.billList = billList;
     }
 }
