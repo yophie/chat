@@ -79,6 +79,8 @@ public class BillDao {
 
     public static int updateBill(Bill bill){
         Bill2Mapper mapper = session.getMapper(Bill2Mapper.class);
+        Bill oriBill = mapper.findBillById(bill.getId());
+        if(oriBill.getState() == bill.getState()) return -1;
         int rint = mapper.updateBill(bill);
         if(rint < 0){
             session.rollback();

@@ -11,8 +11,12 @@
     <update id="updateBill" parameterType="com.brother.myanmar.chat.bean.Bill">
         update cashout set approvalTime=#{approvalTime},approvalAmount=#{approvalAmount},state=#{state} where id=#{id}
     </update>
+    <select id="findBillById" parameterType="com.brother.myanmar.chat.bean.Bill" resultType="com.brother.myanmar.chat.bean.Bill">
+    select * from cashout where id = #{id}
+    </select>
+
     <select id="findBill" parameterType="com.brother.myanmar.chat.bean.Bill" resultType="com.brother.myanmar.chat.bean.Bill">
-        select * from cashout where 1 = 1
+        select a.*,b.name as userName from cashout a, user b where a.userId=b.id
         <if test="userId!=null">
             AND userId = #{userId}
         </if>

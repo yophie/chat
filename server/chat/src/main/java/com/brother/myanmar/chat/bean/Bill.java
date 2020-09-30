@@ -3,6 +3,7 @@ package com.brother.myanmar.chat.bean;
 public class Bill {
     private Integer id;
     private Integer userId;
+    private String userName;
     private Double amount;
     private Integer state; // 0:applying 1:approved 2:reject
     private Long applyTime;
@@ -145,5 +146,13 @@ public class Bill {
 
     public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

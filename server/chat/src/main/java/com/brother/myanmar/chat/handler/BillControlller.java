@@ -23,6 +23,8 @@ public class BillControlller {
 
         Bill req = JsonKit.toBean(request.getBody(), Bill.class);
         if(req == null) req = new Bill();
+        if(req.getPageNo() == null) req.setPageNo(1);
+        if(req.getPageSize() == null) req.setPageSize(Integer.MAX_VALUE);
         if(!request.isSuper()) {
             //normal user just can search self's bill
             req.setUserId(request.getUserId());
@@ -74,6 +76,7 @@ public class BillControlller {
         }
         req.setFee(settings.getFee());
         req.setAmount(0-req.getAmount());
+        req.setApprovalAmount(req.getAmount() * (1 - req.getFee()));
         req.setUserId(request.getUserId());
         req.setType(3);
         req.setState(0);
@@ -96,11 +99,12 @@ public class BillControlller {
             billResp.setMsg(ImStatus.C10034.getMsg());
             return TokenFilter.crossOrigin(HttpResps.json(request, billResp));
         }
-        if(req.getState() == 1) {
-            req.setApprovalAmount(req.getAmount() * (1 - req.getFee()));
-        }
         req.setApprovalTime(System.currentTimeMillis());
-        BillDao.updateBill(req);
+        if(BillDao.updateBill(req)<0){
+            billResp.setCode(ImStatus.C10034.getCode());
+            billResp.setMsg(ImStatus.C10034.getMsg());
+            return TokenFilter.crossOrigin(HttpResps.json(request, billResp));
+        }
         billResp.setCode(ImStatus.C10035.getCode());
         billResp.setMsg(ImStatus.C10035.getMsg());
         return TokenFilter.crossOrigin(HttpResps.json(request, billResp));
