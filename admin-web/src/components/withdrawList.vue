@@ -3,9 +3,9 @@
   <el-card class="box-card" style="margin-top: 10px; margin-bottom: 10px">
     <el-form label-width="100px" :inline="true">
         <el-row type="flex" justify="start">
-        <el-form-item label="申请人" prop="accountName">
-            <el-input v-model="param.accountName" placeholder="账户名"></el-input>
-        </el-form-item>
+        <!--<el-form-item label="申请人" prop="accountName">-->
+            <!--<el-input v-model="param.accountName" placeholder="账户名"></el-input>-->
+        <!--</el-form-item>-->
         <el-form-item label="状态" prop="status">
           <el-select v-model="param.status">
             <el-option value="-1" label="全部" :key="-1"/>
@@ -44,7 +44,7 @@
         background
         @current-change="handleCurrentChange"
         :current-page="oldParam.page"
-        :page-size="20"
+        :page-size="param.pageSize"
         layout="total, prev, pager, next"
         :total="total">
       </el-pagination>
