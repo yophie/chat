@@ -190,8 +190,8 @@ public class GroupControlller {
                 RedisCache.forbidden(String.valueOf(req.getGroupId()), false);
             }
         }
-        group.setCode(ImStatus.C10031.getCode());
-        group.setMsg(ImStatus.C10031.getMsg());
+        updateGroup.setCode(ImStatus.C10031.getCode());
+        updateGroup.setMsg(ImStatus.C10031.getMsg());
         return TokenFilter.crossOrigin(HttpResps.json(request, updateGroup));
     }
 
