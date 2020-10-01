@@ -55,7 +55,7 @@ public class FriendControlller {
         user.setState(0);
         friends = WindowDao.findFriendByState(user);
         List<Group> groups = new ArrayList<>(friends.size());
-        for(int i=0;i<groups.size();i++){
+        for(int i=0;i<friends.size();i++){
             Friend friend = friends.get(i);
             Group group = WindowDao.findGroup(friend.getFriendId());
             group.setMembers(WindowDao.findGroupMembers(friend.getFriendId()));
