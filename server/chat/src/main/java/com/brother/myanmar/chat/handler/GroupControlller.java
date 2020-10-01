@@ -217,7 +217,7 @@ public class GroupControlller {
     private boolean isGroupMember(List<Friend> members, Integer id){
         if(members==null) return false;
         for(int i=0;i<members.size();i++){
-            if(id==members.get(i).getFriendId()){
+            if(id==members.get(i).getMyId()){
                 return true;
             }
         }
