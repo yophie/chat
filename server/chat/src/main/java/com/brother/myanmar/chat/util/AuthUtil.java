@@ -17,31 +17,35 @@ public class AuthUtil {
 
     private static Logger logger = LoggerFactory.getLogger(AuthUtil.class);
 
-    public static String doGetJson(String url) {
+    public static JSONObject doGetJson(String url) {
         JSONObject jsonObject = null;
         CloseableHttpClient httpClient = HttpClients.createDefault();
         // HTTP Get请求
         HttpGet httpGet = new HttpGet(url);
-        String res = "";
         try {
             // 执行请求
             HttpResponse httpRes = httpClient.execute(httpGet);
             HttpEntity entity = httpRes.getEntity();
             if (entity != null) {
-                res = EntityUtils.toString(entity);
+                String result = EntityUtils.toString(entity, "UTF-8");
+                jsonObject =JSONObject.parseObject(result);
             }
-            logger.info("响应" + httpRes.getStatusLine());
-            return res;
+            //logger.info("响应" + httpRes.getStatusLine());
+            return jsonObject;
         } catch (Exception e) {
-            logger.error(e.getMessage(), e);
+            //logger.error(e.getMessage(), e);
         } finally {
             try {
                 httpClient.close();
             } catch (IOException e) {
-                logger.error(e.getMessage(), e);
-                return res;
+                //logger.error(e.getMessage(), e);
+                return jsonObject;
             }
         }
-        return res;
+        return jsonObject;
+    }
+
+    public static void main(String[] args){
+        System.out.println(doGetJson("http://localhost:8888/api/friend/apply?applyUser=22"));
     }
 }
