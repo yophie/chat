@@ -186,6 +186,8 @@ public class GroupControlller {
         if(req.getType()==1){
             RedisCache.forbidden(String.valueOf(req.getGroupId()),true);
             RedisCache.setGroupOwner(String.valueOf(req.getGroupId()),String.valueOf(group.getOwner()));
+        }else if(req.getType()==0){
+            RedisCache.forbidden(String.valueOf(req.getGroupId()),false);
         }
         group.setCode(ImStatus.C10031.getCode());
         group.setMsg(ImStatus.C10031.getMsg());

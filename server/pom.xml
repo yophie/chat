@@ -255,6 +255,11 @@
                 <artifactId>pagehelper</artifactId>
                 <version>5.2.0</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.3.4</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <!-- 插件配置 -->

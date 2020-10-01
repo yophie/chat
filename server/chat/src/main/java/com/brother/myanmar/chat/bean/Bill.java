@@ -13,6 +13,7 @@ public class Bill {
     private Double approvalAmount;
     private Integer type; // 0:send packet 1:grab packet 2:cash in 3:cash out
     private Integer oppsite;
+    private String oppsiteName;
 
     private Long startApplyTime;
     private Long endApplyTime;
@@ -163,5 +164,13 @@ public class Bill {
 
     public void setUserAccount(String userAccount) {
         this.userAccount = userAccount;
+    }
+
+    public String getOppsiteName() {
+        return oppsiteName;
+    }
+
+    public void setOppsiteName(String oppsiteName) {
+        this.oppsiteName = oppsiteName;
     }
 }
