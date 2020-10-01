@@ -23,10 +23,10 @@
         <if test="groupName!=null">
             ,groupName = #{groupName}
         </if>
-        <if test="groupName!=null">
+        <if test="avatar!=null">
             ,avatar = #{avatar}
         </if>
-        <if test="groupName!=null">
+        <if test="type!=null">
             ,type = #{type}
         </if>
         where groupId=#{groupId}

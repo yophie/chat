@@ -71,4 +71,35 @@ public class UserApiController {
         return TokenFilter.crossOrigin(HttpResps.json(request, me));
     }
 
+    @RequestPath(value = "/callback")
+    public HttpResponse callback(HttpRequest request) throws Exception {
+        /*HttpResponse resp = TokenFilter.filter(request);
+        if(resp != null) return resp;
+
+        String code = request.getParams().get("code") == null ? null : (String)request.getParams().get("code")[0];
+        String code = request.getParameter("code");
+        String url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + AuthUtil.APPID + "&secret="
+                + AuthUtil.APPSECRET + "&code=" + code + "&grant_type=authorization_code";
+        JSONObject jsonObject = AuthUtil.doGetJson(url);
+        String openid = jsonObject.getString("openid");
+        String token = jsonObject.getString("access_token");
+        String infoUrl = "https://api.weixin.qq.com/sns/userinfo?access_token=" + token + "&openid=" + openid
+                + "&lang=zh_CN";
+        JSONObject userInfo = AuthUtil.doGetJson(infoUrl);
+
+        if( userInfo != null ){
+            // 这里是把授权成功后，获取到的东西放到 info 里面，前端可以通过 EL 表达式直接获取相关信息
+            request.setAttribute("info", userInfo);
+            // 这里是授权成功返回的页面
+            request.getRequestDispatcher("/success.jsp").forward(request, response);
+        }else{
+            request.getRequestDispatcher("/fail.jsp").forward(request, response);
+        }
+
+        me.setCode(ImStatus.C10003.getCode());
+        me.setMsg(ImStatus.C10003.getMsg());
+        return TokenFilter.crossOrigin(HttpResps.json(request, me));*/
+        return null;
+    }
+
 }

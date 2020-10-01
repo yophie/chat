@@ -29,7 +29,7 @@
         update friend set state=#{state} where id=#{id}
     </update>
     <select id="findGroupMembers" parameterType="java.lang.Integer" resultType="com.brother.myanmar.chat.bean.Friend">
-        select a.*,b.avatar as friendAvatar from friend a,user b where a.state = 0 and a.friendId=#{id} and a.friendId = b.id order by applyTime desc
+        select a.*,b.avatar as myAvatar,b.name as myName from friend a,user b where a.state = 0 and a.friendId=#{id} and a.myId = b.id order by applyTime desc
     </select>
     <select id="findOneFriend" parameterType="com.brother.myanmar.chat.bean.Friend" resultType="com.brother.myanmar.chat.bean.Friend">
         select a.*,b.avatar as friendAvatar from friend a,user b where a.myId = #{myId} and a.friendId = #{friendId} and a.state!=3 and a.friendId = b.id

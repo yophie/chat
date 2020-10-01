@@ -6,11 +6,14 @@ public class Friend extends ChatWindowRespBody {
 
     private Integer id;
     private Integer myId;
+    private String myName;
+    private String myAvatar;
     private Integer friendId;
     private String friendNick;
     private String friendAvatar;
     private Integer state;//0:group,1:approved,2:applying,3:reject
     private Long applyTime;
+    private Boolean isGroupMember;
 
     public Integer getId() {
         return id;
@@ -55,5 +58,29 @@ public class Friend extends ChatWindowRespBody {
 
     public void setFriendAvatar(String friendAvatar) {
         this.friendAvatar = friendAvatar;
+    }
+
+    public Boolean getIsGroupMember() {
+        return isGroupMember;
+    }
+
+    public void setIsGroupMember(Boolean isGroupMember) {
+        this.isGroupMember = isGroupMember;
+    }
+
+    public String getMyName() {
+        return myName;
+    }
+
+    public void setMyName(String myName) {
+        this.myName = myName;
+    }
+
+    public String getMyAvatar() {
+        return myAvatar;
+    }
+
+    public void setMyAvatar(String myAvatar) {
+        this.myAvatar = myAvatar;
     }
 }
