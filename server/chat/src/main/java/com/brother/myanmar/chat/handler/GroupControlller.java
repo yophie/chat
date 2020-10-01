@@ -51,7 +51,6 @@ public class GroupControlller {
         friend.setFriendId(newGroup.getId());
         friend.setFriendNick(req.getGroupName());
         friend.setApplyTime(System.currentTimeMillis());
-        GroupDao.insertFriend(friend);
         for(int i=0;i<req.getFriends().size();i++){
             friend.setMyId(req.getFriends().get(i));
             GroupDao.insertFriend(friend);
@@ -192,6 +191,23 @@ public class GroupControlller {
         group.setCode(ImStatus.C10031.getCode());
         group.setMsg(ImStatus.C10031.getMsg());
         return TokenFilter.crossOrigin(HttpResps.json(request, group));
+    }
+
+    @RequestPath(value = "/invite")
+    public HttpResponse invite(HttpRequest request) throws Exception {
+        HttpResponse resp = TokenFilter.filter(request);
+        if(resp != null) return resp;
+        Integer groupId = request.getParams().get("groupId") == null ? null : Integer.parseInt((String) request.getParams().get("groupId")[0]);
+        Friend user = new Friend();
+        List<Friend> friends;
+        user.setMyId(request.getUserId());
+        user.setState(1);
+        friends = WindowDao.findFriendByState(user);
+        User chatWindowReqBody = new User();
+        chatWindowReqBody.setCode(ImStatus.C10027.getCode());
+        chatWindowReqBody.setMsg(ImStatus.C10027.getMsg());
+        chatWindowReqBody.setFriends(friends);
+        return TokenFilter.crossOrigin(HttpResps.json(request, chatWindowReqBody));
     }
 
 }
