@@ -35,7 +35,6 @@ public class FriendSocietyProcessor extends BaseProcessor {
     @Override
     public void process(ImChannelContext imChannelContext, Message message) {
         FriendSocietyReqBody req = (FriendSocietyReqBody)message;
-        req.setUserid(imChannelContext.getUserId());
         req.setId(UUIDSessionIdGenerator.instance.sessionId(null));
         if(Objects.isNull(req.getType())){
             respBody.setCode(ImStatus.C10032.getCode());
@@ -76,7 +75,7 @@ public class FriendSocietyProcessor extends BaseProcessor {
         if(req.getUserid() == null){
             messages = RedisCache.getSocietyHistory("total:"+imChannelContext.getUserId());
         }else{
-            messages = RedisCache.getSocietyHistory("selef:"+imChannelContext.getUserId());
+            messages = RedisCache.getSocietyHistory("self:"+req.getUserid());
         }
         respBody = new SocietyResp();
         respBody.setData(messages);
