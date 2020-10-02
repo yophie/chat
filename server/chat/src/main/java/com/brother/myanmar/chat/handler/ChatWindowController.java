@@ -15,9 +15,7 @@ import org.jim.server.util.HttpResps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 @RequestPath(value = "/api/chat")
 public class ChatWindowController {
@@ -44,6 +42,8 @@ public class ChatWindowController {
                 window.setUserGroupName(user.getName());
                 window.setUserGroupAvatar(user.getAvatar());
                 window.setLastMessage(message);
+                JSONObject jsonObject = JSONObject.parseObject(message);
+                window.setLastTime(Long.parseLong(jsonObject.getString("createTime")));
                 windows.add(window);
             }catch (Exception e){
                 logger.error(e.getMessage(),e);
@@ -64,6 +64,8 @@ public class ChatWindowController {
                 window.setUserGroupName(user.getName());
                 window.setUserGroupAvatar(user.getAvatar());
                 window.setLastMessage(message);
+                JSONObject jsonObject = JSONObject.parseObject(message);
+                window.setLastTime(Long.parseLong(jsonObject.getString("createTime")));
                 windows.add(window);
             }catch (Exception e){
                 logger.error(e.getMessage(),e);
@@ -88,8 +90,8 @@ public class ChatWindowController {
                     window.setUserGroupName(user.getName());
                     window.setUserGroupAvatar(user.getAvatar());
                     JSONObject jsonObject = JSONObject.parseObject(message);
-
                     user = UserDao.findUserById(Integer.parseInt(jsonObject.getString("from")));
+                    window.setLastTime(Long.parseLong(jsonObject.getString("createTime")));
                     window.setLastName(user.getName());
                     window.setLastAvatar(user.getAvatar());
                     window.setLastMessage(message);
@@ -99,9 +101,22 @@ public class ChatWindowController {
                 logger.error(e.getMessage(),e);
             }
         }
+
+        Collections.sort(windows, new SortByTime());
+
         ((User)chatWindowReqBody).setWindows(windows);
         chatWindowReqBody.setCode(ImStatus.C10023.getCode());
         chatWindowReqBody.setMsg(ImStatus.C10023.getMsg());
         return TokenFilter.crossOrigin(HttpResps.json(request, chatWindowReqBody));
+    }
+
+    class SortByTime implements Comparator {
+        public int compare(Object o1, Object o2) {
+            ChatWindow s1 = (ChatWindow) o1;
+            ChatWindow s2 = (ChatWindow) o2;
+            if (s1.getLastTime() < s2.getLastTime())
+                return 1;
+            return -1;
+        }
     }
 }
