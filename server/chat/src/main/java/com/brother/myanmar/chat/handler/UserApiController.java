@@ -135,6 +135,8 @@ public class UserApiController {
         UserType userType = new UserType(ImStatus.C10003);
         if(group == null){
             userType.setUserType(1);
+            userType.setIsOwner(group.getOwner() == request.getUserId());
+            userType.setName(group.getGroupName());
         }else{
             userType.setUserType(0);
         }

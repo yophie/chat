@@ -7,6 +7,8 @@ import java.util.Objects;
 
 public class UserType extends RespBody {
     private Integer userType;//0:group 1:normal
+    private String name;
+    private Boolean isOwner;
 
     public UserType(Status status){
         if(Objects.nonNull(status)){
@@ -21,5 +23,21 @@ public class UserType extends RespBody {
 
     public void setUserType(Integer userType) {
         this.userType = userType;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Boolean getIsOwner() {
+        return isOwner;
+    }
+
+    public void setIsOwner(Boolean owner) {
+        isOwner = owner;
     }
 }
