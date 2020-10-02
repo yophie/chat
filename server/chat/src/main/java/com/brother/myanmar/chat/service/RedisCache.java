@@ -51,9 +51,14 @@ public class RedisCache {
         RedisCacheManager.getCache(SOCIETY).sortSetPush(timelineId, score, societyBody);
     }
 
-    public static void putSocietyHistory(String timelineId, FriendSocietyReqBody societyBody) {
+    public static void putSocietySelfHistory(String timelineId, FriendSocietyReqBody societyBody) {
         double score = societyBody.getCreateTime();
-        RedisCacheManager.getCache(SOCIETYHISTORY).sortSetPush(timelineId, score, societyBody);
+        RedisCacheManager.getCache(SOCIETYHISTORY).sortSetPush("self:"+timelineId, score, societyBody);
+    }
+
+    public static void putSocietyTotalHistory(String timelineId, FriendSocietyReqBody societyBody) {
+        double score = societyBody.getCreateTime();
+        RedisCacheManager.getCache(SOCIETYHISTORY).sortSetPush("total:"+timelineId, score, societyBody);
     }
 
     public static List<FriendSocietyReqBody> getSociety(String timelineId){

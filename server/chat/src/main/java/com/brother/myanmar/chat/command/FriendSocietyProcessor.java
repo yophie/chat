@@ -13,6 +13,7 @@ import org.jim.core.packets.Command;
 import org.jim.core.packets.FriendSocietyReqBody;
 import org.jim.core.packets.Message;
 import org.jim.core.packets.RespBody;
+import org.jim.core.session.id.impl.UUIDSessionIdGenerator;
 import org.jim.server.JimServerAPI;
 import org.jim.server.config.ImServerConfig;
 import org.jim.server.processor.BaseProcessor;
@@ -35,6 +36,7 @@ public class FriendSocietyProcessor extends BaseProcessor {
     public void process(ImChannelContext imChannelContext, Message message) {
         FriendSocietyReqBody req = (FriendSocietyReqBody)message;
         req.setUserid(imChannelContext.getUserId());
+        req.setId(UUIDSessionIdGenerator.instance.sessionId(null));
         if(Objects.isNull(req.getType())){
             respBody.setCode(ImStatus.C10032.getCode());
             respBody.setMsg(ImStatus.C10032.getMsg());
@@ -70,11 +72,16 @@ public class FriendSocietyProcessor extends BaseProcessor {
     }
 
     private void getHistoryMessages(ImChannelContext imChannelContext, FriendSocietyReqBody req) {
-        List<FriendSocietyReqBody> messages = RedisCache.getSocietyHistory(imChannelContext.getUserId());
+        List<FriendSocietyReqBody> messages = null;
+        if(req.getUserid() == null){
+            messages = RedisCache.getSocietyHistory("total:"+imChannelContext.getUserId());
+        }else{
+            messages = RedisCache.getSocietyHistory("selef:"+imChannelContext.getUserId());
+        }
         respBody = new SocietyResp();
-        respBody.setCode(ImStatus.C10033.getCode());
-        respBody.setMsg(ImStatus.C10033.getMsg());
-        ((SocietyResp)respBody).setMessages(messages);
+        respBody.setData(messages);
+        ((SocietyResp)respBody).setType(1);
+        respBody.setCmd(Command.COMMAND_FriendSociety_REQ);
     }
 
     private void publish(ImChannelContext imChannelContext, FriendSocietyReqBody req){
@@ -101,10 +108,11 @@ public class FriendSocietyProcessor extends BaseProcessor {
         }
         if(isStore){
             req.setType(1);
-            RedisCache.putSocietyHistory(imChannelContext.getUserId(),req);
+            RedisCache.putSocietySelfHistory(imChannelContext.getUserId(),req);
+            RedisCache.putSocietyTotalHistory(imChannelContext.getUserId(),req);
             for(int i=0;i<friends.size();i++) {
                 String friendId = String.valueOf(friends.get(i).getFriendId());
-                RedisCache.putSocietyHistory(friendId,req);
+                RedisCache.putSocietyTotalHistory(friendId,req);
                 /*if(!isOnline){
                     RedisCache.putSociety(friendId,req);
                 }*/

@@ -3,6 +3,7 @@ package com.brother.myanmar.chat.handler;
 
 import com.alibaba.fastjson.JSONObject;
 import com.brother.myanmar.chat.bean.*;
+import com.brother.myanmar.chat.dao.GroupDao;
 import com.brother.myanmar.chat.dao.SettingsDao;
 import com.brother.myanmar.chat.dao.SuperUserDao;
 import com.brother.myanmar.chat.dao.UserDao;
@@ -118,6 +119,27 @@ public class UserApiController {
         LoginRes loginRes = new LoginRes(ImStatus.C10007);
         loginRes.setToken(token);
         return TokenFilter.crossOrigin(HttpResps.json(request, resp));
+    }
+
+    @RequestPath(value = "/type")
+    public HttpResponse type(HttpRequest request) throws Exception {
+        HttpResponse resp = TokenFilter.filter(request);
+        if(resp != null) return resp;
+
+        Integer id = request.getParams().get("id") == null ? null : Integer.parseInt((String) request.getParams().get("id")[0]);
+        if(id == null) {
+            return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10004)));
+        }
+
+        Group group = GroupDao.findGroup(id);
+        UserType userType = new UserType(ImStatus.C10003);
+        if(group == null){
+            userType.setUserType(1);
+        }else{
+            userType.setUserType(0);
+        }
+
+        return TokenFilter.crossOrigin(HttpResps.json(request, userType));
     }
 
     private org.jim.core.packets.User buildUser(User findUser){

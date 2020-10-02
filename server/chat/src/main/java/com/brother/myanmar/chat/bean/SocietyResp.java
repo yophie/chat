@@ -6,6 +6,7 @@ import org.jim.core.packets.RespBody;
 import java.util.List;
 
 public class SocietyResp extends RespBody {
+    private Integer type;
     private List<FriendSocietyReqBody> messages;
 
     public List<FriendSocietyReqBody> getMessages() {
@@ -14,5 +15,13 @@ public class SocietyResp extends RespBody {
 
     public void setMessages(List<FriendSocietyReqBody> messages) {
         this.messages = messages;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 }
