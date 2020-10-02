@@ -135,10 +135,18 @@ public class UserApiController {
         UserType userType = new UserType(ImStatus.C10003);
         if(group == null){
             userType.setUserType(1);
-            userType.setIsOwner(group.getOwner() == request.getUserId());
-            userType.setName(group.getGroupName());
+            User user = new User();
+            user.setId(id);
+            user = UserDao.findUserById(user);
+            userType.setName(user.getName());
         }else{
             userType.setUserType(0);
+            if(group.getOwner() != null && group.getOwner() == request.getUserId()) {
+                userType.setIsOwner(true);
+            }else {
+                userType.setIsOwner(false);
+            }
+            userType.setName(group.getGroupName());
         }
 
         return TokenFilter.crossOrigin(HttpResps.json(request, userType));
