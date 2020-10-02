@@ -85,7 +85,7 @@ public class User extends ChatWindowRespBody {
     public List<ChatWindow> getWindows() {
         return windows;
     }
-    public void setWindows(List<ChatWindow> friends) {
+    public void setWindows(List<ChatWindow> windows) {
         this.windows = windows;
     }
 

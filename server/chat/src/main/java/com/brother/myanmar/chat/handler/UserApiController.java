@@ -64,9 +64,7 @@ public class UserApiController {
         HttpResponse resp = TokenFilter.filter(request);
         if(resp != null) return resp;
 
-        User me = new User();
-        me.setId(request.getUserId());
-        me = UserDao.findUserById(me);
+        User me = UserDao.findUserById(request.getUserId());
         Settings settings = SettingsDao.getSettings();
         me.setLowest(settings.getLowest());
         me.setFee(settings.getFee());
@@ -135,9 +133,7 @@ public class UserApiController {
         UserType userType = new UserType(ImStatus.C10003);
         if(group == null){
             userType.setUserType(1);
-            User user = new User();
-            user.setId(id);
-            user = UserDao.findUserById(user);
+            User user = UserDao.findUserById(id);
             userType.setName(user.getName());
         }else{
             userType.setUserType(0);

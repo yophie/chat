@@ -4,7 +4,7 @@ import com.brother.myanmar.chat.bean.User;
 
 public interface User2Mapper {
 
-    User findUserById(User user);
+    User findUserById(int id);
     User findUserByOpenId(User user);
     User findUserByAccount(User user);
     int insertUser(User user);

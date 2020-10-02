@@ -34,5 +34,8 @@
     <select id="findOneFriend" parameterType="com.brother.myanmar.chat.bean.Friend" resultType="com.brother.myanmar.chat.bean.Friend">
         select a.*,b.avatar as friendAvatar from friend a,user b where a.myId = #{myId} and a.friendId = #{friendId} and a.state!=3 and a.friendId = b.id
     </select>
+    <select id="isGroupMember" parameterType="com.brother.myanmar.chat.bean.Friend" resultType="java.lang.Integer">
+        select count(*) as isMember from friend where myId = #{myId} and friendId = #{friendId}
+    </select>
 
 </mapper>

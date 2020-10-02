@@ -1,13 +1,17 @@
 package com.brother.myanmar.chat.handler;
 
 import com.brother.myanmar.chat.bean.Settings;
+import com.brother.myanmar.chat.bean.User;
 import com.brother.myanmar.chat.dao.SettingsDao;
+import com.brother.myanmar.chat.service.RedisCache;
 import org.jim.core.ImStatus;
 import org.jim.core.http.HttpRequest;
 import org.jim.core.http.HttpResponse;
 import org.jim.core.packets.RespBody;
 import org.jim.server.protocol.http.annotation.RequestPath;
 import org.jim.server.util.HttpResps;
+
+import java.util.Collection;
 
 @RequestPath(value = "/api/settings")
 public class ManagerControlller {

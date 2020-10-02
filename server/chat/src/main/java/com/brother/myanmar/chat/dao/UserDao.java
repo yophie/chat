@@ -17,9 +17,9 @@ public class UserDao {
         return rint;
     }
 
-    public static User findUserById(User suser){
+    public static User findUserById(int id){
         User2Mapper user2Mapper = SqlConnection.getSession().getMapper(User2Mapper.class);
-        User user = user2Mapper.findUserById(suser);
+        User user = user2Mapper.findUserById(id);
         SqlConnection.getSession().commit();
         return user;
     }

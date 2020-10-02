@@ -87,9 +87,7 @@ public class FriendControlller {
             user.setFriendId(request.getUserId());
             user.setState(2);
             user.setApplyTime(System.currentTimeMillis());
-            User me = new User();
-            me.setId(request.getUserId());
-            me = UserDao.findUserById(me);
+            User me = UserDao.findUserById(request.getUserId());
             user.setFriendNick(me.getName());
             WindowDao.insertFriend(user);
 
@@ -124,9 +122,7 @@ public class FriendControlller {
             if(answerState==1){
                 friend.setFriendId(friend.getMyId());
                 friend.setMyId(applyUser);
-                User me = new User();
-                me.setId(request.getUserId());
-                me = UserDao.findUserById(me);
+                User me = UserDao.findUserById(request.getUserId());
                 friend.setFriendNick(me.getName());
                 WindowDao.insertFriend(friend);
             }

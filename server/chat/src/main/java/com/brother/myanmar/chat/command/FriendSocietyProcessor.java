@@ -85,9 +85,7 @@ public class FriendSocietyProcessor extends BaseProcessor {
 
     private void publish(ImChannelContext imChannelContext, FriendSocietyReqBody req){
         req.setCreateTime(System.currentTimeMillis());
-        User me = new User();
-        me.setId(Integer.parseInt(imChannelContext.getUserId()));
-        me = UserDao.findUserById(me);
+        User me = UserDao.findUserById(Integer.parseInt(imChannelContext.getUserId()));
         req.setUserName(me.getName());
         req.setUserAvatar(me.getAvatar());
         Friend friend = new Friend();

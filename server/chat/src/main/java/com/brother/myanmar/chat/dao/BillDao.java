@@ -45,7 +45,7 @@ public class BillDao {
             SqlConnection.getSession().rollback();
             return rint;
         }
-        user = umapper.findUserById(user);
+        user = umapper.findUserById(user.getId());
         if(user.getMoney()<0){
             SqlConnection.getSession().rollback();
             return -1;

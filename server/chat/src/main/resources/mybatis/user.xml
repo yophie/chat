@@ -6,7 +6,7 @@
 <!-- 这边的namespace一定要写完整正确 -->
 <mapper namespace="com.brother.myanmar.chat.mapper.User2Mapper">
     <!-- 通过id查询用户 -->
-    <select id="findUserById" parameterType="com.brother.myanmar.chat.bean.User" resultType="com.brother.myanmar.chat.bean.User">
+    <select id="findUserById" parameterType="java.lang.Integer" resultType="com.brother.myanmar.chat.bean.User">
         select * from user where id = #{id}
     </select>
     <!--通过openId查找-->

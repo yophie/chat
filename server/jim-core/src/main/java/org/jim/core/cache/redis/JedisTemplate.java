@@ -1,25 +1,13 @@
 package org.jim.core.cache.redis;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import com.alibaba.fastjson.JSON;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import redis.clients.jedis.*;
 
-import com.alibaba.fastjson.JSON;
-
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.JedisPoolConfig;
-import redis.clients.jedis.JedisPubSub;
-import redis.clients.jedis.Pipeline;
-import redis.clients.jedis.Response;
-import redis.clients.jedis.Transaction;
+import java.io.Serializable;
+import java.util.*;
 /**
  * @author wchao
  * @modify 2016-08-29 增加了set(final String key, final Object value)和<T> T get(final String key,final Class<T> clazz)
@@ -162,7 +150,7 @@ public  class JedisTemplate implements  Serializable{
    public Set<String> keys(String likeKey){
 	   return new Executor<Set<String>>(jedisPool) {  
            @Override  
-           Set<String> execute() {  
+           Set<String> execute() {
         	   Set<String> keys = jedis.keys(likeKey + "*");  
                return keys; 
            }  
@@ -1291,4 +1279,15 @@ public  class JedisTemplate implements  Serializable{
 			}
 		}.getResult();
 	}
+
+
+    public Set<String> sorSetRange(final String key, final int start, final int end) {
+        return new Executor<Set<String>>(jedisPool) {
+
+            @Override
+            Set<String> execute() {
+                return jedis.zrange(key, start, end);
+            }
+        }.getResult();
+    }
 }

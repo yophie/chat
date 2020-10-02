@@ -1,14 +1,20 @@
 package com.brother.myanmar.chat.service;
 
 import com.brother.myanmar.chat.bean.SuperUser;
+import org.jim.core.cache.redis.JedisTemplate;
 import org.jim.core.cache.redis.RedisCacheManager;
 import org.jim.core.packets.FriendSocietyReqBody;
 import org.jim.core.packets.User;
 import org.jim.core.utils.JsonKit;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.util.Collection;
 import java.util.List;
 
 public class RedisCache {
+
+    private static Logger logger = LoggerFactory.getLogger(RedisCache.class);
 
     private static final String TOKEN  = "normal_token";
     private static final String SUPERTOKEN  = "super_token";
@@ -89,6 +95,24 @@ public class RedisCache {
 
     public static String getGroupOwner(String key){
         return RedisCacheManager.getCache(GROUPOWNER).get(key, String.class);
+    }
+
+    public static Collection<String> keys(String pattern){
+        try {
+            return JedisTemplate.me().keys(pattern);
+        } catch (Exception e) {
+            logger.error(e.toString(),e);
+        }
+        return null;
+    }
+
+    public static String first(String key){
+        try {
+            return (String) JedisTemplate.me().sorSetRange(key,0,1).toArray()[0];
+        } catch (Exception e) {
+            logger.error(e.toString(),e);
+        }
+        return null;
     }
 
 }

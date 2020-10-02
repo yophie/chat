@@ -13,4 +13,5 @@ public interface Friend2Mapper {
     int updateFriend(Friend user);
     List<Friend> findGroupMembers(int i);
     Friend findOneFriend(Friend user);
+    int isGroupMember(Friend user);
 }

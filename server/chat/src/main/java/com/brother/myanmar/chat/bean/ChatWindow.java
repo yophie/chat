@@ -8,6 +8,8 @@ public class ChatWindow extends ChatWindowRespBody {
     private String windowName;
     private Integer owner;
     private Integer userGroupId;
+    private String userGroupName;
+    private String userGroupAvatar;
     private String lastMessage;
     private Long lastTime;
     private Integer chatType;
@@ -113,5 +115,21 @@ public class ChatWindow extends ChatWindowRespBody {
     public ChatWindow setUserGroupId(Integer userGroupId) {
         this.userGroupId = userGroupId;
         return this;
+    }
+
+    public String getUserGroupName() {
+        return userGroupName;
+    }
+
+    public void setUserGroupName(String userGroupName) {
+        this.userGroupName = userGroupName;
+    }
+
+    public String getUserGroupAvatar() {
+        return userGroupAvatar;
+    }
+
+    public void setUserGroupAvatar(String userGroupAvatar) {
+        this.userGroupAvatar = userGroupAvatar;
     }
 }
