@@ -92,14 +92,18 @@ public class FriendSocietyProcessor extends BaseProcessor {
         boolean isStore = ImServerConfig.ON.equals(imServerConfig.getIsStore());
         ImPacket chatPacket = new ImPacket(Command.COMMAND_FriendSociety_REQ,new RespBody(Command.COMMAND_FriendSociety_REQ,req).toByte());
         JimServerAPI.sendToUser(imChannelContext.getUserId(), chatPacket);
-        RedisCache.putSocietyHistory(imChannelContext.getUserId(),req);
         for(int i=0;i<friends.size();i++) {
             String friendId = String.valueOf(friends.get(i).getFriendId());
             boolean isOnline = ChatKit.isOnline(friendId, isStore);
             if(isOnline) {
                 JimServerAPI.sendToUser(friendId, chatPacket);
             }
-            if(isStore){
+        }
+        if(isStore){
+            req.setType(1);
+            RedisCache.putSocietyHistory(imChannelContext.getUserId(),req);
+            for(int i=0;i<friends.size();i++) {
+                String friendId = String.valueOf(friends.get(i).getFriendId());
                 RedisCache.putSocietyHistory(friendId,req);
                 /*if(!isOnline){
                     RedisCache.putSociety(friendId,req);
