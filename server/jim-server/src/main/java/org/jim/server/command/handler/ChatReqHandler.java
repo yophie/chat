@@ -54,7 +54,7 @@ public class ChatReqHandler extends AbstractCmdHandler {
 			if(ChatKit.isOnline(toId, isStore)){
 				JimServerAPI.sendToUser(toId, chatPacket);
 				//发送成功响应包
-				return ProtocolManager.Packet.success(channelContext, chatBody);
+				return chatPacket;//ProtocolManager.Packet.success(channelContext, chatBody);
 			}else{
 				//用户不在线响应包
 				return ProtocolManager.Packet.offline(channelContext);
