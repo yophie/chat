@@ -16,8 +16,6 @@ import org.jim.server.util.ChatKit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
-
 public class ChatMessageProcessor implements SingleProtocolCmdProcessor {
 
     private static Logger logger = LoggerFactory.getLogger(ChatMessageProcessor.class);
@@ -35,7 +33,7 @@ public class ChatMessageProcessor implements SingleProtocolCmdProcessor {
                 if(RedisCache.isForbidden(chatBody.getGroupId())){
                     String userId = RedisCache.getGroupOwner(chatBody.getGroupId());
                     writeMessage(STORE,GROUP+":"+chatBody.getGroupId(),chatBody);
-                    boolean isOnline = false;
+                    /*boolean isOnline = false;
                     if(isStore && ImServerConfig.ON.equals(imServerConfig.getIsCluster())){
                         MessageHelper messageHelper = imServerConfig.getMessageHelper();
                         isOnline = messageHelper.isOnline(userId);
@@ -44,7 +42,7 @@ public class ChatMessageProcessor implements SingleProtocolCmdProcessor {
                     }
                     if(!isOnline) {
                         writeMessage(PUSH, GROUP + ":" + chatBody.getGroupId() + ":" + userId, chatBody);
-                    }
+                    }*/
                 }else {
                     pushGroupMessages(PUSH, STORE, chatBody, isStore);
                 }
@@ -53,10 +51,10 @@ public class ChatMessageProcessor implements SingleProtocolCmdProcessor {
                 String to = chatBody.getTo();
                 String sessionId = ChatKit.sessionId(from,to);
                 writeMessage(STORE,USER+":"+sessionId,chatBody);
-                boolean isOnline = ChatKit.isOnline(to, isStore);
+                /*boolean isOnline = ChatKit.isOnline(to, isStore);
                 if(!isOnline){
                     writeMessage(PUSH,USER+":"+to+":"+from,chatBody);
-                }
+                }*/
             }
         }
         doProcess(chatBody, imChannelContext);
@@ -101,7 +99,7 @@ public class ChatMessageProcessor implements SingleProtocolCmdProcessor {
         String group_id = chatBody.getGroupId();
         //先将群消息持久化到存储Timeline;
         writeMessage(storeTable,GROUP+":"+group_id,chatBody);
-        List<String> userIds = messageHelper.getGroupUsers(group_id);
+        /*List<String> userIds = messageHelper.getGroupUsers(group_id);
         //通过写扩散模式将群消息同步到所有的群成员
         for(String userId : userIds){
             boolean isOnline = false;
@@ -113,7 +111,7 @@ public class ChatMessageProcessor implements SingleProtocolCmdProcessor {
             if(!isOnline){
                 writeMessage(pushTable, GROUP+":"+group_id+":"+userId, chatBody);
             }
-        }
+        }*/
     }
 
     private void writeMessage(String timelineTable , String timelineId , ChatBody chatBody){
