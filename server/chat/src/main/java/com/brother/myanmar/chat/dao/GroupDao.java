@@ -80,4 +80,11 @@ public class GroupDao {
         return result;
     }
 
+    public static int getGroupMemberNum(int groupId){
+        Friend2Mapper mapper = SqlConnection.getSession().getMapper(Friend2Mapper.class);
+        int result = mapper.getGroupMemberNum(groupId);
+        SqlConnection.getSession().commit();
+        return result;
+    }
+
 }

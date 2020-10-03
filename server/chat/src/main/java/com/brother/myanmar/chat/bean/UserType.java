@@ -9,6 +9,7 @@ public class UserType extends RespBody {
     private Integer userType;//0:group 1:normal
     private String name;
     private Boolean isOwner;
+    private Integer groupMemberNum;
 
     public UserType(Status status){
         if(Objects.nonNull(status)){
@@ -39,5 +40,13 @@ public class UserType extends RespBody {
 
     public void setIsOwner(Boolean owner) {
         isOwner = owner;
+    }
+
+    public Integer getGroupMemberNum() {
+        return groupMemberNum;
+    }
+
+    public void setGroupMemberNum(Integer groupMemberNum) {
+        this.groupMemberNum = groupMemberNum;
     }
 }

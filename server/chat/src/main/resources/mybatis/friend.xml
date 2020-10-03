@@ -37,5 +37,8 @@
     <select id="isGroupMember" parameterType="com.brother.myanmar.chat.bean.Friend" resultType="java.lang.Integer">
         select count(*) as isMember from friend where myId = #{myId} and friendId = #{friendId}
     </select>
+    <select id="getGroupMemberNum" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        select count(*) as groupMemberNum from friend where friendId = #{groupId}
+    </select>
 
 </mapper>

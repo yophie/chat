@@ -75,8 +75,6 @@ public class UserApiController {
 
     @RequestPath(value = "/callback")
     public HttpResponse callback(HttpRequest request) throws Exception {
-        HttpResponse resp = TokenFilter.filter(request);
-        if(resp != null) return resp;
 
         String code = request.getParams().get("code") == null ? null : (String) request.getParams().get("code")[0];
         String url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + PropUtil.get("chat.app.id") + "&secret="
@@ -95,7 +93,7 @@ public class UserApiController {
             RedisCache.putToken(token,buildUser(findUser));
             LoginRes loginRes = new LoginRes(ImStatus.C10007);
             loginRes.setToken(token);
-            return TokenFilter.crossOrigin(HttpResps.json(request, resp));
+            return TokenFilter.crossOrigin(HttpResps.json(request, loginRes));
         }
         String access_token = jsonObject.getString("access_token");
         String infoUrl = "https://api.weixin.qq.com/sns/userinfo?access_token=" + access_token + "&openid=" + openid
@@ -106,9 +104,9 @@ public class UserApiController {
             return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10004)));
         }
         searchUser.setAccount(UUIDSessionIdGenerator.instance.sessionId(null));
-        searchUser.setName(userInfo.getString("nickName"));
-        searchUser.setAvatar(userInfo.getString("avatarUrl"));
-        searchUser.setPassword(access_token);
+        searchUser.setName(userInfo.getString("nickname"));
+        searchUser.setAvatar(userInfo.getString("headingimgurl"));
+        searchUser.setPassword(access_token.substring(0,49));
         UserDao.insert(searchUser);
         findUser = UserDao.findUserByOpenId(searchUser);
         String text = findUser.getId()+findUser.getPassword()+System.currentTimeMillis();
@@ -116,7 +114,7 @@ public class UserApiController {
         RedisCache.putToken(token,buildUser(findUser));
         LoginRes loginRes = new LoginRes(ImStatus.C10007);
         loginRes.setToken(token);
-        return TokenFilter.crossOrigin(HttpResps.json(request, resp));
+        return TokenFilter.crossOrigin(HttpResps.json(request, loginRes));
     }
 
     @RequestPath(value = "/type")
@@ -134,6 +132,9 @@ public class UserApiController {
         if(group == null){
             userType.setUserType(1);
             User user = UserDao.findUserById(id);
+            if(user==null){
+                return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10004)));
+            }
             userType.setName(user.getName());
         }else{
             userType.setUserType(0);
@@ -143,6 +144,8 @@ public class UserApiController {
                 userType.setIsOwner(false);
             }
             userType.setName(group.getGroupName());
+
+            userType.setGroupMemberNum(GroupDao.getGroupMemberNum(id));
         }
 
         return TokenFilter.crossOrigin(HttpResps.json(request, userType));
