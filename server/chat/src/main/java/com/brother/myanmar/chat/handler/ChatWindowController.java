@@ -3,7 +3,9 @@ package com.brother.myanmar.chat.handler;
 import com.alibaba.fastjson.JSONObject;
 import com.brother.myanmar.chat.bean.ChatWindow;
 import com.brother.myanmar.chat.bean.Friend;
+import com.brother.myanmar.chat.bean.Group;
 import com.brother.myanmar.chat.bean.User;
+import com.brother.myanmar.chat.dao.GroupDao;
 import com.brother.myanmar.chat.dao.UserDao;
 import com.brother.myanmar.chat.dao.WindowDao;
 import com.brother.myanmar.chat.service.RedisCache;
@@ -86,11 +88,11 @@ public class ChatWindowController {
                     ChatWindow window = new ChatWindow();
                     window.setUserGroupId(friend.getFriendId());
                     window.setChatType(1);//群聊
-                    User user = UserDao.findUserById(window.getUserGroupId());
-                    window.setUserGroupName(user.getName());
-                    window.setUserGroupAvatar(user.getAvatar());
+                    Group group = GroupDao.findGroup(window.getUserGroupId());
+                    window.setUserGroupName(group.getGroupName());
+                    window.setUserGroupAvatar(group.getAvatar());
                     JSONObject jsonObject = JSONObject.parseObject(message);
-                    user = UserDao.findUserById(Integer.parseInt(jsonObject.getString("from")));
+                    User user = UserDao.findUserById(Integer.parseInt(jsonObject.getString("from")));
                     window.setLastTime(Long.parseLong(jsonObject.getString("createTime")));
                     window.setLastName(user.getName());
                     window.setLastAvatar(user.getAvatar());
