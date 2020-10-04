@@ -105,7 +105,7 @@ public class UserApiController {
         }
         searchUser.setAccount(UUIDSessionIdGenerator.instance.sessionId(null));
         searchUser.setName(userInfo.getString("nickname"));
-        searchUser.setAvatar(userInfo.getString("headingimgurl"));
+        searchUser.setAvatar(userInfo.getString("headimgurl"));
         searchUser.setPassword(access_token.substring(0,49));
         UserDao.insert(searchUser);
         findUser = UserDao.findUserByOpenId(searchUser);
