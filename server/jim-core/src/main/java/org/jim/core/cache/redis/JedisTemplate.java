@@ -1295,7 +1295,7 @@ public  class JedisTemplate implements  Serializable{
 
             @Override
             Set<String> execute() {
-                return jedis.zrange(key, start, end);
+                return jedis.zrevrange(key, start, end);
             }
         }.getResult();
     }
