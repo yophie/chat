@@ -53,7 +53,7 @@ public class FriendSocietyProcessor extends BaseProcessor {
                 break;
             case 1:
                 //获取离线朋友圈消息
-                //getOfflineMessages(imChannelContext, req);
+                getOfflineMessages(imChannelContext, req);
                 break;
             case 2:
                 //获取历史朋友圈消息
@@ -115,6 +115,7 @@ public class FriendSocietyProcessor extends BaseProcessor {
                 }*/
             }
         }
+        respBody = new SocietyResp();
         respBody.setCode(ImStatus.C10033.getCode());
         respBody.setMsg(ImStatus.C10033.getMsg());
     }
