@@ -1,11 +1,5 @@
 package org.jim.core.cache.redis;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-
 import org.apache.commons.lang3.StringUtils;
 import org.jim.core.cache.ICache;
 import org.jim.core.cache.redis.JedisTemplate.Pair;
@@ -14,6 +8,12 @@ import org.jim.core.utils.JsonKit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tio.utils.SystemTimer;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 /**
  *
  * @author wchao
@@ -185,6 +185,21 @@ public class RedisCache implements ICache {
 		}
 		try {
 			Set<String> dataSet = JedisTemplate.me().sorSetRangeByScore(cacheKey(cacheName, key),Double.MIN_VALUE,Double.MAX_VALUE);
+			if(dataSet == null) {
+				return null;
+			}
+			return new ArrayList<String>(dataSet);
+		}catch (Exception e) {
+			log.error(e.toString(),e);
+		}
+		return null;
+	}
+	public List<String> sortSetRevGetAll(String key){
+		if (StringUtils.isBlank(key)) {
+			return null;
+		}
+		try {
+			Set<String> dataSet = JedisTemplate.me().sorSetRevRangeByScore(cacheKey(cacheName, key),Double.MIN_VALUE,Double.MAX_VALUE);
 			if(dataSet == null) {
 				return null;
 			}

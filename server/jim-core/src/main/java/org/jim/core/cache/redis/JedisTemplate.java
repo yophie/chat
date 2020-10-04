@@ -1015,10 +1015,19 @@ public  class JedisTemplate implements  Serializable{
  
            @Override  
            Set<String> execute() {
-               return jedis.zrevrangeByScore(key, max, min);
+               return jedis.zrangeByScore(key, min, max);
            }  
        }.getResult();  
    }
+    public Set<String> sorSetRevRangeByScore(final String key, final double min, final double max) {
+        return new Executor<Set<String>>(jedisPool) {
+
+            @Override
+            Set<String> execute() {
+                return jedis.zrevrangeByScore(key, max, min);
+            }
+        }.getResult();
+    }
    /**
     * 根据Score获取集合区间数据;
     * @param key
@@ -1033,7 +1042,7 @@ public  class JedisTemplate implements  Serializable{
  
            @Override  
            Set<String> execute() {
-               return jedis.zrevrangeByScore(key, max, min, offset,count);
+               return jedis.zrangeByScore(key, min, max, offset,count);
            }  
        }.getResult();  
    }

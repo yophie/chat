@@ -42,6 +42,8 @@ public class ChatBody extends Message {
 	private Integer packetNum;
 	//红包时 0：普通红包 1：拼手气
 	private Integer packetType;
+
+	private String chatId;
 	
 	private ChatBody(){}
 	
@@ -144,6 +146,14 @@ public class ChatBody extends Message {
 	public ChatBody setPacketNum(Integer packetNum) {
 		this.packetNum = packetNum;
 		return this;
+	}
+
+	public String getChatId() {
+		return chatId;
+	}
+
+	public void setChatId(String chatId) {
+		this.chatId = chatId;
 	}
 
 	public static class Builder extends Message.Builder<ChatBody,ChatBody.Builder>{

@@ -75,7 +75,7 @@ public class RedisCache {
     }
 
     public static List<FriendSocietyReqBody> getSocietyHistory(String timelineId){
-        List<String> messageList = RedisCacheManager.getCache(SOCIETYHISTORY).sortSetGetAll(timelineId);
+        List<String> messageList = RedisCacheManager.getCache(SOCIETYHISTORY).sortSetRevGetAll(timelineId);
         List<FriendSocietyReqBody> messageDataList = JsonKit.toArray(messageList, FriendSocietyReqBody.class);
         return messageDataList;
     }
