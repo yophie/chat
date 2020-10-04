@@ -12,7 +12,7 @@ public class ChatWindow extends ChatWindowRespBody {
     private String userGroupAvatar;
     private String lastMessage;
     private Long lastTime;
-    private Integer chatType;
+    private Integer chatType;//1g2s
     private Integer unReadNum;
     private Integer lastUserId;
     private String lastName;

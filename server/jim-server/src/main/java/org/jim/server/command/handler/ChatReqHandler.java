@@ -65,6 +65,8 @@ public class ChatReqHandler extends AbstractCmdHandler {
 			Boolean result = RedisCacheManager.getCache("forbidden").get(groupId, Boolean.class);
 			if(result == null?false:result){
 				String owner = RedisCacheManager.getCache("group_owner").get(groupId, String.class);
+				chatBody.setMsgType(1);
+				chatPacket = new ImPacket(Command.COMMAND_CHAT_REQ,new RespBody(Command.COMMAND_CHAT_REQ,chatBody).toByte());
 				JimServerAPI.sendToUser(owner, chatPacket);
 			}else {
 				JimServerAPI.sendToGroup(groupId, chatPacket);

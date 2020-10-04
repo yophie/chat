@@ -1015,7 +1015,7 @@ public  class JedisTemplate implements  Serializable{
  
            @Override  
            Set<String> execute() {
-               return jedis.zrangeByScore(key, min, max);  
+               return jedis.zrevrangeByScore(key, max, min);
            }  
        }.getResult();  
    }
@@ -1033,7 +1033,7 @@ public  class JedisTemplate implements  Serializable{
  
            @Override  
            Set<String> execute() {
-               return jedis.zrangeByScore(key, min, max,offset,count);  
+               return jedis.zrevrangeByScore(key, max, min, offset,count);
            }  
        }.getResult();  
    }

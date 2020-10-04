@@ -37,7 +37,7 @@ public class ChatWindowController {
                 String userId = ss[1];
                 ChatWindow window = new ChatWindow();
                 window.setUserGroupId(Integer.parseInt(userId));
-                window.setChatType(1);//私聊
+                window.setChatType(2);//私聊
                 User user = UserDao.findUserById(window.getUserGroupId());
                 window.setUserGroupName(user.getName());
                 window.setUserGroupAvatar(user.getAvatar());
@@ -59,7 +59,7 @@ public class ChatWindowController {
                 String userId = ss1[2];
                 ChatWindow window = new ChatWindow();
                 window.setUserGroupId(Integer.parseInt(userId));
-                window.setChatType(1);//私聊
+                window.setChatType(2);//私聊
                 User user = UserDao.findUserById(window.getUserGroupId());
                 window.setUserGroupName(user.getName());
                 window.setUserGroupAvatar(user.getAvatar());
@@ -85,7 +85,7 @@ public class ChatWindowController {
                     String message = RedisCache.first(s);
                     ChatWindow window = new ChatWindow();
                     window.setUserGroupId(friend.getFriendId());
-                    window.setChatType(0);//群聊
+                    window.setChatType(1);//群聊
                     User user = UserDao.findUserById(window.getUserGroupId());
                     window.setUserGroupName(user.getName());
                     window.setUserGroupAvatar(user.getAvatar());

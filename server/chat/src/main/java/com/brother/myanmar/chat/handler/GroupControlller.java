@@ -8,13 +8,18 @@ import com.brother.myanmar.chat.dao.WindowDao;
 import com.brother.myanmar.chat.service.RedisCache;
 import org.jim.core.ImChannelContext;
 import org.jim.core.ImStatus;
+import org.jim.core.config.ImConfig;
 import org.jim.core.http.HttpRequest;
 import org.jim.core.http.HttpResponse;
+import org.jim.core.message.MessageHelper;
+import org.jim.core.packets.ChatBody;
+import org.jim.core.packets.ChatType;
 import org.jim.core.packets.GroupReqBody;
 import org.jim.core.packets.RespBody;
 import org.jim.core.session.id.impl.UUIDSessionIdGenerator;
 import org.jim.core.utils.JsonKit;
 import org.jim.server.JimServerAPI;
+import org.jim.server.config.ImServerConfig;
 import org.jim.server.protocol.http.annotation.RequestPath;
 import org.jim.server.util.HttpResps;
 
@@ -59,6 +64,13 @@ public class GroupControlller {
                 JimServerAPI.bindGroup(notifyChannels.get(j), String.valueOf(newGroup.getId()));
             }
         }
+
+        ChatBody chatBody = ChatBody.newBuilder().from(String.valueOf(request.getUserId()))
+                .to(String.valueOf(newGroup.getId())).chatType(ChatType.CHAT_TYPE_PUBLIC.getNumber())
+                .msgType(6).content("大家一起来聊天吧").build();
+        ImServerConfig imServerConfig = ImConfig.Global.get();
+        MessageHelper messageHelper = imServerConfig.getMessageHelper();
+        messageHelper.writeMessage("store", "group:"+newGroup.getId(), chatBody);
 
         Group group = new Group();
         group.setGroupId(newGroup.getId());

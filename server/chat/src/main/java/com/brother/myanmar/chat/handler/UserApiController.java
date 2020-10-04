@@ -73,6 +73,18 @@ public class UserApiController {
         return TokenFilter.crossOrigin(HttpResps.json(request, me));
     }
 
+    @RequestPath(value = "/userinfo")
+    public HttpResponse userinfo(HttpRequest request) throws Exception {
+        HttpResponse resp = TokenFilter.filter(request);
+        if(resp != null) return resp;
+
+        Integer userId = request.getParams().get("userId") == null ? null : Integer.parseInt((String)request.getParams().get("userId")[0]);
+        User me = UserDao.findUserById(userId);
+        me.setCode(ImStatus.C10003.getCode());
+        me.setMsg(ImStatus.C10003.getMsg());
+        return TokenFilter.crossOrigin(HttpResps.json(request, me));
+    }
+
     @RequestPath(value = "/callback")
     public HttpResponse callback(HttpRequest request) throws Exception {
 
