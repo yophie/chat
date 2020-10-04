@@ -89,6 +89,10 @@ public class FriendControlller {
         }else {
             user.setMyId(applyUser);
             user.setFriendId(request.getUserId());
+            friend = WindowDao.findOneFriend(user);
+            if(friend != null) {
+                return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10028)));
+            }
             user.setState(2);
             user.setApplyTime(System.currentTimeMillis());
             User me = UserDao.findUserById(request.getUserId());
