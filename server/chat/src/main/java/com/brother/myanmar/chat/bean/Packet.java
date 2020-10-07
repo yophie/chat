@@ -13,6 +13,7 @@ public class Packet {
     private String senderName;
     private String senderAccount;
     private String senderAvatar;
+    private Integer userGroupId;
 
     public Integer getType() {
         return type;
@@ -108,5 +109,13 @@ public class Packet {
 
     public void setSenderAvatar(String senderAvatar) {
         this.senderAvatar = senderAvatar;
+    }
+
+    public Integer getUserGroupId() {
+        return userGroupId;
+    }
+
+    public void setUserGroupId(Integer userGroupId) {
+        this.userGroupId = userGroupId;
     }
 }

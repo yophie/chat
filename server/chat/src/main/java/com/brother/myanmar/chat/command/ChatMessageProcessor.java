@@ -74,17 +74,18 @@ public class ChatMessageProcessor implements SingleProtocolCmdProcessor {
             if(ChatType.CHAT_TYPE_PRIVATE.getNumber() == chatBody.getChatType()){
                 packet.setNum(1);
                 packet.setType(0);
-                bill.setOppsite(Integer.parseInt(chatBody.getTo()));
+                packet.setUserGroupId(Integer.parseInt(chatBody.getTo()));
             }else{
                 packet.setNum(chatBody.getPacketNum());
                 packet.setType(chatBody.getPacketType());
-                bill.setOppsite(Integer.parseInt(chatBody.getGroupId()));
+                packet.setUserGroupId(Integer.parseInt(chatBody.getGroupId()));
             }
             packet.setId(chatBody.getId());
             packet.setState(0);
             packet.setAmount(chatBody.getPacketAmount());
             packet.setSender(Integer.parseInt(imChannelContext.getUserId()));
             packet.setTime(System.currentTimeMillis());
+            bill.setOppsite(packet.getUserGroupId());
             bill.setUserId(packet.getSender());
             bill.setAmount(0-packet.getAmount());
             bill.setType(0);

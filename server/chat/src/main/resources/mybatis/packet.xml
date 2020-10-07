@@ -10,8 +10,8 @@
         where a.id=#{id} and a.sender=b.id
     </select>
     <insert id="insertPacket" parameterType="com.brother.myanmar.chat.bean.Packet">
-        insert into packet(id,type,amount,num,time,state,returnAmount,returnTime,sender)
-        values(#{id},#{type},#{amount},#{num},#{time},#{state},#{returnAmount},#{returnTime},#{sender})
+        insert into packet(id,type,amount,num,time,state,returnAmount,returnTime,sender,userGroupId)
+        values(#{id},#{type},#{amount},#{num},#{time},#{state},#{returnAmount},#{returnTime},#{sender},#{userGroupId})
     </insert>
     <delete id="deletePacket" parameterType="java.lang.String">
         delete from packet where id=#{id}
