@@ -46,6 +46,16 @@ public class ChatLoginServiceProcessor extends AbstractProtocolCmdProcessor impl
 		if(Objects.nonNull(loginReqBody.getToken())){
 			User me = RedisCache.getToken(loginReqBody.getToken());
 			if(me!=null) {
+				Friend searchUser = new Friend();
+				searchUser.setMyId(Integer.parseInt(me.getUserId()));
+				searchUser.setState(0);
+				List<Friend> groups = UserDao.findFriendByState(searchUser);
+				for(int i=0;i<groups.size();i++){
+					List<ImChannelContext> listChannels = JimServerAPI.getByUserId(String.valueOf(groups.get(i).getFriendId()));
+					for(int j=0;j<listChannels.size();j++) {
+						JimServerAPI.bindGroup(listChannels.get(j), String.valueOf(groups.get(i).getFriendId()));
+					}
+				}
 				return new LoginRespBody(ImStatus.C10007, me, loginReqBody.getToken());
 			}
 		}
