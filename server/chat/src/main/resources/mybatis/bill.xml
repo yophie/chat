@@ -16,7 +16,8 @@
     </select>
 
     <select id="findBill" parameterType="com.brother.myanmar.chat.bean.Bill" resultType="com.brother.myanmar.chat.bean.Bill">
-        select a.*,b.name as userName,b.account as userAccount,c.name as oppsiteName from cashout a, user b, user c where 1=1
+        select a.*,b.name as userName,b.account as userAccount,c.name as oppsiteName from cashout a left join user c on a.oppsite=c.id,
+        user b where 1=1
         <if test="userId!=null">
             AND a.userId = #{userId}
         </if>
@@ -38,7 +39,7 @@
         <if test="endApprovalTime!=null">
             AND a.approvalTime &lt;= #{endApprovalTime}
         </if>
-        and a.userId=b.id and a.oppsite=c.id order by applyTime desc
+        and a.userId=b.id order by applyTime desc
     </select>
 
 </mapper>
