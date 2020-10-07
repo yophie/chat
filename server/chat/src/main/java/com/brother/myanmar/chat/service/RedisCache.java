@@ -22,6 +22,7 @@ public class RedisCache {
     private static final String SOCIETYHISTORY="society_history";
     private static final String GROUPFORBIDDEN="forbidden";
     private static final String GROUPOWNER="group_owner";
+    private static final String USERCACHE="user_cache";
 
     static{
         RedisCacheManager.register(TOKEN, 60*60*24, Integer.MAX_VALUE);
@@ -30,6 +31,14 @@ public class RedisCache {
         RedisCacheManager.register(SOCIETYHISTORY, Integer.MAX_VALUE, Integer.MAX_VALUE);
         RedisCacheManager.register(GROUPFORBIDDEN, Integer.MAX_VALUE, Integer.MAX_VALUE);
         RedisCacheManager.register(GROUPOWNER, Integer.MAX_VALUE, Integer.MAX_VALUE);
+        RedisCacheManager.register(USERCACHE, Integer.MAX_VALUE, Integer.MAX_VALUE);
+    }
+    public static void putUser(String key, User user){
+        RedisCacheManager.getCache(USERCACHE).put(key,user);
+    }
+
+    public static User getUser(String key){
+        return RedisCacheManager.getCache(USERCACHE).get(key, User.class);
     }
 
     public static void putToken(String key, User user){

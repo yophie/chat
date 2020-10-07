@@ -5,10 +5,7 @@ import org.jim.core.ImPacket;
 import org.jim.core.cache.redis.RedisCacheManager;
 import org.jim.core.config.ImConfig;
 import org.jim.core.exception.ImException;
-import org.jim.core.packets.ChatBody;
-import org.jim.core.packets.ChatType;
-import org.jim.core.packets.Command;
-import org.jim.core.packets.RespBody;
+import org.jim.core.packets.*;
 import org.jim.server.ImServerChannelContext;
 import org.jim.server.JimServerAPI;
 import org.jim.server.command.AbstractCmdHandler;
@@ -16,6 +13,7 @@ import org.jim.server.config.ImServerConfig;
 import org.jim.server.protocol.ProtocolManager;
 import org.jim.server.queue.MsgQueueRunnable;
 import org.jim.server.util.ChatKit;
+
 import java.util.Objects;
 
 /**
@@ -25,6 +23,10 @@ import java.util.Objects;
  */
 public class ChatReqHandler extends AbstractCmdHandler {
 
+	public static User getUser(String key){
+		return RedisCacheManager.getCache("user_cache").get(key, User.class);
+	}
+
 	@Override
 	public ImPacket handler(ImPacket packet, ImChannelContext channelContext) throws ImException {
 		ImServerChannelContext imServerChannelContext = (ImServerChannelContext)channelContext;
@@ -33,6 +35,9 @@ public class ChatReqHandler extends AbstractCmdHandler {
 		}
 		ChatBody chatBody = ChatKit.toChatBody(packet.getBody(), channelContext);
 		chatBody.setChatId(chatBody.getFrom());
+		User user = getUser(chatBody.getFrom());
+		chatBody.setFromName(user.getNick());
+		chatBody.setFromAvatar(user.getAvatar());
 
 		packet.setBody(chatBody.toByte());
 		//聊天数据格式不正确

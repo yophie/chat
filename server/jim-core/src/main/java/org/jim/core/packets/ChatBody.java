@@ -17,6 +17,8 @@ public class ChatBody extends Message {
 	 * 发送用户id;
 	 */
 	private String from;
+	private String fromName;
+	private String fromAvatar;
 	/**
 	 * 目标用户id;
 	 */
@@ -154,6 +156,22 @@ public class ChatBody extends Message {
 
 	public void setChatId(String chatId) {
 		this.chatId = chatId;
+	}
+
+	public String getFromName() {
+		return fromName;
+	}
+
+	public void setFromName(String fromName) {
+		this.fromName = fromName;
+	}
+
+	public String getFromAvatar() {
+		return fromAvatar;
+	}
+
+	public void setFromAvatar(String fromAvatar) {
+		this.fromAvatar = fromAvatar;
 	}
 
 	public static class Builder extends Message.Builder<ChatBody,ChatBody.Builder>{

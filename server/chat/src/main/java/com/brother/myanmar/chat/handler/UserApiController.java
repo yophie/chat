@@ -123,7 +123,9 @@ public class UserApiController {
         findUser = UserDao.findUserByOpenId(searchUser);
         String text = findUser.getId()+findUser.getPassword()+System.currentTimeMillis();
         String token = Md5.sign(text, ImConst.AUTH_KEY, ImConst.CHARSET);
-        RedisCache.putToken(token,buildUser(findUser));
+        org.jim.core.packets.User user = buildUser(findUser);
+        RedisCache.putToken(token,user);
+        RedisCache.putUser(String.valueOf(findUser.getId()),user);
         LoginRes loginRes = new LoginRes(ImStatus.C10007);
         loginRes.setToken(token);
         return TokenFilter.crossOrigin(HttpResps.json(request, loginRes));
