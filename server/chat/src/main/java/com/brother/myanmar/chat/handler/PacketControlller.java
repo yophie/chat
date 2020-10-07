@@ -71,9 +71,17 @@ public class PacketControlller {
         if(req == null || req.getPacketId() == null){
             return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10024)));
         }
+        Packet packet = new Packet();
+        packet.setId(req.getPacketId());
+        packet = PacketDao.findPacket(packet);
+
         PacketResp respBody = new PacketResp();
         PacketState packetState = new PacketState();
         packetState.setPacketId(req.getPacketId());
+        int num = PacketDao.getPacketState(packetState);
+        respBody.setSurplus(packet.getNum()-num);
+
+        packetState.setReciever(request.getUserId());
         int isOpen = PacketDao.getPacketState(packetState);
         respBody.setState(isOpen);
         respBody.setCode(ImStatus.C10025.getCode());

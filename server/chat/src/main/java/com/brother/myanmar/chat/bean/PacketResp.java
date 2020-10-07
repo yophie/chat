@@ -19,6 +19,7 @@ public class PacketResp extends RespBody {
 
     private Double queryAmount;
 
+    private Integer surplus;
 
     public List<PacketState> getDrawList() {
         return drawList;
@@ -115,5 +116,13 @@ public class PacketResp extends RespBody {
 
     public void setQueryAmount(Double queryAmount) {
         this.queryAmount = queryAmount;
+    }
+
+    public Integer getSurplus() {
+        return surplus;
+    }
+
+    public void setSurplus(Integer surplus) {
+        this.surplus = surplus;
     }
 }

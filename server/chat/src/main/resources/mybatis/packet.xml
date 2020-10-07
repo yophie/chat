@@ -21,7 +21,10 @@
     </update>
 
     <select id="getPacketState" parameterType="com.brother.myanmar.chat.bean.PacketState" resultType="int">
-        select count(*) from packetState where packetId=#{packetId} and reciever=#{reciever}
+        select count(*) from packetState where packetId=#{packetId}
+        <if test="reciever!=null">
+            and reciever=#{reciever}
+        </if>
     </select>
     <select id="getPacketList" parameterType="com.brother.myanmar.chat.bean.PacketState" resultType="com.brother.myanmar.chat.bean.PacketState">
         select a.*,b.name as recieverName,b.account as recieverAccount,b.avatar as recieverAvatar from packetState a, user b
