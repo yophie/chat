@@ -114,7 +114,7 @@
               status: '-1',
               applyDateRange: [],
               completeDateRange: [],
-              pageSize: 10,
+              pageSize: 20,
               page: 1
             },
             oldParam: {
@@ -122,7 +122,7 @@
               status: '-1',
               applyDateRange: [],
               completeDateRange: [],
-              pageSize: 10,
+              pageSize: 20,
               page: 1
             },
             loading: false
