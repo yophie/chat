@@ -25,6 +25,9 @@ export default{
 				data.isRemain = data.recievedNum < res.num
 				data.isSender = uni.getStorageSync('userId') == res.sender
 				data.packetType = res.type
+				if (!data.isGroup && res.type == 0) {
+					data.packetType = 3
+				}
 				data.recieveAmount = res.queryAmount
 			} else {
 				uni.showModal({

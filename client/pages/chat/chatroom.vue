@@ -31,7 +31,7 @@
 								</view>
 								<view v-if="item.type === 2" class="main">
 									<redpacket :id="item.id" @click="openPacket" :senderNick="item.senderNick"
-											:senderAvatar = "item.senderAvatar"></redpacket>
+											:senderAvatar = "item.senderAvatar" :isGroup="isGroup"></redpacket>
 								</view>
 							</view>
 							
@@ -101,7 +101,9 @@
 				senderNick: '',
 				senderAvatar: '',
 				groupMemNum: 0,
-				fromInfo: {}
+				fromInfo: {},
+				friendAvatar: '',
+				friendName: ''
 			}
 			return data
 		},
@@ -169,26 +171,40 @@
 			},
 			toSendPacket() {
 				let groupMemNum = this.groupMemNum > 0 ? this.groupMemNum : 0
-				let u = '/pages/chat/sendPacket?id=' + this.id + '&isGroup=' + this.isGroup
+				let isG = this.isGroup ? 1 : 2
+				let u = '/pages/chat/sendPacket?id=' + this.id + '&isGroup=' + isG
 					+ '&groupMemNum=' + groupMemNum
 				uni.navigateTo({
 					url:  u
 				})
 			},
 			openPacket(param) {
-				if (param.canRecieve) {
-					this.packetId = param.id
-					this.senderNick = param.senderNick
-					this.senderAvatar = param.senderAvatar
-					this.$refs.popup.open()
-				} else {
+				if (!this.isGroup && param.senderId == uni.getStorageSync("userId")) {
 					this.recievePacket(param)
+					return
 				}
+				if (param.state > 0) {
+					this.recievePacket(param)
+					return
+				}
+				if (param.surplus <= 0) {
+					uni.showToast({
+						title: '您手慢了',
+						duration: 2000
+					})
+					this.recievePacket(param)
+					return
+				}
+				this.packetId = param.id
+				this.senderNick = param.senderNick
+				this.senderAvatar = param.senderAvatar
+				this.$refs.popup.open()
 			},
 			recievePacket(param) {
 				this.$refs.popup.close()
+				let isG = this.isGroup ? 1 : 2
 				uni.navigateTo({
-					url: '/pages/chat/packetDetail?packetId=' + param.id
+					url: '/pages/chat/packetDetail?packetId=' + param.id + '&isGroup=' + isG
 				})
 			},
 			close() {

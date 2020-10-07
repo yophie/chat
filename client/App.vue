@@ -12,8 +12,9 @@
 			let username = 'cs'
 			let password = 'test'
 			if (!token) {
-				//wechatLogin.login()
-				webSocketHandle.initpass(username, password)
+				wechatLogin.login()
+				webSocketHandle.init(token)
+				//webSocketHandle.initpass(username, password)
 			} else {
 				webSocketHandle.init(token)
 			}

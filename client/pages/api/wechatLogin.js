@@ -1,5 +1,5 @@
 var appid = 'wxb87cb9510aac006d'
-var redirect_uri = encodeURIComponent('http://127.0.0.1:8080/#/pages/loginback')
+var redirect_uri = encodeURIComponent('http://192.168.31.173:8080/#/pages/loginback')
 var response_type = 'code'
 var scope = 'snsapi_userinfo'
 var wechaturl = 'https://open.weixin.qq.com/connect/oauth2/authorize'

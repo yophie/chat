@@ -72,12 +72,14 @@
 				recievedNum: 0,
 				packetType: 0, //0 普  1 拼 2 个人
 				recievedAmount: 0,
-				isRemain: false
+				isRemain: false,
+				isGroup: undefined
 			};
 			return data;
 		},
 		onLoad(options) {
 			let id = options.packetId
+			this.isGroup = options.isGroup == 1
 			packetDetailApi.init(id, this.$data);
 		},
 		computed: {

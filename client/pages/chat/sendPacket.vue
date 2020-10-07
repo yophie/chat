@@ -77,7 +77,7 @@
 		},
 		onLoad(options) {
 			this.chatId = options.id
-			this.isGroup = options.isGroup
+			this.isGroup = options.isGroup == 1
 			this.groupMemNum = options.groupMemNum > 0 ? options.groupMemNum : 0
 		},
 		computed: {

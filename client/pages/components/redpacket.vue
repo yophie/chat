@@ -1,5 +1,5 @@
 <template>
-	<view class="redpacket_content bg-redpacketColor" :class="isRecived || !isRemain ? 'received' : ''" @click="_onClick">
+	<view class="redpacket_content bg-redpacketColor" :class="!canRecive ? 'received' : ''" @click="_onClick">
 		 <view class="redpacket">
 			 <view class="redpacket_body">
 				 <view>
@@ -32,12 +32,14 @@
 			senderAvatar: {
 				type: String,
 				default: ''
+			},
+			isGroup: {
+				type: Boolean
 			}
 		},
 		data() {
 			return {
-				isRecived: false,
-				isRemain:true
+				canRecive: true
 			}
 		},
 		mounted(options) {
@@ -45,13 +47,18 @@
 		},
 		methods: {
 			_onClick() {
-				let param = {
-					id: this.id,
-					senderNick: this.senderNick,
-					senderAvatar: this.senderAvatar,
-					canRecieve: !this.isRecived && this.isRemain 
-				}
-				this.$emit('click', param)
+				let that = this
+				redpacketApi.openPacket(this.$data, this.id, function(res) {
+					let param = {
+						id: that.id,
+						senderNick: that.senderNick,
+						senderAvatar: that.senderAvatar,
+						state: res.state,
+						surplus: res.surplus,
+						senderId: res.sender
+					}
+					that.$emit('click', param)
+				})
 			}
 		}
 	}

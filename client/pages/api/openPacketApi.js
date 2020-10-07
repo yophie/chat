@@ -5,6 +5,12 @@ export default {
 		http.post('api/packet/grap', {packetId: id}, function(res) {
 			if (res.code == '10025') {
 				success()
+			} else if (res.code == '10038') {
+				uni.showToast({
+					title: '您手慢了',
+					duration: 2000
+				})
+				success()
 			} else {
 				uni.showModal({
 				    title: '错误提示',

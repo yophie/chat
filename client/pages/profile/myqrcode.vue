@@ -22,7 +22,7 @@
 		components: {uniNavBar, vueQr},
 		data() {
 			let data = {
-				url: 'http://127.0.0.1:8080/#/pages/chat/qrcodeRequest?id=' + uni.getStorageSync('userId')
+				url: 'http://192.168.31.173:8080/#/pages/chat/qrcodeRequest?id=' + uni.getStorageSync('userId')
 			}
 			return data
 		},

@@ -166,19 +166,13 @@ export const discoverTimeToString = function(time) {
 	}	
   }
   
-  export const getFromInfo = function(id, data, success) {
-  	let info = data.fromInfo[id]
-  	if (info && info.name) {
-  		success(info)
-		return
-  	}
+  export const getFromInfo = function(id, success) {
   	http.get('api/user/userinfo', {userId: id}, function(res) {
   		if (res.code == '10003') {
   			let item = {
   				name: res.name,
   				avatar: res.avatar
   			}
-  			data.fromInfo[id] = item
   			success(item)
   		} else {
   			

@@ -11,6 +11,7 @@ import org.jim.core.ImStatus;
 import org.jim.core.packets.*;
 import org.jim.core.session.id.impl.UUIDSessionIdGenerator;
 import org.jim.core.utils.Md5;
+import org.jim.server.JimServerAPI;
 import org.jim.server.processor.login.LoginCmdProcessor;
 import org.jim.server.protocol.AbstractProtocolCmdProcessor;
 import org.slf4j.Logger;
@@ -75,6 +76,10 @@ public class ChatLoginServiceProcessor extends AbstractProtocolCmdProcessor impl
 			for(int i=0;i<groups.size();i++){
 				builder.addGroup(Group.newBuilder().groupId(String.valueOf(groups.get(i).getFriendId())).
 						name(groups.get(i).getFriendNick()).build());
+				List<ImChannelContext> listChannels = JimServerAPI.getByUserId(String.valueOf(groups.get(i).getFriendId()));
+				for(int j=0;j<listChannels.size();j++) {
+					JimServerAPI.bindGroup(listChannels.get(j), String.valueOf(groups.get(i).getFriendId()));
+				}
 			}
 
 			User user = builder.build();

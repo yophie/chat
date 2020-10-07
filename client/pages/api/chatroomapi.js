@@ -7,11 +7,19 @@ export default {
 	  let that = this
 	  http.get('api/user/type', {id: data.id}, function(res) {
 		  if (res.code == '10003') {
-			  data.isGroup = res.userType == 0
+			  data.isGroup = res.userType == 1
 			  data.isGroupOwner = res.isOwner
-			  data.name = res.name + (res.userType == 0 ? '(' + res.groupMemberNum + ')' : ''),
+			  data.name = res.name + (res.userType == 1 ? '(' + res.groupMemberNum + ')' : ''),
 			  data.groupMemNum = res.groupMemberNum
-			  that.chatMsgInit(data)
+			  if (!data.isGroup) {
+				  getFromInfo(data.id, function(fromInfo) {
+					  data.friendAvatar =  fromInfo ? fromInfo.avatar : ''
+					  data.friendName = fromInfo ? fromInfo.name : '',
+					  that.chatMsgInit(data)
+				  })
+			  } else {
+				  that.chatMsgInit(data)
+			  }
 		  } else {
 			  uni.showModal({
 				  title: '错误提示',
@@ -34,6 +42,7 @@ export default {
 	  webSocketHandle.addListener(11, 'chatroom', this.handleIncreChatMsg, data)
   },
   handleIncreChatMsg(data, result) {
+	   alert(JSON.stringify(result))
 	  console.log(result)
 	  if (!result || result.cmd != 11 || !result.data) {
 	  	  return
@@ -52,16 +61,23 @@ export default {
 			content: rd.content,
 			isSelf: rd.from == uni.getStorageSync("userId")
 	  }
-	  getFromInfo(rd.from, data, function(fromInfo) {
-	  	item.senderAvatar = fromInfo ? fromInfo.avatar : ''
-	  	item.senderNick = fromInfo ? fromInfo.name : '',
-		item.senderAvatar = item.senderAvatar ? item.senderAvatar : '../../static/icon/default_avatar.png'
-	  })
+	  if (data.isGroup) {
+	  	item.senderAvatar = rd.fromAvatar
+	  	item.senderNick = rd.fromName
+	  } else {
+	  	if (item.isSelf) {
+	  		item.senderAvatar = uni.getStorageSync("avatar")
+	  		item.senderNick = uni.getStorageSync("userName")
+	  	} else {
+			item.senderAvatar = data.friendAvatar
+			item.senderNick = data.friendName
+			item.senderAvatar = item.senderAvatar ? item.senderAvatar : '../../static/icon/default_avatar.png'
+	  	}
+	  }
 	  let lastShowTime = 0
-	  let msgList = []
 	  let time = new Date(rd.createTime).getTime()
 		if (lastShowTime + 5*60*1000 < time) {
-			msgList.push({
+			data.msgList.push({
 				type: 5,
 				content: chatroomTimeToString(time),
 				id: 't' + rd.id
@@ -69,7 +85,6 @@ export default {
 			lastShowTime = time
 		}
 		data.msgList.push(item)
-	  
 	  data.lastShowTime = lastShowTime
 	   v.$nextTick(function(){
 	  	uni.pageScrollTo({
@@ -79,6 +94,7 @@ export default {
 	   })
   },
   handleChatMsg(data, result) {
+	  alert(JSON.stringify(result))
 	if (!result || result.cmd != 20 || !result.data) {
 		return
 	}
@@ -120,12 +136,19 @@ export default {
 			content: item.content,
 			isSelf: item.from == uni.getStorageSync("userId")
 		}
-		message.senderNick = 'newUser'
-		// getFromInfo(item.from, data, function(fromInfo) {
-		// 	message.senderAvatar = fromInfo ? fromInfo.avatar : ''
-		// 	message.senderNick = fromInfo ? fromInfo.name : '',
-		// 	message.senderAvatar = message.senderAvatar ? message.senderAvatar : '../../static/icon/default_avatar.png'
-		// })
+		if (data.isGroup) {
+			message.senderAvatar = item.fromAvatar
+			message.senderNick = item.fromName
+		} else {
+			if (message.isSelf) {
+				message.senderAvatar = uni.getStorageSync("avatar")
+				message.senderNick = uni.getStorageSync("userName")
+			} else {
+				message.senderAvatar = data.friendAvatar
+				message.senderNick = data.friendName
+				message.senderAvatar = message.senderAvatar ? message.senderAvatar : '../../static/icon/default_avatar.png'
+			}
+		}
 		
 		data.msgList.push(message)
 	}
