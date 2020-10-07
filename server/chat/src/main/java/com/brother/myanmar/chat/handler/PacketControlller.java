@@ -151,8 +151,8 @@ public class PacketControlller {
                         packetState.setAmount(res);
                         packet.setState(2);
                     } else {
-                        double a = random.nextInt((int) (res * (double) 100));
-                        packetState.setAmount(a / (double) 100);
+                        double a = random.nextInt((int) (res * (double) 100 * (double)2));
+                        packetState.setAmount(a / (double) 100 / (double)(packet.getNum()-grabs));
                         packet.setState(1);
                     }
                     PacketDao.insertPacketState(packet.getSender(), packetState);
