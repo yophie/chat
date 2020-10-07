@@ -13,6 +13,7 @@ import org.jim.core.ImConst;
 import org.jim.core.ImStatus;
 import org.jim.core.http.HttpRequest;
 import org.jim.core.http.HttpResponse;
+import org.jim.core.packets.ChatType;
 import org.jim.core.packets.RespBody;
 import org.jim.core.packets.UserStatusType;
 import org.jim.core.session.id.impl.UUIDSessionIdGenerator;
@@ -144,14 +145,14 @@ public class UserApiController {
         Group group = GroupDao.findGroup(id);
         UserType userType = new UserType(ImStatus.C10003);
         if(group == null){
-            userType.setUserType(2);
+            userType.setUserType(ChatType.CHAT_TYPE_PRIVATE.getNumber());
             User user = UserDao.findUserById(id);
             if(user==null){
                 return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10004)));
             }
             userType.setName(user.getName());
         }else{
-            userType.setUserType(1);
+            userType.setUserType(ChatType.CHAT_TYPE_PUBLIC.getNumber());
             if(group.getOwner() != null && group.getOwner() == request.getUserId()) {
                 userType.setIsOwner(true);
             }else {

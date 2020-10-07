@@ -12,6 +12,7 @@ import com.brother.myanmar.chat.service.RedisCache;
 import org.jim.core.ImStatus;
 import org.jim.core.http.HttpRequest;
 import org.jim.core.http.HttpResponse;
+import org.jim.core.packets.ChatType;
 import org.jim.server.protocol.http.annotation.RequestPath;
 import org.jim.server.util.HttpResps;
 import org.slf4j.Logger;
@@ -39,7 +40,7 @@ public class ChatWindowController {
                 String userId = ss[1];
                 ChatWindow window = new ChatWindow();
                 window.setUserGroupId(Integer.parseInt(userId));
-                window.setChatType(2);//私聊
+                window.setChatType(ChatType.CHAT_TYPE_PRIVATE.getNumber());//私聊
                 User user = UserDao.findUserById(window.getUserGroupId());
                 window.setUserGroupName(user.getName());
                 window.setUserGroupAvatar(user.getAvatar());
@@ -61,7 +62,7 @@ public class ChatWindowController {
                 String userId = ss1[2];
                 ChatWindow window = new ChatWindow();
                 window.setUserGroupId(Integer.parseInt(userId));
-                window.setChatType(2);//私聊
+                window.setChatType(ChatType.CHAT_TYPE_PRIVATE.getNumber());//私聊
                 User user = UserDao.findUserById(window.getUserGroupId());
                 window.setUserGroupName(user.getName());
                 window.setUserGroupAvatar(user.getAvatar());
@@ -87,7 +88,7 @@ public class ChatWindowController {
                     String message = RedisCache.first(s);
                     ChatWindow window = new ChatWindow();
                     window.setUserGroupId(friend.getFriendId());
-                    window.setChatType(1);//群聊
+                    window.setChatType(ChatType.CHAT_TYPE_PUBLIC.getNumber());//群聊
                     Group group = GroupDao.findGroup(window.getUserGroupId());
                     window.setUserGroupName(group.getGroupName());
                     window.setUserGroupAvatar(group.getAvatar());
