@@ -105,6 +105,7 @@ public class BillControlller {
             billResp.setMsg(ImStatus.C10034.getMsg());
             return TokenFilter.crossOrigin(HttpResps.json(request, billResp));
         }
+        billResp.setApprovalTime(req.getApprovalTime());
         billResp.setCode(ImStatus.C10035.getCode());
         billResp.setMsg(ImStatus.C10035.getMsg());
         return TokenFilter.crossOrigin(HttpResps.json(request, billResp));
