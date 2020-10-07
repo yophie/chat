@@ -9,7 +9,7 @@
         values(#{userId},#{amount},#{state},#{applyTime},#{approvalTime},#{fee},#{approvalAmount},#{type},#{oppsite})
     </insert>
     <update id="updateBill" parameterType="com.brother.myanmar.chat.bean.Bill">
-        update cashout set approvalTime=#{approvalTime},approvalAmount=#{approvalAmount},state=#{state} where id=#{id}
+        update cashout set approvalTime=#{approvalTime},state=#{state} where id=#{id}
     </update>
     <select id="findBillById" parameterType="com.brother.myanmar.chat.bean.Bill" resultType="com.brother.myanmar.chat.bean.Bill">
     select * from cashout where id = #{id}
