@@ -36,6 +36,26 @@ public class ChatLoginServiceProcessor extends AbstractProtocolCmdProcessor impl
 		return null;
 	}
 
+	private User buildUser(User findUser){
+		User.Builder builder = User.newBuilder()
+				.userId(String.valueOf(findUser.getUserId()))
+				.nick(findUser.getNick())
+				.avatar(findUser.getAvatar())
+				.status(UserStatusType.ONLINE.getStatus());
+
+		Friend me = new Friend();
+		me.setMyId(Integer.parseInt(findUser.getUserId()));
+		me.setState(0);
+		List<Friend> groups = UserDao.findFriendByState(me);
+		for(int i=0;i<groups.size();i++){
+			builder.addGroup(org.jim.core.packets.Group.newBuilder().groupId(String.valueOf(groups.get(i).getFriendId())).
+					name(groups.get(i).getFriendNick()).build());
+		}
+
+		User user = builder.build();
+		return user;
+	}
+
 	/**
 	 * 登陆成功返回状态码:ImStatus.C10007
 	 * 登录失败返回状态码:ImStatus.C10008
@@ -46,16 +66,8 @@ public class ChatLoginServiceProcessor extends AbstractProtocolCmdProcessor impl
 		if(Objects.nonNull(loginReqBody.getToken())){
 			User me = RedisCache.getToken(loginReqBody.getToken());
 			if(me!=null) {
-				Friend searchUser = new Friend();
-				searchUser.setMyId(Integer.parseInt(me.getUserId()));
-				searchUser.setState(0);
-				List<Friend> groups = UserDao.findFriendByState(searchUser);
-				for(int i=0;i<groups.size();i++){
-					List<ImChannelContext> listChannels = JimServerAPI.getByUserId(me.getUserId());
-					for(int j=0;j<listChannels.size();j++) {
-						JimServerAPI.bindGroup(listChannels.get(j), String.valueOf(groups.get(i).getFriendId()));
-					}
-				}
+				me = buildUser(me);
+				RedisCache.putToken(loginReqBody.getToken(), me);
 				return new LoginRespBody(ImStatus.C10007, me, loginReqBody.getToken());
 			}
 		}
