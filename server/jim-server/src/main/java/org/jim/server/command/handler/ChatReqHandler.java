@@ -57,18 +57,19 @@ public class ChatReqHandler extends AbstractCmdHandler {
 		//私聊
 		if(ChatType.CHAT_TYPE_PRIVATE.getNumber() == chatBody.getChatType()){
 			String toId = chatBody.getTo();
-			if(ChatKit.isOnline(toId, isStore)){
+			if(ChatKit.isOnline(toId, isStore)) {
 				JimServerAPI.sendToUser(toId, chatPacket);
-				//发送成功响应包
-				chatBody.setChatId(chatBody.getTo());
-				chatPacket = new ImPacket(Command.COMMAND_CHAT_REQ,new RespBody(Command.COMMAND_CHAT_REQ,chatBody).toByte());
-				//设置同步序列号;
-				chatPacket.setSynSeq(packet.getSynSeq());
-				return chatPacket;//ProtocolManager.Packet.success(channelContext, chatBody);
-			}else{
+			}
+			//发送成功响应包
+			chatBody.setChatId(chatBody.getTo());
+			chatPacket = new ImPacket(Command.COMMAND_CHAT_REQ,new RespBody(Command.COMMAND_CHAT_REQ,chatBody).toByte());
+			//设置同步序列号;
+			chatPacket.setSynSeq(packet.getSynSeq());
+			return chatPacket;//ProtocolManager.Packet.success(channelContext, chatBody);
+			/*}else{
 				//用户不在线响应包
 				return ProtocolManager.Packet.offline(channelContext);
-			}
+			}*/
 		//群聊
 		}else if(ChatType.CHAT_TYPE_PUBLIC.getNumber() == chatBody.getChatType()){
 			String groupId = chatBody.getGroupId();
