@@ -144,14 +144,14 @@ public class UserApiController {
         Group group = GroupDao.findGroup(id);
         UserType userType = new UserType(ImStatus.C10003);
         if(group == null){
-            userType.setUserType(1);
+            userType.setUserType(2);
             User user = UserDao.findUserById(id);
             if(user==null){
                 return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10004)));
             }
             userType.setName(user.getName());
         }else{
-            userType.setUserType(0);
+            userType.setUserType(1);
             if(group.getOwner() != null && group.getOwner() == request.getUserId()) {
                 userType.setIsOwner(true);
             }else {

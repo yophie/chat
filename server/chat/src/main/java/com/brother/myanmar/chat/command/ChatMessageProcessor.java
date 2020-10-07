@@ -2,7 +2,9 @@ package com.brother.myanmar.chat.command;
 
 import com.brother.myanmar.chat.bean.Bill;
 import com.brother.myanmar.chat.bean.Packet;
+import com.brother.myanmar.chat.bean.User;
 import com.brother.myanmar.chat.dao.BillDao;
+import com.brother.myanmar.chat.dao.UserDao;
 import com.brother.myanmar.chat.service.RedisCache;
 import org.jim.core.ImChannelContext;
 import org.jim.core.config.ImConfig;
@@ -63,6 +65,10 @@ public class ChatMessageProcessor implements SingleProtocolCmdProcessor {
     private void doProcess(ChatBody chatBody, ImChannelContext imChannelContext){
         //红包处理
         if(chatBody.getMsgType() == 2){
+            User me = UserDao.findUserById(Integer.parseInt(imChannelContext.getUserId()));
+            if(chatBody.getPacketAmount() > me.getMoney()){
+                return;
+            }
             Packet packet = new Packet();
             Bill bill = new Bill();
             if(ChatType.CHAT_TYPE_PRIVATE.getNumber() == chatBody.getChatType()){

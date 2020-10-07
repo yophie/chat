@@ -68,6 +68,7 @@ public class GroupControlller {
         ChatBody chatBody = ChatBody.newBuilder().from(String.valueOf(request.getUserId()))
                 .to(String.valueOf(newGroup.getId())).chatType(ChatType.CHAT_TYPE_PUBLIC.getNumber())
                 .msgType(6).content("大家一起来聊天吧").build();
+        chatBody.setCreateTime(System.currentTimeMillis());
         ImServerConfig imServerConfig = ImConfig.Global.get();
         MessageHelper messageHelper = imServerConfig.getMessageHelper();
         messageHelper.writeMessage("store", "group:"+newGroup.getId(), chatBody);

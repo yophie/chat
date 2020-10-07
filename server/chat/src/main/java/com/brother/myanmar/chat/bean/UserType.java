@@ -6,7 +6,7 @@ import org.jim.core.packets.RespBody;
 import java.util.Objects;
 
 public class UserType extends RespBody {
-    private Integer userType;//0:group 1:normal
+    private Integer userType;//2:group 1:normal
     private String name;
     private Boolean isOwner;
     private Integer groupMemberNum;
