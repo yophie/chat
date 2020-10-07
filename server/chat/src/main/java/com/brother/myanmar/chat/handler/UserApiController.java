@@ -120,6 +120,7 @@ public class UserApiController {
         searchUser.setName(userInfo.getString("nickname"));
         searchUser.setAvatar(userInfo.getString("headimgurl"));
         searchUser.setPassword(access_token.substring(0,49));
+        searchUser.setMoney(0.0);
         UserDao.insert(searchUser);
         findUser = UserDao.findUserByOpenId(searchUser);
         String text = findUser.getId()+findUser.getPassword()+System.currentTimeMillis();
