@@ -35,9 +35,9 @@ public class ChatReqHandler extends AbstractCmdHandler {
 		}
 		ChatBody chatBody = ChatKit.toChatBody(packet.getBody(), channelContext);
 		chatBody.setChatId(chatBody.getFrom());
-		//User user = getUser(chatBody.getFrom());
-		//chatBody.setFromName(user.getNick());
-		//chatBody.setFromAvatar(user.getAvatar());
+		User user = getUser(chatBody.getFrom());
+		chatBody.setFromName(user.getNick());
+		chatBody.setFromAvatar(user.getAvatar());
 
 		packet.setBody(chatBody.toByte());
 		//聊天数据格式不正确
