@@ -47,7 +47,8 @@ public enum ImStatus implements Status{
 	C10034(10034,"get Cash list failed!","获取提现列表失败!"),
 	C10035(10035,"get Cash list ok!","获取提现列表成功!"),
 	C10036(10036," get packet failed!","红包已被抢完!"),
-	C10037(10037,"get settings list ok!","获取设置成功!");
+	C10037(10037,"get settings list ok!","获取设置成功!"),
+	C10038(10038,"get packet state failed!","领取红包失败!");
 	
 	private int status;
 	

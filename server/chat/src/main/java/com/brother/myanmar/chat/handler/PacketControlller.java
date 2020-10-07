@@ -78,8 +78,10 @@ public class PacketControlller {
         PacketResp respBody = new PacketResp();
         PacketState packetState = new PacketState();
         packetState.setPacketId(req.getPacketId());
-        int num = PacketDao.getPacketState(packetState);
-        respBody.setSurplus(packet.getNum()-num);
+        if(packet.getNum() != null && packet.getNum()>0) {
+            int num = PacketDao.getPacketState(packetState);
+            respBody.setSurplus(packet.getNum() - num);
+        }
 
         packetState.setReciever(request.getUserId());
         int isOpen = PacketDao.getPacketState(packetState);
@@ -106,7 +108,7 @@ public class PacketControlller {
         packetState.setReciever(request.getUserId());
         packetState.setTime(System.currentTimeMillis());
         if (Objects.isNull(packet) || (packet.getState() == 2)) {
-            return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10024)));
+            return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10038)));
         } else {
             respBody.setId(packet.getId());
             respBody.setType(packet.getType());
@@ -120,12 +122,12 @@ public class PacketControlller {
             List<PacketState> currentDrawList = PacketDao.getPacketList(packetState);
             for(int i=0;i<currentDrawList.size();i++){
                 if(currentDrawList.get(i).getReciever() == request.getUserId()) {
-                    return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10024)));
+                    return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10038)));
                 }
             }
             int grabs = currentDrawList==null ? 0 : currentDrawList.size();
             if (packet.getNum() <= grabs) {
-                return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10024)));
+                return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10038)));
             } else {
                 if (packet.getType() == null || packet.getType() == 0) {
                     packetState.setAmount(packet.getAmount() / packet.getNum());
