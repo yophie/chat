@@ -1,10 +1,16 @@
 <template>
 	<view>
 		<uni-nav-bar fixed="true" left-icon="back" left-text="返回" @clickLeft="BackPage"
-			title="聊天设置" background-color="#f0f0f0" :status-bar="true" :border="false"></uni-nav-bar>
+			title="聊天设置" background-color="#e9e9e9" :status-bar="true" :border="false"></uni-nav-bar>
 		<view class="bg-white imglist_row">
-			<image class="imglist_item cu-avatar" v-for="item in memberList" :key="item.id" :src="item.avatar"></image>
-			<image class="imglist_item" src="../../static/icon/invite.png" @click="invite"></image>
+			<view v-for="item in memberList" :key="item.id" class="imglist_item">
+				<image class="cu-avatar"  :src="item.avatar" style="width:80upx;
+		height:80upx;"></image>
+				<text style="font-size: 20upx;">{{item.name}}</text>
+			</view>
+			<view>
+				<image class="img_plus" src="../../static/icon/invite.png" @click="invite"></image>
+			</view>
 		</view>
 		<uni-list v-if = "isGroup&isGroupOwner">
 			<uni-list-item title="群聊名称" :rightText="name" :showArrow="true"
@@ -38,7 +44,7 @@
 				id: 0,
 				name: '',
 				isGroup: true,
-				isGroupOwner: false,
+				isGroupOwner: true,
 				isForbidden: false,
 				memberList: []
 			}
@@ -64,10 +70,30 @@
 				this.$refs.popup.open()
 			},
 			disbanded() {
-				chatsettingapi.disbanded(this.id)
+				let that = this
+				uni.showModal({
+				    title: '提示',
+				    content: '解散群后，将删除群组所有成员历史消息并不再接收新消息',
+				    success: function (res) {
+				        if (res.confirm) {
+							chatsettingapi.disbanded(that.id)
+				        } else if (res.cancel) {
+				        }
+				    }
+				});
 			},
 			leave() {
-				chatsettingapi.leave(this.id)
+				let that = this
+				uni.showModal({
+				    title: '提示',
+				    content: '退出群后，将删除该群历史消息并不再接收新消息',
+				    success: function (res) {
+				        if (res.confirm) {
+							chatsettingapi.leave(that.id)
+				        } else if (res.cancel) {
+				        }
+				    }
+				});
 			},
 			invite() {
 				uni.navigateTo({
@@ -79,19 +105,23 @@
 </script>
 
 <style>
-	.imglist_row{
+	.imglist_row {
 		display: flex;
 		align-items: center;
 		flex-wrap: wrap;
 		margin: 18upx;
 	}
-	.imglist_item{
+	.imglist_item {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
-		width:100upx;
-		height:100upx;
 		margin: 20upx;
+	}
+	.img_plus {
+		width:90upx;
+		height:90upx; 
+		margin: 20upx;
+		margin-bottom: 30upx;
 	}
 </style>

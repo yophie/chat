@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-nav-bar fixed="true" title="我" background-color="#f0f0f0" :status-bar="true" :border="false"></uni-nav-bar>
+		<uni-nav-bar fixed="true" title="我" background-color="#e9e9e9" :status-bar="true" :border="false"></uni-nav-bar>
 		<uni-list style="margin-bottom: 20rpx; height:160rpx; justify-content: center;" :border="false">
 		    <uni-list-item :title="name" showArrow="true" :note="note">
 				<view slot="header">
@@ -32,8 +32,10 @@
 			  avatar: '',
 			  note: ''
 		  }
-		  profileapi.init(data)
 		  return data
+	  },
+	  onShow() {
+		  profileapi.init(this.$data)
 	  }
     }
 </script>

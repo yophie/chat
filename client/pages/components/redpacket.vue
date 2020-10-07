@@ -17,19 +17,13 @@
 </template>
 
 <script>
+	import redpacketApi from '@/pages/api/redpacketApi.js'
+	
 	export default {
 		name: 'redpacket',
 		props: {
 			id: {
-				type: Number
-			},
-			isRecived: {
-				type: Boolean,
-				default: false
-			},
-			isRemain: {
-				type: Boolean,
-				default: true
+				type: String
 			},
 			senderNick: {
 				type: String,
@@ -40,12 +34,22 @@
 				default: ''
 			}
 		},
+		data() {
+			return {
+				isRecived: false,
+				isRemain:true
+			}
+		},
+		mounted(options) {
+			redpacketApi.packetInit(this.$data, this.id)
+		},
 		methods: {
 			_onClick() {
 				let param = {
 					id: this.id,
 					senderNick: this.senderNick,
-					senderAvatar: this.senderAvatar
+					senderAvatar: this.senderAvatar,
+					canRecieve: !this.isRecived && this.isRemain 
 				}
 				this.$emit('click', param)
 			}

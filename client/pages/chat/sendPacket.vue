@@ -1,11 +1,11 @@
 <template>
 	<view>
 		<uni-nav-bar fixed="true" left-icon="back" left-text="返回" @clickLeft="BackPage"
-			title="发红包" background-color="#f0f0f0" :status-bar="true" :border="false"></uni-nav-bar>
+			title="发红包" background-color="#e9e9e9" :status-bar="true" :border="false"></uni-nav-bar>
 			<view class="send_packet">
 				<text class="text-gray" style="margin-left: 20px;">当前余额{{balance}}元</text>
 				<view class="amount_view">
-					<view v-if="type == 0" class="prefix">
+					<view v-if="type == 1" class="prefix">
 						<view class="luck">拼</view>
 						<view>总金额</view>
 					</view>
@@ -30,15 +30,15 @@
 				<view v-if="isGroup" class="amount_view" style="margin-top: 30upx;">
 					<view class="prefix">红包个数</view>
 					<view class="amount_input">
-						<input type="number" v-model="packetNum"
-							placeholder="0" @input="inputPacketNum" maxlength="3"/>
+						<input type="number" v-model="packetNum" minlength="1"
+							placeholder="0" @input="inputPacketNum" maxlength="2"/>
 					</view>
 					<view class="suffix">
 						<text>个</text>
 					</view>
 				</view>
 				<view v-if="isGroup" class="text-gray" style="margin-left: 20px; font-size: 25upx;">
-					<text>本群共{{memberNum}}人</text>
+					<text>本群共{{groupMemNum}}人</text>
 				</view>
 			</view>
 			<view class="amount_show">
@@ -54,25 +54,31 @@
 	import common from '@/pages/api/common.js'
 	import sendPacketapi from '@/pages/api/sendPacketapi.js'
 	import {uniNavBar, uniPopup,uniPopupMessage} from '@dcloudio/uni-ui'
-	import amountInput from '@/pages/components/amountInput.vue'
 	
 	export default {
 		name: 'sendPacket',
-		components: {uniNavBar,uniPopup,uniPopupMessage, amountInput},
+		components: {uniNavBar,uniPopup,uniPopupMessage},
 		data() {
 			let data = {
 				amount: '',
 				packetNum: '',
 				balance: 0,
 				chatId: 0,
-				type: 0,
-				memberNum: 0,
+				type: 1,
 				isGroup: false,
 				disableSend: true,
-				typeName: ['拼手气红包','普通红包']
+				typeName: ['普通红包','拼手气红包'],
+				groupMemNum: 0 
 			};
-			sendPacketapi.init(data)
 			return data
+		},
+		onShow() {
+			sendPacketapi.init(this.$data)
+		},
+		onLoad(options) {
+			this.chatId = options.id
+			this.isGroup = options.isGroup
+			this.groupMemNum = options.groupMemNum > 0 ? options.groupMemNum : 0
 		},
 		computed: {
 			amountShow() {
@@ -119,7 +125,8 @@
 					amount: this.amount,
 					packetNum: this.packetNum,
 					chatId: this.chatId,
-					type: this.type
+					type: this.type,
+					isGroup: this.isGroup
 				}
 				sendPacketapi.sendPacket(param)
 				this.BackPage()

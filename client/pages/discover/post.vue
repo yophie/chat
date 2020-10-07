@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<uni-nav-bar fixed="true" left-icon="back" left-text="返回" @clickLeft="exit"
-			title="发布朋友圈" background-color="#f0f0f0" :status-bar="true" :border="false">
+			title="发布朋友圈" background-color="#e9e9e9" :status-bar="true" :border="false">
 			<view slot="right">
 				<button class="cu-btn bg-green nm" :disabled="postDisabled"
 						@click="post">发表</button>

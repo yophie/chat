@@ -1,20 +1,52 @@
+import {http} from './common.js'
 
 export default {
   requestList (data) {
-    let requestList = []
-	for (let i = 1; i <= 3; i++) {
-		requestList.push({id: i, name: '昵称' + i, avatar: '/static/icon/avatar.png',msg: '我是' + '昵称' + i, status: i%3})
-	}
-	
-    data.list = requestList
+	http.get('api/friend/list', {}, function(res) {
+		if (res.code == '10027') {
+			for (let item of res.friends) {
+				let f = {
+					id: item.id, 
+					name: item.friendNick, 
+					avatar: item.friendAvatar,
+					msg: '我是' + item.friendNick, 
+					status: item.state,
+					friendId: item.friendId
+				}
+				f.avatar = f.avatar ? f.avatar : '../../static/icon/default_avatar.png'
+				data.list.push(f)
+			}
+		} else {
+			uni.showModal({
+			    title: '错误提示',
+			    content: '系统错误，请稍后再试！'
+			});
+		}
+	})
   },
   accept(request) {
-	  console.log("accept" + request.id)
-	  request.status = 1
+	  http.get('api/friend/answer', {applyUser: request.friendId, state: 1}, function(res) {
+		  if (res.code == '10029') {
+			  request.status = 1
+		  } else {
+			uni.showModal({
+			    title: '错误提示',
+			    content: '系统错误，请稍后再试！'
+			});
+		}
+	  })
   },
   reject(request) {
-	  console.log("reject" + request.id)
-	  request.status = 2
+	  http.get('api/friend/answer', {applyUser: request.friendId, state: 3}, function(res) {
+		  if (res.code == '10029') {
+		  	  request.status = 3
+		    } else {
+		  	uni.showModal({
+		  	    title: '错误提示',
+		  	    content: '系统错误，请稍后再试！'
+		  	});
+		  }
+	  })
   },
 }
 

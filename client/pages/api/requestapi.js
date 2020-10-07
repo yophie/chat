@@ -1,3 +1,4 @@
+import {http} from './common.js'
 
 export default {
   search (data) {
@@ -10,8 +11,14 @@ export default {
 	
 	data.list = result
   },
-  request (id) {
-	  console.log("request" + id)
+  request (id, success, fail) {
+	  http.get('api/friend/apply', {applyUser: id}, function(res) {
+		if (res.code == 10029) {
+			success()
+		} else {
+			fail()
+		}
+	  })
   }
 }
 

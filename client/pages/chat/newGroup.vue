@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<uni-nav-bar fixed="true" left-icon="back" left-text="返回"  @clickLeft="BackPage"
-				title="发起群聊" background-color="#f0f0f0" :status-bar="true" :border="false">
+				:title="title" background-color="#e9e9e9" :status-bar="true" :border="false">
 				<view slot="right">
 					<button class="cu-btn bg-green nm" :disabled="createDisabled"
 							@click="create">完成</button>
@@ -10,30 +10,27 @@
 		<uni-popup ref="popup" type="center">
 		    <uni-popup-message type="info" :message="message" :duration="2000"></uni-popup-message>
 		</uni-popup>
-		<block v-for="item in list" :key="item.index">
-			<view :class="'indexItem-' + item.index" :data-index="item.index">
-				<view class="padding-xs">{{item.index}}</view>
-				<uni-list :border="true">
-					<uni-list-item v-for="friend in item.friends" :key="friend.id" thumb='placeholder'
-						:title="friend.name" :clickable="!friend.inGroup" @click="checked(friend)">
-						<view slot="header">
-							<view class="uni-list-item__header">
-								<view class="uni-list-item__header__selected">
-									<span class="iconfont "
-									:class="friend.checked || friend.inGroup ? 'iconselected' : 'iconselect'" 
-									:style="{color: friend.checked || friend.inGroup ? (friend.inGroup ? '#c2c0c4' : '#007aff') : '#aaa'}" 
-									style="font-size: 35rpx;"></span>
-								</view>
-								<view class="uni-list-item__icon">
-									<image :src="friend.avatar" class="uni-list-item__icon-img"/>
-								</view>
-							</view>
+		<uni-list :border="true">
+			<uni-list-item v-for="friend in list" :key="friend.id" thumb='placeholder'
+				:title="friend.name" :clickable="!friend.inGroup" @click="checked(friend)">
+				<view slot="header">
+					<view class="uni-list-item__header">
+						<view class="uni-list-item__header__selected">
+							<span class="iconfont "
+							:class="friend.checked || friend.inGroup ? 'iconselected' : 'iconselect'" 
+							:style="{color: friend.checked || friend.inGroup ? (friend.inGroup ? '#c2c0c4' : '#007aff') : '#aaa'}" 
+							style="font-size: 35rpx;"></span>
 						</view>
-					</uni-list-item>
-				</uni-list>
-			</view>
-		</block>
-		
+						<view class="uni-list-item__icon">
+							<image :src="friend.avatar" class="uni-list-item__icon-img"/>
+						</view>
+					</view>
+				</view>
+			</uni-list-item>
+		</uni-list>
+		<view v-if="list.length === 0" class="text-box">
+			<text>还没有好友！</text>
+		</view>
 	</view>
 </template>
 
@@ -50,6 +47,7 @@
 				id: 0,
 				list: [],
 				selectedList: [],
+				selectedListName: [],
 				message: '',
 				createDisabled: true
 			}
@@ -60,18 +58,27 @@
 				this.id = options.id
 			newGroupapi.init(this.$data)
 		},
+		computed: {
+			title() {
+				return this.id > 0 ? '邀请好友' : '发起群聊'
+			}
+		},
 		methods: {
 			BackPage() {
 				common.BackPage()
 			},
 			checked(friend) {
 				friend.checked = !friend.checked
-				if (friend.checked)
-					this.selectedList.push(friend.id)
+				if (friend.checked) {
+					this.selectedList.push(friend.friendId)
+					this.selectedListName.push(friend.name)
+				}	
 				else {
 					for (let i = 0; i < this.selectedList.length; i++) {
-					    if (this.selectedList[i] === friend.id) {
-					      this.selectedList.splice(i--, 1)
+					    if (this.selectedList[i] === friend.friendId) {
+					      this.selectedList.splice(i, 1)
+						  this.selectedListName.splice(i, 1)
+						  i--
 					    }
 					}
 				}
@@ -94,7 +101,7 @@
 					this.$refs.popup.open()
 					return
 				}
-				newGroupapi.create(this.selectedList)
+				newGroupapi.create(this.id, this.selectedListName, this.selectedList)
 			}
 		}
 	}
@@ -132,5 +139,17 @@
 		/* #endif */
 		height: 68rpx;
 		width: 68rpx;
+	}
+	.text-box {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		align-content: center;
+		/* #endif */
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap-reverse;
+		overflow: hidden;
+		padding-top: 300upx; 
 	}
 </style>

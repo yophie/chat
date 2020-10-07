@@ -1,33 +1,25 @@
 <script>
 	import Vue from 'vue'
 	import wechatLogin from '@/pages/api/wechatLogin.js'
+	import webSocketHandle from '@/pages/api/webSocketHandle.js'
 	
 	export default {
 		onLaunch: function() { 
-			//wechatLogin.login()
-			uni.navigateTo({
-				url: 'pages/index/index?code=123' 
-			})
-			// uni.connectSocket({
-			//   url: 'wss://www.example.com/socket'
-			// });
-			// uni.onSocketMessage(function (res) {
-			//   console.log('收到服务器内容：' + res.data);
-			// });
-			// uni.onSocketOpen(function (res) {
-			//   Vue.prototype.socketOpen = true;
-			// });
 			
-			// setTimeout(()=>{
-			// 	console.log("ping url")
-			//   uni.sendSocketMessage({type:'ping'})
-			// },1000)
 		},
 		onShow: function() {
-			console.log('App Show')
+			let token = uni.getStorageSync("token")
+			let username = 'cs'
+			let password = 'test'
+			if (!token) {
+				//wechatLogin.login()
+				webSocketHandle.initpass(username, password)
+			} else {
+				webSocketHandle.init(token)
+			}
 		},
 		onHide: function() {
-			console.log('App Hide')
+		//	console.log('App Hide')
 		}
 	}
 </script>

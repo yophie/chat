@@ -1,6 +1,12 @@
+import webSocketHandle from './webSocketHandle.js'
 
 export default {
   post (content) {
-    console.log('POST ' + content)
+	let msg = {
+		cmd: 27,
+		type: 0,
+		content: content
+	}
+	webSocketHandle.sendMessage(msg)
   }
 }

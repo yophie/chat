@@ -1,35 +1,41 @@
 <template>
 	<view>
 		<uni-nav-bar fixed="true" left-icon="back" left-text="返回"  @clickLeft="BackPage" 
-				:title="name" background-color="#f0f0f0" :status-bar="true"
+				:title="name" background-color="#e9e9e9" :status-bar="true"
 				  :right-icon="isGroup&isGroupOwner?'more-filled':''" @clickRight="setting"></uni-nav-bar>
 		<view class="cu-chat" @click="hidePlusAndKey">
 			<view v-for="item in msgList" :key="item.id">
 				<view v-if="item.type < 5" >
 					<view v-if="item.isSelf" class="cu-item self">
-						<view v-if="item.type === 0" class="main">
+						<view v-if="item.type === 0 || item.type === 1" class="main">
 							<view class="content bg-selfContent">
-								<text :selectable="true" class="text-black">{{item.content}}</text>
+								<text class="text-black">{{item.content}}</text>
 							</view>
 						</view>
 						<view v-if="item.type === 2" class="main">
-							<redpacket :id="item.id" :isRecived="false" @click="openPacket" :senderNick="item.senderNick"
-									:senderAvatar = "item.senderAvatar" :isRemain="item.isRemain"></redpacket>
+							<redpacket :id="item.id" @click="openPacket" :senderNick="item.senderNick"
+									:senderAvatar = "item.senderAvatar"></redpacket>
 						</view>
 						<image class="cu-avatar radius" :src="item.senderAvatar" mode="aspectFill" @error="imageError(item)" ></image>
 					</view>
 					<view v-else class="cu-item">
 						<image class="cu-avatar radius" :src="item.senderAvatar" mode="aspectFill" @error="imageError(item)" ></image>
-						<view v-if="item.type === 0 || item.type === 1" class="main">
-							<view class="content" :class="item.type === 1 ? 'bg-grey' : ''">
-								<text :selectable="true">{{(item.type === 1 ? '禁言消息：' : '') + item.content}}</text>
+							<view class="main nick_content">
+								<view v-if="isGroup">
+									<view class="text-gray"><text>{{item.senderNick}}</text></view>
+								</view>
+								<view v-if="item.type === 0 || item.type === 1" style="justify-content: flex-start; align-items: flex-start;">
+									<view class="content" :class="item.type === 1 ? 'bg-grey' : ''">
+										<text>{{(item.type === 1 ? '禁言消息：' : '') + item.content}}</text>
+									</view>
+								</view>
+								<view v-if="item.type === 2" class="main">
+									<redpacket :id="item.id" @click="openPacket" :senderNick="item.senderNick"
+											:senderAvatar = "item.senderAvatar"></redpacket>
+								</view>
 							</view>
+							
 						</view>
-						<view v-if="item.type === 2" class="main">
-							<redpacket :id="item.id" :isRecived="true" @click="openPacket" :senderNick="item.senderNick"
-									:senderAvatar = "item.senderAvatar" :isRemain="item.isRemain"></redpacket>
-						</view>
-					</view>
 				</view>
 				
 				<view v-if="item.type >= 5" class="cu-info">
@@ -39,7 +45,7 @@
 			<view :style="[{height: InputBottom + 'upx'}]"></view>
 		</view>
 		
-		<view class="cu-bar foot input chat_operate" style="background-color: #f0f0f0;" >
+		<view class="cu-bar foot input chat_operate" style="background-color: #f5f5f5;" >
 			<!-- <view class="action">
 				<text class="cuIcon-sound text-grey"></text>
 			</view> -->
@@ -80,8 +86,8 @@
 			let data = {
 				id: 0,
 				name: '',
-				isGroup: false,
-				isGroupOwner: false,
+				isGroup: true,
+				isGroupOwner: true,
 				msgList:[],
 				InputBottom: 100,
 				baseBottom: 100,
@@ -94,20 +100,15 @@
 				packetId: 0,
 				senderNick: '',
 				senderAvatar: '',
-				isRemain: true
+				groupMemNum: 0,
+				fromInfo: {}
 			}
 			return data
 		},
 		onLoad(options) {
 			let id = options.id
 			this.id = id
-			chatroomapi.chatroominit(this.$data)
-			this.$nextTick(function(){
-				uni.pageScrollTo({
-					duration: 0,
-					scrollTop: 99999999999
-				})
-			})
+			chatroomapi.chatroominit(this.$data, this)
 		},
 		methods: {
 			input() {
@@ -130,12 +131,6 @@
 			},
 			sendMessage() {
 				chatroomapi.sendMessage(this.$data)
-				this.$nextTick(function(){
-					uni.pageScrollTo({
-						duration: 100,
-						scrollTop: 99999999999
-					})
-				})
 			},
 			handleKeyboard(event) {
 				this.isShowPlusMsgBar = false
@@ -173,15 +168,22 @@
 				this.isShowPlusMsgBar = false
 			},
 			toSendPacket() {
+				let groupMemNum = this.groupMemNum > 0 ? this.groupMemNum : 0
+				let u = '/pages/chat/sendPacket?id=' + this.id + '&isGroup=' + this.isGroup
+					+ '&groupMemNum=' + groupMemNum
 				uni.navigateTo({
-					url: '/pages/chat/sendPacket'
+					url:  u
 				})
 			},
 			openPacket(param) {
-				this.packetId = param.id
-				this.senderNick = param.senderNick
-				this.senderAvatar = param.senderAvatar
-				this.$refs.popup.open()
+				if (param.canRecieve) {
+					this.packetId = param.id
+					this.senderNick = param.senderNick
+					this.senderAvatar = param.senderAvatar
+					this.$refs.popup.open()
+				} else {
+					this.recievePacket(param)
+				}
 			},
 			recievePacket(param) {
 				this.$refs.popup.close()
@@ -202,6 +204,10 @@
 		background-color: #44df5d;
 		color: #000000;
 	}
+	.nick_content {
+		display: flex;
+		flex-direction: column;
+	}
 	.chat_operate {
 		display: flex;
 		flex-direction: column;
@@ -214,7 +220,9 @@
 		flex-direction: row;
 		align-items: center;
 		width: 100%;
-		height: 100upx;
+		min-height: 100upx;
+		padding-top: 15upx;
+		padding-bottom: 15upx;
 		justify-content: space-between;
 	}
 	.plus_button_area {
@@ -226,7 +234,7 @@
 		height: 300upx;
 		margin-left: 100upx;
 		margin-top: 50upx;
-		background-color:#f0f0f0;
+		background-color:#f5f5f5;
 	}
 	.send_packet_button {
 		width: 80upx;
@@ -249,7 +257,5 @@
 		width: 100%; 
 		margin-left: 15upx; 
 		border-radius: 8upx;
-		padding-top: 5px;
-		padding-bottom: 5px;
 	}
 </style>

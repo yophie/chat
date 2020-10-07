@@ -1,13 +1,30 @@
+import {http} from './common.js'
+import webSocketHandle from './webSocketHandle.js'
 
 export default {
   init (data) {
-	data.balance = 100
-	data.chatId = 12
-	data.type = 0
-	data.memberNum = 3
-	data.isGroup = true
+	http.post('api/user/info', {}, function(res) {
+		if (res.code == '10003') {
+			data.balance = res.money
+		} else {
+			uni.showModal({
+			    title: '错误提示',
+			    content: '系统错误，请稍后再试！'
+			});
+		}
+	})
   },
   sendPacket(param) {
-	  console.log(param)
+	  webSocketHandle.sendMessage({
+		  cmd: 11,
+		  from: uni.getStorageSync("userId"),
+		  to: param.isGroup ? undefined : param.chatId,
+		  groupId: param.isGroup ? param.chatId : undefined,
+		  chatType: param.isGroup ? 1 : 2,
+		  msgType: 2,
+		  packetType: param.type,
+		  packetAmount: param.amount,
+		  packetNum: param.packetNum
+	  })
   }
 }
