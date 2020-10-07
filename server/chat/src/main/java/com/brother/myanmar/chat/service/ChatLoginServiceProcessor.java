@@ -51,7 +51,7 @@ public class ChatLoginServiceProcessor extends AbstractProtocolCmdProcessor impl
 				searchUser.setState(0);
 				List<Friend> groups = UserDao.findFriendByState(searchUser);
 				for(int i=0;i<groups.size();i++){
-					List<ImChannelContext> listChannels = JimServerAPI.getByUserId(String.valueOf(groups.get(i).getFriendId()));
+					List<ImChannelContext> listChannels = JimServerAPI.getByUserId(me.getUserId());
 					for(int j=0;j<listChannels.size();j++) {
 						JimServerAPI.bindGroup(listChannels.get(j), String.valueOf(groups.get(i).getFriendId()));
 					}
