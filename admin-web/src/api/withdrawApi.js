@@ -3,7 +3,8 @@ import {http,dateFormat} from "./common"
 export default {
   handleWithdraw(item) {
     http.post('/api/bill/audit',{id:item.id, state:1}).then(function(res){
-      if (res.code == '10035') {
+      if (res.data.code == 10035) {
+        item.completeDate = dateFormat(res.data.approvalTime)
         item.status = 1
       }
     })
@@ -25,10 +26,10 @@ export default {
         let b = {
           id: bill.id,
           account: bill.userName,
-          amount: bill.amount,
+          amount: bill.amount * -1 + '元',
           rate: bill.fee,
           rateStr: bill.fee*100 + '%',
-          actAmount: bill.approvalAmount,
+          actAmount: bill.approvalAmount * -1 + '元',
           applyDate: dateFormat(bill.applyTime),
           completeDate: dateFormat(bill.approvalTime),
           status: bill.state

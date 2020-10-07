@@ -42,7 +42,6 @@ export default {
 	  webSocketHandle.addListener(11, 'chatroom', this.handleIncreChatMsg, data)
   },
   handleIncreChatMsg(data, result) {
-	   alert(JSON.stringify(result))
 	  console.log(result)
 	  if (!result || result.cmd != 11 || !result.data) {
 	  	  return
@@ -74,18 +73,17 @@ export default {
 			item.senderAvatar = item.senderAvatar ? item.senderAvatar : '../../static/icon/default_avatar.png'
 	  	}
 	  }
-	  let lastShowTime = 0
 	  let time = new Date(rd.createTime).getTime()
-		if (lastShowTime + 5*60*1000 < time) {
+		if (data.lastShowTime + 5*60*1000 < time) {
 			data.msgList.push({
 				type: 5,
 				content: chatroomTimeToString(time),
 				id: 't' + rd.id
 			})
-			lastShowTime = time
+			data.lastShowTime = time
 		}
 		data.msgList.push(item)
-	  data.lastShowTime = lastShowTime
+	  
 	   v.$nextTick(function(){
 	  	uni.pageScrollTo({
 	  		duration: 100,
@@ -94,7 +92,6 @@ export default {
 	   })
   },
   handleChatMsg(data, result) {
-	  alert(JSON.stringify(result))
 	if (!result || result.cmd != 20 || !result.data) {
 		return
 	}
@@ -149,7 +146,6 @@ export default {
 				message.senderAvatar = message.senderAvatar ? message.senderAvatar : '../../static/icon/default_avatar.png'
 			}
 		}
-		
 		data.msgList.push(message)
 	}
 	data.lastShowTime = lastShowTime

@@ -50,9 +50,11 @@
 				<text class="cuIcon-sound text-grey"></text>
 			</view> -->
 			<view class="chat_input">
-				<textarea class="solid-bottom bg-white input_textarea"
-					:auto-height="true" :adjust-position="true" :focus="false" maxlength="100" cursor-spacing="10"
-				  @input="input" v-model="sendMsg" @focus="focusInput" @keyboardheightchange="handleKeyboard"></textarea>
+				<view class="input_input">
+					<textarea class="solid-bottom bg-white input_textarea"
+						:auto-height="true" :adjust-position="true" :focus="false" maxlength="100" cursor-spacing="10"
+					  @input="input" v-model="sendMsg" @focus="focusInput" @keyboardheightchange="handleKeyboard"></textarea>
+				</view>
 				<!-- <view class="action">
 					<text class="cuIcon-emojifill text-grey"></text>
 				</view> -->
@@ -223,6 +225,7 @@
 	.nick_content {
 		display: flex;
 		flex-direction: column;
+		justify-content: flex-start;
 	}
 	.chat_operate {
 		display: flex;
@@ -234,7 +237,7 @@
 	.chat_input {
 		display: flex;
 		flex-direction: row;
-		align-items: center;
+		align-items: flex-end;
 		width: 100%;
 		min-height: 100upx;
 		padding-top: 15upx;
@@ -269,9 +272,17 @@
 		opacity: 0.1;
 	}
 	.input_textarea {
-		font-size: 60upx; 
+		font-size: 35upx; 
+		margin-top: 12upx;
+		margin-bottom: 12upx;
+		margin-left: 15upx;
+		border: #FFFFFF 1px solid;
+	}
+	.input_input {
+		margin-left: 15upx;
+		background-color: #FFFFFF;
 		width: 100%; 
-		margin-left: 15upx; 
 		border-radius: 8upx;
+		height: 74upx;
 	}
 </style>

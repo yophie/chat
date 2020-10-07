@@ -114,7 +114,7 @@
               status: '-1',
               applyDateRange: [],
               completeDateRange: [],
-              pageSize: 20,
+              pageSize: 10,
               page: 1
             },
             oldParam: {
@@ -122,7 +122,7 @@
               status: '-1',
               applyDateRange: [],
               completeDateRange: [],
-              pageSize: 20,
+              pageSize: 10,
               page: 1
             },
             loading: false
@@ -134,7 +134,13 @@
       },
       methods: {
         handleWithdraw(item) {
-          withdrawApi.handleWithdraw(item)
+          this.$confirm('确定要完成该提现申请吗？?', '提示', {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            type: 'warning'
+          }).then(() => {
+            withdrawApi.handleWithdraw(item)
+          })
         },
         queryCallback(list, total) {
           this.list = list

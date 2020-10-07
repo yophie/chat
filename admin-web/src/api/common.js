@@ -69,6 +69,9 @@ Date.prototype.format = function(fmt) {
 }
 
 export const dateFormat = function (time) {
+  if (!time) {
+    return ''
+  }
   let date = new Date(time)
   return date.format("yyyy-MM-dd hh:mm")
 }

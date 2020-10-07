@@ -6,11 +6,12 @@ export default {
 	  data.list = []
 	for (let chat of result) {
 		let lastMessage = JSON.parse(chat.lastMessage)
+		let lastContent = lastMessage.msgType == 2 ? '[红包]' : lastMessage.content
 		let item = {
 			id: chat.userGroupId,
 			name: chat.userGroupName, 
 			avatar: chat.userGroupAvatar,
-			lastMsg: lastMessage.content, 
+			lastMsg: lastContent, 
 			lastTime: chatListTimeToString(chat.lastTime)
 		}
 		item.avatar = item.avatar ? item.avatar : '../../static/icon/default_avatar.png'
