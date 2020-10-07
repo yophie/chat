@@ -3,8 +3,8 @@ package org.jim.core.http;
 import java.util.Objects;
 
 /**
- * @author wchao
- * 2017年6月28日 下午2:23:16
+ *
+ * 6月28日 下午2:23:16
  */
 public enum Method {
 	GET("GET"), POST("POST"), HEAD("HEAD"), PUT("PUT"), TRACE("TRACE"), OPTIONS("OPTIONS"), PATCH("PATCH");

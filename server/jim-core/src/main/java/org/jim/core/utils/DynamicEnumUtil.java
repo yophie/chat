@@ -18,7 +18,7 @@ import sun.reflect.ReflectionFactory;
 /**
  *
  * 动态增加Enum枚举类字段;
- * @author WCHAO
+ * 
  *
  */
 @SuppressWarnings("restriction")

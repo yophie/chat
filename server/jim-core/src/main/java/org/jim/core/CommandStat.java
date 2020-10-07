@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * 
- * @author wchao 
+ *
  *
  */
 public class CommandStat
@@ -48,8 +48,8 @@ public class CommandStat
 	/**
 	 * 
 	 *
-	 * @author: wchao
-	 * 2016年12月6日 下午5:32:31
+	 *
+	 * 12月6日 下午5:32:31
 	 * 
 	 */
 	public CommandStat()

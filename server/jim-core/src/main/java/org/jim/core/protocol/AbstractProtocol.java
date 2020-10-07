@@ -3,18 +3,18 @@
  */
 package org.jim.core.protocol;
 
-import java.nio.ByteBuffer;
-import java.util.Objects;
-
 import org.jim.core.ImChannelContext;
 import org.jim.core.ImConst;
 import org.jim.core.ImPacket;
 import org.jim.core.ImSessionContext;
 import org.jim.core.exception.ImException;
+
+import java.nio.ByteBuffer;
+import java.util.Objects;
 /**
  * 协议校验接口抽象类
- * @author WChao
- * @date 2018-09-05 23:52:00
+ *
+ * @date 09-05 23:52:00
  */
 public abstract class AbstractProtocol implements IProtocol,ImConst {
 	/**

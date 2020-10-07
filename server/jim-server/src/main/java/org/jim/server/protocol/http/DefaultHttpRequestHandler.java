@@ -30,7 +30,7 @@ import java.util.concurrent.ExecutionException;
 
 /**
  *
- * @author WChao
+ *
  *
  */
 public class DefaultHttpRequestHandler implements IHttpRequestHandler,ImConst.Http {
@@ -54,7 +54,7 @@ public class DefaultHttpRequestHandler implements IHttpRequestHandler,ImConst.Ht
 	/**
 	 *
 	 * @param httpConfig
-	 * @author WChao
+	 *
 	 */
 	public DefaultHttpRequestHandler(HttpConfig httpConfig) {
 		this.httpConfig = httpConfig;
@@ -69,7 +69,7 @@ public class DefaultHttpRequestHandler implements IHttpRequestHandler,ImConst.Ht
 	 *
 	 * @param httpConfig
 	 * @param routes
-	 * @author WChao
+	 *
 	 */
 	public DefaultHttpRequestHandler(HttpConfig httpConfig, Routes routes) {
 		this(httpConfig);
@@ -79,7 +79,7 @@ public class DefaultHttpRequestHandler implements IHttpRequestHandler,ImConst.Ht
 	/**
 	 * 创建httpSession
 	 * @return
-	 * @author WChao
+	 *
 	 */
 	private HttpSession createSession() {
 		String sessionId = httpConfig.getSessionIdGenerator().sessionId(httpConfig);

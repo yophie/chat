@@ -2,8 +2,8 @@ package org.jim.core.cluster;
 
 /**
  * @desc IM集群配置抽象类
- * @author WChao
- * 2018年05月20日 下午1:09:16
+ *
+ * 05月20日 下午1:09:16
  */
 public abstract class ImClusterConfig {
 	

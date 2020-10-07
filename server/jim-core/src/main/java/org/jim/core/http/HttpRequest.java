@@ -15,7 +15,7 @@ import java.util.Map.Entry;
 
 /**
  *
- * @author wchao
+ *
  *
  */
 public class HttpRequest extends HttpPacket {
@@ -27,8 +27,8 @@ public class HttpRequest extends HttpPacket {
 	/**
 	 * @param args
 	 *
-	 * @author wchao
-	 * 2017年2月22日 下午4:14:40
+	 *
+	 * 2月22日 下午4:14:40
 	 *
 	 */
 	public static void main(String[] args) {
@@ -56,8 +56,8 @@ public class HttpRequest extends HttpPacket {
 	/**
 	 *
 	 *
-	 * @author wchao
-	 * 2017年2月22日 下午4:14:40
+	 *
+	 * 2月22日 下午4:14:40
 	 *
 	 */
 	public HttpRequest(Node remote) {
@@ -200,7 +200,7 @@ public class HttpRequest extends HttpPacket {
 
 	/**
 	 * @return
-	 * @author wchao
+	 *
 	 */
 	@Override
 	public String logstr() {

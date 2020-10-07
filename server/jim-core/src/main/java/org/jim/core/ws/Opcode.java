@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author wchao
- * 2017年6月30日 下午5:06:09
+ *
+ * 6月30日 下午5:06:09
  */
 public enum Opcode {
 

@@ -14,8 +14,8 @@ import org.tio.utils.json.Json;
 import java.io.File;
 
 /**
- * @author WChao
- * 2017年6月29日 下午7:53:59
+ *
+ * 6月29日 下午7:53:59
  */
 @RequestPath(value = "/test")
 public class TestController {
@@ -23,7 +23,7 @@ public class TestController {
 
 	/**
 	 * @param args
-	 * @author WChao
+	 *
 	 */
 	public static void main(String[] args) {
 
@@ -37,7 +37,7 @@ public class TestController {
 
 	/**
 	 *
-	 * @author WChao
+	 *
 	 */
 	public TestController() {
 	}
@@ -121,7 +121,7 @@ public class TestController {
 	 * @param channelContext
 	 * @return
 	 * @throws Exception
-	 * @author WChao
+	 *
 	 */
 	@RequestPath(value = "/upload")
 	public HttpResponse upload(UploadFile uploadFile, String before, String end, HttpRequest request) throws Exception {

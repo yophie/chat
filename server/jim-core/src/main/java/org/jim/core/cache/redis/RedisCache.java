@@ -16,8 +16,8 @@ import java.util.List;
 import java.util.Set;
 /**
  *
- * @author wchao
- * 2017年8月10日 下午1:35:01
+ *
+ * 8月10日 下午1:35:01
  */
 public class RedisCache implements ICache {
 	

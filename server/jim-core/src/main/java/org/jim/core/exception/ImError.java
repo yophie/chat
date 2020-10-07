@@ -1,7 +1,7 @@
 package org.jim.core.exception;
 
 /**
- * @author WChao
+ * 
  * @Desc
  * @date 2020-05-01 18:00
  */

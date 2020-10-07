@@ -20,8 +20,8 @@ import java.util.List;
 
 /**
  * IM聊天命令工具类
- * @date 2018-09-05 23:29:30
- * @author WChao
+ * @date 09-05 23:29:30
+ *
  *
  */
 public class ChatKit {

@@ -7,7 +7,6 @@ import org.jim.core.ImConst;
 import org.jim.core.config.ImConfig;
 
 /**
- * @author HP
  *
  */
 public abstract class AbstractMessageHelper implements MessageHelper,ImConst {

@@ -17,7 +17,7 @@ import org.jim.core.utils.ImKit;
 
 /**
  * WebSocket协议判断器
- * @author WChao
+ *
  *
  */
 public class WsProtocol extends AbstractProtocol {

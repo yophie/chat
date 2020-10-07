@@ -6,7 +6,7 @@ import org.jim.core.ImPacket;
 /**
  * @ClassName ImListener
  * @Description IM连接监听器
- * @Author WChao
+ *
  * @Date 2020/1/4 11:09
  * @Version 1.0
  **/
@@ -17,7 +17,7 @@ public interface ImListener {
      * @param isConnected 是否连接成功,true:表示连接成功，false:表示连接失败
      * @param isReconnect 是否是重连, true: 表示这是重新连接，false: 表示这是第一次连接
      * @throws Exception
-     * @author: WChao
+     *
      */
      void onAfterConnected(ImChannelContext imChannelContext, boolean isConnected, boolean isReconnect) throws Exception;
 
@@ -28,7 +28,7 @@ public interface ImListener {
      * @param packet
      * @param packetSize
      * @throws Exception
-     * @author: WChao
+     *
      */
      void onAfterDecoded(ImChannelContext imChannelContext, ImPacket packet, int packetSize) throws Exception;
 
@@ -46,7 +46,7 @@ public interface ImListener {
      * @param packet
      * @param isSentSuccess true:发送成功，false:发送失败
      * @throws Exception
-     * @author WChao
+     *
      */
      void onAfterSent(ImChannelContext imChannelContext, ImPacket packet, boolean isSentSuccess) throws Exception;
 
@@ -65,7 +65,7 @@ public interface ImListener {
      * @param throwable the throwable 有可能为空
      * @param remark the remark 有可能为空
      * @param isRemove
-     * @author WChao
+     *
      * @throws Exception
      */
      void onBeforeClose(ImChannelContext imChannelContext, Throwable throwable, String remark, boolean isRemove) throws Exception;

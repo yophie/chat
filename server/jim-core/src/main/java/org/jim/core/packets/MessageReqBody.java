@@ -1,8 +1,8 @@
 package org.jim.core.packets;
 
 /**
- * @author WChao
- * @date 2018年4月10日 下午3:18:06
+ *
+ * @date 4月10日 下午3:18:06
  */
 public class MessageReqBody extends Message {
 

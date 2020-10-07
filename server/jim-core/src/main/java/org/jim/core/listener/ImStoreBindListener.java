@@ -6,8 +6,8 @@ import org.jim.core.packets.Group;
 import org.jim.core.packets.User;
 /**
  * IM持久化绑定用户及群组监听器;
- * @author WChao
- * @date 2018年4月8日 下午4:09:14
+ *
+ * @date 4月8日 下午4:09:14
  */
 public interface ImStoreBindListener {
 	/**

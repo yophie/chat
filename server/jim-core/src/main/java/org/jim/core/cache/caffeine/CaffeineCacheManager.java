@@ -3,19 +3,16 @@
  */
 package org.jim.core.cache.caffeine;
 
+import com.github.benmanes.caffeine.cache.LoadingCache;
+import com.github.benmanes.caffeine.cache.RemovalListener;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import com.github.benmanes.caffeine.cache.LoadingCache;
-import com.github.benmanes.caffeine.cache.RemovalListener;
-/**
- * 
- * @author WChao
- * @date 2018年3月9日 上午12:54:07
- */
+
 public class CaffeineCacheManager {
 	
 	private static Map<String, CaffeineCache> map = new HashMap<String,CaffeineCache>();
@@ -54,7 +51,7 @@ public class CaffeineCacheManager {
 	 * @param timeToLiveSeconds
 	 * @param timeToIdleSeconds
 	 * @return
-	 * @author wchao
+	 *
 	 */
 	public static CaffeineCache register(String cacheName, Integer timeToLiveSeconds, Integer timeToIdleSeconds) {
 		CaffeineCache CaffeineCache = register(cacheName, timeToLiveSeconds, timeToIdleSeconds,5000000, null);

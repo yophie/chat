@@ -6,7 +6,7 @@ package org.jim.core.packets;
 /**
  * 版本: [1.0]
  * 功能说明: 登陆命令请求包体
- * 作者: WChao 创建时间: 2017年9月12日 下午3:13:22
+ *  创建时间: 9月12日 下午3:13:22
  */
 public class LoginReqBody extends Message {
 	

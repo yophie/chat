@@ -16,7 +16,7 @@ import org.jim.core.packets.Command;
 /**
  * 版本: [1.0]
  * 功能说明: 
- * @author : WChao 创建时间: 2017年8月21日 下午3:08:04
+ *  创建时间: 8月21日 下午3:08:04
  */
 public class TcpServerDecoder implements ImConst {
 	

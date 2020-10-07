@@ -19,8 +19,8 @@ import java.util.*;
 
 /**
  * Redis获取持久化+同步消息助手;
- * @author WChao
- * @date 2018年4月9日 下午4:39:30
+ * 
+ * @date 4月9日 下午4:39:30
  */
 public class RedisMessageHelper extends AbstractMessageHelper{
 

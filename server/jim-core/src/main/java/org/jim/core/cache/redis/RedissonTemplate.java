@@ -10,8 +10,8 @@ import org.redisson.config.SingleServerConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 /**
- * @author WChao
- * @date 2018年5月18日 下午2:46:55
+ *
+ * @date 5月18日 下午2:46:55
  */
 public class RedissonTemplate implements Serializable{
 

@@ -1,10 +1,7 @@
 package org.jim.core.cache.caffeine;
 
 import java.util.Properties;
-/**
- * @author WChao
- * @date 2018年3月9日 上午1:09:03
- */
+
 public class CaffeineConfiguration {
 	
 	private String cacheName;

@@ -6,15 +6,15 @@ import org.tio.core.ChannelContext;
 import org.jim.core.http.HttpConfig;
 import org.jim.core.http.HttpRequest;
 /**
- * @author WChao
- * 2017年8月18日 下午5:47:00
+ *
+ * 8月18日 下午5:47:00
  */
 public class HttpServerUtils {
 	/**
 	 *
 	 * @param request
 	 * @return
-	 * @author WChao
+	 *
 	 */
 	public static HttpConfig getHttpConfig(HttpRequest request) {
 		ImServerConfig imServerConfig = (ImServerConfig)request.getImChannelContext().getImConfig();
@@ -23,7 +23,7 @@ public class HttpServerUtils {
 
 	/**
 	 * @param args
-	 * @author WChao
+	 *
 	 */
 	public static void main(String[] args) {
 
@@ -31,7 +31,7 @@ public class HttpServerUtils {
 
 	/**
 	 *
-	 * @author WChao
+	 *
 	 */
 	public HttpServerUtils() {
 	}

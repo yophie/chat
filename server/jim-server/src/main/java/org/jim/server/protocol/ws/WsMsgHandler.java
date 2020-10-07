@@ -18,8 +18,8 @@ import org.slf4j.LoggerFactory;
 
 import java.nio.ByteBuffer;
 /**
- * @author WChao 
- * 2017年6月28日 下午5:32:38
+ *
+ * 6月28日 下午5:32:38
  */
 public class WsMsgHandler implements IWsMsgHandler{
 	private static Logger log = LoggerFactory.getLogger(WsMsgHandler.class);
@@ -31,7 +31,7 @@ public class WsMsgHandler implements IWsMsgHandler{
 	 * @param text
 	 * @param imChannelContext
 	 * @return 可以是WsResponsePacket、String、null
-	 * @author: WChao
+	 *
 	 */
 	@Override
 	public Object onText(WsRequestPacket wsRequestPacket, String text, ImChannelContext imChannelContext) throws Exception {
@@ -57,7 +57,7 @@ public class WsMsgHandler implements IWsMsgHandler{
 	 * @param bytes
 	 * @param imChannelContext
 	 * @return 可以是WsResponsePacket、byte[]、ByteBuffer、null
-	 * @author: WChao
+	 *
 	 */
 	@Override
 	public Object onBytes(WsRequestPacket webSocketPacket, byte[] bytes, ImChannelContext imChannelContext) throws Exception {
@@ -72,7 +72,7 @@ public class WsMsgHandler implements IWsMsgHandler{
 	 * @param imChannelContext
 	 * @return
 	 * @throws Exception
-	 * @author: WChao
+	 *
 	 */
 	@Override
 	public WsResponsePacket handler(ImPacket imPacket, ImChannelContext imChannelContext)throws Exception {
@@ -154,7 +154,7 @@ public class WsMsgHandler implements IWsMsgHandler{
 
 	/**
 	 * 
-	 * @author: WChao
+	 *
 	 */
 	public WsMsgHandler(WsConfig wsServerConfig, String[] scanPackages) {
 		this.setWsServerConfig(wsServerConfig);

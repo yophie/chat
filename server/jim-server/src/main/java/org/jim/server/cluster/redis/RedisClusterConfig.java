@@ -21,7 +21,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * @desc Redis集群配置
- * @author WChao
+ *
  * @date 2020-05-01
  */
 public class RedisClusterConfig extends ImClusterConfig implements ImConst {
@@ -54,7 +54,7 @@ public class RedisClusterConfig extends ImClusterConfig implements ImConst {
 	 * @param topicSuffix 不同类型的就要有一个不同的topicSuffix
 	 * @param redissonClient redis客户端
 	 * @return
-	 * @author: WChao
+	 *
 	 */
 	public static RedisClusterConfig newInstance(String topicSuffix, RedissonClient redissonClient) {
 		if (redissonClient == null) {

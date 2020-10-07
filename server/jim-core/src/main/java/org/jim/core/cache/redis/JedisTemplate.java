@@ -9,8 +9,8 @@ import redis.clients.jedis.*;
 import java.io.Serializable;
 import java.util.*;
 /**
- * @author wchao
- * @modify 2016-08-29 增加了set(final String key, final Object value)和<T> T get(final String key,final Class<T> clazz)
+ *
+ * @modify 08-29 增加了set(final String key, final Object value)和<T> T get(final String key,final Class<T> clazz)
  */
 @SuppressWarnings({"deprecation"})
 public  class JedisTemplate implements  Serializable{  
@@ -1187,8 +1187,7 @@ public  class JedisTemplate implements  Serializable{
    }  
    /** 
     * 键值对 
-    * @version V1.0 
-    * @author fengjc 
+    * @version V1.0
     * @param <K> key 
     * @param <V> value 
     */  
@@ -1239,7 +1238,6 @@ public  class JedisTemplate implements  Serializable{
    }
 
 	/**
-	 * @author dave
 	 * 向缓存中设置对象
 	 * @param key 
 	 * @param value
@@ -1256,7 +1254,6 @@ public  class JedisTemplate implements  Serializable{
 	}
 	
 	/**
-	 * @author dave
 	 * 向缓存中设置对象有有效期
 	 * @param key 
 	 * @param value
@@ -1274,7 +1271,6 @@ public  class JedisTemplate implements  Serializable{
 	}
 
 	/**
-	 * @author dave
 	 * 根据key 获取对象
 	 * @param key
 	 * @return

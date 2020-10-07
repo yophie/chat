@@ -8,7 +8,7 @@ import java.nio.ByteBuffer;
 /**
  * @ClassName ImHandler
  * @Description TODO
- * @Author WChao
+ *
  * @Date 2020/1/6 2:09
  * @Version 1.0
  **/
@@ -32,7 +32,7 @@ public interface ImHandler {
      * @param imConfig IM配置
      * @param imChannelContext 通道上下文
      * @return
-     * @author: WChao
+     *
      */
     ByteBuffer encode(ImPacket imPacket, ImConfig imConfig, ImChannelContext imChannelContext);
 
@@ -41,7 +41,7 @@ public interface ImHandler {
      * @param imPacket 业务消息包
      * @param imChannelContext 通道上下文
      * @throws ImException
-     * @author: WChao
+     *
      */
     void handler(ImPacket imPacket, ImChannelContext imChannelContext) throws ImException;
 }

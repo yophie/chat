@@ -9,8 +9,8 @@ import org.jim.core.packets.UserMessageData;
 
 import java.util.List;
 /**
- * @author WChao
- * @date 2018年4月9日 下午4:31:51
+ *
+ * @date 4月9日 下午4:31:51
  */
 public interface MessageHelper {
 	/**

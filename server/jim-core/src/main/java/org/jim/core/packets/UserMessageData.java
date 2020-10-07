@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author WChao
- * @date 2018年4月11日 下午2:54:58
+ *
+ * @date 4月11日 下午2:54:58
  */
 public class UserMessageData implements Serializable{
 

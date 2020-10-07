@@ -9,7 +9,7 @@ import org.jim.server.config.ImServerConfig;
 import java.util.Objects;
 
 /**
- * @author WChao
+ *
  * @Desc 绑定/解绑 用户监听器抽象类
  * @date 2020-05-02 13:43
  */

@@ -25,7 +25,7 @@ import java.util.Objects;
 /**
  * 版本: [1.0]
  * 功能说明: 
- * @author : WChao 创建时间: 2017年8月3日 下午7:44:48
+ *  创建时间: 8月3日 下午7:44:48
  */
 public class TcpProtocolHandler extends AbstractProtocolHandler {
 	

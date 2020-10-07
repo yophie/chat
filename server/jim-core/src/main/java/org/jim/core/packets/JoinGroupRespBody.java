@@ -9,7 +9,7 @@ import org.jim.core.Status;
 /**
  * 版本: [1.0]
  * 功能说明: 加入群组响应消息体
- * 作者: WChao 创建时间: 2017年7月26日 下午5:09:20
+ *  创建时间: 7月26日 下午5:09:20
  */
 public class JoinGroupRespBody extends RespBody {
 	

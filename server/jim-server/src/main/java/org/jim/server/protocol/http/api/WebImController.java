@@ -15,7 +15,7 @@ import java.io.File;
 /**
  * 版本: [1.0]
  * 功能说明: 
- * 作者: WChao 创建时间: 2017年9月27日 下午4:54:35
+ *  创建时间: 9月27日 下午4:54:35
  */
 @RequestPath(value = "/webim")
 public class WebImController {

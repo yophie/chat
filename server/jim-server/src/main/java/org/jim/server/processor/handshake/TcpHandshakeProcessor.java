@@ -17,7 +17,7 @@ import org.jim.server.protocol.ProtocolManager;
 /**
  * 版本: [1.0]
  * 功能说明: 
- * 作者: WChao 创建时间: 2017年9月11日 下午8:11:34
+ *  创建时间: 9月11日 下午8:11:34
  */
 public class TcpHandshakeProcessor extends AbstractProtocolCmdProcessor implements HandshakeCmdProcessor{
 
@@ -33,7 +33,7 @@ public class TcpHandshakeProcessor extends AbstractProtocolCmdProcessor implemen
 	 * @param packet
 	 * @param channelContext
 	 * @throws ImException
-	 * @author Wchao
+	 *
 	 */
 	@Override
 	public void onAfterHandshake(ImPacket packet, ImChannelContext channelContext)throws ImException {

@@ -2,7 +2,7 @@ package org.jim.core.http;
 
 /**
  *
- * @author wchao
+ *
  *
  */
 public class KeyValue {

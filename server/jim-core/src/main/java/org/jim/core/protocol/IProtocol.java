@@ -11,7 +11,7 @@ import java.nio.ByteBuffer;
 
 /**
  * 协议校验接口
- * @author WChao
+ *
  *
  */
 public interface IProtocol {

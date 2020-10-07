@@ -3,20 +3,14 @@
  */
 package org.jim.core.cache.caffeine;
 
+import com.github.benmanes.caffeine.cache.LoadingCache;
+import org.apache.commons.lang3.StringUtils;
+import org.jim.core.cache.ICache;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.concurrent.ConcurrentMap;
 
-import org.apache.commons.lang3.StringUtils;
-import org.jim.core.cache.ICache;
-
-import com.github.benmanes.caffeine.cache.LoadingCache;
-
-/**
- * 
- * @author WChao
- * @date 2018年3月9日 上午12:53:53
- */
 public class CaffeineCache  implements ICache {
 	
 	private LoadingCache<String, Serializable> loadingCache = null;
@@ -81,7 +75,7 @@ public class CaffeineCache  implements ICache {
 	/**
 	 * 
 	 * @return
-	 * @author: wchao
+	 *
 	 */
 	public ConcurrentMap<String, Serializable> asMap() {
 		return loadingCache.asMap();
@@ -90,7 +84,7 @@ public class CaffeineCache  implements ICache {
 	/**
 	 * 
 	 * @return
-	 * @author: wchao
+	 *
 	 */
 	public long size() {
 		return loadingCache.estimatedSize();//.size();

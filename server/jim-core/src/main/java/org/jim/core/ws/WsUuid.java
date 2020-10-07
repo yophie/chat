@@ -5,8 +5,8 @@ import org.tio.utils.hutool.Snowflake;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * @author WChao
- * 2017年6月5日 上午10:44:26
+ * 
+ * 6月5日 上午10:44:26
  */
 public class WsUuid {
 	private Snowflake snowflake;
@@ -21,7 +21,7 @@ public class WsUuid {
 
 	/**
 	 * @return
-	 * @author wchao
+	 * 
 	 */
 	public String uuid() {
 		return snowflake.nextId() + "";

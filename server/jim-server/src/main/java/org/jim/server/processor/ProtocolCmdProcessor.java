@@ -6,7 +6,7 @@ import org.jim.core.ImPacket;
 import org.jim.core.packets.Message;
 
 /**
- * @author WChao
+ *
  * @Desc 不同协议CMD命令处理器接口
  * @date 2020-05-02 14:31
  */

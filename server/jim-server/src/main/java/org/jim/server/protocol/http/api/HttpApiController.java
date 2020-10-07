@@ -23,7 +23,7 @@ import org.tio.core.ChannelContext;
 /**
  * 版本: [1.0]
  * 功能说明: Http协议消息发送控制器类
- * @author : WChao 创建时间: 2017年8月8日 上午9:08:48
+ *  创建时间: 8月8日 上午9:08:48
  */
 @RequestPath(value = "/api")
 public class HttpApiController {

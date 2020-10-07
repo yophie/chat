@@ -30,7 +30,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock.ReadLock;
 /**
  * 版本: [1.0]
  * 功能说明: JIM
- * @author : WChao 创建时间: 2017年9月22日 上午9:07:18
+ *  创建时间: 9月22日 上午9:07:18
  */
 public class JimServerAPI implements ImConst{
 
@@ -262,7 +262,7 @@ public class JimServerAPI implements ImConst{
 	/**
 	 * 解除userId的绑定。一般用于多地登录，踢掉前面登录的场景
 	 * @param userId 解绑用户ID
-	 * @author: WChao
+	 *
 	 */
 	public static boolean unbindUser(String userId){
 		return unbindUser(User.newBuilder().userId(userId).build());
@@ -271,7 +271,7 @@ public class JimServerAPI implements ImConst{
 	/**
 	 * 解除userId的绑定。一般用于多地登录，踢掉前面登录的场景
 	 * @param user 解绑用户信息
-	 * @author: WChao
+	 *
 	 */
 	public static boolean unbindUser(User user){
 		if(Objects.isNull(user)|| StringUtils.isEmpty(user.getUserId())){
@@ -338,7 +338,7 @@ public class JimServerAPI implements ImConst{
 	 * 与指定组解除绑定关系
 	 * @param groupId 解绑群组ID
 	 * @param imChannelContext IM通道上下文
-	 * @author WChao
+	 *
 	 */
 	public static boolean unbindGroup(String groupId, ImChannelContext imChannelContext){
 		try{
@@ -357,7 +357,7 @@ public class JimServerAPI implements ImConst{
 	/**
 	 * 与所有组解除解绑关系
 	 * @param imChannelContext IM通道上下文
-	 * @author WChao
+	 *
 	 */
 	public static boolean unbindGroup(ImChannelContext imChannelContext){
 		try{

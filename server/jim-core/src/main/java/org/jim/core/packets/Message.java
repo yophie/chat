@@ -10,7 +10,7 @@ import java.io.Serializable;
 /**
  * 版本: [1.0]
  * 功能说明: 
- * @author : WChao 创建时间: 2017年7月26日 上午11:32:57
+ *  创建时间: 7月26日 上午11:32:57
  */
 public class Message implements Serializable{
 	

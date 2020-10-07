@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * @author WChao
- * 2017年8月14日 下午1:40:14
+ *
+ * 8月14日 下午1:40:14
  */
 public class ExpireVo {
 
 	/**
 	 * @param args
-	 * @author WChao
+	 *
 	 */
 	public static void main(String[] args) {
 

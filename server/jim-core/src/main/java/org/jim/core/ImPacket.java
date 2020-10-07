@@ -5,7 +5,7 @@ import org.tio.core.intf.Packet;
 
 /**
  * 
- * @author WChao 
+ *
  *
  */
 public class ImPacket extends Packet implements ImConst
@@ -107,7 +107,7 @@ public class ImPacket extends Packet implements ImConst
 	/**
 	 * 计算消息头占用了多少字节数
 	 * @return
-	 * 2017年1月31日 下午5:32:26
+	 * 1月31日 下午5:32:26
 	 */
 	public int calcHeaderLength(boolean is4byteLength)
 	{
@@ -151,7 +151,7 @@ public class ImPacket extends Packet implements ImConst
 	/** 
 	 * @see org.tio.core.intf.Packet#logstr()
 	 * @return
-	 * 2017年2月22日 下午3:15:18
+	 * 2月22日 下午3:15:18
 	 */
 	@Override
 	public String logstr()

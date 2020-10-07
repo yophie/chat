@@ -2,7 +2,7 @@ package org.jim.core;
 
 /**
  * 
- * @author wchao 
+ *
  *
  */
 public interface ImConst
@@ -86,8 +86,8 @@ public interface ImConst
 	interface Http{
 		/**
 		 * 请求体的格式
-		 * @author wchao
-		 * 2017年6月28日 上午10:03:12
+		 *
+		 * 6月28日 上午10:03:12
 		 */
 		enum RequestBodyFormat {
 			URLENCODED, MULTIPART, TEXT
@@ -106,8 +106,8 @@ public interface ImConst
 		 Connection : Upgrade
 		 Cache-Control : no-cache
 		 Pragma : no-cache
-		 * @author wchao
-		 * 2017年5月27日 下午2:11:57
+		 *
+		 * 5月27日 下午2:11:57
 		 */
 		 interface RequestHeaderKey {
 			String Cookie = "Cookie".toLowerCase();//Cookie: $Version=1; Skin=new;
@@ -134,8 +134,8 @@ public interface ImConst
 
 		/**
 		 *
-		 * @author wchao
-		 * 2017年6月27日 下午8:23:58
+		 *
+		 * 6月27日 下午8:23:58
 		 */
 		 interface RequestHeaderValue {
 			 interface Connection {
@@ -237,8 +237,8 @@ public interface ImConst
 
 		/**
 		 *
-		 * @author wchao
-		 * 2017年6月27日 下午8:24:02
+		 *
+		 * 6月27日 下午8:24:02
 		 */
 		 interface ResponseHeaderValue {
 			 interface Connection {

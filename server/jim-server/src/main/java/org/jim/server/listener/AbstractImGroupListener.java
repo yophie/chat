@@ -10,7 +10,7 @@ import org.jim.server.config.ImServerConfig;
 import java.util.Objects;
 
 /**
- * @author WChao
+ *
  * @Desc
  * @date 2020-05-03 00:17
  */

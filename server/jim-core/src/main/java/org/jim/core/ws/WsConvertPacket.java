@@ -11,7 +11,7 @@ import org.jim.core.protocol.IProtocolConverter;
 
 /**
  * Ws协议消息转化包
- * @author WChao
+ *
  *
  */
 public class WsConvertPacket implements IProtocolConverter {

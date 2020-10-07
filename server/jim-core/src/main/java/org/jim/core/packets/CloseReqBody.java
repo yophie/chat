@@ -2,8 +2,8 @@ package org.jim.core.packets;
 
 /**
  * 退出指定用户请求体
- * @author WChao
- * @date 2018年4月13日 下午4:20:40
+ *
+ * @date 4月13日 下午4:20:40
  */
 public class CloseReqBody extends Message {
 

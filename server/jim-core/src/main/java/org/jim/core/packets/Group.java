@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * 版本: [1.0]
  * 功能说明: 用户群组
- * 作者: WChao 创建时间: 2017年9月21日 下午1:54:04
+ *  创建时间: 9月21日 下午1:54:04
  */
 public class Group extends Message{
 	

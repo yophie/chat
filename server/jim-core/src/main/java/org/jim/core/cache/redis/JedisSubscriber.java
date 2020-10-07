@@ -16,8 +16,8 @@ import redis.clients.jedis.JedisPubSub;
 
 /**
  * 
- * @author WChao
- * @date 2018年3月8日 下午1:00:02
+ *
+ * @date 3月8日 下午1:00:02
  */
 public class JedisSubscriber extends JedisPubSub {
 	

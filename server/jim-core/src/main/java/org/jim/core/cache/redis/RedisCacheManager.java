@@ -7,8 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @author WChao
- * @date 2018年3月8日 下午2:35:19
+ *
+ * @date 3月8日 下午2:35:19
  */
 public class RedisCacheManager {
 	
@@ -29,7 +29,7 @@ public class RedisCacheManager {
 	 * @param timeToLiveSeconds
 	 * @param timeToIdleSeconds
 	 * @return
-	 * @author wchao
+	 *
 	 */
 	public static RedisCache register(String cacheName, Integer timeToLiveSeconds, Integer timeToIdleSeconds) {
 		RedisExpireUpdateTask.start();

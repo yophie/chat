@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * J-IM服务端启动类
- * @author WChao
+ *
  *
  */
 public class JimServer {

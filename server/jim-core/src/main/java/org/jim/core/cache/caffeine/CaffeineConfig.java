@@ -3,10 +3,6 @@
  */
 package org.jim.core.cache.caffeine;
 
-/**
- * @author mobo-pc
- *
- */
 public class CaffeineConfig {
 	
 	private String cacheName;

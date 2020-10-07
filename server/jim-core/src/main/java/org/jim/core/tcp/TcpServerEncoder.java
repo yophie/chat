@@ -14,7 +14,7 @@ import org.jim.core.config.ImConfig;
 /**
  * 版本: [1.0]
  * 功能说明: 
- * @author : WChao 创建时间: 2017年8月21日 下午4:00:31
+ *  创建时间: 8月21日 下午4:00:31
  */
 public class TcpServerEncoder implements ImConst {
 

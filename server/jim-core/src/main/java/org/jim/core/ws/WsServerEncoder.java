@@ -10,7 +10,7 @@ import org.tio.core.utils.ByteBufferUtils;
 /**
  * 参考了baseio: https://git.oschina.net/generallycloud/baseio
  * com.generallycloud.nio.codec.http11.WebSocketProtocolEncoder
- * @author wchao
+ * 
  *
  */
 public class WsServerEncoder {
@@ -79,8 +79,8 @@ public class WsServerEncoder {
 
 	/**
 	 *
-	 * @author wchao
-	 * 2017年2月22日 下午4:06:42
+	 * 
+	 * 2月22日 下午4:06:42
 	 *
 	 */
 	public WsServerEncoder() {

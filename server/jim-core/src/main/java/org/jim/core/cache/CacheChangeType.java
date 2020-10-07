@@ -4,8 +4,8 @@ import java.util.Objects;
 
 /**
  *
- * @author WChao
- * 2017年8月12日 下午9:33:02
+ *
+ * 8月12日 下午9:33:02
  */
 public enum CacheChangeType {
 	/**

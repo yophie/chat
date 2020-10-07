@@ -15,7 +15,7 @@ import org.jim.server.protocol.ProtocolManager;
 /**
  * 版本: [1.0]
  * 功能说明: 关闭请求cmd命令处理器
- * @author : WChao 创建时间: 2017年9月21日 下午3:33:23
+ *  创建时间: 9月21日 下午3:33:23
  */
 public class CloseReqHandler extends AbstractCmdHandler
 {

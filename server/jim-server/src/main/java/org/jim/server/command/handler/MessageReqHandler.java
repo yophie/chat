@@ -18,8 +18,8 @@ import org.jim.server.protocol.ProtocolManager;
 
 /**
  * 获取聊天消息命令处理器
- * @author WChao
- * @date 2018年4月10日 下午2:40:07
+ *
+ * @date 4月10日 下午2:40:07
  */
 public class MessageReqHandler extends AbstractCmdHandler {
 	

@@ -1,11 +1,5 @@
 package org.jim.core.cache.caffeineredis;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.jim.core.cache.caffeine.CaffeineCache;
 import org.jim.core.cache.caffeine.CaffeineCacheManager;
 import org.jim.core.cache.caffeine.CaffeineConfiguration;
@@ -13,10 +7,16 @@ import org.jim.core.cache.caffeine.CaffeineConfigurationFactory;
 import org.jim.core.cache.redis.RedisCache;
 import org.jim.core.cache.redis.RedisCacheManager;
 import org.jim.core.cache.redis.SubRunnable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
- * @author WChao
- * @date 2018年3月8日 下午2:28:14
+ *
+ * @date 3月8日 下午2:28:14
  */
 public class CaffeineRedisCacheManager {
 	

@@ -1,8 +1,8 @@
 package org.jim.core.http;
 
 /**
- * @author wchao
- * 2017年6月28日 下午2:20:32
+ *
+ * 6月28日 下午2:20:32
  */
 public class RequestLine {
 	private Method method;

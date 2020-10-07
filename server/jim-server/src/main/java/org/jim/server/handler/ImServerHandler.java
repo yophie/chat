@@ -4,7 +4,7 @@ import org.jim.core.ImHandler;
 
 /**
  * 
- * @author WChao 
+ *
  *
  */
 public interface ImServerHandler extends ImHandler {

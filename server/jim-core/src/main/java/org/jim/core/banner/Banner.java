@@ -2,11 +2,6 @@ package org.jim.core.banner;
 
 import java.io.PrintStream;
 
-/**
- * @author WChao
- * @Desc
- * @date 2020-05-02 01:11
- */
 public interface Banner {
     /**
      * 打印banner

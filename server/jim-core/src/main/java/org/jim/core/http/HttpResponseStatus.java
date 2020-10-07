@@ -6,7 +6,7 @@ import org.jim.core.Status;
  * 本类直接摘自baseio: https://git.oschina.net/generallycloud/baseio<br>
  * 谢谢作者整理<br>
  *
- * @author wchao
+ *
  *
  */
 public enum HttpResponseStatus implements Status{

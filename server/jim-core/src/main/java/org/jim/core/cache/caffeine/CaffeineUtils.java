@@ -3,18 +3,14 @@
  */
 package org.jim.core.cache.caffeine;
 
-import java.util.concurrent.TimeUnit;
-import org.tio.utils.cache.caffeine.DefaultRemovalListener;
-
 import com.github.benmanes.caffeine.cache.CacheLoader;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.LoadingCache;
 import com.github.benmanes.caffeine.cache.RemovalListener;
+import org.tio.utils.cache.caffeine.DefaultRemovalListener;
 
-/**
- * @author wchao
- *
- */
+import java.util.concurrent.TimeUnit;
+
 public class CaffeineUtils {
 
 	public CaffeineUtils() {

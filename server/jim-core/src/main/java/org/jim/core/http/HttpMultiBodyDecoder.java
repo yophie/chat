@@ -18,8 +18,8 @@ import org.tio.core.utils.ByteBufferUtils;
 import org.tio.utils.SystemTimer;
 
 /**
- * @author wchao
- * 2017年7月26日 下午2:20:43
+ *
+ * 7月26日 下午2:20:43
  */
 public class HttpMultiBodyDecoder {
 	public static class Header {
@@ -80,8 +80,8 @@ public class HttpMultiBodyDecoder {
 	 * 【
 	 * Content-Disposition: form-data; name="end"
 	 * 】
-	 * @author wchao
-	 * 2017年7月27日 上午10:18:01
+	 *
+	 * 7月27日 上午10:18:01
 	 */
 	public  interface MultiBodyHeaderKey {
 		String Content_Disposition = "Content-Disposition".toLowerCase();
@@ -186,7 +186,7 @@ public class HttpMultiBodyDecoder {
 	 * @return
 	 * @throws UnsupportedEncodingException
 	 * @throws LengthOverflowException
-	 * @author wchao
+	 *
 	 */
 	public static Step parseBody(Header header, HttpRequest request, ByteBuffer buffer, String boundary, String endBoundary, ImChannelContext channelContext)
 			throws UnsupportedEncodingException, LengthOverflowException {
@@ -238,7 +238,7 @@ public class HttpMultiBodyDecoder {
 	 * 】
 	 * @param lines
 	 * @param header
-	 * @author wchao
+	 *
 	 */
 	public static void parseHeader(List<String> lines, Header header, ImChannelContext channelContext) throws ImDecodeException {
 		if (lines == null || lines.size() == 0) {

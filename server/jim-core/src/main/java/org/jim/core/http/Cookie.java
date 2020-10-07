@@ -15,8 +15,8 @@ import org.slf4j.LoggerFactory;
 
 /**
  * 部分代码参考了: https://github.com/helyho/Voovan
- * @author wchao
- * 2017年5月29日 上午7:45:58
+ *
+ * 5月29日 上午7:45:58
  */
 public class Cookie implements ImConst {
 	private static Logger log = LoggerFactory.getLogger(Cookie.class);
@@ -119,7 +119,7 @@ public class Cookie implements ImConst {
 
 	/**
 	 *
-	 * @author wchao
+	 *
 	 */
 	public Cookie() {
 	}

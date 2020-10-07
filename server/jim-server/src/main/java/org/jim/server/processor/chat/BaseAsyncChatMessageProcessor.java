@@ -12,8 +12,8 @@ import org.jim.server.util.ChatKit;
 
 import java.util.List;
 /**
- * @author WChao
- * @date 2018年4月3日 下午1:13:32
+ *
+ * @date 4月3日 下午1:13:32
  */
 public abstract class BaseAsyncChatMessageProcessor implements SingleProtocolCmdProcessor {
 	

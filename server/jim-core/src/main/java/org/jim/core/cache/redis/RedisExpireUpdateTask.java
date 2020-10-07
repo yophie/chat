@@ -11,8 +11,8 @@ import org.jim.core.cache.redis.JedisTemplate.PairEx;
 
 /**
  * 定时更新redis的过期时间
- * @author wchao
- * 2017年8月14日 下午1:34:06
+ *
+ * 8月14日 下午1:34:06
  */
 public class RedisExpireUpdateTask {
 	private static Logger log = LoggerFactory.getLogger(RedisExpireUpdateTask.class);
@@ -71,7 +71,7 @@ public class RedisExpireUpdateTask {
 
 	/**
 	 *
-	 * @author wchao
+	 *
 	 */
 	private RedisExpireUpdateTask() {
 		

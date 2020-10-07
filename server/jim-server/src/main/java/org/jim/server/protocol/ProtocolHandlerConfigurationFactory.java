@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * @author WChao
- * @date 2018年3月9日 上午1:06:33
+ *
+ * @date 3月9日 上午1:06:33
  */
 public class ProtocolHandlerConfigurationFactory {
 	

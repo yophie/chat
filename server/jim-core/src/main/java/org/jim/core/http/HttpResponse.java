@@ -9,7 +9,7 @@ import org.tio.utils.hutool.ZipUtil;
 
 /**
  *
- * @author WChao
+ *
  *
  */
 public class HttpResponse extends HttpPacket {
@@ -20,8 +20,8 @@ public class HttpResponse extends HttpPacket {
 	/**
 	 * @param args
 	 *
-	 * @author WChao
-	 * 2017年2月22日 下午4:14:40
+	 *
+	 * 2月22日 下午4:14:40
 	 *
 	 */
 	public static void main(String[] args) {
@@ -50,7 +50,7 @@ public class HttpResponse extends HttpPacket {
 	 *
 	 * @param request
 	 * @param httpConfig 可以为null
-	 * @author wchao
+	 *
 	 */
 	public HttpResponse(HttpRequest request, HttpConfig httpConfig) {
 		this.request = request;

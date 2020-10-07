@@ -22,8 +22,8 @@ import org.tio.core.utils.ByteBufferUtils;
 
 /**
  *
- * @author wchao
- * 2017年7月30日 上午10:10:50
+ *
+ * 7月30日 上午10:10:50
  */
 public class WsServerDecoder implements ImConst{
 	public enum Step {
@@ -176,7 +176,7 @@ public class WsServerDecoder implements ImConst{
 	 * @param request
 	 * @param imChannelContext
 	 * @return
-	 * @author wchao
+	 *
 	 */
 	public static HttpResponse updateWebSocketProtocol(HttpRequest request, ImChannelContext imChannelContext) {
 		Map<String, String> headers = request.getHeaders();
@@ -204,8 +204,8 @@ public class WsServerDecoder implements ImConst{
 	/**
 	 *
 	 *
-	 * @author wchao
-	 * 2017年2月22日 下午4:06:42
+	 *
+	 * 2月22日 下午4:06:42
 	 *
 	 */
 	public WsServerDecoder() {

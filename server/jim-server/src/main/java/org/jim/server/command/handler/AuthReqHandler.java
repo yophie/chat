@@ -16,7 +16,7 @@ import org.jim.server.protocol.ProtocolManager;
  * 
  * 版本: [1.0]
  * 功能说明: 鉴权请求消息命令处理器
- * @author : WChao 创建时间: 2017年9月13日 下午1:39:35
+ *  创建时间: 9月13日 下午1:39:35
  */
 public class AuthReqHandler extends AbstractCmdHandler
 {

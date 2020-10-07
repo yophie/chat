@@ -5,7 +5,7 @@ import org.jim.core.ImChannelContext;
 /**
  * @desc 多协议CMD命令处理器
  * @date 2020-03-19
- * @author WChao
+ *
  */
 public interface MultiProtocolCmdProcessor extends ProtocolCmdProcessor {
     /**

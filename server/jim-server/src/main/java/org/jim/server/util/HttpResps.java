@@ -22,8 +22,8 @@ import org.tio.utils.json.Json;
 import cn.hutool.core.io.FileUtil;
 
 /**
- * @author WChao
- * 2017年6月29日 下午4:17:24
+ *
+ * 6月29日 下午4:17:24
  */
 public class HttpResps implements ImConst.Http {
 	private static Logger log = LoggerFactory.getLogger(HttpResps.class);
@@ -33,7 +33,7 @@ public class HttpResps implements ImConst.Http {
 	 * @param request
 	 * @param bodyString
 	 * @return
-	 * @author WChao
+	 *
 	 */
 	public static HttpResponse css(HttpRequest request, String bodyString) {
 		return css(request, bodyString, HttpServerUtils.getHttpConfig(request).getCharset());
@@ -45,7 +45,7 @@ public class HttpResps implements ImConst.Http {
 	 * @param bodyString
 	 * @param charset
 	 * @return
-	 * @author WChao
+	 *
 	 */
 	public static HttpResponse css(HttpRequest request, String bodyString, String charset) {
 		HttpResponse ret = string(request, bodyString, charset, MimeType.TEXT_CSS_CSS.getType() + "; charset=" + charset);
@@ -58,7 +58,7 @@ public class HttpResps implements ImConst.Http {
 	 * @param bodyBytes
 	 * @param extension
 	 * @return
-	 * @author WChao
+	 *
 	 */
 	public static HttpResponse file(HttpRequest request, byte[] bodyBytes, String extension) {
 		String contentType = null;
@@ -80,7 +80,7 @@ public class HttpResps implements ImConst.Http {
 	 * @param fileOnServer
 	 * @return
 	 * @throws IOException
-	 * @author WChao
+	 *
 	 */
 	public static HttpResponse file(HttpRequest request, File fileOnServer) throws IOException {
 		Date lastModified = FileUtil.lastModifiedTime(fileOnServer);
@@ -103,7 +103,7 @@ public class HttpResps implements ImConst.Http {
 	 * @param bodyBytes
 	 * @param contentType 形如:application/octet-stream等
 	 * @return
-	 * @author WChao
+	 *
 	 */
 	public static HttpResponse fileWithContentType(HttpRequest request, byte[] bodyBytes, String contentType) {
 		HttpResponse ret = new HttpResponse(request, HttpServerUtils.getHttpConfig(request));
@@ -118,7 +118,7 @@ public class HttpResps implements ImConst.Http {
 	 * @param bodyBytes
 	 * @param headers
 	 * @return
-	 * @author WChao
+	 *
 	 */
 	public static HttpResponse fileWithHeaders(HttpRequest request, byte[] bodyBytes, Map<String, String> headers, HttpConfig httpConfig) {
 		HttpResponse ret = new HttpResponse(request, httpConfig);
@@ -132,7 +132,7 @@ public class HttpResps implements ImConst.Http {
 	 * @param request
 	 * @param bodyString
 	 * @return
-	 * @author WChao
+	 *
 	 */
 	public static HttpResponse html(HttpRequest request, String bodyString) {
 		HttpConfig httpConfig = HttpServerUtils.getHttpConfig(request);
@@ -145,7 +145,7 @@ public class HttpResps implements ImConst.Http {
 	 * @param bodyString
 	 * @param charset
 	 * @return
-	 * @author WChao
+	 *
 	 */
 	public static HttpResponse html(HttpRequest request, String bodyString, String charset) {
 		HttpResponse ret = string(request, bodyString, charset, MimeType.TEXT_HTML_HTML.getType() + "; charset=" + charset);
@@ -157,7 +157,7 @@ public class HttpResps implements ImConst.Http {
 	 * @param request
 	 * @param bodyString
 	 * @return
-	 * @author WChao
+	 *
 	 */
 	public static HttpResponse js(HttpRequest request, String bodyString) {
 		return js(request, bodyString, HttpServerUtils.getHttpConfig(request).getCharset());
@@ -169,7 +169,7 @@ public class HttpResps implements ImConst.Http {
 	 * @param bodyString
 	 * @param charset
 	 * @return
-	 * @author WChao
+	 *
 	 */
 	public static HttpResponse js(HttpRequest request, String bodyString, String charset) {
 		HttpResponse ret = string(request, bodyString, charset, MimeType.APPLICATION_JAVASCRIPT_JS.getType() + "; charset=" + charset);
@@ -181,7 +181,7 @@ public class HttpResps implements ImConst.Http {
 	 * @param request
 	 * @param body
 	 * @return
-	 * @author WChao
+	 *
 	 */
 	public static HttpResponse json(HttpRequest request, Object body) {
 		return json(request, body, HttpServerUtils.getHttpConfig(request).getCharset());
@@ -193,7 +193,7 @@ public class HttpResps implements ImConst.Http {
 	 * @param body
 	 * @param charset
 	 * @return
-	 * @author WChao
+	 *
 	 */
 	public static HttpResponse json(HttpRequest request, Object body, String charset) {
 		HttpResponse ret = null;
@@ -212,7 +212,7 @@ public class HttpResps implements ImConst.Http {
 
 	/**
 	 * @param args
-	 * @author WChao
+	 *
 	 */
 	public static void main(String[] args) {
 
@@ -223,7 +223,7 @@ public class HttpResps implements ImConst.Http {
 	 * @param request
 	 * @param path
 	 * @return
-	 * @author WChao
+	 *
 	 */
 	public static HttpResponse redirect(HttpRequest request, String path) {
 		HttpResponse ret = new HttpResponse(request, HttpServerUtils.getHttpConfig(request));
@@ -238,7 +238,7 @@ public class HttpResps implements ImConst.Http {
 	 * @param bodyString
 	 * @param Content_Type
 	 * @return
-	 * @author WChao
+	 *
 	 */
 	public static HttpResponse string(HttpRequest request, String bodyString, String Content_Type) {
 		return string(request, bodyString, HttpServerUtils.getHttpConfig(request).getCharset(), Content_Type);
@@ -251,7 +251,7 @@ public class HttpResps implements ImConst.Http {
 	 * @param charset
 	 * @param Content_Type
 	 * @return
-	 * @author WChao
+	 *
 	 */
 	public static HttpResponse string(HttpRequest request, String bodyString, String charset, String Content_Type) {
 		HttpResponse ret = new HttpResponse(request, HttpServerUtils.getHttpConfig(request));
@@ -271,7 +271,7 @@ public class HttpResps implements ImConst.Http {
 	 * @param request
 	 * @param lastModifiedOnServer 服务器中资源的lastModified
 	 * @return
-	 * @author WChao
+	 *
 	 */
 	public static HttpResponse try304(HttpRequest request, long lastModifiedOnServer) {
 		//If-Modified-Since
@@ -300,7 +300,7 @@ public class HttpResps implements ImConst.Http {
 	 * @param request
 	 * @param bodyString
 	 * @return
-	 * @author WChao
+	 *
 	 */
 	public static HttpResponse txt(HttpRequest request, String bodyString) {
 		return txt(request, bodyString, HttpServerUtils.getHttpConfig(request).getCharset());
@@ -312,7 +312,7 @@ public class HttpResps implements ImConst.Http {
 	 * @param bodyString
 	 * @param charset
 	 * @return
-	 * @author WChao
+	 *
 	 */
 	public static HttpResponse txt(HttpRequest request, String bodyString, String charset) {
 		HttpResponse ret = string(request, bodyString, charset, MimeType.TEXT_PLAIN_TXT.getType() + "; charset=" + charset);
@@ -320,7 +320,7 @@ public class HttpResps implements ImConst.Http {
 	}
 	/**
 	 *
-	 * @author WChao
+	 *
 	 */
 	private HttpResps() {
 	}

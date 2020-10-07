@@ -19,7 +19,7 @@ import org.tio.utils.hutool.StrUtil;
 
 /**
  *
- * @author WChao
+ *
  *
  */
 public class HttpRequestDecoder implements ImConst {
@@ -175,7 +175,7 @@ public class HttpRequestDecoder implements ImConst {
 	 * @param bodyBytes
 	 * @param channelContext
 	 * @throws ImDecodeException
-	 * @author WChao
+	 *
 	 */
 	private static void parseBody(HttpRequest httpRequest, RequestLine firstLine, byte[] bodyBytes, ImChannelContext channelContext) throws ImDecodeException {
 		parseBodyFormat(httpRequest, httpRequest.getHeaders());
@@ -227,7 +227,7 @@ public class HttpRequestDecoder implements ImConst {
 	 * Content-Type : application/x-www-form-urlencoded; charset=UTF-8
 	 * @param httpRequest
 	 * @param headers
-	 * @author WChao
+	 *
 	 */
 	public static void parseBodyFormat(HttpRequest httpRequest, Map<String, String> headers) {
 		String Content_Type = StringUtils.lowerCase(headers.get(Http.RequestHeaderKey.Content_Type));
@@ -253,8 +253,8 @@ public class HttpRequestDecoder implements ImConst {
 	 * 解析请求头的每一行
 	 * @param line
 	 * @return
-	 * @author WChao
-	 * 2017年2月23日 下午1:37:58
+	 *
+	 * 2月23日 下午1:37:58
 	 */
 	public static KeyValue parseHeaderLine(String line) {
 		KeyValue keyValue = new KeyValue();
@@ -279,8 +279,8 @@ public class HttpRequestDecoder implements ImConst {
 	 * @param channelContext
 	 * @return
 	 *
-	 * @author WChao
-	 * 2017年2月23日 下午1:37:51
+	 *
+	 * 2月23日 下午1:37:51
 	 *
 	 */
 	public static RequestLine parseRequestLine(String line, ImChannelContext channelContext) throws ImDecodeException {
@@ -328,7 +328,7 @@ public class HttpRequestDecoder implements ImConst {
 	/**
 	 * 解析URLENCODED格式的消息体
 	 * 形如： 【Content-Type : application/x-www-form-urlencoded; charset=UTF-8】
-	 * @author WChao
+	 *
 	 */
 	private static void parseUrlencoded(HttpRequest httpRequest, RequestLine firstLine, byte[] bodyBytes, String bodyString, ImChannelContext channelContext) {
 		if (StringUtils.isNotBlank(bodyString)) {
@@ -351,8 +351,8 @@ public class HttpRequestDecoder implements ImConst {
 
 	/**
 	 *
-	 * @author WChao
-	 * 2017年2月22日 下午4:06:42
+	 *
+	 * 2月22日 下午4:06:42
 	 *
 	 */
 	public HttpRequestDecoder() {

@@ -3,14 +3,14 @@ package org.jim.core.exception;
 /**
  * @ClassName ImException
  * @Description Im异常类
- * @Author WChao
+ *
  * @Date 2019/6/13 3:28
  * @Version 1.0
  **/
 public class ImException extends Exception{
 
     /**
-     * @Author WChao
+     *
      * @Description //TODO
      * @param
      * @return
@@ -19,7 +19,7 @@ public class ImException extends Exception{
     }
 
     /**
-     * @Author WChao
+     *
      * @Description //TODO
      * @param message
      * @return
@@ -30,7 +30,7 @@ public class ImException extends Exception{
     }
 
     /**
-     * @Author WChao
+     *
      * @Description //TODO
      * @param message, cause
      * @return
@@ -41,7 +41,7 @@ public class ImException extends Exception{
     }
 
     /**
-     * @Author WChao
+     *
      * @Description //TODO
      * @param message, cause, enableSuppression, writableStackTrace
      * @return
@@ -52,7 +52,7 @@ public class ImException extends Exception{
     }
 
     /**
-     * @Author WChao
+     *
      * @Description //TODO
      * @param cause
      * @return

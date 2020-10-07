@@ -7,8 +7,8 @@ import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
 
 /**
- * @author WChao
- * @date 2018年3月8日 下午1:07:55
+ *
+ * @date 3月8日 下午1:07:55
  */
 public class SubRunnable implements Runnable {
 	

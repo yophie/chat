@@ -8,8 +8,8 @@ import org.jim.core.ws.WsConfig;
 import org.jim.server.listener.ImServerListener;
 
 /**
- * @author WChao
- * 2018/08/26
+ *
+ * 08/26
  */
 public abstract class ImServerConfigBuilder<T extends ImServerConfig, B extends ImServerConfigBuilder>{
 

@@ -10,7 +10,7 @@ import org.jim.core.packets.User;
 import org.jim.server.processor.SingleProtocolCmdProcessor;
 /**
  *
- * @author WChao
+ *
  */
 public interface LoginCmdProcessor extends SingleProtocolCmdProcessor {
 	/**

@@ -15,8 +15,8 @@ import org.jim.core.utils.ImKit;
 
 /**
  * @desc Tcp协议校验器
- * @author WChao
- * @date 2018-05-01
+ *
+ * @date 05-01
  */
 public class TcpProtocol extends AbstractProtocol {
 

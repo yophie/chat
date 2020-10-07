@@ -9,7 +9,7 @@ import org.jim.core.packets.Command;
 
 /**
  * 转换不同协议消息包;
- * @author WChao
+ *
  *
  */
 public interface IProtocolConverter {

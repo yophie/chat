@@ -8,7 +8,7 @@ import org.tio.utils.prop.MapWithLockPropSupport;
 /**
  * @ClassName ImChannelContext
  * @Description TODO
- * @Author WChao
+ *
  * @Date 2020/1/5 23:40
  * @Version 1.0
  **/

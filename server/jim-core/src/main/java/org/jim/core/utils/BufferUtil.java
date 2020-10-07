@@ -68,8 +68,8 @@ public class BufferUtil
 	 * @param buffer
 	 * @return
 	 *
-	 * @author: wchao
-	 * 2017年1月23日 下午3:07:31
+	 *
+	 * 1月23日 下午3:07:31
 	 *
 	 */
 	public static long readLong(ByteBuffer buffer)
@@ -158,8 +158,8 @@ public class BufferUtil
 	 * @param charset
 	 * @return
 	 *
-	 * @author: wchao
-	 * 2017年1月25日 下午12:12:07
+	 *
+	 * 1月25日 下午12:12:07
 	 *
 	 */
 	public static String readString(ByteBuffer buffer, int length, String charset)

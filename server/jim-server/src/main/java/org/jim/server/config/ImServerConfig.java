@@ -22,7 +22,7 @@ import java.util.Objects;
 /**
  * @ClassName ImServerConfig
  * @Description TODO
- * @Author WChao
+ *
  * @Date 2020/1/4 10:40
  * @Version 1.0
  **/

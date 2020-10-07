@@ -18,7 +18,7 @@ import java.util.Objects;
 
 /**
  * IM工具类;
- * @author WChao
+ *
  *
  */
 public class ImServerKit {

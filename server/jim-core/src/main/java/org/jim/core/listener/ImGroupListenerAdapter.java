@@ -9,7 +9,7 @@ import org.tio.core.intf.GroupListener;
 /**
  * @ClassName ImGroupListenerAdapter
  * @Description TODO
- * @Author WChao
+ *
  * @Date 2020/1/12 14:19
  * @Version 1.0
  **/

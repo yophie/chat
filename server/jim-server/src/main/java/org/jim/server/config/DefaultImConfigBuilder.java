@@ -7,7 +7,7 @@ import org.jim.core.http.HttpConfig;
 import org.jim.core.ws.WsConfig;
 
 /**
- * @author WChao
+ *
  *
  */
 public class DefaultImConfigBuilder extends ImServerConfigBuilder {

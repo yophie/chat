@@ -10,7 +10,7 @@ import org.jim.core.packets.UserMessageData;
 import java.util.List;
 
 /**
- * @author WChao
+ *
  * @Desc Mongo获取持久化+同步消息助手;
  * @date 2020-05-03 21:04
  */

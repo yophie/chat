@@ -7,7 +7,7 @@ import org.jim.core.ImPacket;
 
 /**
  * @desc 集群接口
- * @author WChao
+ *
  * @date 2020-05-01 02:30
  */
 public interface ICluster {

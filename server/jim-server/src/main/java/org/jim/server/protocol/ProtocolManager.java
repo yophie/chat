@@ -28,7 +28,7 @@ import java.util.Objects;
 /**
  * 版本: [1.0]
  * 功能说明: 
- * @author : WChao 创建时间: 2017年8月3日 下午2:40:24
+ *  创建时间: 8月3日 下午2:40:24
  */
 public class ProtocolManager implements ImConst{
 	
@@ -110,7 +110,7 @@ public class ProtocolManager implements ImConst{
 
 		/**
 		 * 功能描述：[转换不同协议响应包]
-		 * @author：WChao 创建时间: 2017年9月21日 下午3:21:54
+		 *  创建时间: 9月21日 下午3:21:54
 		 * @param respBody 响应消息体
 		 * @param imChannelContext IM通道上下文
 		 * @return
@@ -148,7 +148,7 @@ public class ProtocolManager implements ImConst{
 
 		/**
 		 * 功能描述：[转换不同协议响应包]
-		 * @author：WChao 创建时间: 2017年9月21日 下午3:21:54
+		 *  创建时间: 9月21日 下午3:21:54
 		 * @param imPacket 消息包
 		 * @param command 命令码
 		 * @param imChannelContext IM通道上下文

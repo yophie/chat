@@ -4,8 +4,8 @@ import org.jim.core.http.HttpRequest;
 import org.jim.core.http.HttpResponse;
 import org.jim.core.http.RequestLine;
 /**
- * @author wchao
- * 2017年7月25日 下午2:16:06
+ *
+ * 7月25日 下午2:16:06
  */
 public interface IHttpServerListener {
 
@@ -17,7 +17,7 @@ public interface IHttpServerListener {
 	 * @param httpResponse
 	 * @return
 	 * @throws Exception
-	 * @author wchao
+	 *
 	 */
 	public void doAfterHandler(HttpRequest packet, RequestLine requestLine, HttpResponse httpResponse) throws Exception;
 
@@ -30,7 +30,7 @@ public interface IHttpServerListener {
 	 * @param httpResponseFromCache 从缓存中获取到的HttpResponse对象
 	 * @return
 	 * @throws Exception
-	 * @author wchao
+	 *
 	 */
 	public HttpResponse doBeforeHandler(HttpRequest packet, RequestLine requestLine, HttpResponse httpResponseFromCache) throws Exception;
 

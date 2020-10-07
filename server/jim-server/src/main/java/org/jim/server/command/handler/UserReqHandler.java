@@ -21,7 +21,7 @@ import java.util.Objects;
 /**
  * 版本: [1.0]
  * 功能说明: 获取用户信息消息命令
- * @author : WChao 创建时间: 2017年9月18日 下午4:08:47
+ *  创建时间: 9月18日 下午4:08:47
  */
 public class UserReqHandler extends AbstractCmdHandler {
 	/**

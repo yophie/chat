@@ -12,7 +12,7 @@ import net.oschina.j2cache.CacheObject;
 
 /**
  * 红薯大大的j2cache
- * @author WChao
+ *
  */
 public class J2Cache implements ICache {
 

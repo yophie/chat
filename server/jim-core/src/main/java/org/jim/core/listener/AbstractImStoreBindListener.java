@@ -8,8 +8,8 @@ import org.jim.core.config.ImConfig;
 import org.jim.core.message.MessageHelper;
 
 /**
- * @author WChao
- * 2018/08/26
+ * 
+ * 08/26
  */
 public abstract class AbstractImStoreBindListener implements ImStoreBindListener, ImConst {
 	

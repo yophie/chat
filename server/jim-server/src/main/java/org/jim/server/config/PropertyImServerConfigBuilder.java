@@ -8,8 +8,8 @@ import org.jim.core.utils.PropUtil;
 import org.jim.core.ws.WsConfig;
 
 /**
- * @author WChao
- * 2018/08/26
+ *
+ * 08/26
  */
 public class PropertyImServerConfigBuilder extends ImServerConfigBuilder<ImServerConfig,PropertyImServerConfigBuilder> {
 	

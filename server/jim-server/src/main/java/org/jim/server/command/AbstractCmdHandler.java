@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * 版本: [1.0]
  * 功能说明: 
- * @author: WChao 创建时间: 2017年9月11日 下午2:07:44
+ *  创建时间: 9月11日 下午2:07:44
  */
 public abstract class AbstractCmdHandler implements CmdHandler, ImConst {
 	/**

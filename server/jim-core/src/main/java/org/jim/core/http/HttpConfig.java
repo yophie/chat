@@ -7,8 +7,8 @@ import org.jim.core.session.id.ISessionIdGenerator;
 import org.tio.utils.cache.ICache;
 
 /**
- * @author wchao
- * 2017年8月15日 下午1:21:14
+ *
+ * 8月15日 下午1:21:14
  */
 public class HttpConfig implements ImConst {
 	/**

@@ -18,8 +18,8 @@ import com.alibaba.fastjson.serializer.SimpleDateFormatSerializer;
 
 /**
  *
- * @author WChao
- * 2017年4月16日 上午11:36:53
+ *
+ * 4月16日 上午11:36:53
  */
 public class JsonKit {
 	private static Logger log = LoggerFactory.getLogger(JsonKit.class);

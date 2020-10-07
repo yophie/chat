@@ -3,8 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 /**
- * @author WChao
- * @date 2018年3月9日 上午1:09:03
+ *
+ * @date 3月9日 上午1:09:03
  */
 public class CommandConfiguration {
 	private  int cmd ;

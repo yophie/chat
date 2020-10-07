@@ -9,7 +9,7 @@ import org.tio.utils.thread.pool.AbstractQueueRunnable;
 /**
  * @ClassName ImServerChannelContext
  * @Description 服务端通道上下文
- * @Author WChao
+ *
  * @Date 2020/1/5 23:56
  * @Version 1.0
  **/

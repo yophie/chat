@@ -6,7 +6,7 @@ import org.jim.core.ImConst;
  * 
  * 版本: [1.0]
  * 功能说明: 
- * @author : WChao 创建时间: 2017年9月6日 上午11:11:26
+ *  创建时间: 9月6日 上午11:11:26
  */
 public class WsConfig implements ImConst {
 	

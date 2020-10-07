@@ -11,7 +11,7 @@ import org.jim.server.processor.MultiProtocolCmdProcessor;
 /**
  * @ClassName HandshakeCmdProcessor
  * @Description TODO
- * @Author WChao
+ *
  * @Date 2019/6/13 3:57
  * @Version 1.0
  **/
@@ -22,7 +22,7 @@ public interface HandshakeCmdProcessor extends MultiProtocolCmdProcessor {
 	 * @param imChannelContext
 	 * @return
 	 * @throws ImException
-	 * @author: Wchao
+	 *
 	 */
 	 ImPacket handshake(ImPacket packet, ImChannelContext imChannelContext)  throws ImException;
 	/**
@@ -30,7 +30,7 @@ public interface HandshakeCmdProcessor extends MultiProtocolCmdProcessor {
 	 * @param packet
 	 * @param imChannelContext
 	 * @throws ImException
-	 * @author Wchao
+	 *
 	 */
 	 void onAfterHandshake(ImPacket packet, ImChannelContext imChannelContext) throws ImException;
 

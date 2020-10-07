@@ -15,7 +15,7 @@ import java.util.Objects;
 /**
  * @ClassName DefaultImServerHandler
  * @Description TODO
- * @Author WChao
+ *
  * @Date 2020/1/6 2:25
  * @Version 1.0
  **/

@@ -16,7 +16,7 @@ import java.nio.ByteBuffer;
 /**
  * @ClassName ImServerHandlerAdapter
  * @Description TODO
- * @Author WChao
+ *
  * @Date 2020/1/6 2:30
  * @Version 1.0
  **/

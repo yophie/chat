@@ -28,7 +28,7 @@ import java.util.Objects;
 /**
  * 版本: [1.0]
  * 功能说明: 
- * @author : WChao 创建时间: 2017年8月3日 下午3:07:54
+ *  创建时间: 8月3日 下午3:07:54
  */
 public class HttpProtocolHandler extends AbstractProtocolHandler {
 	

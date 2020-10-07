@@ -2,8 +2,8 @@ package org.jim.core.http;
 
 /**
  *
- * @author wchao
- * 2017年7月26日 下午3:12:56
+ *
+ * 7月26日 下午3:12:56
  */
 public class UploadFile {
 	/**

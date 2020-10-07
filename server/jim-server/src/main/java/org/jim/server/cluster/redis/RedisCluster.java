@@ -9,7 +9,7 @@ import org.jim.core.cluster.ImClusterVO;
 
 /**
  * @desc 默认Redis集群配置
- * @author WChao
+ *
  * @date 2020-05-01
  */
 public class RedisCluster extends ImCluster {

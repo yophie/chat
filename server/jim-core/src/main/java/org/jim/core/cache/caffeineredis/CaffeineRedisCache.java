@@ -1,11 +1,6 @@
 package org.jim.core.cache.caffeineredis;
 
-import java.io.Serializable;
-import java.util.Collection;
-
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.jim.core.cache.CacheChangeType;
 import org.jim.core.cache.CacheChangedVo;
 import org.jim.core.cache.ICache;
@@ -14,11 +9,12 @@ import org.jim.core.cache.caffeine.CaffeineCache;
 import org.jim.core.cache.redis.JedisTemplate;
 import org.jim.core.cache.redis.RedisCache;
 import org.jim.core.cache.redis.RedisExpireUpdateTask;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-/**
- * @author WChao
- * 2017年8月12日 下午9:13:54
- */
+import java.io.Serializable;
+import java.util.Collection;
+
 public class CaffeineRedisCache implements ICache,IL2Cache {
 	
 	Logger log = LoggerFactory.getLogger(CaffeineRedisCache.class);
@@ -29,17 +25,13 @@ public class CaffeineRedisCache implements ICache,IL2Cache {
 
 	String cacheName;
 
-	/**
-	 *
-	 * @author WChao
-	 */
+
 	public CaffeineRedisCache() {
 	}
 
 	/**
 	 * @param caffeineCache
 	 * @param redisCache
-	 * @author WChao
 	 */
 	public CaffeineRedisCache(String cacheName, CaffeineCache caffeineCache, RedisCache redisCache) {
 		super();
@@ -50,7 +42,7 @@ public class CaffeineRedisCache implements ICache,IL2Cache {
 
 	/**
 	 *
-	 * @author WChao
+	 * 
 	 */
 	@Override
 	public void clear() {
@@ -67,7 +59,7 @@ public class CaffeineRedisCache implements ICache,IL2Cache {
 	/**
 	 * @param key
 	 * @return
-	 * @author WChao
+	 * 
 	 */
 	@Override
 	public Serializable get(String key) {
@@ -94,7 +86,7 @@ public class CaffeineRedisCache implements ICache,IL2Cache {
 
 	/**
 	 * @return
-	 * @author WChao
+	 * 
 	 */
 	@Override
 	public Collection<String> keys() {
@@ -104,7 +96,7 @@ public class CaffeineRedisCache implements ICache,IL2Cache {
 	/**
 	 * @param key
 	 * @param value
-	 * @author WChao
+	 * 
 	 */
 	@Override
 	public void put(String key, Serializable value) {
@@ -132,7 +124,7 @@ public class CaffeineRedisCache implements ICache,IL2Cache {
 
 	/**
 	 * @param key
-	 * @author WChao
+	 * 
 	 */
 	@Override
 	public void remove(String key) {

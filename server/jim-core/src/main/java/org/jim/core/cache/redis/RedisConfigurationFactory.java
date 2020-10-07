@@ -12,8 +12,8 @@ import org.jim.core.JimVersion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 /**
- * @author WChao
- * @date 2018年3月9日 上午1:06:33
+ *
+ * @date 3月9日 上午1:06:33
  */
 public class RedisConfigurationFactory {
 	

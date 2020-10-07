@@ -16,7 +16,7 @@ import org.jim.server.protocol.AbstractProtocolCmdProcessor;
 /**
  * 版本: [1.0]
  * 功能说明: 
- * @author : WChao 创建时间: 2017年9月11日 下午4:22:36
+ *  创建时间: 9月11日 下午4:22:36
  */
 public class WsHandshakeProcessor extends AbstractProtocolCmdProcessor implements HandshakeCmdProcessor{
 
@@ -26,7 +26,7 @@ public class WsHandshakeProcessor extends AbstractProtocolCmdProcessor implement
 	 * @param imChannelContext
 	 * @return
 	 * @throws Exception
-	 * @author: WChao
+	 *
 	 */
 	@Override
 	public ImPacket handshake(ImPacket packet, ImChannelContext imChannelContext) throws ImException {
@@ -47,7 +47,7 @@ public class WsHandshakeProcessor extends AbstractProtocolCmdProcessor implement
 	 * @param packet
 	 * @param imChannelContext
 	 * @throws Exception
-	 * @author Wchao
+	 *
 	 */
 	@Override
 	public void onAfterHandshake(ImPacket packet, ImChannelContext imChannelContext)throws ImException {
@@ -55,7 +55,7 @@ public class WsHandshakeProcessor extends AbstractProtocolCmdProcessor implement
 	}
 
 	/**
-	 * @Author WChao
+	 *
 	 * @Description 判断当前连接是否属于WS协议
 	 * @param imChannelContext
 	 * @return boolean

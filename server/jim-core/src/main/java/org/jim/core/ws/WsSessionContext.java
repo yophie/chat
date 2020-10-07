@@ -9,7 +9,7 @@ import org.jim.core.http.HttpResponse;
 
 /**
  *
- * @author WChao
+ *
  *
  */
 public class WsSessionContext extends ImSessionContext {
@@ -43,8 +43,8 @@ public class WsSessionContext extends ImSessionContext {
 
 	/**
 	 *
-	 * @author wchao
-	 * 2017年2月21日 上午10:27:54
+	 *
+	 * 2月21日 上午10:27:54
 	 *
 	 */
 	public WsSessionContext(ImChannelContext imChannelContext) {

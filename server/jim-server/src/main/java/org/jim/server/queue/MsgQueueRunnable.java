@@ -13,8 +13,8 @@ import org.tio.utils.thread.pool.AbstractQueueRunnable;
 import java.util.concurrent.Executor;
 
 /**
- * @author WChao
- * @date 2018年4月3日 上午10:47:40
+ * 
+ * @date 4月3日 上午10:47:40
  */
 public class MsgQueueRunnable extends AbstractQueueRunnable<Message> {
 	

@@ -5,7 +5,6 @@ import org.jim.core.packets.Group;
 import org.jim.core.packets.JoinGroupRespBody;
 import org.jim.server.processor.SingleProtocolCmdProcessor;
 /**
- * @author ensheng
  */
 public interface GroupCmdProcessor extends SingleProtocolCmdProcessor {
     /**

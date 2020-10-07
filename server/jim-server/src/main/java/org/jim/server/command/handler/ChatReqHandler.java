@@ -19,7 +19,7 @@ import java.util.Objects;
 /**
  * 版本: [1.0]
  * 功能说明: 聊天请求cmd消息命令处理器
- * @author : WChao 创建时间: 2017年9月22日 下午2:58:59
+ *  创建时间: 9月22日 下午2:58:59
  */
 public class ChatReqHandler extends AbstractCmdHandler {
 

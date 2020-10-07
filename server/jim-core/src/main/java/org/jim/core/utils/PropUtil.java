@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @author WChao
+ *
  * @date 2019-06-15
  * 获取文件属性工具类
  */

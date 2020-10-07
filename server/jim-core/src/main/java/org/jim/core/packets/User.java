@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * 版本: [1.0]
  * 功能说明: 
- * @author : WChao 创建时间: 2017年7月26日 下午3:13:47
+ *  创建时间: 7月26日 下午3:13:47
  */
 public class User extends Message implements Serializable{
 	

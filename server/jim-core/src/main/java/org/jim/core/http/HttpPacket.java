@@ -7,7 +7,7 @@ import org.jim.core.ImPacket;
 
 /**
  *
- * @author wchao
+ *
  *
  */
 public class HttpPacket extends ImPacket {

@@ -6,7 +6,7 @@ import org.jim.core.ImPacket;
 /**
  * @ClassName DefaultImServerListener
  * @Description 默认IM服务端连接监听器
- * @Author WChao
+ *
  * @Date 2020/1/4 11:15
  * @Version 1.0
  **/

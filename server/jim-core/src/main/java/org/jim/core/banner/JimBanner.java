@@ -5,11 +5,6 @@ import org.jim.core.JimVersion;
 
 import java.io.PrintStream;
 
-/**
- * @author WChao
- * @Desc
- * @date 2020-05-02 01:12
- */
 public class JimBanner implements Banner, ImConst {
 
     private static final String BANNER =

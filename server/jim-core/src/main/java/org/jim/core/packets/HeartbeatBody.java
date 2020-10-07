@@ -4,7 +4,7 @@
 package org.jim.core.packets;
 
 /**
- * @author WChao
+ *
  *
  */
 public class HeartbeatBody extends Message{

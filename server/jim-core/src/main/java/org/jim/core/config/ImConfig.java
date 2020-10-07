@@ -22,7 +22,7 @@ import java.io.PrintStream;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
- * @author WChao
+ *
  *
  */
 public abstract class ImConfig extends MapWithLockPropSupport implements ImConst{
@@ -92,14 +92,14 @@ public abstract class ImConfig extends MapWithLockPropSupport implements ImConst
     /**
      * 获取ImHandler对象
      * @return
-     * @author: WChao
+     *
      */
     public abstract ImHandler getImHandler();
 
     /**
      * 获取ImListener对象
      * @return
-     * @author: WChao
+     *
      */
     public abstract ImListener getImListener();
 

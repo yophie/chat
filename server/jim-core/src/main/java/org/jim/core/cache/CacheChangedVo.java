@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.UUID;
 
 /**
- * @author WChao
- * 2017年8月12日 下午9:30:31
+ *
+ * 8月12日 下午9:30:31
  */
 public class CacheChangedVo implements Serializable {
 
@@ -15,7 +15,7 @@ public class CacheChangedVo implements Serializable {
 
 	/**
 	 * @param args
-	 * @author WChao
+	 *
 	 */
 	public static void main(String[] args) {
 
@@ -31,7 +31,7 @@ public class CacheChangedVo implements Serializable {
 
 	/**
 	 *
-	 * @author WChao
+	 *
 	 */
 	public CacheChangedVo() {
 		super();
@@ -42,7 +42,7 @@ public class CacheChangedVo implements Serializable {
 	/**
 	 * @param cacheName
 	 * @param type
-	 * @author WChao
+	 *
 	 */
 	public CacheChangedVo(String cacheName, CacheChangeType type) {
 		this();
@@ -54,7 +54,7 @@ public class CacheChangedVo implements Serializable {
 	 * @param cacheName
 	 * @param key
 	 * @param type
-	 * @author WChao
+	 *
 	 */
 	public CacheChangedVo(String cacheName, String key, CacheChangeType type) {
 		this();

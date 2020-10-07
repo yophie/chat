@@ -7,8 +7,8 @@ import java.util.UUID;
 /**
  * 成员变量group, userId, ip谁有值就发给谁，toAll为true则发给所有<br>
  * packet是不允许为null的
- * @author WChao 
- * 2018年05月20日 下午3:10:29
+ *
+ * 05月20日 下午3:10:29
  */
 public class ImClusterVO implements java.io.Serializable {
 
@@ -52,7 +52,7 @@ public class ImClusterVO implements java.io.Serializable {
 
 	/**
 	 * 默认构造器
-	 * @author: WChao
+	 *
 	 */
 	public ImClusterVO() {}
 

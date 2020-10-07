@@ -18,7 +18,7 @@ import java.util.Objects;
 /**
  * 版本: [1.0]
  * 功能说明: 命令执行管理器;
- * @author : WChao 创建时间: 2017年7月17日 下午2:23:41
+ *  创建时间: 7月17日 下午2:23:41
  */
 public class CommandManager{
 	/**

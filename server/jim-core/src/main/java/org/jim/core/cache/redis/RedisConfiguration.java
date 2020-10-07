@@ -3,8 +3,8 @@ import java.util.Properties;
 
 import org.apache.commons.lang3.StringUtils;
 /**
- * @author WChao
- * @date 2018年3月9日 上午1:09:03
+ *
+ * @date 3月9日 上午1:09:03
  */
 public class RedisConfiguration {
 	

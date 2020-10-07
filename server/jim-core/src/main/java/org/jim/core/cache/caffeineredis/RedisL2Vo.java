@@ -5,8 +5,8 @@ import java.io.Serializable;
 import org.jim.core.cache.redis.RedisCache;
 
 /**
- * @author WChao
- * @date 2018年3月13日 下午8:05:50
+ *
+ * @date 3月13日 下午8:05:50
  */
 public class RedisL2Vo {
 	

@@ -23,8 +23,8 @@ import java.util.Objects;
 
 /**
  * 消息持久化绑定监听器
- * @author WChao
- * @date 2018年4月8日 下午4:12:31
+ *
+ * @date 4月8日 下午4:12:31
  */
 public class RedisImStoreBindListener extends AbstractImStoreBindListener {
 

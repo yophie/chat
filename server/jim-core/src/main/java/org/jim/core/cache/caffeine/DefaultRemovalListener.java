@@ -9,12 +9,6 @@ import org.slf4j.LoggerFactory;
 import com.github.benmanes.caffeine.cache.RemovalCause;
 import com.github.benmanes.caffeine.cache.RemovalListener;
 
-/**
- * @author WChao
- * @param <K>
- * @param <V>
- *
- */
 public class DefaultRemovalListener<K, V> implements RemovalListener<K, V> {
 	private static Logger log = LoggerFactory.getLogger(DefaultRemovalListener.class);
 

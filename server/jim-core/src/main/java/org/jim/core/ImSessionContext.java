@@ -6,8 +6,8 @@ import org.tio.monitor.RateLimiterWrap;
 /**
  *
  * @desc IM会话上下文信息
- * @date 2018-05-01
- * @author wchao 
+ * @date 05-01
+ *
  *
  */
 public class ImSessionContext {
@@ -33,8 +33,8 @@ public class ImSessionContext {
 	protected String id;
 
 	/**
-	 * @author: WChao
-	 * 2017年2月21日 上午10:27:54
+	 *
+	 * 2月21日 上午10:27:54
 	 */
 	public ImSessionContext(){}
 

@@ -15,7 +15,7 @@ import java.util.Objects;
 /**
  * 版本: [1.0]
  * 功能说明: 心跳cmd命令处理器
- * @author : WChao 创建时间: 2017年9月21日 下午3:33:23
+ *  创建时间: 9月21日 下午3:33:23
  */
 public class HandshakeReqHandler extends AbstractCmdHandler {
 	

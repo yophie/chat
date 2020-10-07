@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.util.Properties;
 /**
- * @author WChao
+ *
  * @date 2019-06-15
  * 加载属性配置类
  */

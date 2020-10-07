@@ -1,22 +1,22 @@
 package org.jim.core.cache.caffeineredis;
 
+import org.jim.core.cache.CacheChangeType;
+import org.jim.core.cache.CacheChangedVo;
+import org.jim.core.cache.redis.JedisTemplate;
+import org.jim.core.cache.redis.JedisTemplate.Pair;
+import org.jim.core.cache.redis.RedisCacheManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.LinkedBlockingQueue;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.jim.core.cache.CacheChangeType;
-import org.jim.core.cache.CacheChangedVo;
-import org.jim.core.cache.redis.JedisTemplate;
-import org.jim.core.cache.redis.JedisTemplate.Pair;
-import org.jim.core.cache.redis.RedisCacheManager;
 /**
- * @author WChao
- * @date 2018年3月13日 下午7:59:20
+ *
+ * @date 3月13日 下午7:59:20
  */
 @SuppressWarnings("static-access")
 public class RedisAsyncRunnable implements Runnable{

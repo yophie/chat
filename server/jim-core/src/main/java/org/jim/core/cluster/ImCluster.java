@@ -6,7 +6,7 @@ package org.jim.core.cluster;
 /**
  *
  * @desc IM集群抽象类
- * @author WChao
+ *
  * @date 2020-04-29
  */
 public abstract class ImCluster implements ICluster {

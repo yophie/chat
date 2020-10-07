@@ -13,7 +13,7 @@ import org.jim.core.protocol.IProtocolConverter;
 
 /**
  * HTTP协议消息转化包
- * @author WChao
+ *
  *
  */
 public class HttpConvertPacket implements IProtocolConverter {

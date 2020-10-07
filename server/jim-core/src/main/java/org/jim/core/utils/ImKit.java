@@ -12,7 +12,7 @@ import java.util.Objects;
 
 /**
  * IM工具类;
- * @author WChao
+ *
  *
  */
 public class ImKit {
@@ -23,7 +23,7 @@ public class ImKit {
 	 * 设置Client对象到ImSessionContext中
 	 * @param channelContext 通道上下文
 	 * @return 客户端Node信息
-	 * @author: WChao
+	 *
 	 */
 	public static ImClientNode initImClientNode(ImChannelContext channelContext) {
 		ImSessionContext imSessionContext = channelContext.getSessionContext();

@@ -7,8 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @author WChao
- * @date 2018年4月3日 下午1:12:30
+ *
+ * @date 4月3日 下午1:12:30
  */
 public class DefaultAsyncChatMessageProcessor extends BaseAsyncChatMessageProcessor {
 
