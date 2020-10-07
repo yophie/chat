@@ -138,6 +138,7 @@ public class FriendControlller {
             ChatBody chatBody = ChatBody.newBuilder().from(String.valueOf(user.getFriendId()))
                     .to(String.valueOf(user.getMyId())).chatType(ChatType.CHAT_TYPE_PRIVATE.getNumber())
                     .msgType(6).content("我通过了你的朋友验证请求，现在我们可以开始聊天了").build();
+            chatBody.setCreateTime(System.currentTimeMillis());
             ImPacket chatPacket = new ImPacket(Command.COMMAND_CHAT_REQ,new RespBody(Command.COMMAND_CHAT_REQ,chatBody).toByte());
             JimServerAPI.sendToUser(String.valueOf(applyUser), chatPacket);
             JimServerAPI.sendToUser(String.valueOf(request.getUserId()), chatPacket);
