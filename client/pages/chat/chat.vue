@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-nav-bar fixed="true" title="聊天" background-color="#f0f0f0" 
+		<uni-nav-bar fixed="true" title="聊天" background-color="#e9e9e9" 
 				  :status-bar="true" :border="false">
 			 <view slot="right" @click="showMenu()">
 				 <span class="iconfont iconplus icon_item"></span>
@@ -33,8 +33,11 @@
 				list: [],
 				isShowMenu: false
 			};
-			chatapi.chatList(data);
 			return data;
+		},
+		onShow() {
+			this.list = []
+			chatapi.getChatList(this.$data);
 		},
 		methods: {
 			imageError(item) {

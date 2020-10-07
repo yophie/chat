@@ -1,16 +1,19 @@
 <template>
-	<view style="background-color: #FFFFFF;">
+	<view class="packet_detail">
 		<uni-status-bar />
 		<view class="packet_header">
 			<uni-icons color="#FFFFFF" type="back" size="24" class="left_icon" @click="BackPage"/>
 		</view>
 		<view class="packet_area">
-			<view class="packet_sender" style="margin-top: 30px;">
+			<view class="packet_sender">
 				<image :src="senderAvatar" style="width: 50upx; height: 50upx;"></image>
 				<view>
 					<text style="font-weight: bold; font-size: 35upx;">{{senderNick}}的红包</text>
 				</view>
-				<view v-if="packetType == 0" class="luck">拼</view>
+				<view v-if="packetType == 1" class="luck">拼</view>
+			</view>
+			<view class="blessing">
+				<text class="text-gray">恭喜发财，大吉大利</text>
 			</view>
 			<view v-if="recieveAmount > 0" class="recieve_amount">
 				<view>
@@ -20,9 +23,8 @@
 					<text style="color: #c59e5f; font-size: 30upx; margin-left: 5px;">元</text>
 				</view>
 			</view>
-			<view v-else class="blessing">
-				<text class="text-gray">恭喜发财，大吉大利</text>
-			</view>
+		</view>
+		<view class="packet_list">
 			<view v-if="packetType==3 && isSender" class="text-gray" style="margin-left: 15px;">
 				<text>{{packetNum}}个红包共{{totalAmount}}元</text>
 			</view>
@@ -37,12 +39,13 @@
 					<text>,已抢完</text>
 				</view>
 			</view>
-		</view>
-		<view>
-			<uni-list :border="true" class="packet_list">
-				<uni-list-chat v-for="item in list" :key="item.id" 
+			<uni-list :border="true" style="margin-top: 5px;">
+				<uni-list-chat v-for="item in list" :key="item.reciever" 
 					:title="item.name" :avatar="item.avatar" :note="item.recieveTime" 
-					:time="item.amount">
+					>
+					<view>
+						<text>{{item.amount}}元</text>
+					</view>
 				</uni-list-chat>
 			</uni-list>
 		</view>
@@ -67,9 +70,8 @@
 				totalAmount: 0,
 				isSender: false,
 				recievedNum: 0,
-				packetType: 0, //0 拼  1 普 2 个人
+				packetType: 0, //0 普  1 拼 2 个人
 				recievedAmount: 0,
-				recievedNum: 0,
 				isRemain: false
 			};
 			return data;
@@ -105,52 +107,53 @@
 	}
 </script>
 
-<style>
+<style scoped>
+	.packet_detail {
+		background-color: #FFFFFF;
+		width: 100%;
+		height: 100vh;
+	}
 	.packet_sender {
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
 		font-size: 16px;
-		top: 100px;
+		margin-top: 10px;
 	}
 	.recieve_amount {
 		display: flex;
 		justify-content: center;
 		align-items: flex-end;
 		font-size: 80upx;
-		margin-bottom: 30px;
-		margin-top: 10px;
+		margin-top: 20px;
 	}
 	.blessing {
 		display: flex;
 		justify-content: center;
 		font-size: 30upx;
-		margin-bottom: 30px;
-		margin-top: 10px;
+		background-color: #FFFFFF;
 	}
 	.packet_header {
 		position: fixed;
 		width: 100%;
 		height: 100px;
+		top: 0;
 		border-radius: 100% 100% 100% 100% / 0% 0% 90% 90%;
 		border-bottom:2px solid gold;
 		background-color: #ee3e34;
 		z-index: 999;
 	}
 	.packet_area {
-		position: fixed;
-		top: 140px;
-		height: 100px;
+		padding-top: 100px;
+		height: 300px;
 		width: 100%;
 		display: flex;
 		justify-content: center;
 		flex-direction: column;
-		z-index: 999;
 		background-color: #FFFFFF;
 	}
 	.packet_list {
-		position: relative;
-		top: 290px;
+		background-color: #FFFFFF;
 	}
 	.left_icon {
 		position: fixed;

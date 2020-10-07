@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-nav-bar fixed="true" title="通讯录" background-color="#f0f0f0"
+		<uni-nav-bar fixed="true" title="通讯录" background-color="#e9e9e9"
 				 :status-bar="true" :border="false">
 			<view slot="right" @click="showMenu()">
 				<span class="iconfont iconplus icon_item"></span>
@@ -12,17 +12,17 @@
 			<uni-list-item title="新的朋友" thumb="/static/icon/newfriend.png" to="/pages/contacts/requestList" showArrow="true"></uni-list-item>
 			<uni-list-item title="我的群聊" thumb="/static/icon/groupchat.png" to="/pages/contacts/groupchat" showArrow="true"></uni-list-item>
 		</uni-list>
-		<block v-for="item in list" :key="item.index">
+		<!-- <block v-for="item in list" :key="item.index">
 			<view :class="'indexItem-' + item.index"  :data-index="item.index">
-				<view class="padding-xs">{{item.index}}</view>
+		 		<view class="padding-xs">{{item.index}}</view> -->
 				<uni-list :border="true">
-					<uni-list-item v-for="friend in item.friends" :key="friend.id" 
-						:title="friend.name" :thumb="friend.avatar" :clickable="true" 
-						:to="'/pages/chat/chatroom?id=' + friend.id">
+					<uni-list-item v-for="item in list" :key="item.id" 
+						:title="item.name" :thumb="item.avatar" :clickable="true" 
+						:to="'/pages/chat/chatroom?id=' + item.friendId">
 					</uni-list-item>
 				</uni-list>
-			</view>
-		</block>
+			<!-- </view>
+		</block> -->
 		<view class="count_box">共{{count}}位联系人</view>
     </view>
 </template>
@@ -41,8 +41,13 @@
 				isShowMenu: false,
 				count: 0
 			}
-			contactsapi.contactList(data)
 			return data;
+		},
+		onShow() {
+			this.$data.list = []
+			this.$data.count = 0
+			this.$data.isShowMenu = false
+			contactsapi.contactList(this.$data)
 		},
 		methods: {
 			imageError: function(item) {

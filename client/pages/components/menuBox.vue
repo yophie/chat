@@ -10,13 +10,13 @@
 				 		<text>发起群聊</text>
 				 	</view>
 				</navigator>
-				<view class="liBottomBorder"></view>
+				<!-- <view class="liBottomBorder"></view>
 				<navigator url="/pages/chat/request">
 					<view class="menu-item" @click="click">
 						<span class="iconfont icon_item iconrequest"></span>
 						<text>添加朋友</text>
 					</view>
-				</navigator>
+				</navigator> -->
 			 </nav>
 		 </view>
 		</view>

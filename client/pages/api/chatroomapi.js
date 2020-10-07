@@ -1,116 +1,159 @@
+import webSocketHandle from './webSocketHandle.js'
+import {http,chatroomTimeToString,getFromInfo} from './common.js'
+let v
 export default {
-  chatroominit (data) {
-	let id = data.id
-	data.name = "昵称后台获取"
-	data.isGroup = id%4 == 0
-	data.isGroupOwner = id%8 == 0
-    let msgList = []
-	let lastShowTime = 0
-	for (let i = 1; i <= 20; i++) {
-		let message = {
-			type: i%3, // 0 text 1 forbidden 2 packet 3 image 4 sound 5 time 6 system
-			senderAvatar: '/static/icon/avatar.png',
-			id: i,
-			senderId: i,
-			senderNick: '发红包' + i,
-			content: '测试测试测试测试',
-			isSelf: i%2 === 0,
-			isRemain: true
-		}
-		let time = new Date('2020/09/20 18:20').getTime()
+  chatroominit (data, v1, success) {
+	  v = v1
+	  let that = this
+	  http.get('api/user/type', {id: data.id}, function(res) {
+		  if (res.code == '10003') {
+			  data.isGroup = res.userType == 0
+			  data.isGroupOwner = res.isOwner
+			  data.name = res.name + (res.userType == 0 ? '(' + res.groupMemberNum + ')' : ''),
+			  data.groupMemNum = res.groupMemberNum
+			  that.chatMsgInit(data)
+		  } else {
+			  uni.showModal({
+				  title: '错误提示',
+				  content: '系统错误，请稍后再试！'
+			  });
+		  }
+	  })
+  },
+  chatMsgInit(data) {
+	  webSocketHandle.sendMessage({
+	  		  cmd:19, 
+	  		  type:1,
+	  		  userId: uni.getStorageSync("userId"),
+	  		  fromUserId: data.isGroup ? undefined : data.id,
+	  		  groupId: data.isGroup ? data.id : undefined
+	  		  // count: ,
+	  		  // offset: 
+	  })
+	  webSocketHandle.addListener(20, 'chatroom', this.handleChatMsg, data)
+	  webSocketHandle.addListener(11, 'chatroom', this.handleIncreChatMsg, data)
+  },
+  handleIncreChatMsg(data, result) {
+	  console.log(result)
+	  if (!result || result.cmd != 11 || !result.data) {
+	  	  return
+	  }
+	  let rd = result.data
+	  let rid = data.isGroup ? rd.groupId : rd.chatId
+	  if (rid != data.id) {
+		  return
+	  }
+	  let item = {
+	  		name: '',
+	  		avatar: '',
+			type: rd.msgType, // 0 text 1 forbidden 2 packet 3 image 4 sound 5 time 6 system
+			id: rd.id,
+			senderId: rd.from,
+			content: rd.content,
+			isSelf: rd.from == uni.getStorageSync("userId")
+	  }
+	  getFromInfo(rd.from, data, function(fromInfo) {
+	  	item.senderAvatar = fromInfo ? fromInfo.avatar : ''
+	  	item.senderNick = fromInfo ? fromInfo.name : '',
+		item.senderAvatar = item.senderAvatar ? item.senderAvatar : '../../static/icon/default_avatar.png'
+	  })
+	  let lastShowTime = 0
+	  let msgList = []
+	  let time = new Date(rd.createTime).getTime()
 		if (lastShowTime + 5*60*1000 < time) {
 			msgList.push({
 				type: 5,
-				content: this.timeToString(time),
-				id: 't' + i
+				content: chatroomTimeToString(time),
+				id: 't' + rd.id
 			})
 			lastShowTime = time
 		}
-		msgList.push(message)
+		data.msgList.push(item)
+	  
+	  data.lastShowTime = lastShowTime
+	   v.$nextTick(function(){
+	  	uni.pageScrollTo({
+	  		duration: 100,
+	  		scrollTop: 99999999999
+	  	})
+	   })
+  },
+  handleChatMsg(data, result) {
+	if (!result || result.cmd != 20 || !result.data) {
+		return
+	}
+	let rd = result.data
+	let list = []
+	if (data.isGroup) {
+		for (let key in rd.groups) {
+			if (data.id == key) {
+				list = rd.groups[key]
+				break
+			}
+		}
+	} else {
+		for (let key in rd.friends) {
+			if (data.id == key) {
+				list = rd.friends[key]
+				break
+			}
+		}
+	}
+	if (!list || list.length == 0) {
+		return 
+	} 
+	let lastShowTime = 0
+	for (let item of list) {
+		let time = new Date(item.createTime).getTime()
+		if (lastShowTime + 5*60*1000 < time) {
+			data.msgList.push({
+				type: 5,
+				content: chatroomTimeToString(time),
+				id: 't' + item.id
+			})
+			lastShowTime = time
+		}
+		let message = {
+			type: item.msgType, // 0 text 1 forbidden 2 packet 3 image 4 sound 5 time 6 system
+			id: item.id,
+			senderId: item.from,
+			content: item.content,
+			isSelf: item.from == uni.getStorageSync("userId")
+		}
+		message.senderNick = 'newUser'
+		// getFromInfo(item.from, data, function(fromInfo) {
+		// 	message.senderAvatar = fromInfo ? fromInfo.avatar : ''
+		// 	message.senderNick = fromInfo ? fromInfo.name : '',
+		// 	message.senderAvatar = message.senderAvatar ? message.senderAvatar : '../../static/icon/default_avatar.png'
+		// })
+		
+		data.msgList.push(message)
 	}
 	data.lastShowTime = lastShowTime
-    data.msgList = msgList
+	 v.$nextTick(function(){
+		uni.pageScrollTo({
+			duration: 0,
+			scrollTop: 99999999999
+		})
+	 })
   },
 	sendMessage(data) {
 		if (data.sendMsg) {
-			let msg = data.sendMsg
-			if (data.socketOpen) {
-				uni.sendSocketMessage({
-					data: {fromid: 1, toid: data.id, message: msg}
-				});
-			} else {
-			// socketMsgQueue.push(msg);
+			let msg = {
+				cmd: 11,
+				from: uni.getStorageSync("userId"),
+				to: data.isGroup ? undefined : data.id,
+				groupId: data.isGroup ? data.id : undefined,
+				chatType: data.isGroup ? 1 : 2,
+				msgType: 0,
+				content: data.sendMsg
 			}
-			let id = data.maxID++
-			let message = {
-				type: 0,
-				senderAvatar: '/static/icon/avatar.png',
-				id: id,
-				sendderId: id,
-				content: msg,
-				time: new Date().toDateString(),
-				isSelf: true
-			}
-			let time = new Date().getTime()
-			if (data.lastShowTime + 5*60*1000 < time) {
-				data.msgList.push({
-					type: 5,
-					content: this.timeToString(time),
-					id: 't' + id
-				})
-				data.lastShowTime = time
-			}
-			data.msgList.push(message)
+			webSocketHandle.sendMessage(msg)
+			// data.msgList.push(message)
 			data.sendMsg = ''
 			data.sendText = false
 		} 
 	},
-	timeToString(time) {
-		let now = new Date()
-		let dateTime = new Date(time)
-
-		let hour = dateTime.getHours()
-		let minute = dateTime.getMinutes()
-		let timeStr = ''
-		if (hour < 5) {
-			timeStr = '凌晨' + hour + ':' + minute
-		} else if (hour >= 5 && hour < 12) {
-			timeStr = '上午' + hour + ':' + minute
-		} else if (hour === 12) {
-			timeStr = '中午' + hour + ':' + minute
-		} else if (hour > 12 && hour < 19) {
-			timeStr = '下午' + (hour - 12) + ':' + minute
-		} else if (hour >= 19 && hour < 24) {
-			timeStr = '晚上' + (hour - 12) + ':' + minute
-		} 
-		if (now.toDateString() === dateTime.toDateString()) {
-			return timeStr
-		}
-
-		let yesterday = new Date(now.getTime()-24*60*60*1000)
-
-		if (yesterday.toDateString() === dateTime.toDateString()) {
-			return '昨天' + timeStr
-		}	
-
-		let nowWeekDay = now.getDay()
-		let today = new Date(now.toLocaleDateString()).getTime()
-		if (nowWeekDay == 0) nowWeekDay = 7
-		if (today - (nowWeekDay - 1)*24*60*60*1000 < dateTime.getTime()) {
-			let weekStr = ['日', '一', '二', '三', '四', '五', '六']
-			return '周' + weekStr[dateTime.getDay()] + timeStr
-		}
-
-		let year = dateTime.getFullYear()
-		let nowYear = now.getFullYear()
-		let dayNo = dateTime.getDate()
-		let month = dateTime.getMonth() + 1
-
-		if (nowYear != year) {
-			return year + '年' + '' + month + '月' + dayNo + '日' + timeStr
-		} else {
-			return month + '月' + dayNo + '日' + timeStr
-		}	
-	}
+	
 
 }

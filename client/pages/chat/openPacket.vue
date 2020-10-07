@@ -33,7 +33,7 @@
 		components: {uniIcons},
 		props: {
 			id: {
-				type: Number,
+				type: String,
 				default: 0
 			},
 			senderNick: {
@@ -62,13 +62,12 @@
 			open() {
 				this.animation.rotateY(180).step()
 				this.animationData = this.animation.export()
-				openPacketApi.recievePacket(this.id)
-				
 				let that = this
-				setTimeout(function() {
-					that.$emit('open', {id: that.id})
-				},1100)
-				
+				openPacketApi.recievePacket(this.id, function() {
+					setTimeout(function() {
+						that.$emit('open', {id: that.id})
+					},1100)
+				})
 			},
 			close() {
 				this.$emit('close')

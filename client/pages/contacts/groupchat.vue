@@ -1,13 +1,14 @@
 <template>
   <view>
 	<uni-nav-bar fixed="true" left-icon="back" left-text="返回"  @clickLeft="BackPage" 
-			title="我的群聊" background-color="#f0f0f0" :status-bar="true" :border="false"></uni-nav-bar>
+			title="我的群聊" background-color="#e9e9e9" :status-bar="true" :border="false"></uni-nav-bar>
 	<uni-list>
 		<uni-list-item v-for="item in list" :key="item.id" 
 			:title="item.name" :thumb="item.avatar" :clickable="true" :to="'/pages/chat/chatroom?id=' + item.id">
 		</uni-list-item>
+		
 	</uni-list>
-	<view class="count_box">
+	<view v-if="list.length > 0" class="count_box">
 		<text>共{{list.length}}个群聊</text>
 	</view>
 	<view v-if="list.length == 0" class="text-box">
@@ -28,8 +29,11 @@
 		let data = {
 			list: []
 		};
-		groupchatapi.groupchatList(data);
 		return data;
+	},
+	onShow() {
+		this.$data.list = []
+		groupchatapi.groupchatList(this.$data);
 	},
 	methods: {
 		imageError: function(item) {
@@ -67,5 +71,6 @@
 		overflow: hidden;
 		height: 80upx; 
 		background-color: #FFFFFF;
+		margin-top: 3px;
 	}
 </style>

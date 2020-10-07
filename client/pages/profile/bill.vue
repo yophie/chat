@@ -1,14 +1,14 @@
 <template>
 	<view>
 		<uni-nav-bar fixed="true" left-icon="back" left-text="返回" @clickLeft="BackPage"
-			title="账单" background-color="#f0f0f0" :status-bar="true" :border="false"></uni-nav-bar>
+			title="账单" background-color="#e9e9e9" :status-bar="true" :border="false"></uni-nav-bar>
 		<uni-list :border="true">
 			<uni-list-item v-for="item in list" :key="item.id"
-				:title="item.title" :thumb="item.avatar" :note="item.time" thumb-size="lg" >
+				:title="item.title" :thumb="item.avatar" :note="item.timeStr" thumb-size="base" >
 				<view slot="footer" class="uni-list-item__extra">
 					<text class="uni-list-item__extra-text"
 						:class="item.amount > 0 ? 'text-brown' : 'text-black'">
-						{{(item.amount >= 0 ? '+' : '-') + item.amount}}元
+						{{(item.amount > 0 ? '+' : '') + item.amount}}元
 					</text>
 				</view>
 			</uni-list-item>
@@ -31,8 +31,10 @@
 			let data = {
 				list: []
 			};
-			billapi.billList(data);
 			return data;
+		},
+		onShow() {
+			billapi.billList(this.$data);
 		},
 		methods: {
 			BackPage() {

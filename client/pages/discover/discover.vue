@@ -1,6 +1,6 @@
 <template>
   <view>
-	<uni-nav-bar fixed="true" title="发现" background-color="#f0f0f0" :status-bar="true" :border="false">
+	<uni-nav-bar fixed="true" title="发现" background-color="#e9e9e9" :status-bar="true" :border="false">
 		<view slot="right" @click="toPost">
 			<span class="iconfont iconplus icon_item"></span>
 		</view>	
@@ -9,14 +9,14 @@
 		<view v-for="item in list" :key="item.id">
 			<uni-list-item>
 				<view slot="header">
-					<view class="uni-list-item__icon">
+					<view class="uni-list-item__icon" style="margin-right: 10px;">
 						<image :src="item.avatar" class="uni-list-item__icon-img uni-list--lg" />
 					</view>
 				</view>
 				<view slot="body">
 					<view class="uni-list-item__content uni-list-item__content--center">
 						<text class="uni-list-item__content-title">{{ item.name }}</text>
-						<text class="uni-list-item__content-note">{{ item.msg }}</text>
+						<text class="uni-list-item__content-note">{{ item.content }}</text>
 						<text class="uni-list-item__content-time">{{item.time}}</text>
 					</view>
 				</view>
@@ -39,7 +39,7 @@
 			let data = {
 				list: []
 			}
-			discoverapi.discoverList(data)
+			discoverapi.initDiscover(data)
 			return data
 		},
 		methods: {
@@ -87,6 +87,8 @@
 		flex-direction: column;
 		justify-content: space-between;
 		overflow: hidden;
+		flex-wrap: wrap;
+		width: 650upx;
 	}
 	
 	.uni-list-item__content--center {
@@ -102,7 +104,8 @@
 		margin-top: 6rpx;
 		color: #000000;
 		font-size: $uni-font-size-sm;
-		overflow: hidden;
+		word-wrap:break-word;
+		width: 90%;
 	}
 	.uni-list-item__content-time {
 		margin-top: 10rpx;

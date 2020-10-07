@@ -1,13 +1,12 @@
 <template>
   <view>
 	<uni-nav-bar fixed="true" left-icon="back" left-text="返回"  @clickLeft="BackPage" 
-			title="新的朋友" background-color="#f0f0f0" :status-bar="true" :border="false"></uni-nav-bar>
+			title="新的朋友" background-color="#e9e9e9" :status-bar="true" :border="false"></uni-nav-bar>
 	<uni-list :border="true">
 		<uni-list-chat v-for="item in list" :key="item.id" 
-			:title="item.name" :avatar="item.avatar" :clickable="true"
-			:note="item.msg" :to="'/pages/chat/chatroom?id=' + item.id + '&name=' + item.name">
+			:title="item.name" :avatar="item.avatar" :note="item.msg">
 			<view class="uni-list-chat__content-extra">
-				<view v-if="item.status === 0" >
+				<view v-if="item.status === 2" >
 					<button class="cu-btn text-green sm" @click.stop="accept(item)" style="margin-right: 4px;">接受</button>
 					<button class="cu-btn text-green sm" @click.stop="reject(item)">拒绝</button>
 				</view>
@@ -15,7 +14,7 @@
 					<text v-if="item.status === 1">
 						已添加
 					</text>
-					<text v-if="item.status === 2">
+					<text v-if="item.status === 3">
 						已拒绝
 					</text>
 				</view>
@@ -40,8 +39,11 @@
 		let data = {
 			list: []
 		};
-		requestListapi.requestList(data);
 		return data;
+	},
+	onShow() {
+		this.$data.list = []
+		requestListapi.requestList(this.$data);
 	},
 	methods: {
 		imageError: function(item) {

@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<uni-nav-bar fixed="true" left-icon="back" left-text="返回" @clickLeft="BackPage"
-			title="提现" background-color="#f0f0f0" :status-bar="true" :border="false"></uni-nav-bar>
+			title="提现" background-color="#e9e9e9" :status-bar="true" :border="false"></uni-nav-bar>
 		<uni-card title="提现金额">
 			<text class="text-gray">当前余额{{balance}}元</text>
 			<view class="amount">
@@ -47,10 +47,12 @@
 				infoContent: '',
 				infoType: 'success'
 			};
-			withdrawapi.init(data)
 			return data
 		},
-		computed: {
+		onShow() {
+			withdrawapi.init(this.$data)
+		},
+ 		computed: {
 			actualAmount() {
 				return Math.round(this.amount*(1-this.rate)*100)/100
 			}
@@ -77,12 +79,14 @@
 			},
 			withdraw() {
 				if (this.amount >= this.least && this.amount <= this.balance) {
-					withdrawapi.withdraw(this.amount,);
-					this.infoContent = '成功提现' + this.amount + '元'
-					this.$refs.popup.open()
-					this.amount = null
-					this.disableWithdraw = true
-					withdrawapi.init(this.$data)
+					let that = this
+					withdrawapi.withdraw(this.amount, function(){
+						that.infoContent = '成功提现' + that.amount + '元'
+						that.amount = null
+						that.disableWithdraw = true
+						that.$refs.popup.open()
+						withdrawapi.init(that.$data)
+					});
 				}
 			}
 		}
@@ -100,6 +104,6 @@
 		margin-bottom: 20px;
 	}
 	.button {
-		background-color: #04BE02;
+		background-color: #19b851;
 	}
 </style>
