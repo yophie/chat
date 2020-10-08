@@ -46,12 +46,12 @@ public class BillControlller {
 
         BillResp billResp = new BillResp();
         Bill req = JsonKit.toBean(request.getBody(), Bill.class);
-        if(req == null || req.getAmount() == null || req.getAmount() <= 0){
+        if(req == null || !request.isSuper() || req.getUserId() == null || req.getAmount() == null || req.getAmount() <= 0){
             billResp.setCode(ImStatus.C10034.getCode());
             billResp.setMsg(ImStatus.C10034.getMsg());
             return TokenFilter.crossOrigin(HttpResps.json(request, billResp));
         }
-        req.setUserId(request.getUserId());
+        req.setUserId(req.getUserId());
         req.setType(2);
         req.setState(1);
         req.setApplyTime(System.currentTimeMillis());
