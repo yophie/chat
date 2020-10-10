@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import config from './config.js'
 
 export const http = {
 	get(url,data,success) {
@@ -15,7 +16,7 @@ export const http = {
 			})
 			return
 		}
-		let request_url = 'services/' + url
+		let request_url = config.getConfig().serviceurl + 'services/' + url
 		uni.showLoading({
 			title: '加载中'
 		})

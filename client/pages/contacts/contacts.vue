@@ -10,7 +10,7 @@
 		<view class="cpt-mask" v-if="isShowMenu" @tap.stop="hideMenu"></view>
 		<uni-list>
 			<uni-list-item title="新的朋友" thumb="/static/icon/newfriend.png" to="/pages/contacts/requestList" showArrow="true"></uni-list-item>
-			<uni-list-item title="我的群聊" thumb="/static/icon/groupchat.png" to="/pages/contacts/groupchat" showArrow="true"></uni-list-item>
+			<!-- <uni-list-item title="我的群聊" thumb="/static/icon/groupchat.png" to="/pages/contacts/groupchat" showArrow="true"></uni-list-item> -->
 		</uni-list>
 		<!-- <block v-for="item in list" :key="item.index">
 			<view :class="'indexItem-' + item.index"  :data-index="item.index">

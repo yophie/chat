@@ -13,16 +13,16 @@
 			</view>
 		</view>
 		<uni-list v-if = "isGroup&isGroupOwner">
-			<uni-list-item title="群聊名称" :rightText="name" :showArrow="true"
-				:clickable="true" @click="popupChangeName"></uni-list-item>
+			<!-- <uni-list-item title="群聊名称" :rightText="name" :showArrow="true"
+				:clickable="true" @click="popupChangeName"></uni-list-item> -->
 		    <uni-list-item title="全员禁言"  
 			:show-switch="true" :switchChecked="isForbidden"
 					@switchChange="switchChange" ></uni-list-item>
 		</uni-list>
-		<view class="padding flex flex-direction">
+		<!-- <view class="padding flex flex-direction">
 		<button v-if="isGroup&isGroupOwner"  class="cu-btn bg-green lg" @click="disbanded">解散群</button>
 		<button v-if="isGroup&!isGroupOwner" class="cu-btn bg-green lg" @click="leave" >删除并退出</button>
-		</view>
+		</view> -->
 		<uni-popup ref="popup" type="dialog">
 		    <uni-popup-dialog mode="input" title="修改群聊名称" :duration="2000" 
 					:value="name"  @confirm="changeGroupName"></uni-popup-dialog>

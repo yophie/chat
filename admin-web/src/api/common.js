@@ -5,7 +5,7 @@ import { MessageBox } from "element-ui";  // 引入
 
 export const http = Axios.create();
 
-http.defaults.baseURL = '/services'
+http.defaults.baseURL = process.env.BASE_URI
 
 function callback(res) {
   if (res && res.data && res.data.code && res.data.code == '10010') {

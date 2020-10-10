@@ -5,18 +5,25 @@
     "versionName" : "1.0.0",
     "versionCode" : "100",
     "transformPx" : false,
-	"h5": {
-		"devServer": {
-			"proxy": {
-				"/services": {
-					"target": "http://127.0.0.1:8888",
-					"changeOrigin": true,
-					"secure": false,
-					"pathRewrite":{"^/services":""}
-				}
-			}
-		}
-	},
+    "h5" : {
+        "devServer" : {
+            "proxy" : {
+                "/services" : {
+                    "target" : "http://127.0.0.1:8888",
+                    "changeOrigin" : true,
+                    "secure" : false,
+                    "pathRewrite" : {
+                        "^/services" : ""
+                    }
+                }
+            },
+            "https" : false
+        },
+        "title" : "聊天",
+        "router" : {
+            "base" : "/"
+        }
+    },
     /* 5+App特有相关 */
     "app-plus" : {
         "usingComponents" : true,
