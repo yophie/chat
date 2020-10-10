@@ -42,6 +42,7 @@ public class ChatWindowController {
                 window.setUserGroupId(Integer.parseInt(userId));
                 window.setChatType(ChatType.CHAT_TYPE_PRIVATE.getNumber());//私聊
                 User user = UserDao.findUserById(window.getUserGroupId());
+                if(user == null) continue;
                 window.setUserGroupName(user.getName());
                 window.setUserGroupAvatar(user.getAvatar());
                 window.setLastMessage(message);
@@ -64,6 +65,7 @@ public class ChatWindowController {
                 window.setUserGroupId(Integer.parseInt(userId));
                 window.setChatType(ChatType.CHAT_TYPE_PRIVATE.getNumber());//私聊
                 User user = UserDao.findUserById(window.getUserGroupId());
+                if(user == null) continue;
                 window.setUserGroupName(user.getName());
                 window.setUserGroupAvatar(user.getAvatar());
                 window.setLastMessage(message);
@@ -90,6 +92,7 @@ public class ChatWindowController {
                     window.setUserGroupId(friend.getFriendId());
                     window.setChatType(ChatType.CHAT_TYPE_PUBLIC.getNumber());//群聊
                     Group group = GroupDao.findGroup(window.getUserGroupId());
+                    if(group == null) continue;
                     window.setUserGroupName(group.getGroupName());
                     window.setUserGroupAvatar(group.getAvatar());
                     JSONObject jsonObject = JSONObject.parseObject(message);
