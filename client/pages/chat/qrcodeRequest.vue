@@ -18,6 +18,7 @@
 <script>
 	import requestapi from '@/pages/api/requestapi.js'
 	import wechatLogin from '@/pages/api/wechatLogin.js'
+	import {getToken} from '@/pages/api/common.js'
 	
 	export default {
 		name: 'qrcodeRequest',
@@ -28,7 +29,7 @@
 		},
 		onLoad(options) {
 			let id = options.id
-			let token = uni.getStorageSync("token")
+			let token = getToken("token")
 			let that = this
 			if (token) {
 				requestapi.request(id, function() {
@@ -36,9 +37,7 @@
 				}, function() {
 					that.success = 2
 				})
-			} else {
-				wechatLogin.login(id)
-			}
+			} 
 		}
 	}
 </script>

@@ -20,9 +20,9 @@
 					</view>
 					<view v-else class="cu-item">
 						<image class="cu-avatar radius" :src="item.senderAvatar" mode="aspectFill" @error="imageError(item)" ></image>
-							<view class="main nick_content">
-								<view v-if="isGroup">
-									<view class="text-gray"><text>{{item.senderNick}}</text></view>
+							<view class="nick_content main">
+								<view v-if="isGroup" class="text-gray">
+									<view>{{item.senderNick}}</view>
 								</view>
 								<view v-if="item.type === 0 || item.type === 1" style="justify-content: flex-start; align-items: flex-start;">
 									<view class="content" :class="item.type === 1 ? 'bg-grey' : ''">
@@ -113,6 +113,10 @@
 			let id = options.id
 			this.id = id
 			chatroomapi.chatroominit(this.$data, this)
+		},
+		onBackPress(event) {
+			this.BackPage()
+			return true
 		},
 		methods: {
 			input() {
@@ -217,7 +221,9 @@
 </script>
 
 <style scoped>
-	
+	.solid-bottom::after {
+	    border-bottom: none;
+	}
 	.bg-selfContent {
 		background-color: #44df5d;
 		color: #000000;
@@ -225,7 +231,7 @@
 	.nick_content {
 		display: flex;
 		flex-direction: column;
-		justify-content: flex-start;
+		font-size: 25upx;
 	}
 	.chat_operate {
 		display: flex;

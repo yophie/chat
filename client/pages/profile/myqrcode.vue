@@ -16,13 +16,14 @@
 	import common from '@/pages/api/common.js'
 	import {uniNavBar} from '@dcloudio/uni-ui'
 	import vueQr from 'vue-qr'
+	import config from '@/pages/api/config.js'
 	
 	export default {
 		name: 'myqrcode',
 		components: {uniNavBar, vueQr},
 		data() {
 			let data = {
-				url: 'http://192.168.31.173:8080/#/pages/chat/qrcodeRequest?id=' + uni.getStorageSync('userId')
+				url: config.getConfig().clienturl + '/#/pages/chat/qrcodeRequest?id=' + uni.getStorageSync('userId')
 			}
 			return data
 		},

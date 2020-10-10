@@ -8,6 +8,13 @@ export const http = {
 		this._request(url,data,success,'POST')
 	},
 	_request(url,data,success, method) {
+		let token = getToken()
+		if (!token && url != '/api/user/callback') {
+			uni.navigateTo({
+				url: '/pages/login'
+			})
+			return
+		}
 		let request_url = 'services/' + url
 		uni.showLoading({
 			title: '加载中'
@@ -16,11 +23,11 @@ export const http = {
 			url: request_url, 
 			data: data,
 			header: {
-				'Authorization': uni.getStorageSync("token")
+				'Authorization': token
 			},
 			success: (res) => {
 				if (res && res.data && res.data.code == '10010') {
-					uni.setStorageSync("token", undefined)
+					uni.removeStorageSync("token")
 					uni.navigateTo({
 						url: '/pages/login'
 					})
@@ -226,4 +233,24 @@ export const discoverTimeToString = function(time) {
   	} else {
   		return month + '月' + dayNo + '日 ' + timeStr
   	}	
+  }
+  
+  export const getToken = function() {
+	  let token = uni.getStorageSync("token")
+	  if (!token) {
+		  return ''
+	  }
+	  if (new Date().getTime() - token.creatTime > 24*60*60*1000) {
+		  uni.removeStorageSync("token")
+		  return ''
+	  }
+	  return token.value
+  }
+  
+  export const setToken = function(value) {
+	  let token = {
+		  creatTime: new Date().getTime(),
+		  value: value
+	  }
+  	  uni.setStorageSync("token", token)
   }

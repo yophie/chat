@@ -1,6 +1,9 @@
 {
 	"pages": [ 
 		{
+			"path": "pages/index/index"
+		},
+		{
 			"path": "pages/chat/chat"
 		},
 		{
