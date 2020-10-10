@@ -40,7 +40,8 @@ export default {
   changeGroupName(data, name) {
 	  http.post('api/group/update', {groupId: data.id, groupName: name}, function(res) {  
 		  if (res.code == '10031') {
-				data.name = name	   
+				data.name = name	
+				uni.$emit("changeGroupName", data.id, name)
 		   } else {
 			  uni.showModal({
 				  title: '错误提示',
@@ -55,6 +56,7 @@ export default {
 			  uni.switchTab({
 			  	url: '/pages/chat/chat'
 			  })
+			  uni.$emit("leaveGroup", id)
 		  } else {
 			  uni.showModal({
 			      title: '错误提示',
@@ -70,6 +72,7 @@ export default {
 		  uni.switchTab({
 			url: '/pages/chat/chat'
 		  })
+		  uni.$emit("leaveGroup", id)
 	  	} else {
 		  uni.showModal({
 			  title: '错误提示',

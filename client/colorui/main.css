@@ -2082,7 +2082,7 @@ button.cuIcon.lg {
 	max-width: calc(100% - 260upx);
 	margin: 0 30upx;
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 }
 
 .cu-chat .cu-item>image {

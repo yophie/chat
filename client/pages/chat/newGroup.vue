@@ -18,7 +18,7 @@
 						<view class="uni-list-item__header__selected">
 							<span class="iconfont "
 							:class="friend.checked || friend.inGroup ? 'iconselected' : 'iconselect'" 
-							:style="{color: friend.checked || friend.inGroup ? (friend.inGroup ? '#c2c0c4' : '#007aff') : '#aaa'}" 
+							:style="{color: friend.checked || friend.inGroup ? (friend.inGroup ? '#c2c0c4' : '#19b84f') : '#aaa'}" 
 							style="font-size: 35rpx;"></span>
 						</view>
 						<view class="uni-list-item__icon">

@@ -43,15 +43,25 @@ export default {
 	  if (index > -1) { 
 	  	 data.list.splice(index, 1); 
 	  } else {
-		  http.post('api/user/userinfo', {userId: item.id}, function(res) {
-		  	if (res.code == '10003') {
-		  		item.name = res.name
-		  		item.avatar = res.avatar
-				item.avatar = item.avatar ? item.avatar : '@/static/icon/default_avatar.png'
-		  	} else {
-		  		
-		  	}
-		  })
+		  if (rd.chatType == 1) {
+			  http.post('api/group/info', {groupId: item.id}, function(res) {
+				  if (res.code == '10031') {
+					  item.name = res.groupName
+					  item.avatar = res.avatar
+					  item.avatar = item.avatar ? item.avatar : '../../static/icon/default_avatar.png'
+				  } else {
+				  }
+			  })
+		  } else {
+			  http.post('api/user/userinfo', {userId: item.id}, function(res) {
+			  	if (res.code == '10003') {
+			  		item.name = res.name
+			  		item.avatar = res.avatar
+			  		item.avatar = item.avatar ? item.avatar : '../../static/icon/default_avatar.png'
+			  	} else {
+			  	}
+			  })
+		  }
 	  }
  	  
 	  data.list.unshift(item)
@@ -62,6 +72,7 @@ export default {
 		  console.log(res)
 		  if (res.code == 10023) {
 			  that.chatList(data, res.windows)
+			  webSocketHandle.addListener(11, 'chatList', that.handleMsg, data)
 		  } else {
 			  uni.showModal({
 			      title: '错误提示',
@@ -69,6 +80,27 @@ export default {
 			  });
 		  }
 	  })
-	  webSocketHandle.addListener(11, 'chatList', this.handleMsg, data)
+	  uni.$on("changeGroupName", function(id, name) {
+		  for (let i = 0; i < data.list.length; i++) {
+			if (data.list[i].id == id) {
+				data.list[i].name = name
+				break
+			}
+		  }
+	  })
+	  
+	  uni.$on("leaveGroup", function(id) {
+	  	data.name = name + '(' + data.groupMemNum + ')'
+		let index = 0
+		for (let i = 0; i < data.list.length; i++) {
+			if (data.list[i].id == id) {
+				index = i
+				break
+			}
+		}
+		if (index > -1) {
+			data.list.splice(index, 1); 
+		}
+	  }) 
   }
 }

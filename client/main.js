@@ -13,7 +13,6 @@ Vue.component('discover',discover)
 import profile from './pages/profile/profile.vue'
 Vue.component('profile',profile)
 
-
 Vue.config.productionTip = false
 
 App.mpType = 'app'

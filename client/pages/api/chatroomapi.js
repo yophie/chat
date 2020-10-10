@@ -5,6 +5,7 @@ export default {
   chatroominit (data, v1, success) {
 	  v = v1
 	  let that = this
+	  
 	  http.get('api/user/type', {id: data.id}, function(res) {
 		  if (res.code == '10003') {
 			  data.isGroup = res.userType == 1
@@ -27,6 +28,12 @@ export default {
 			  });
 		  }
 	  })
+	  if (data.isGroup) {
+		 uni.$on("changeGroupName", function(id, name) {
+		 	data.name = name + '(' + data.groupMemNum + ')'
+		 }) 
+	  }
+	  
   },
   chatMsgInit(data) {
 	  webSocketHandle.sendMessage({

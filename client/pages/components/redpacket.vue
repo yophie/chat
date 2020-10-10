@@ -44,6 +44,12 @@
 		},
 		mounted(options) {
 			redpacketApi.packetInit(this.$data, this.id)
+			let that = this
+			uni.$once('recievePacket', function(id) {
+				if (that.id == id) {
+					that.canRecive = false
+				}
+			})
 		},
 		methods: {
 			_onClick() {

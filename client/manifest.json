@@ -14,8 +14,7 @@
 					"secure": false,
 					"pathRewrite":{"^/services":""}
 				}
-			},
-			"allowedHosts": ["192.168.1.16:8888"]
+			}
 		}
 	},
     /* 5+App特有相关 */
