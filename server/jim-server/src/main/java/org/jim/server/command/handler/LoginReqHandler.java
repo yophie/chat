@@ -62,6 +62,12 @@ public class LoginReqHandler extends AbstractCmdHandler {
 			return user;
 		}
 		LoginRespBody loginResp = loginProcessor.doLogin(loginReqBody, imChannelContext);
+		loginRespBody.setUser(loginResp.getUser());
+		loginRespBody.setToken(loginResp.getToken());
+		loginRespBody.setCode(loginResp.getCode());
+		loginRespBody.setCmd(loginResp.getCmd());
+		loginRespBody.setData(loginResp.getData());
+		loginRespBody.setMsg(loginResp.getMsg());
 		if (Objects.isNull(loginRespBody) || loginRespBody.getCode() != ImStatus.C10007.getCode()) {
 			log.error("login failed, userId:{}, password:{}", loginReqBody.getUserId(), loginReqBody.getPassword());
 			loginProcessor.onFailed(imChannelContext);
@@ -69,12 +75,6 @@ public class LoginReqHandler extends AbstractCmdHandler {
 			JimServerAPI.remove(imChannelContext, "userId or token is incorrect");
 			return null;
 		}
-		loginRespBody.setUser(loginResp.getUser());
-		loginRespBody.setToken(loginResp.getToken());
-		loginRespBody.setCode(loginResp.getCode());
-		loginRespBody.setCmd(loginResp.getCmd());
-		loginRespBody.setData(loginResp.getData());
-		loginRespBody.setMsg(loginResp.getMsg());
 		return loginProcessor.getUser(loginResp.getToken());
 	}
 

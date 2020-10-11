@@ -124,4 +124,13 @@ public class RedisCache {
         return null;
     }
 
+    public static String next(String key, int index){
+        try {
+            return (String) JedisTemplate.me().sorSetRange(key,index,index+1).toArray()[0];
+        } catch (Exception e) {
+            logger.error(e.toString(),e);
+        }
+        return null;
+    }
+
 }

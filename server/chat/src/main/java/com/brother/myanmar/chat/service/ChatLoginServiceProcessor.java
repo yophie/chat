@@ -69,6 +69,8 @@ public class ChatLoginServiceProcessor extends AbstractProtocolCmdProcessor impl
 				me = buildUser(me);
 				RedisCache.putToken(loginReqBody.getToken(), me);
 				return new LoginRespBody(ImStatus.C10007, me, loginReqBody.getToken());
+			}else {
+				return LoginRespBody.failed();
 			}
 		}
 		if(Objects.nonNull(loginReqBody.getUserId()) && Objects.nonNull(loginReqBody.getPassword())){

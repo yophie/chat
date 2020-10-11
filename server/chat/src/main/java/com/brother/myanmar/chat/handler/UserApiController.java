@@ -21,12 +21,16 @@ import org.jim.core.utils.Md5;
 import org.jim.core.utils.PropUtil;
 import org.jim.server.protocol.http.annotation.RequestPath;
 import org.jim.server.util.HttpResps;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Objects;
 
 @RequestPath(value = "/api/user")
 public class UserApiController {
+
+    private static Logger logger = LoggerFactory.getLogger(UserApiController.class);
 
     @RequestPath(value = "/login")
     public HttpResponse login(HttpRequest request) throws Exception {
@@ -44,12 +48,15 @@ public class UserApiController {
                 String token = Md5.sign(text, ImConst.AUTH_KEY, ImConst.CHARSET);
                 RedisCache.putSuperToken(token,findUser);
                 resp.setToken(token);
+                resp.setCode(ImStatus.C10008.getCode());
+                resp.setMsg(ImStatus.C10008.getMsg());
+                return TokenFilter.crossOrigin(HttpResps.json(request, resp));
+            } else {
                 return TokenFilter.crossOrigin(HttpResps.json(request, resp));
             }
         } else {
             return TokenFilter.crossOrigin(HttpResps.json(request, resp));
         }
-        return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10008)));
     }
 
     @RequestPath(value = "/logout")
@@ -97,6 +104,9 @@ public class UserApiController {
             return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10004)));
         }
         String openid = jsonObject.getString("openid");
+        if(openid == null){
+            return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10004)));
+        }
         User searchUser = new User();
         searchUser.setOpenId(openid);
         User findUser = UserDao.findUserByOpenId(searchUser);
@@ -109,6 +119,9 @@ public class UserApiController {
             return TokenFilter.crossOrigin(HttpResps.json(request, loginRes));
         }
         String access_token = jsonObject.getString("access_token");
+        if(access_token == null){
+            return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10004)));
+        }
         String infoUrl = "https://api.weixin.qq.com/sns/userinfo?access_token=" + access_token + "&openid=" + openid
                 + "&lang=zh_CN";
         JSONObject userInfo = AuthUtil.doGetJson(infoUrl);

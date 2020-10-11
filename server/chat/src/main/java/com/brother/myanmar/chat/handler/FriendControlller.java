@@ -99,11 +99,11 @@ public class FriendControlller {
             user.setFriendNick(me.getName());
             WindowDao.insertFriend(user);
 
-            ChatBody chatBody = ChatBody.newBuilder().from(String.valueOf(user.getFriendId()))
+            /*ChatBody chatBody = ChatBody.newBuilder().from(String.valueOf(user.getFriendId()))
                     .to(String.valueOf(user.getMyId())).chatType(ChatType.CHAT_TYPE_PRIVATE.getNumber())
                     .msgType(6).content("加个朋友呗").build();
             ImPacket chatPacket = new ImPacket(Command.COMMAND_CHAT_REQ,new RespBody(Command.COMMAND_CHAT_REQ,chatBody).toByte());
-            JimServerAPI.sendToUser(String.valueOf(applyUser), chatPacket);
+            JimServerAPI.sendToUser(String.valueOf(applyUser), chatPacket);*/
         }
         return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10029)));
     }
@@ -133,22 +133,27 @@ public class FriendControlller {
                 User me = UserDao.findUserById(request.getUserId());
                 friend.setFriendNick(me.getName());
                 WindowDao.insertFriend(friend);
+
+                ChatBody chatBody = ChatBody.newBuilder().from(String.valueOf(user.getFriendId()))
+                        .to(String.valueOf(user.getMyId())).chatType(ChatType.CHAT_TYPE_PRIVATE.getNumber())
+                        .msgType(6).content("我通过了你的朋友验证请求，现在我们可以开始聊天了").build();
+                chatBody.setCreateTime(System.currentTimeMillis());
+
+                chatBody.setChatId(String.valueOf(user.getMyId()));
+                ImPacket chatPacket = new ImPacket(Command.COMMAND_CHAT_REQ,new RespBody(Command.COMMAND_CHAT_REQ,chatBody).toByte());
+                JimServerAPI.sendToUser(String.valueOf(applyUser), chatPacket);
+
+                chatBody.setChatId(String.valueOf(user.getFriendId()));
+                chatPacket = new ImPacket(Command.COMMAND_CHAT_REQ,new RespBody(Command.COMMAND_CHAT_REQ,chatBody).toByte());
+                JimServerAPI.sendToUser(String.valueOf(request.getUserId()), chatPacket);
+
+                String from = String.valueOf(user.getFriendId());
+                String to = String.valueOf(user.getMyId());
+                String sessionId = ChatKit.sessionId(from,to);
+                ImServerConfig imServerConfig = ImConfig.Global.get();
+                MessageHelper messageHelper = imServerConfig.getMessageHelper();
+                messageHelper.writeMessage("store", "user:"+sessionId, chatBody);
             }
-
-            ChatBody chatBody = ChatBody.newBuilder().from(String.valueOf(user.getFriendId()))
-                    .to(String.valueOf(user.getMyId())).chatType(ChatType.CHAT_TYPE_PRIVATE.getNumber())
-                    .msgType(6).content("我通过了你的朋友验证请求，现在我们可以开始聊天了").build();
-            chatBody.setCreateTime(System.currentTimeMillis());
-            ImPacket chatPacket = new ImPacket(Command.COMMAND_CHAT_REQ,new RespBody(Command.COMMAND_CHAT_REQ,chatBody).toByte());
-            JimServerAPI.sendToUser(String.valueOf(applyUser), chatPacket);
-            JimServerAPI.sendToUser(String.valueOf(request.getUserId()), chatPacket);
-
-            String from = String.valueOf(user.getFriendId());
-            String to = String.valueOf(user.getMyId());
-            String sessionId = ChatKit.sessionId(from,to);
-            ImServerConfig imServerConfig = ImConfig.Global.get();
-            MessageHelper messageHelper = imServerConfig.getMessageHelper();
-            messageHelper.writeMessage("store", "user:"+sessionId, chatBody);
         }
         return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10029)));
     }

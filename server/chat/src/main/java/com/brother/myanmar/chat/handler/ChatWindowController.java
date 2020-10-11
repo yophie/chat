@@ -96,6 +96,18 @@ public class ChatWindowController {
                     window.setUserGroupName(group.getGroupName());
                     window.setUserGroupAvatar(group.getAvatar());
                     JSONObject jsonObject = JSONObject.parseObject(message);
+
+                    if(RedisCache.isForbidden(groupId)) {
+                        int index = 0;
+                        String owner = RedisCache.getGroupOwner(groupId);
+                        while (!jsonObject.getString("from").equals(owner)
+                                && jsonObject.getInteger("msgType") != 2
+                                && jsonObject.getInteger("msgType") != 6
+                                && jsonObject.getInteger("from") != request.getUserId()) {
+                            message = RedisCache.next(s, ++index);
+                        }
+                    }
+
                     User user = UserDao.findUserById(Integer.parseInt(jsonObject.getString("from")));
                     window.setLastTime(Long.parseLong(jsonObject.getString("createTime")));
                     window.setLastName(user.getName());
