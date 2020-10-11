@@ -10,7 +10,7 @@ export const http = {
 	},
 	_request(url,data,success, method) {
 		let token = getToken()
-		if (!token && url != '/api/user/callback') {
+		if (!token && url != 'api/user/callback') {
 			uni.navigateTo({
 				url: '/pages/login'
 			})

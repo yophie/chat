@@ -8,16 +8,18 @@
 		onLaunch: function() { 
 		},
 		onShow: function() {
-			if (location.hash == '#/pages/login' || location.hash == '#/pages/loginback') {
+			if (location.hash.indexOf('#/pages/login') >= 0 || location.hash.indexOf('#/pages/loginback') >= 0) {
 				return
 			}
-			if (location.hash == '#/pages/chat/qrcodeRequest') {
+			let requestId = 0
+			if (location.hash.indexOf('#/pages/chat/qrcodeRequest') >= 0) {
 				let query = location.search.substring(1);
 				let param = query.split("&");
 				for (let p of param) {
 				   let pair = p.split("=");
 				   if (pair[0] == 'id') {
 					   requestId = pair[1]
+					   break
 				   }
 				}
 				if (!requestId || requestId <= 0) {
@@ -29,16 +31,9 @@
 				}
 			}
 			let token = getToken()
-			let username = 'cs'
-			let password = 'test'
-			let requestId = -1
 			if (!token) {
 				wechatLogin.login(requestId)
-				// webSocketHandle.initpass(username, password)
-				// uni.switchTab({
-				// 	url: "/pages/chat/chat"
-				// })
-			} else {
+			} else if (requestId <= 0) {
 				webSocketHandle.init(token)
 				uni.switchTab({
 					url: 'pages/chat/chat'
@@ -47,7 +42,6 @@
 			
 		},
 		onHide: function() {
-		//	console.log('App Hide')
 		}
 	}
 </script>

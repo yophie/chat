@@ -26,7 +26,7 @@ export default {
 	  let index = -1
 	  let item = {
 	  	id: rd.chatType == 1 ? rd.groupId : rd.chatId,
-	  	lastMsg: rd.content, 
+	  	lastMsg: rd.msgType == 2 ? '[红包]' : rd.content, 
 	  	lastTime: chatListTimeToString(rd.createTime),
 		name: '',
 		avatar: ''
@@ -54,6 +54,7 @@ export default {
 			  })
 		  } else {
 			  http.post('api/user/userinfo', {userId: item.id}, function(res) {
+				 alert(res.code + ' ' + res.name + ' ' + res.avatar)
 			  	if (res.code == '10003') {
 			  		item.name = res.name
 			  		item.avatar = res.avatar

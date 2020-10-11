@@ -23,7 +23,7 @@
 		components: {uniNavBar, vueQr},
 		data() {
 			let data = {
-				url: config.getConfig().clienturl + '/#/pages/chat/qrcodeRequest?id=' + uni.getStorageSync('userId')
+				url: config.getConfig().clienturl + '?id=' + uni.getStorageSync('userId') + '/#/pages/chat/qrcodeRequest?id=' + uni.getStorageSync('userId')
 			}
 			return data
 		},

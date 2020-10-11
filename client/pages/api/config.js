@@ -4,16 +4,16 @@ export default {
 	getConfig() {
 		if(env === 'dev'){
 			return {
-				clienturl: 'http://192.168.57.139:8080',
-				serviceurl: '',
-				websocketServerurl: 'ws://192.168.57.139:8888',
+				clienturl: 'http://47.242.141.164',
+				serviceurl: 'http://47.242.141.164',
+				websocketServerurl: 'ws://47.242.141.164',
 				appid: 'wxb87cb9510aac006d'
 			}
-		} else{
+		} else {
 			return {
-				clienturl: 'http://47.242.141.164',
-				serviceurl: 'http://47.242.141.164/',
-				websocketServerurl: 'http://47.242.141.164/ws',
+				clienturl: 'http://www.yonyouxukk.cn',
+				serviceurl: 'http://www.yonyouxukk.cn/',
+				websocketServerurl: 'ws://www.yonyouxukk.cn/ws',
 				appid: 'wxb87cb9510aac006d'
 			}
 		}

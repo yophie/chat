@@ -30,7 +30,7 @@
 					   });
 					   return
 				   }
-				   if (!state || state == '' || state == 'undefined' || state <= 0 || state == '-1') {
+				   if (!state || state == '' || state == 'undefined' || state <= 0) {
 						setToken(res.token)
 						webSocketHandle.init(res.token)
 						uni.switchTab({

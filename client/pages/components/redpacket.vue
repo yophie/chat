@@ -45,7 +45,7 @@
 		mounted(options) {
 			redpacketApi.packetInit(this.$data, this.id)
 			let that = this
-			uni.$once('recievePacket', function(id) {
+			uni.$once('recievePacket' + that.id, function(id) {
 				if (that.id == id) {
 					that.canRecive = false
 				}
