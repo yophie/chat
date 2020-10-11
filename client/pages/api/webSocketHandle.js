@@ -22,7 +22,7 @@ export default {
 		uni.onSocketError(function (res) {
 			Vue.prototype.socketOpen = false
 		  console.log('WebSocket连接打开失败，请检查！');
-		  that.reconnect()
+		  that.reconnect(u)
 		});
 		uni.onSocketMessage(function (res) {
 		  console.log('收到服务器内容：' + res.data);
@@ -37,14 +37,14 @@ export default {
 		});
 		uni.onSocketClose(function(){
 			Vue.prototype.socketOpen = false;
-			that.reconnect()
+			that.reconnect(u)
 		})
 		
 	},
-	reconnect() {
+	reconnect(u) {
 	    setTimeout(function () {     //没连接上会一直重连，设置延迟避免请求过多
 	      uni.connectSocket({
-	        url: url
+	        url: u
 	      });
 	    }, 2000);
 	},
