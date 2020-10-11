@@ -13,15 +13,15 @@ export default {
 			for (let item of data.list) {
 				switch(item.type) {
 					case 0: 
-					item.title = '红包-发给' + item.userName,
+					item.title = '红包-发给' + item.oppsiteName,
 					item.avatar = '../../static/icon/bill_packet.png'
 					break;
 					case 1: 
-					item.title = '红包-来自' + item.userName,
+					item.title = '红包-来自' + item.oppsiteName,
 					item.avatar = '../../static/icon/bill_packet.png'
 					break;
 					case 3: 
-					item.title = '提现' + item.userName,
+					item.title = '提现',
 					item.avatar = '../../static/icon/bill_cashout.png'
 					break;
 				}

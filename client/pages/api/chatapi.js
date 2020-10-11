@@ -53,8 +53,7 @@ export default {
 				  }
 			  })
 		  } else {
-			  http.post('api/user/userinfo', {userId: item.id}, function(res) {
-				 alert(res.code + ' ' + res.name + ' ' + res.avatar)
+			  http.get('api/user/userinfo', {userId: item.id}, function(res) {
 			  	if (res.code == '10003') {
 			  		item.name = res.name
 			  		item.avatar = res.avatar

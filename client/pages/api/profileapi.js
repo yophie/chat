@@ -6,6 +6,7 @@ export default {
 		if (res.code == '10003') {
 			data.id = res.id
 			data.name = res.name
+			data.balance = res.money ? res.money : 0
 			data.note = '账号：未设置'
 			data.avatar = res.avatar
 			data.avatar = data.avatar ? data.avatar : '../../static/icon/default_avatar.png'

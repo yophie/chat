@@ -49,7 +49,6 @@ export default {
 	  webSocketHandle.addListener(11, 'chatroom', this.handleIncreChatMsg, data)
   },
   handleIncreChatMsg(data, result) {
-	  console.log(result)
 	  if (!result || result.cmd != 11 || !result.data) {
 	  	  return
 	  }
