@@ -13,7 +13,7 @@
 		<uni-list>
 		    <uni-list-item title="我的二维码" thumb="/static/icon/qrcode.png" to="/pages/profile/myqrcode" showArrow="true"></uni-list-item>
 			<uni-list-item title="账单" thumb="/static/icon/wallet.png" to="/pages/profile/bill" showArrow="true"></uni-list-item>
-			<uni-list-item :title="'提现(余额:' + balance + ')'" thumb="/static/icon/withdraw.png" to="/pages/profile/withdraw" showArrow="true"></uni-list-item>
+			<uni-list-item :title="'提现(余额：￥' + balance + '元)'" thumb="/static/icon/withdraw.png" to="/pages/profile/withdraw" showArrow="true"></uni-list-item>
 		</uni-list>
 	</view>
 </template>
