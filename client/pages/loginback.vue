@@ -7,7 +7,6 @@
 	export default {
 		name: "index",
 		onLoad(options) {
-			uni.hideLoading();
 			let code = ''
 			let state = ''
 			let query = location.search.substring(1);

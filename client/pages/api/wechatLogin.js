@@ -13,9 +13,6 @@ export default {
 							+ '&redirect_uri=' + redirect_uri + '&response_type=' + response_type
 							+ '&scope=' + scope + '&state=' + state + '#wechat_redirect'
 		//window.location.href = 'http://192.168.0.101:8080?code=123/#/pages/loginback'
-		uni.showLoading({
-		    title: '跳转微信登录中'
-		});
 		window.location.href = wechatAuthUrl
 	}
 	
