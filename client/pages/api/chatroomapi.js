@@ -123,6 +123,10 @@ export default {
 	} 
 	let lastShowTime = 0
 	for (let item of list) {
+		let isSelf = item.from == uni.getStorageSync("userId")
+		if (data.isGroup && !data.isGroupOwner && !isSelf && item.msgType == 1) {
+			continue
+		}
 		let time = new Date(item.createTime).getTime()
 		if (lastShowTime + 5*60*1000 < time) {
 			data.msgList.push({
@@ -137,7 +141,7 @@ export default {
 			id: item.id,
 			senderId: item.from,
 			content: item.content,
-			isSelf: item.from == uni.getStorageSync("userId")
+			isSelf: isSelf
 		}
 		if (data.isGroup) {
 			message.senderAvatar = item.fromAvatar

@@ -18,7 +18,7 @@
 						</view>
 						<image class="cu-avatar radius" :src="item.senderAvatar" mode="aspectFill" @error="imageError(item)" ></image>
 					</view>
-					<view v-else-if="item.type != 1 || item.isGroupOwner" class="cu-item">
+					<view v-else-if="item.type != 1 || isGroupOwner" class="cu-item">
 						<image class="cu-avatar radius" :src="item.senderAvatar" mode="aspectFill" @error="imageError(item)" ></image>
 							<view class="nick_content main">
 								<view v-if="isGroup" class="text-gray">

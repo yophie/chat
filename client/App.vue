@@ -33,6 +33,10 @@
 			let token = getToken()
 			if (!token) {
 				wechatLogin.login(requestId)
+				// webSocketHandle.init('ea9e254e2a4dc8415c464950c9999f78')
+				// uni.switchTab({
+				// 	url: 'pages/chat/chat'
+				// })
 			} else if (requestId <= 0) {
 				webSocketHandle.init(token)
 				uni.switchTab({

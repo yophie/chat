@@ -1,12 +1,12 @@
-const env = 'product'
+const env = process.env.NODE_ENV
 
 export default {
 	getConfig() {
-		if(env === 'dev'){
+		if(env === 'development'){
 			return {
-				clienturl: 'http://47.242.141.164',
-				serviceurl: 'http://47.242.141.164',
-				websocketServerurl: 'ws://47.242.141.164',
+				clienturl: 'http://www.yonyouxukk.cn',
+				serviceurl: '',
+				websocketServerurl: 'ws://www.yonyouxukk.cn/ws',
 				appid: 'wxb87cb9510aac006d'
 			}
 		} else {
