@@ -8,9 +8,13 @@ export const http = Axios.create();
 http.defaults.baseURL = process.env.BASE_URI
 
 function callback(res) {
-  if (res && res.data && res.data.code && res.data.code == '10010') {
+  if (res && res.data && res.config.url == '/api/user/login' && res.data.code == '10007') {
+    return res;
+  }
+  if (res && res.data && res.data.code == '10010') {
     MessageBox.alert('登录超时，请重新登录', '登录超时', {
       type: 'warning',callback:function() {
+        removeToken()
         router.push('/login');
       }
     });

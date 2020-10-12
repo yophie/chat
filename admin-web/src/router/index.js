@@ -10,7 +10,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/withdrawList'
+      redirect: '/login'
     },
     {
       path: '/login',

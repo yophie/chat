@@ -28,7 +28,7 @@
 
 <script>
     import loginApi from '@/api/loginApi.js'
-
+    import {goPath} from '@/api/common.js'
     export default {
         name: "login",
         data() {
@@ -49,13 +49,17 @@
             }
           }
         },
+      mounted() {
+        if (window.localStorage.getItem('token')) {
+          goPath('/withdrawList');
+        }
+      },
         methods: {
           login() {
             this.$refs['form'].validate((valid) => {
               if (valid) {
                 loginApi.login(this.form)
               } else {
-                console.log('error submit!!');
                 return false;
               }
             })

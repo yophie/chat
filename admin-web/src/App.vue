@@ -1,6 +1,6 @@
 <template>
     <el-container>
-    <el-header v-if="this.$route.path != '/login'">
+    <el-header v-if="this.$route.path != '/' && this.$route.path != '/login'" style="width: 100%">
       <el-menu
         default-active="/withdrawList"
         class="el-menu-demo"

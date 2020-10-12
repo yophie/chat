@@ -12,11 +12,11 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/services/**': {
-        target: 'http://localhost:8888/',
+        target: 'http://www.yonyouxukk.cn/',
         changeOrigin: true,
-        pathRewrite: {
-          '^/services': ''
-        }
+        // pathRewrite: {
+        //   '^/services': ''
+        // }
       }
     },
     // Various Dev Se

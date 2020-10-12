@@ -10,7 +10,7 @@ export default {
       }
     }).then(function(res){
       setToken(res.data.token)
-      goPath('/')
+      goPath('/withdrawList')
     })
   },
 
