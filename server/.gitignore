@@ -7,3 +7,6 @@ jim.iml
 jim-server/jim-server.iml
 jim-core/jim-core.iml
 .DS_Store
+/chat/build/
+/chat/src/main/resources/mybatis.tar.gz
+/out/

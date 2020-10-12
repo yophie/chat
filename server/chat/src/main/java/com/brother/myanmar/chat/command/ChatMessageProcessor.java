@@ -33,7 +33,10 @@ public class ChatMessageProcessor implements SingleProtocolCmdProcessor {
             //存储群聊消息;
             if(ChatType.CHAT_TYPE_PUBLIC.getNumber() == chatBody.getChatType()){
                 if(RedisCache.isForbidden(chatBody.getGroupId())){
-                    String userId = RedisCache.getGroupOwner(chatBody.getGroupId());
+                    String owner = RedisCache.getGroupOwner(chatBody.getGroupId());
+                    if(!chatBody.getFrom().equals(owner) && chatBody.getMsgType()!=2){
+                        chatBody.setMsgType(1);
+                    }
                     writeMessage(STORE,GROUP+":"+chatBody.getGroupId(),chatBody);
                     /*boolean isOnline = false;
                     if(isStore && ImServerConfig.ON.equals(imServerConfig.getIsCluster())){
@@ -65,7 +68,7 @@ public class ChatMessageProcessor implements SingleProtocolCmdProcessor {
     private void doProcess(ChatBody chatBody, ImChannelContext imChannelContext){
         //红包处理
         if(chatBody.getMsgType() == 2){
-            User me = UserDao.findUserById(Integer.parseInt(imChannelContext.getUserId()));
+            User me = UserDao.findUserById(Integer.parseInt(chatBody.getFrom()));
             if(chatBody.getPacketAmount() > me.getMoney()){
                 return;
             }
@@ -83,7 +86,7 @@ public class ChatMessageProcessor implements SingleProtocolCmdProcessor {
             packet.setId(chatBody.getId());
             packet.setState(0);
             packet.setAmount(chatBody.getPacketAmount());
-            packet.setSender(Integer.parseInt(imChannelContext.getUserId()));
+            packet.setSender(Integer.parseInt(chatBody.getFrom()));
             packet.setTime(System.currentTimeMillis());
             bill.setOppsite(packet.getUserGroupId());
             bill.setUserId(packet.getSender());
