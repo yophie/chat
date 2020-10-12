@@ -1,7 +1,7 @@
 <template>
     <el-container>
-    <el-header v-if="this.$route.path != '/' && this.$route.path != '/login'" style="width: 100%">
-      <el-menu
+    <el-header>
+      <el-menu v-if="this.$route.path != '/' && this.$route.path != '/login'"
         default-active="/withdrawList"
         class="el-menu-demo"
         mode="horizontal"
