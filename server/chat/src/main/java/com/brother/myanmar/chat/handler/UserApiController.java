@@ -17,6 +17,7 @@ import org.jim.core.packets.ChatType;
 import org.jim.core.packets.RespBody;
 import org.jim.core.packets.UserStatusType;
 import org.jim.core.session.id.impl.UUIDSessionIdGenerator;
+import org.jim.core.utils.JsonKit;
 import org.jim.core.utils.Md5;
 import org.jim.core.utils.PropUtil;
 import org.jim.server.protocol.http.annotation.RequestPath;
@@ -48,15 +49,63 @@ public class UserApiController {
                 String token = Md5.sign(text, ImConst.AUTH_KEY, ImConst.CHARSET);
                 RedisCache.putSuperToken(token,findUser);
                 resp.setToken(token);
-                resp.setCode(ImStatus.C10008.getCode());
-                resp.setMsg(ImStatus.C10008.getMsg());
                 return TokenFilter.crossOrigin(HttpResps.json(request, resp));
             } else {
+                resp = new LoginRes(ImStatus.C10008);
                 return TokenFilter.crossOrigin(HttpResps.json(request, resp));
             }
         } else {
+            resp = new LoginRes(ImStatus.C10008);
             return TokenFilter.crossOrigin(HttpResps.json(request, resp));
         }
+    }
+
+    @RequestPath(value = "/loginwithaccount")
+    public HttpResponse loginwithaccount(HttpRequest request) throws Exception {
+        User req = JsonKit.toBean(request.getBody(), User.class);
+        if(req == null || req.getAccount() == null || req.getPassword() == null){
+            return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10008)));
+        }
+
+        User findUser = UserDao.findUserByAccount(req);
+        String pass = Md5.sign(req.getPassword(), ImConst.AUTH_KEY, ImConst.CHARSET);
+        if(findUser!=null && findUser.getPassword().equals(pass)) {
+            String text = findUser.getId()+findUser.getPassword()+System.currentTimeMillis();
+            String token = Md5.sign(text, ImConst.AUTH_KEY, ImConst.CHARSET);
+            org.jim.core.packets.User user = buildUser(findUser);
+            RedisCache.putToken(token,user);
+            RedisCache.putUser(String.valueOf(findUser.getId()),user);
+            LoginRes loginRes = new LoginRes(ImStatus.C10007);
+            loginRes.setToken(token);
+            return TokenFilter.crossOrigin(HttpResps.json(request, loginRes));
+        } else {
+            return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10008)));
+        }
+    }
+
+    @RequestPath(value = "/register")
+    public HttpResponse register(HttpRequest request) throws Exception {
+        User req = JsonKit.toBean(request.getBody(), User.class);
+        if(req == null || req.getAccount() == null || req.getPassword() == null){
+            return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10041)));
+        }
+
+        if(req.getAccount() != null) {
+            User findUser = UserDao.findUserByAccount(req);
+            if (findUser != null)
+                return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10039)));
+        } else {
+            req.setAccount(UUIDSessionIdGenerator.instance.sessionId(null));
+        }
+        req.setId(null);
+
+        req.setPassword(Md5.sign(req.getPassword(), ImConst.AUTH_KEY, ImConst.CHARSET));
+        UserDao.insert(req);
+        User respUser = new User();
+        respUser.setCode(ImStatus.C10040.getCode());
+        respUser.setMsg(ImStatus.C10040.getMsg());
+        respUser.setAccount(req.getAccount());
+        return TokenFilter.crossOrigin(HttpResps.json(request, respUser));
     }
 
     @RequestPath(value = "/logout")

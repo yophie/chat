@@ -98,7 +98,22 @@ public class GroupControlller {
         friend.setState(0);
         friend.setFriendId(req.getGroupId());
         friend = GroupDao.findOneFriend(friend);
+        if(friend == null){
+            return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10043)));
+        }
         GroupDao.deleteFriend(friend);
+        List<ImChannelContext> notifyChannels = JimServerAPI.getByUserId(String.valueOf(friend.getMyId()));
+
+        ChatBody chatBody = ChatBody.newBuilder().from(String.valueOf(request.getUserId()))
+                .groupId(String.valueOf(friend.getFriendId())).chatType(ChatType.CHAT_TYPE_PUBLIC.getNumber())
+                .msgType(6).content("您已退出群聊").build();
+        chatBody.setCreateTime(System.currentTimeMillis());
+        ImPacket chatPacket = new ImPacket(Command.COMMAND_GROUP_NOTIFY,new RespBody(Command.COMMAND_GROUP_NOTIFY,chatBody).toByte());
+
+        for(int j=0;j<notifyChannels.size();j++){
+            JimServerAPI.unbindGroup(String.valueOf(friend.getFriendId()), notifyChannels.get(j));
+            JimServerAPI.send(notifyChannels.get(j), chatPacket);
+        }
         return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10031)));
     }
 
@@ -120,12 +135,63 @@ public class GroupControlller {
         friend.setFriendId(group.getGroupId());
         friend.setFriendNick(group.getGroupName());
         friend.setApplyTime(System.currentTimeMillis());
+
         for(int i=0;i<req.getFriends().size();i++){
             friend.setMyId(req.getFriends().get(i));
             GroupDao.insertFriend(friend);
             List<ImChannelContext> notifyChannels = JimServerAPI.getByUserId(String.valueOf(req.getFriends().get(i)));
+
+            ChatBody chatBody = ChatBody.newBuilder().from(String.valueOf(request.getUserId()))
+                    .to(String.valueOf(friend.getMyId())).chatType(ChatType.CHAT_TYPE_PUBLIC.getNumber())
+                    .msgType(6).content("您被邀请进入群聊 "+req.getGroupName()).build();
+            chatBody.setCreateTime(System.currentTimeMillis());
+            ImPacket chatPacket = new ImPacket(Command.COMMAND_CHAT_REQ,new RespBody(Command.COMMAND_CHAT_REQ,chatBody).toByte());
+
             for(int j=0;j<notifyChannels.size();j++){
                 JimServerAPI.bindGroup(notifyChannels.get(j), String.valueOf(group.getGroupId()));
+                JimServerAPI.send(notifyChannels.get(j), chatPacket);
+            }
+        }
+        return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10031)));
+    }
+
+    @RequestPath(value = "/kick")
+    public HttpResponse kick(HttpRequest request) throws Exception {
+        HttpResponse resp = TokenFilter.filter(request);
+        if (resp != null) return resp;
+        GroupReqBody req = JsonKit.toBean(request.getBody(), GroupReqBody.class);
+        if(req == null || req.getGroupId() == null || req.getFriends() == null || req.getFriends().size()<1) {
+            return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10030)));
+        }
+        Group group = GroupDao.findGroup(req.getGroupId());
+        if(group == null) {
+            return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10030)));
+        }
+        if(group.getOwner() != request.getUserId()){
+            return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10042)));
+        }
+        Friend friend = new Friend();
+        List<Integer> friends = req.getFriends();
+        for(int i=0;i< friends.size();i++) {
+            friend.setMyId(friends.get(i));
+            friend.setState(0);
+            friend.setFriendId(req.getGroupId());
+            friend = GroupDao.findOneFriend(friend);
+            if (friend == null) {
+                continue;
+            }
+            GroupDao.deleteFriend(friend);
+            List<ImChannelContext> notifyChannels = JimServerAPI.getByUserId(String.valueOf(friend.getMyId()));
+
+            ChatBody chatBody = ChatBody.newBuilder().from(String.valueOf(request.getUserId()))
+                    .groupId(String.valueOf(friend.getFriendId())).chatType(ChatType.CHAT_TYPE_PUBLIC.getNumber())
+                    .msgType(6).content("您已被移除出群聊 "+group.getGroupName()).build();
+            chatBody.setCreateTime(System.currentTimeMillis());
+            ImPacket chatPacket = new ImPacket(Command.COMMAND_GROUP_NOTIFY,new RespBody(Command.COMMAND_GROUP_NOTIFY,chatBody).toByte());
+
+            for(int j=0;j<notifyChannels.size();j++){
+                JimServerAPI.unbindGroup(String.valueOf(group.getGroupId()), notifyChannels.get(j));
+                JimServerAPI.send(notifyChannels.get(j), chatPacket);
             }
         }
         return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10031)));

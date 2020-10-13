@@ -179,6 +179,8 @@ public enum Command{
   COMMAND_Cash_RESP(30),
   COMMAND_Manager_REQ(31),
   COMMAND_Manager_RESP(32),
+  COMMAND_GROUP_NOTIFY(33),
+  COMMAND_FRIEND_NOTIFY(34),
   ;
 
   public final int getNumber() {
