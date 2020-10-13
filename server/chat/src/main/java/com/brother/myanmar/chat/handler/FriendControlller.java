@@ -99,11 +99,11 @@ public class FriendControlller {
             user.setFriendNick(me.getName());
             WindowDao.insertFriend(user);
 
-            /*ChatBody chatBody = ChatBody.newBuilder().from(String.valueOf(user.getFriendId()))
+            ChatBody chatBody = ChatBody.newBuilder().from(String.valueOf(user.getFriendId()))
                     .to(String.valueOf(user.getMyId())).chatType(ChatType.CHAT_TYPE_PRIVATE.getNumber())
                     .msgType(6).content("加个朋友呗").build();
-            ImPacket chatPacket = new ImPacket(Command.COMMAND_CHAT_REQ,new RespBody(Command.COMMAND_CHAT_REQ,chatBody).toByte());
-            JimServerAPI.sendToUser(String.valueOf(applyUser), chatPacket);*/
+            ImPacket chatPacket = new ImPacket(Command.COMMAND_FRIEND_NOTIFY,new RespBody(Command.COMMAND_FRIEND_NOTIFY,chatBody).toByte());
+            JimServerAPI.sendToUser(String.valueOf(applyUser), chatPacket);
         }
         return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10029)));
     }

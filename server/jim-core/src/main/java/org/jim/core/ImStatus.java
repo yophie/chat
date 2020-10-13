@@ -48,7 +48,15 @@ public enum ImStatus implements Status{
 	C10035(10035,"get Cash list ok!","获取提现列表成功!"),
 	C10036(10036," get packet failed!","红包已被抢完!"),
 	C10037(10037,"get settings list ok!","获取设置成功!"),
-	C10038(10038,"get packet state failed!","领取红包失败!");
+	C10038(10038,"get packet state failed!","领取红包失败!"),
+	C10039(10039,"account has exist!","账户存在!"),
+	C10040(10040,"register success!","注册成功!"),
+	C10041(10041,"register failed!","注册失败!"),
+	C10042(10042,"not group owner!","不是群主!"),
+	C10043(10043,"not group member!","不是群群成员!"),
+	C10044(10044,"exit group ok!","成功已经被移除出群!"),
+	C10045(10045,"upload file ok!","上传文件成功!"),
+	C10046(10046,"upload file failed!","上传文件失败!");
 	
 	private int status;
 	
