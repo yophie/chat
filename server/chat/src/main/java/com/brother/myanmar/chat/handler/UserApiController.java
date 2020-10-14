@@ -229,6 +229,24 @@ public class UserApiController {
         return TokenFilter.crossOrigin(HttpResps.json(request, userType));
     }
 
+    @RequestPath(value = "/update")
+    public HttpResponse update(HttpRequest request) throws Exception {
+        HttpResponse resp = TokenFilter.filter(request);
+        if(resp != null) return resp;
+        User req = JsonKit.toBean(request.getBody(), User.class);
+        if(req == null){
+            return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10004)));
+        }
+        req.setId(request.getUserId());
+        req.setOpenId(null);
+        req.setMoney(null);
+        if(req.getPassword() != null){
+            req.setPassword(Md5.sign(req.getPassword(), ImConst.AUTH_KEY, ImConst.CHARSET));
+        }
+        UserDao.update(req);
+        return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10047)));
+    }
+
     private org.jim.core.packets.User buildUser(User findUser){
         org.jim.core.packets.User.Builder builder = org.jim.core.packets.User.newBuilder()
                 .userId(String.valueOf(findUser.getId()))

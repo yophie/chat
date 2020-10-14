@@ -56,7 +56,8 @@ public enum ImStatus implements Status{
 	C10043(10043,"not group member!","不是群群成员!"),
 	C10044(10044,"exit group ok!","成功已经被移除出群!"),
 	C10045(10045,"upload file ok!","上传文件成功!"),
-	C10046(10046,"upload file failed!","上传文件失败!");
+	C10046(10046,"upload file failed!","上传文件失败!"),
+	C10047(10047,"user info updated!","用户信息更新完成!");
 	
 	private int status;
 	

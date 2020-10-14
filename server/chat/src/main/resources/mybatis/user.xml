@@ -19,8 +19,8 @@
     </select>
     <!--插入用户信息-->
     <insert id="insertUser" parameterType="com.brother.myanmar.chat.bean.User">
-        insert into user(account, name, avatar, phone, openId, password)
-        values(#{account},#{name},#{avatar},#{phone},#{openId},#{password})
+        insert into user(account, name, avatar, phone, openId, password, bankAccount, realName, bankName)
+        values(#{account},#{name},#{avatar},#{phone},#{openId},#{password},#{bankAccount},#{realName},#{bankName})
     </insert>
     <!--删除用户信息-->
     <delete id="deleteUser" parameterType="java.lang.Integer">
@@ -28,7 +28,29 @@
     </delete>
     <!--更新用户信息-->
     <update id="updateUser" parameterType="com.brother.myanmar.chat.bean.User">
-        update user set name=#{name},password=#{password} where id=#{id}
+        update user set id=#{id}
+        <if test="name!=null">
+            ,name=#{name}
+        </if>
+        <if test="avatar!=null">
+            ,avatar=#{avatar}
+        </if>
+        <if test="phone!=null">
+            ,phone=#{phone}
+        </if>
+        <if test="password!=null">
+            ,password=#{password}
+        </if>
+        <if test="bankAccount!=null">
+            ,bankAccount=#{bankAccount}
+        </if>
+        <if test="realName!=null">
+            ,realName=#{realName}
+        </if>
+        <if test="bankName!=null">
+            ,bankName=#{bankName}
+        </if>
+        where id=#{id}
     </update>
     <update id="updateUserMoney" parameterType="com.brother.myanmar.chat.bean.User">
         update user set money=ifnull(money,0)+#{money} where id=#{id}
