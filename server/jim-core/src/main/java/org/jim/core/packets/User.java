@@ -7,7 +7,6 @@ import cn.hutool.core.bean.BeanUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
 import org.apache.commons.collections4.CollectionUtils;
-import org.jim.core.ImConst;
 
 import java.io.Serializable;
 import java.util.List;
@@ -52,6 +51,9 @@ public class User extends Message implements Serializable{
 	 * 群组列表;
 	 */
 	private List<Group> groups;
+
+	//applying friend numbers;
+	private Integer newFriends;
 	
 	private User(){}
 
@@ -133,6 +135,14 @@ public class User extends Message implements Serializable{
 
 	public void setGroups(List<Group> groups) {
 		this.groups = groups;
+	}
+
+	public Integer getNewFriends() {
+		return newFriends;
+	}
+
+	public void setNewFriends(Integer newFriends) {
+		this.newFriends = newFriends;
 	}
 
 	public static class Builder extends Message.Builder<User, User.Builder>{

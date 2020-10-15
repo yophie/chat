@@ -210,6 +210,7 @@ public class GroupControlller {
             return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10030)));
         }
         List<Friend> members = GroupDao.findGroupMembers(req.getGroupId());
+        GroupDao.deleteGroup(req.getGroupId());
 
         ChatBody chatBody = ChatBody.newBuilder().from(String.valueOf(request.getUserId()))
                 .groupId(String.valueOf(req.getGroupId())).chatType(ChatType.CHAT_TYPE_PUBLIC.getNumber())
@@ -218,13 +219,12 @@ public class GroupControlller {
         ImPacket chatPacket = new ImPacket(Command.COMMAND_GROUP_DIS,new RespBody(Command.COMMAND_GROUP_DIS,chatBody).toByte());
 
         for(int i=0;i<members.size();i++) {
-            List<ImChannelContext> notifyChannels = JimServerAPI.getByUserId(String.valueOf(members.get(i).getFriendId()));
+            List<ImChannelContext> notifyChannels = JimServerAPI.getByUserId(String.valueOf(members.get(i).getMyId()));
             for (int j = 0; j < notifyChannels.size(); j++) {
                 JimServerAPI.unbindGroup(String.valueOf(group.getGroupId()), notifyChannels.get(j));
                 JimServerAPI.send(notifyChannels.get(j), chatPacket);
             }
         }
-        GroupDao.deleteGroup(req.getGroupId());
         return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10031)));
     }
 
