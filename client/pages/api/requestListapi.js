@@ -28,6 +28,7 @@ export default {
 	  http.get('api/friend/answer', {applyUser: request.friendId, state: 1}, function(res) {
 		  if (res.code == '10029') {
 			  request.status = 1
+			  uni.$emit("request", -1)
 		  } else {
 			uni.showModal({
 			    title: '错误提示',
@@ -40,6 +41,7 @@ export default {
 	  http.get('api/friend/answer', {applyUser: request.friendId, state: 3}, function(res) {
 		  if (res.code == '10029') {
 		  	  request.status = 3
+			  uni.$emit("request", -1)
 		    } else {
 		  	uni.showModal({
 		  	    title: '错误提示',

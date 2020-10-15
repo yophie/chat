@@ -10,6 +10,9 @@
 			"path": "pages/login"
 		},
 		{
+			"path": "pages/loginWithAccount"
+		},
+		{
 			"path": "pages/loginback"
 		},
 		{
@@ -32,6 +35,9 @@
 		},
 		{
 			"path": "pages/chat/newGroup"
+		},
+		{
+			"path": "pages/chat/rmMember"
 		},
 		{
 			"path": "pages/chat/sendPacket"

@@ -9,7 +9,7 @@
         "devServer" : {
             "proxy" : {
                 "/services" : {
-                    "target" : "http://www.yonyouxukk.cn/services/",
+                    "target" : "http://localhost:8888/",
                     "changeOrigin" : true,
                     "secure" : false,
                     "pathRewrite" : {

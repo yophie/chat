@@ -1,4 +1,3 @@
-import webSocketHandle from './webSocketHandle.js'
 import {http, chatListTimeToString} from './common.js'
 
 export default {
@@ -19,10 +18,27 @@ export default {
 	}
   },
   handleMsg(data, result) {
-	  if (!result || result.cmd != 11 || !result.data) {
+	  if (!result || !result.data || (result.cmd != 11 && result.cmd != 33 && result.cmd != 35)) {
 		  return
 	  }
+	  
 	  let rd = result.data
+	  
+	  if (result.cmd == 33 || result.cmd == 35) {
+		  let id = result.groupId
+		  let index = -1 
+		  for (let i = 0; i < data.list.length; i++) {
+			if (data.list[i].id == id) {
+				index = i
+				break
+			}
+		  }
+		  if (index >= 0) {
+			  data.list.splice(index, 1); 
+		  }
+		  return
+	  }
+	  
 	  let index = -1
 	  let item = {
 	  	id: rd.chatType == 1 ? rd.groupId : rd.chatId,
@@ -32,13 +48,13 @@ export default {
 		avatar: ''
 	  }
 	  for (let i = 0; i < data.list.length; i++) {
-	  		if (data.list[i].id == item.id) {
-				index = i
-				item.name = data.list[i].name
-				item.avatar = data.list[i].avatar
-				item.avatar = item.avatar ? item.avatar : '@/static/icon/default_avatar.png'
-				break
-			}
+		if (data.list[i].id == item.id) {
+			index = i
+			item.name = data.list[i].name
+			item.avatar = data.list[i].avatar
+			item.avatar = item.avatar ? item.avatar : '@/static/icon/default_avatar.png'
+			break
+		}
 	  }
 	  if (index > -1) { 
 	  	 data.list.splice(index, 1); 
@@ -69,10 +85,17 @@ export default {
   getChatList(data) {
 	  let that = this
 	  http.get('api/chat/list', {}, function(res) {
-		  console.log(res)
 		  if (res.code == 10023) {
 			  that.chatList(data, res.windows)
-			  webSocketHandle.addListener(11, 'chatList', that.handleMsg, data)
+			  uni.$on('cmd11', function(result) {
+				  that.handleMsg(data, result)
+			  })
+			  uni.$on('cmd33', function(result) {
+				  that.handleMsg(data, result)
+			  })
+			  uni.$on('cmd35', function(result) {
+			  	 that.handleMsg(data, result)
+			  })
 		  } else {
 			  uni.showModal({
 			      title: '错误提示',

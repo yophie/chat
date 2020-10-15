@@ -9,14 +9,14 @@
 	export default {
 		onLoad(options) {
 			let token = getToken()
-			let username = 'cs'
-			let password = 'test'
 			if (!token) {
-				wechatLogin.login()
-				//webSocketHandle.initpass(username, password)
-				// uni.switchTab({
-				// 	url: "/pages/chat/chat"
-				// })
+				if (uni.getStorageSync('platform') == 'wechat') {
+					wechatLogin.login()
+				} else {
+					uni.navigateTo({
+						url: '/pages/loginWithAccount'
+					})
+				}
 			} else {
 				webSocketHandle.init(token)
 				uni.switchTab({

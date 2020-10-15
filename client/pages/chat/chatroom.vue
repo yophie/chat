@@ -16,6 +16,11 @@
 							<redpacket :id="item.id" @click="openPacket" :senderNick="item.senderNick"
 									:senderAvatar = "item.senderAvatar"></redpacket>
 						</view>
+						<view v-if="item.type === 3" class="main">
+							<view class="content bg-selfContent">
+								<text class="text-black">{{item.content}}</text>
+							</view>
+						</view>
 						<image class="cu-avatar radius" :src="item.senderAvatar" mode="aspectFill" @error="imageError(item)" ></image>
 					</view>
 					<view v-else-if="item.type != 1 || isGroupOwner" class="cu-item">
@@ -58,13 +63,26 @@
 				<!-- <view class="action">
 					<text class="cuIcon-emojifill text-grey"></text>
 				</view> -->
-				<uni-icons v-if="!sendText" type="plus" size="30" style="margin-left: 15upx;" @click="showPlusMsgBar"></uni-icons>
+				<view v-if="!sendText" >
+					<span class="iconfont iconbiaoqing" style="margin-left: 15upx; font-size: 30px;" @click="showExpression"></span>
+					<uni-icons type="plus" size="30" style="margin-left: 15upx;" @click="showPlusMsgBar"></uni-icons>
+				</view>
+				
 				<button v-if="sendText" class="cu-btn bg-green shadow" style="margin-left: 15upx; width: 130upx; height:70upx ;" @click="sendMessage">发送</button>
 			</view>
 			<view class="line"></view>
 			<view v-if="isShowPlusMsgBar" class="plus_button_area">
-				<view class="send_packet_button" @click="toSendPacket">
-				<span class="iconfont icon_item iconsendpacket" style="font-size: 40upx;"></span>
+				<view class="plus_button"> 
+					<view class="send_packet_button" @click="toSendPacket">
+						<span class="iconfont icon_item iconsendpacket" style="font-size: 40upx;"></span>
+					</view>
+					<text style="font-size: 20upx;">红包</text>
+				</view>
+				<view class="plus_button">
+					<view class="send_packet_button" @click="toSendPic">
+						<span class="iconfont icon_item iconalbum" style="font-size: 40upx;"></span>
+					</view>
+					<text style="font-size: 20upx;">图片</text>
 				</view>
 			</view>
 		</view>
@@ -257,9 +275,16 @@
 		flex-wrap: wrap;
 		width: 100%;
 		height: 300upx;
-		margin-left: 100upx;
-		margin-top: 50upx;
+		margin-left: 50upx;
+		margin-top: 25upx;
 		background-color:#f5f5f5;
+	}
+	.plus_button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		margin: 25upx;
 	}
 	.send_packet_button {
 		width: 80upx;
@@ -269,6 +294,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		margin-bottom: 10upx;
 	}
 	.line {
 		border-top-color: #000000;

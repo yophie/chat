@@ -2,7 +2,6 @@ import Vue from 'vue'
 import {setToken,getToken} from './common.js'
 import config from './config.js'
 
-const listeners = new Map()
 var socketMsgQueue = []
 const url = config.getConfig().websocketServerurl
 export default {
@@ -25,7 +24,6 @@ export default {
 		  that.reconnect(u)
 		});
 		uni.onSocketMessage(function (res) {
-		  console.log('收到服务器内容：' + res.data);
 		  that.handleMessage(res)
 		});
 		uni.onSocketOpen(function (res) {
@@ -48,32 +46,24 @@ export default {
 	      });
 	    }, 2000);
 	},
-	addListener(cmd, channel, callback, param) {
-		let clm = listeners.get(cmd)
-		if (!clm) {
-			clm = new Map()
-			listeners.set(cmd, clm)
-		} 
-		clm.set(channel, {callback, param})
-	},
 	handleMessage(res) {
 		if (!res || !res.data) {
 			return
 		}
+		
 		let result = eval('(' + res.data + ')')
 		if (result && result.user && result.cmd == 6 && result.code == '10007') {
 			setToken(result.token)
 			uni.setStorageSync("userId", result.user.userId)
 			uni.setStorageSync("userName", result.user.nick)
 			uni.setStorageSync("avatar", result.user.avatar)
+			uni.$emit("request", result.user.newFriends)
 			return
 		}
-		let clm = listeners.get(result.cmd)
-		if (clm) {
-			clm.forEach(function(item){
-				console.log(item)
-				item.callback(item.param, result)
-			})
+		if (result.cmd == 34) {
+			uni.$emit("request", 1)
+		} else {
+			uni.$emit('cmd' + result.cmd, result)
 		}
 	},
 	sendMessage(msg) {

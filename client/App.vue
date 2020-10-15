@@ -2,7 +2,7 @@
 	import Vue from 'vue'
 	import wechatLogin from '@/pages/api/wechatLogin.js'
 	import webSocketHandle from '@/pages/api/webSocketHandle.js'
-	import {getToken} from '@/pages/api/common.js'
+	import {http, getToken} from '@/pages/api/common.js'
 	
 	export default {
 		onLaunch: function() { 
@@ -30,17 +30,38 @@
 					return
 				}
 			}
+			if (location.hash.indexOf('#/pages/wechat') >= 0){
+				uni.setStorageSync("platform", 'wechat')
+			}
 			let token = getToken()
 			if (!token) {
-				wechatLogin.login(requestId)
-				// webSocketHandle.init('ea9e254e2a4dc8415c464950c9999f78')
-				// uni.switchTab({
-				// 	url: 'pages/chat/chat'
-				// })
+				if (location.hash.indexOf('#/pages/wechat') >= 0){
+					wechatLogin.login(requestId)
+				} else {
+					uni.navigateTo({
+						url: '/pages/loginWithAccount?requestId=' + requestId
+					})
+				}
 			} else if (requestId <= 0) {
-				webSocketHandle.init(token)
-				uni.switchTab({
-					url: 'pages/chat/chat'
+				http.post('api/user/info', {}, function(res) {
+					if (res.code == '10003') {
+						webSocketHandle.init(token)
+						uni.setStorageSync("requestNum", 0)
+						uni.$on("request", function(num) {
+							let requestNum = uni.getStorageSync("requestNum") + num
+							uni.setStorageSync("requestNum", requestNum)
+							if (requestNum > 0) {
+								uni.showTabBarRedDot({index:1});
+							} else {
+								uni.hideTabBarRedDot({
+									index:1
+								})
+							}
+						})
+						uni.switchTab({
+							url: 'pages/chat/chat'
+						})
+					} 
 				})
 			}
 			

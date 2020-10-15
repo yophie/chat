@@ -29,14 +29,13 @@
 					   });
 					   return
 				   }
+				   setToken(res.token)
 				   if (!state || state == '' || state == 'undefined' || state <= 0) {
-						setToken(res.token)
 						webSocketHandle.init(res.token)
 						uni.switchTab({
 							url: "/pages/chat/chat"
 						}) 
 				   } else {
-					   setToken(res.token)
 					   uni.navigateTo({
 					   	url: "/pages/chat/qrcodeRequest?id=" + state
 					   }) 

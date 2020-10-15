@@ -1,5 +1,5 @@
-import webSocketHandle from './webSocketHandle.js'
 import {http,chatroomTimeToString,getFromInfo} from './common.js'
+import webSocketHandle from './webSocketHandle.js'
 let v
 export default {
   chatroominit (data, v1, success) {
@@ -45,16 +45,38 @@ export default {
 	  		  // count: ,
 	  		  // offset: 
 	  })
-	  webSocketHandle.addListener(20, 'chatroom', this.handleChatMsg, data)
-	  webSocketHandle.addListener(11, 'chatroom', this.handleIncreChatMsg, data)
+	  let that = this
+	  uni.$on('cmd20', function(result) {
+		  that.handleChatMsg(data, result)
+	  })
+	  
+	  uni.$on('cmd11', function(result) {
+		  that.handleIncreChatMsg(data, result)
+	  })
+	  uni.$once('cmd33', function(result) {
+	  		  that.handleIncreChatMsg(data, result)
+	  })
+	  uni.$once('cmd35', function(result) {
+	  		  that.handleIncreChatMsg(data, result)
+	  })
   },
   handleIncreChatMsg(data, result) {
-	  if (!result || result.cmd != 11 || !result.data) {
+	  if (!result || !result.data || (result.cmd != 11 && result.cmd != 33 && result.cmd != 35)) {
 	  	  return
 	  }
 	  let rd = result.data
 	  let rid = data.isGroup ? rd.groupId : rd.chatId
 	  if (rid != data.id) {
+		  return
+	  }
+	  if (result.cmd == 33 || result.cmd == 35) {
+		  uni.showModal({
+		  	title: '提醒',
+		  	content: '您已被管理员踢出群聊！'
+		  })
+		  uni.switchTab({
+		  	url: '/pages/chat/chat'
+		  })
 		  return
 	  }
 	  let item = {

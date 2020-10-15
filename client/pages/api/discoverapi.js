@@ -1,9 +1,8 @@
-import webSocketHandle from './webSocketHandle.js'
 import {discoverTimeToString} from './common.js'
+import webSocketHandle from './webSocketHandle.js'
 
 export default {
   handleDiscover(data, result) {
-	  console.log(result)
 	  if (result.cmd != 27) {
 		  return
 	  }
@@ -25,19 +24,24 @@ export default {
 		  data.list = l
 		  return
 	  } else {
-		  data.list.unshift({
+		  let item = {
 			  id: rd.id,
 			  name: rd.userName,
 			  avatar: rd.userAvatar,
 			  time: discoverTimeToString(rd.createTime),
 			  content: rd.content,
 			  userId: rd.userid
-		  })
+		  }
+		  item.avatar = item.avatar ? item.avatar : '../../static/icon/default_avatar.png'
+		  data.list.unshift(item)
 	  }
   },
   initDiscover(data) {
 	  webSocketHandle.sendMessage({Cmd:27, type:2})
-	  webSocketHandle.addListener(27, 'discoverList', this.handleDiscover, data)
+	  let that = this
+	  uni.$on('cmd27', function(result) {
+		  that.handleDiscover(data, result)
+	  })
   },
   
   

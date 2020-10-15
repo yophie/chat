@@ -3,8 +3,8 @@
 		<uni-nav-bar fixed="true" left-icon="back" left-text="返回"  @clickLeft="BackPage"
 				:title="title" background-color="#e9e9e9" :status-bar="true" :border="false">
 				<view slot="right">
-					<button class="cu-btn bg-green nm" :disabled="createDisabled"
-							@click="create">完成</button>
+					<button class="cu-btn bg-green nm" style="white-space:nowrap;" :disabled="createDisabled"
+							@click="create">完成({{selectedList.length}})</button>
 				</view>
 		</uni-nav-bar>
 		<uni-popup ref="popup" type="center">
@@ -72,15 +72,16 @@
 				if (friend.checked) {
 					this.selectedList.push(friend.friendId)
 					this.selectedListName.push(friend.name)
-				}	
-				else {
+				} else {
+					let index = 0
 					for (let i = 0; i < this.selectedList.length; i++) {
 					    if (this.selectedList[i] === friend.friendId) {
-					      this.selectedList.splice(i, 1)
-						  this.selectedListName.splice(i, 1)
-						  i--
+						  index = i
+						  continue
 					    }
 					}
+					this.selectedList.splice(index, 1)
+					this.selectedListName.splice(index, 1)
 				}
 				if (this.id > 0 && this.selectedList.length < 1) {
 					this.createDisabled = true

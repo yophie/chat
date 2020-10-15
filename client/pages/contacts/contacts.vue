@@ -9,7 +9,8 @@
 		<menuBox v-if="isShowMenu" id="menuBox" v-on:callback="hideMenu"></menuBox>
 		<view class="cpt-mask" v-if="isShowMenu" @tap.stop="hideMenu"></view>
 		<uni-list>
-			<uni-list-item title="新的朋友" thumb="/static/icon/newfriend.png" to="/pages/contacts/requestList" showArrow="true"></uni-list-item>
+			<uni-list-item title="新的朋友" thumb="/static/icon/newfriend.png" to="/pages/contacts/requestList" 
+					:showBadge="applyCount>0" badgeType="error" :badgeText="'' + applyCount"  showArrow="true"></uni-list-item>
 			<!-- <uni-list-item title="我的群聊" thumb="/static/icon/groupchat.png" to="/pages/contacts/groupchat" showArrow="true"></uni-list-item> -->
 		</uni-list>
 		<!-- <block v-for="item in list" :key="item.index">
@@ -39,7 +40,8 @@
 			let data = {
 				list: [],
 				isShowMenu: false,
-				count: 0
+				count: 0,
+				applyCount: 0
 			}
 			return data;
 		},
@@ -47,6 +49,7 @@
 			this.$data.list = []
 			this.$data.count = 0
 			this.$data.isShowMenu = false
+			this.$data.applyCount = 0
 			contactsapi.contactList(this.$data)
 		},
 		methods: {

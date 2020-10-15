@@ -4,9 +4,9 @@ export default {
 	getConfig() {
 		if(env === 'development'){
 			return {
-				clienturl: 'http://www.yonyouxukk.cn',
+				clienturl: 'http://localhost:8080',
 				serviceurl: '',
-				websocketServerurl: 'ws://www.yonyouxukk.cn/ws',
+				websocketServerurl: 'ws://localhost:8888/',
 				appid: 'wxb87cb9510aac006d'
 			}
 		} else {

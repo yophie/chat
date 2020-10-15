@@ -10,11 +10,12 @@
 			</view>
 			<view>
 				<image class="img_plus" src="../../static/icon/invite.png" @click="invite"></image>
+				<image class="img_plus" src="../../static/icon/remove.png" @click="remove"></image>
 			</view>
 		</view>
 		<uni-list v-if = "isGroup&isGroupOwner">
-			<!-- <uni-list-item title="群聊名称" :rightText="name" :showArrow="true"
-				:clickable="true" @click="popupChangeName"></uni-list-item> -->
+			<uni-list-item title="群聊名称" :rightText="name" :showArrow="true"
+				:clickable="true" @click="popupChangeName"></uni-list-item>
 		    <uni-list-item title="全员禁言"  
 			:show-switch="true" :switchChecked="isForbidden"
 					@switchChange="switchChange" ></uni-list-item>
@@ -98,6 +99,11 @@
 			invite() {
 				uni.navigateTo({
 					url: '/pages/chat/newGroup?id=' + this.id 
+				})
+			},
+			remove() {
+				uni.navigateTo({
+					url: '/pages/chat/rmMember?id=' + this.id 
 				})
 			}
 		}
