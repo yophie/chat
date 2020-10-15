@@ -19,8 +19,8 @@
     </select>
     <!--插入用户信息-->
     <insert id="insertUser" parameterType="com.brother.myanmar.chat.bean.User">
-        insert into user(account, name, avatar, phone, openId, password, bankAccount, realName, bankName)
-        values(#{account},#{name},#{avatar},#{phone},#{openId},#{password},#{bankAccount},#{realName},#{bankName})
+        insert into user(account, name, avatar, phone, openId, password, bankAccount, realName, bankName, aliAccount)
+        values(#{account},#{name},#{avatar},#{phone},#{openId},#{password},#{bankAccount},#{realName},#{bankName},#{aliAccount})
     </insert>
     <!--删除用户信息-->
     <delete id="deleteUser" parameterType="java.lang.Integer">
@@ -49,6 +49,9 @@
         </if>
         <if test="bankName!=null">
             ,bankName=#{bankName}
+        </if>
+        <if test="aliAccount!=null">
+            ,aliAccount=#{aliAccount}
         </if>
         where id=#{id}
     </update>

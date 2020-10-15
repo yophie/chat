@@ -181,6 +181,7 @@ public enum Command{
   COMMAND_Manager_RESP(32),
   COMMAND_GROUP_NOTIFY(33),
   COMMAND_FRIEND_NOTIFY(34),
+  COMMAND_GROUP_DIS(35),
   ;
 
   public final int getNumber() {

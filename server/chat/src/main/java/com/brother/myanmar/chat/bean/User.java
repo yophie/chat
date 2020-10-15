@@ -19,6 +19,7 @@ public class User extends ChatWindowRespBody {
     private String bankAccount;
     private String realName;
     private String bankName;
+    private String aliAccount;
 
     private List<Friend> friends;
     private List<Group> groups;
@@ -130,5 +131,13 @@ public class User extends ChatWindowRespBody {
 
     public void setBankName(String bankName) {
         this.bankName = bankName;
+    }
+
+    public String getAliAccount() {
+        return aliAccount;
+    }
+
+    public void setAliAccount(String aliAccount) {
+        this.aliAccount = aliAccount;
     }
 }
