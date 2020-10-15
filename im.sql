@@ -299,6 +299,10 @@ CREATE TABLE `user` (
   `phone` varchar(50) DEFAULT NULL,
   `password` varchar(200) DEFAULT NULL,
   `money` decimal(20,2) DEFAULT NULL,
+  `bankAccount` varchar(20) DEFAULT NULL,
+  `realName` varchar(50) DEFAULT NULL,
+  `bankName` varchar(50) DEFAULT NULL,
+  `aliAccount` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;

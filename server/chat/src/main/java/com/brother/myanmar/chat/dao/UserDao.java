@@ -44,4 +44,11 @@ public class UserDao {
         return result;
     }
 
+    public static int update(User user){
+        User2Mapper user2Mapper = SqlConnection.getSession().getMapper(User2Mapper.class);
+        int rint = user2Mapper.updateUser(user);
+        SqlConnection.getSession().commit();
+        return rint;
+    }
+
 }

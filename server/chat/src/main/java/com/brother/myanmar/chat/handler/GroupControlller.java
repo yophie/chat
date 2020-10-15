@@ -210,10 +210,18 @@ public class GroupControlller {
             return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10030)));
         }
         List<Friend> members = GroupDao.findGroupMembers(req.getGroupId());
+
+        ChatBody chatBody = ChatBody.newBuilder().from(String.valueOf(request.getUserId()))
+                .groupId(String.valueOf(req.getGroupId())).chatType(ChatType.CHAT_TYPE_PUBLIC.getNumber())
+                .msgType(6).content(group.getGroupName()+" 被解散了").build();
+        chatBody.setCreateTime(System.currentTimeMillis());
+        ImPacket chatPacket = new ImPacket(Command.COMMAND_GROUP_DIS,new RespBody(Command.COMMAND_GROUP_DIS,chatBody).toByte());
+
         for(int i=0;i<members.size();i++) {
             List<ImChannelContext> notifyChannels = JimServerAPI.getByUserId(String.valueOf(members.get(i).getFriendId()));
             for (int j = 0; j < notifyChannels.size(); j++) {
                 JimServerAPI.unbindGroup(String.valueOf(group.getGroupId()), notifyChannels.get(j));
+                JimServerAPI.send(notifyChannels.get(j), chatPacket);
             }
         }
         GroupDao.deleteGroup(req.getGroupId());

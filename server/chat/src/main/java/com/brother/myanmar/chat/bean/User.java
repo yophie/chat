@@ -16,6 +16,10 @@ public class User extends ChatWindowRespBody {
     private String name;
     private Double lowest;
     private Double fee;
+    private String bankAccount;
+    private String realName;
+    private String bankName;
+    private String aliAccount;
 
     private List<Friend> friends;
     private List<Group> groups;
@@ -103,5 +107,37 @@ public class User extends ChatWindowRespBody {
 
     public void setFee(Double fee) {
         this.fee = fee;
+    }
+
+    public String getBankAccount() {
+        return bankAccount;
+    }
+
+    public void setBankAccount(String bankAccount) {
+        this.bankAccount = bankAccount;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
+    }
+
+    public String getAliAccount() {
+        return aliAccount;
+    }
+
+    public void setAliAccount(String aliAccount) {
+        this.aliAccount = aliAccount;
     }
 }
