@@ -88,6 +88,12 @@ export default {
 			content: rd.content,
 			isSelf: rd.from == uni.getStorageSync("userId")
 	  }
+	  
+	  if (rd.msgType === 3) {
+	  	data.imgList.push(rd.content)
+	  	item.content = rd.content + '?x-oss-process=image/auto-orient,1/resize,m_lfit,h_100/quality,q_90'
+		item.imgIndex = data.imgList.length - 1
+	  }
 	  if (data.isGroup) {
 	  	item.senderAvatar = rd.fromAvatar
 	  	item.senderNick = rd.fromName
@@ -165,6 +171,11 @@ export default {
 			content: item.content,
 			isSelf: isSelf
 		}
+		if (item.msgType === 3) {
+			data.imgList.push(item.content)
+			message.content = item.content + '?x-oss-process=image/auto-orient,1/resize,m_lfit,h_100/quality,q_90'
+			message.imgIndex = data.imgList.length - 1
+		}
 		if (data.isGroup) {
 			message.senderAvatar = item.fromAvatar
 			message.senderNick = item.fromName
@@ -172,6 +183,7 @@ export default {
 			if (message.isSelf) {
 				message.senderAvatar = uni.getStorageSync("avatar")
 				message.senderNick = uni.getStorageSync("userName")
+				message.senderAvatar = message.senderAvatar ? message.senderAvatar : '../../static/icon/default_avatar.png'
 			} else {
 				message.senderAvatar = data.friendAvatar
 				message.senderNick = data.friendName
@@ -205,6 +217,21 @@ export default {
 			data.sendText = false
 		} 
 	},
-	
+	sendPic(data, url) {
+		if (url) {
+			let msg = {
+				cmd: 11,
+				from: uni.getStorageSync("userId"),
+				to: data.isGroup ? undefined : data.id,
+				groupId: data.isGroup ? data.id : undefined,
+				chatType: data.isGroup ? 1 : 2,
+				msgType: 3,
+				content: url
+			}
+			webSocketHandle.sendMessage(msg)
+			// data.msgList.push(message)
+			data.sendMsg = ''
+		}
+	}
 
 }

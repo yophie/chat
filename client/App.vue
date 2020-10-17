@@ -30,12 +30,16 @@
 					return
 				}
 			}
-			if (location.hash.indexOf('#/pages/wechat') >= 0){
+			let ua = window.navigator.userAgent.toLowerCase()
+			let iswechat = false
+			if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+				iswechat = true
 				uni.setStorageSync("platform", 'wechat')
 			}
+			
 			let token = getToken()
 			if (!token) {
-				if (location.hash.indexOf('#/pages/wechat') >= 0){
+				if (iswechat){
 					wechatLogin.login(requestId)
 				} else {
 					uni.navigateTo({
@@ -59,7 +63,7 @@
 							}
 						})
 						uni.switchTab({
-							url: 'pages/chat/chat'
+							url: '/pages/chat/chat'
 						})
 					} 
 				})

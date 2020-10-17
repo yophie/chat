@@ -19,7 +19,7 @@
             },
             "https" : false
         },
-        "title" : "聊天",
+        "title" : "鑫盛掘金",
         "router" : {
             "base" : "/"
         }

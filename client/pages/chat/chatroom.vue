@@ -16,10 +16,10 @@
 							<redpacket :id="item.id" @click="openPacket" :senderNick="item.senderNick"
 									:senderAvatar = "item.senderAvatar"></redpacket>
 						</view>
-						<view v-if="item.type === 3" class="main">
-							<view class="content bg-selfContent">
-								<text class="text-black">{{item.content}}</text>
-							</view>
+						<view v-if="item.type === 3" class="main" >
+							 <view class="radius img_message"
+							  @tap="preivewImg(item.imgIndex)" :style="[{backgroundImage: 'url(' + item.content + ')',height: item.height, width:item.width}]" @load="resize(item, $event)"></view> 
+							<!-- <image  :src="item.content" mode="aspectFit" @tap="preivewImg(item.imgIndex)" @load="resize(item, $event)"></image> -->
 						</view>
 						<image class="cu-avatar radius" :src="item.senderAvatar" mode="aspectFill" @error="imageError(item)" ></image>
 					</view>
@@ -37,6 +37,9 @@
 								<view v-if="item.type === 2" class="main">
 									<redpacket :id="item.id" @click="openPacket" :senderNick="item.senderNick"
 											:senderAvatar = "item.senderAvatar" :isGroup="isGroup"></redpacket>
+								</view>
+								<view v-if="item.type === 3" class="main">
+									<image :src="item.content" class="radius img_message" mode="aspectFit" @tap="preivewImg(item.imgIndex)"></image>
 								</view>
 							</view>
 							
@@ -94,7 +97,7 @@
 
 <script>
 	import chatroomapi from '@/pages/api/chatroomapi.js'
-	import common from '../api/common.js'
+	import common, {upload} from '../api/common.js'
 	import {uniNavBar, uniIcons, uniPopup} from '@dcloudio/uni-ui'
 	import redpacket from '@/pages/components/redpacket.vue'
 	import openPacket from '@/pages/chat/openPacket.vue'
@@ -123,7 +126,8 @@
 				groupMemNum: 0,
 				fromInfo: {},
 				friendAvatar: '',
-				friendName: ''
+				friendName: '',
+				imgList: []
 			}
 			return data
 		},
@@ -190,6 +194,12 @@
 					})
 				})
 			},
+			resize(item, event) {
+				console.log(item)
+				console.log(event)
+				item.height = event.detail.height
+				item.width = event.detail.width
+			},
 			focusInput() {
 				this.isShowPlusMsgBar = false
 			},
@@ -200,6 +210,24 @@
 					+ '&groupMemNum=' + groupMemNum
 				uni.navigateTo({
 					url:  u
+				})
+			},
+			toSendPic() {
+				let that = this
+				upload('chat-img', function(res) {
+					chatroomapi.sendPic(that.$data, res.url)
+				}, function error(res) {
+					uni.showToast({
+						title: '图片发送失败！',
+						duration: 2000
+					})
+				})
+			},
+			preivewImg(index) {
+				uni.previewImage({
+					current: index,
+					urls: this.imgList,
+					indicator: 'default'
 				})
 			},
 			openPacket(param) {
@@ -316,5 +344,12 @@
 		width: 100%; 
 		border-radius: 8upx;
 		height: 74upx;
+	}
+	.img_message {
+		width: 300upx;
+		height: 300upx;
+		background-position: right top;
+		background-size: contain; 
+		background-repeat: no-repeat;
 	}
 </style>

@@ -1,6 +1,41 @@
 import Vue from 'vue'
 import config from './config.js'
+const OSS = require('ali-oss')
 
+const client = new OSS({
+  bucket: config.getConfig().bucket,
+  region: config.getConfig().region,
+  accessKeyId: config.getConfig().accessKeyId,
+  accessKeySecret: config.getConfig().accessKeySecret
+});
+export const upload = function(path, success, error) {
+	uni.chooseImage({
+		count: 1, //默认9
+		sizeType: ['compressed'],
+		sourceType: ['album'],
+		success: res => {
+			let now = new Date();
+			let date = now.getFullYear() + '' + (now.getMonth() + 1) + '' + now.getDate();
+			let address = path + '/' + date + '/';
+			for (let imageSrc of res.tempFiles) {
+				let name = address + imageSrc.name + now.getTime()
+				let ossUrl = config.getConfig().ossUrl
+				try {
+					let result = client.put(name, imageSrc);
+					result.then(function(res) {
+						success(res)
+					}).catch(function onRejected(error){
+						console.log(error)
+						error(error)
+					})
+				  } catch (e) {
+					  console.log(e)
+				    error(error)
+				 }
+			}
+		}
+	});
+}
 export const http = {
 	get(url,data,success) {
 		this._request(url,data,success,'GET')

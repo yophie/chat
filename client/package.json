@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@dcloudio/uni-ui": "^1.2.5",
+    "ali-oss": "^6.11.2",
     "axios": "^0.20.0",
     "jweixin-module": "^1.6.0",
     "vue-qr": "^2.2.1"

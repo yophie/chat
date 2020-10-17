@@ -5,7 +5,15 @@ export default {
 	  data.list = []
 	for (let chat of result) {
 		let lastMessage = JSON.parse(chat.lastMessage)
-		let lastContent = lastMessage.msgType == 2 ? '[红包]' : lastMessage.content
+		let lastContent = ''
+		if (lastMessage.msgType == 2) {
+			lastContent = '[红包]'
+		} else if (lastMessage.msgType == 3) {
+			lastContent = '[图片]'
+		} else {
+			let lastContent = lastMessage.content
+		}
+		
 		let item = {
 			id: chat.userGroupId,
 			name: chat.userGroupName, 
