@@ -40,6 +40,9 @@ public class RedisCache {
     public static User getUser(String key){
         return RedisCacheManager.getCache(USERCACHE).get(key, User.class);
     }
+    public static void invalidUser(String key){
+        RedisCacheManager.getCache(USERCACHE).remove(key);
+    }
 
     public static void putToken(String key, User user){
         RedisCacheManager.getCache(TOKEN).put(key,user);
@@ -47,6 +50,10 @@ public class RedisCache {
 
     public static User getToken(String key){
         return RedisCacheManager.getCache(TOKEN).get(key, User.class);
+    }
+
+    public static void invalidToken(String key){
+        RedisCacheManager.getCache(TOKEN).remove(key);
     }
 
     public static void putSuperToken(String key, SuperUser user){

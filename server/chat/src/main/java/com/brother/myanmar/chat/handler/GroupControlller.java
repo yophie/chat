@@ -282,6 +282,23 @@ public class GroupControlller {
             } else if (req.getType() == 0) {
                 RedisCache.forbidden(String.valueOf(req.getGroupId()), false);
             }
+        }else{
+            List<Friend> members = GroupDao.findGroupMembers(req.getGroupId());
+
+            ChatBody chatBody = ChatBody.newBuilder().from(String.valueOf(request.getUserId()))
+                    .groupId(String.valueOf(req.getGroupId())).chatType(ChatType.CHAT_TYPE_PUBLIC.getNumber())
+                    .msgType(6).content(updateGroup.getGroupName()).build();
+            chatBody.setCreateTime(System.currentTimeMillis());
+            chatBody.setId(UUIDSessionIdGenerator.instance.sessionId(null));
+            ImPacket chatPacket = new ImPacket(Command.COMMAND_GROUP_UPDATE,new RespBody(Command.COMMAND_GROUP_UPDATE,chatBody).toByte());
+
+            for(int i=0;i<members.size();i++) {
+                List<ImChannelContext> notifyChannels = JimServerAPI.getByUserId(String.valueOf(members.get(i).getMyId()));
+                for (int j = 0; j < notifyChannels.size(); j++) {
+                    JimServerAPI.unbindGroup(String.valueOf(group.getGroupId()), notifyChannels.get(j));
+                    JimServerAPI.send(notifyChannels.get(j), chatPacket);
+                }
+            }
         }
         updateGroup.setCode(ImStatus.C10031.getCode());
         updateGroup.setMsg(ImStatus.C10031.getMsg());

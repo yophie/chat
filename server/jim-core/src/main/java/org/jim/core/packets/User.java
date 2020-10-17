@@ -54,6 +54,7 @@ public class User extends Message implements Serializable{
 
 	//applying friend numbers;
 	private Integer newFriends;
+	private Long curTime;
 	
 	private User(){}
 
@@ -143,6 +144,14 @@ public class User extends Message implements Serializable{
 
 	public void setNewFriends(Integer newFriends) {
 		this.newFriends = newFriends;
+	}
+
+	public Long getCurTime() {
+		return curTime;
+	}
+
+	public void setCurTime(Long curTime) {
+		this.curTime = curTime;
 	}
 
 	public static class Builder extends Message.Builder<User, User.Builder>{
