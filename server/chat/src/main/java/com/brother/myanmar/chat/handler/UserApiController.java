@@ -3,24 +3,28 @@ package com.brother.myanmar.chat.handler;
 
 import com.alibaba.fastjson.JSONObject;
 import com.brother.myanmar.chat.bean.*;
+import com.brother.myanmar.chat.bean.Group;
+import com.brother.myanmar.chat.bean.User;
 import com.brother.myanmar.chat.dao.GroupDao;
 import com.brother.myanmar.chat.dao.SettingsDao;
 import com.brother.myanmar.chat.dao.SuperUserDao;
 import com.brother.myanmar.chat.dao.UserDao;
 import com.brother.myanmar.chat.service.RedisCache;
 import com.brother.myanmar.chat.util.AuthUtil;
+import org.jim.core.ImChannelContext;
 import org.jim.core.ImConst;
+import org.jim.core.ImPacket;
 import org.jim.core.ImStatus;
 import org.jim.core.http.HttpRequest;
 import org.jim.core.http.HttpResponse;
-import org.jim.core.packets.ChatType;
-import org.jim.core.packets.RespBody;
-import org.jim.core.packets.UserStatusType;
+import org.jim.core.packets.*;
 import org.jim.core.session.id.impl.UUIDSessionIdGenerator;
 import org.jim.core.utils.JsonKit;
 import org.jim.core.utils.Md5;
 import org.jim.core.utils.PropUtil;
+import org.jim.server.JimServerAPI;
 import org.jim.server.protocol.http.annotation.RequestPath;
+import org.jim.server.util.ChatKit;
 import org.jim.server.util.HttpResps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,7 +49,7 @@ public class UserApiController {
 
             SuperUser findUser = SuperUserDao.findUserByAccount(searchUser);
             if(findUser!=null && findUser.getPassword().equals(searchUser.getPassword())) {
-                String text = findUser.getId()+findUser.getPassword()+System.currentTimeMillis();
+                String text = findUser.getId()+findUser.getName()+System.currentTimeMillis();
                 String token = Md5.sign(text, ImConst.AUTH_KEY, ImConst.CHARSET);
                 RedisCache.putSuperToken(token,findUser);
                 resp.setToken(token);
@@ -70,14 +74,7 @@ public class UserApiController {
         User findUser = UserDao.findUserByAccount(req);
         String pass = Md5.sign(req.getPassword(), ImConst.AUTH_KEY, ImConst.CHARSET);
         if(findUser!=null && findUser.getPassword().equals(pass)) {
-            String text = findUser.getId()+findUser.getPassword()+System.currentTimeMillis();
-            String token = Md5.sign(text, ImConst.AUTH_KEY, ImConst.CHARSET);
-            org.jim.core.packets.User user = buildUser(findUser);
-            RedisCache.putToken(token,user);
-            RedisCache.putUser(String.valueOf(findUser.getId()),user);
-            LoginRes loginRes = new LoginRes(ImStatus.C10007);
-            loginRes.setToken(token);
-            return TokenFilter.crossOrigin(HttpResps.json(request, loginRes));
+            return success(request, findUser);
         } else {
             return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10008)));
         }
@@ -113,6 +110,7 @@ public class UserApiController {
     public HttpResponse logout(HttpRequest request) throws Exception {
         HttpResponse resp = TokenFilter.filter(request);
         if(resp != null) return resp;
+        RedisCache.invalidToken(request.getHeader("token"));
         RedisCache.removeSuperToken(request.getHeader("token"));
         return TokenFilter.crossOrigin(HttpResps.json(request, new RespBody(ImStatus.C10021)));
     }
@@ -161,12 +159,7 @@ public class UserApiController {
         searchUser.setOpenId(openid);
         User findUser = UserDao.findUserByOpenId(searchUser);
         if(findUser != null){
-            String text = findUser.getId()+findUser.getPassword()+System.currentTimeMillis();
-            String token = Md5.sign(text, ImConst.AUTH_KEY, ImConst.CHARSET);
-            RedisCache.putToken(token,buildUser(findUser));
-            LoginRes loginRes = new LoginRes(ImStatus.C10007);
-            loginRes.setToken(token);
-            return TokenFilter.crossOrigin(HttpResps.json(request, loginRes));
+            return success(request, findUser);
         }
         String access_token = jsonObject.getString("access_token");
         if(access_token == null){
@@ -186,14 +179,7 @@ public class UserApiController {
         searchUser.setMoney(0.0);
         UserDao.insert(searchUser);
         findUser = UserDao.findUserByOpenId(searchUser);
-        String text = findUser.getId()+findUser.getPassword()+System.currentTimeMillis();
-        String token = Md5.sign(text, ImConst.AUTH_KEY, ImConst.CHARSET);
-        org.jim.core.packets.User user = buildUser(findUser);
-        RedisCache.putToken(token,user);
-        RedisCache.putUser(String.valueOf(findUser.getId()),user);
-        LoginRes loginRes = new LoginRes(ImStatus.C10007);
-        loginRes.setToken(token);
-        return TokenFilter.crossOrigin(HttpResps.json(request, loginRes));
+        return success(request, findUser);
     }
 
     @RequestPath(value = "/type")
@@ -266,6 +252,46 @@ public class UserApiController {
 
         org.jim.core.packets.User user = builder.build();
         return user;
+    }
+
+    private HttpResponse success(HttpRequest request, User findUser){
+        org.jim.core.packets.User oldUser = RedisCache.getUser(String.valueOf(findUser.getId()));
+        if(oldUser!=null){
+            if(ChatKit.isOnline(String.valueOf(findUser.getId()), true)) {
+                ChatBody chatBody = ChatBody.newBuilder()
+                        .msgType(6).content("用户已在其他设备登陆，请确保您的账户安全！").build();
+                chatBody.setCreateTime(System.currentTimeMillis());
+                chatBody.setId(UUIDSessionIdGenerator.instance.sessionId(null));
+                ImPacket chatPacket = new ImPacket(Command.COMMAND_USER_DUP,new RespBody(Command.COMMAND_USER_DUP,chatBody).toByte());
+
+                List<ImChannelContext> notifyChannels = JimServerAPI.getByUserId(String.valueOf(findUser.getId()));
+                for (int j = 0; j < notifyChannels.size(); j++) {
+                    JimServerAPI.send(notifyChannels.get(j), chatPacket);
+
+                    try {
+                        Thread.sleep(100);
+                    }catch (Exception e){
+
+                    }
+                    JimServerAPI.remove(notifyChannels.get(j),chatBody.getContent());
+                }
+            }
+            String text = oldUser.getUserId()+oldUser.getNick()+oldUser.getCurTime();
+            String token = Md5.sign(text, ImConst.AUTH_KEY, ImConst.CHARSET);
+            RedisCache.invalidToken(token);
+            RedisCache.invalidUser(String.valueOf(findUser.getId()));
+        }
+
+        org.jim.core.packets.User user = buildUser(findUser);
+        user.setCurTime(System.currentTimeMillis());
+        String text = findUser.getId()+findUser.getName()+user.getCurTime();
+        String token = Md5.sign(text, ImConst.AUTH_KEY, ImConst.CHARSET);
+
+        RedisCache.putToken(token,user);
+        RedisCache.putUser(String.valueOf(findUser.getId()),user);
+        LoginRes loginRes = new LoginRes(ImStatus.C10007);
+        loginRes.setToken(token);
+        return TokenFilter.crossOrigin(HttpResps.json(request, loginRes));
     }
 
 }
