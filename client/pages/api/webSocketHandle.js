@@ -15,6 +15,9 @@ export default {
 	},
 	_init(u) {
 		let that = this
+		if (Vue.prototype.socketOpen == true) {
+			return
+		}
 		uni.connectSocket({
 		  url: u
 		});

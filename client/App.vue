@@ -62,9 +62,6 @@
 								})
 							}
 						})
-						uni.switchTab({
-							url: '/pages/chat/chat'
-						})
 					} 
 				})
 			}

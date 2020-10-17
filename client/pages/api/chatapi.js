@@ -11,7 +11,7 @@ export default {
 		} else if (lastMessage.msgType == 3) {
 			lastContent = '[图片]'
 		} else {
-			let lastContent = lastMessage.content
+			lastContent = lastMessage.content
 		}
 		
 		let item = {
@@ -25,8 +25,9 @@ export default {
 		data.list.push(item)
 	}
   },
+  
   handleMsg(data, result) {
-	  if (!result || !result.data || (result.cmd != 11 && result.cmd != 33 && result.cmd != 35)) {
+	  if (!result || !result.data || (result.cmd != 11 && result.cmd != 33 && result.cmd != 35 && result.cmd != 36)) {
 		  return
 	  }
 	  
@@ -46,15 +47,31 @@ export default {
 		  }
 		  return
 	  }
-	  
+	  if (result.cmd == 36) {
+		  for (let i = 0; i < data.list.length; i++) {
+			if (data.list[i].id == result.groupId) {
+				data.list[i].name = result.content
+				break
+			}
+		  }
+	  }
+	  let lastContent = ''
+	  if (rd.msgType == 2) {
+	  	lastContent = '[红包]'
+	  } else if (rd.msgType == 3) {
+	  	lastContent = '[图片]'
+	  } else {
+	  	lastContent = rd.content
+	  }
 	  let index = -1
 	  let item = {
 	  	id: rd.chatType == 1 ? rd.groupId : rd.chatId,
-	  	lastMsg: rd.msgType == 2 ? '[红包]' : rd.content, 
+	  	lastMsg: lastContent, 
 	  	lastTime: chatListTimeToString(rd.createTime),
 		name: '',
 		avatar: ''
 	  }
+	  
 	  for (let i = 0; i < data.list.length; i++) {
 		if (data.list[i].id == item.id) {
 			index = i
@@ -111,27 +128,5 @@ export default {
 			  });
 		  }
 	  })
-	  uni.$on("changeGroupName", function(id, name) {
-		  for (let i = 0; i < data.list.length; i++) {
-			if (data.list[i].id == id) {
-				data.list[i].name = name
-				break
-			}
-		  }
-	  })
-	  
-	  uni.$on("leaveGroup", function(id) {
-	  	data.name = name + '(' + data.groupMemNum + ')'
-		let index = 0
-		for (let i = 0; i < data.list.length; i++) {
-			if (data.list[i].id == id) {
-				index = i
-				break
-			}
-		}
-		if (index > -1) {
-			data.list.splice(index, 1); 
-		}
-	  }) 
   }
 }

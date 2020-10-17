@@ -28,11 +28,6 @@ export default {
 			  });
 		  }
 	  })
-	  if (data.isGroup) {
-		 uni.$on("changeGroupName", function(id, name) {
-		 	data.name = name + '(' + data.groupMemNum + ')'
-		 }) 
-	  }
 	  
   },
   chatMsgInit(data) {
@@ -47,17 +42,21 @@ export default {
 	  })
 	  let that = this
 	  uni.$on('cmd20', function(result) {
-		  that.handleChatMsg(data, result)
+		 that.handleChatMsg(data, result)
 	  })
-	  
 	  uni.$on('cmd11', function(result) {
-		  that.handleIncreChatMsg(data, result)
+		 that.handleIncreChatMsg(data, result)
 	  })
 	  uni.$once('cmd33', function(result) {
-	  		  that.handleIncreChatMsg(data, result)
+	  	 that.handleIncreChatMsg(data, result)
 	  })
 	  uni.$once('cmd35', function(result) {
-	  		  that.handleIncreChatMsg(data, result)
+	  	 that.handleIncreChatMsg(data, result)
+	  })
+	  uni.$on('cmd36', function(result) {
+		  if (result.groupId == data.id) {
+			  data.name = result.content + '(' + data.groupMemNum + ')'
+		  }
 	  })
   },
   handleIncreChatMsg(data, result) {
@@ -230,7 +229,6 @@ export default {
 			}
 			webSocketHandle.sendMessage(msg)
 			// data.msgList.push(message)
-			data.sendMsg = ''
 		}
 	}
 
