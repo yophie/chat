@@ -15,6 +15,7 @@ import org.jim.core.packets.ChatBody;
 import org.jim.core.packets.ChatType;
 import org.jim.core.packets.Command;
 import org.jim.core.packets.RespBody;
+import org.jim.core.session.id.impl.UUIDSessionIdGenerator;
 import org.jim.server.JimServerAPI;
 import org.jim.server.config.ImServerConfig;
 import org.jim.server.protocol.http.annotation.RequestPath;
@@ -102,6 +103,7 @@ public class FriendControlller {
             ChatBody chatBody = ChatBody.newBuilder().from(String.valueOf(user.getFriendId()))
                     .to(String.valueOf(user.getMyId())).chatType(ChatType.CHAT_TYPE_PRIVATE.getNumber())
                     .msgType(6).content("加个朋友呗").build();
+            chatBody.setId(UUIDSessionIdGenerator.instance.sessionId(null));
             ImPacket chatPacket = new ImPacket(Command.COMMAND_FRIEND_NOTIFY,new RespBody(Command.COMMAND_FRIEND_NOTIFY,chatBody).toByte());
             JimServerAPI.sendToUser(String.valueOf(applyUser), chatPacket);
         }
@@ -138,6 +140,7 @@ public class FriendControlller {
                         .to(String.valueOf(user.getMyId())).chatType(ChatType.CHAT_TYPE_PRIVATE.getNumber())
                         .msgType(6).content("我通过了你的朋友验证请求，现在我们可以开始聊天了").build();
                 chatBody.setCreateTime(System.currentTimeMillis());
+                chatBody.setId(UUIDSessionIdGenerator.instance.sessionId(null));
 
                 chatBody.setChatId(String.valueOf(user.getMyId()));
                 ImPacket chatPacket = new ImPacket(Command.COMMAND_CHAT_REQ,new RespBody(Command.COMMAND_CHAT_REQ,chatBody).toByte());

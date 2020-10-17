@@ -98,6 +98,7 @@ public class UserApiController {
             req.setAccount(UUIDSessionIdGenerator.instance.sessionId(null));
         }
         req.setId(null);
+        req.setOpenId(null);
 
         req.setPassword(Md5.sign(req.getPassword(), ImConst.AUTH_KEY, ImConst.CHARSET));
         UserDao.insert(req);

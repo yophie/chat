@@ -67,6 +67,7 @@ public class GroupControlller {
                 .groupId(String.valueOf(newGroup.getId())).chatType(ChatType.CHAT_TYPE_PUBLIC.getNumber())
                 .msgType(6).content("您被邀请进入群聊 "+req.getGroupName()).build();
         chatBody.setCreateTime(System.currentTimeMillis());
+        chatBody.setId(UUIDSessionIdGenerator.instance.sessionId(null));
         ImPacket chatPacket = new ImPacket(Command.COMMAND_CHAT_REQ,new RespBody(Command.COMMAND_CHAT_REQ,chatBody).toByte());
         JimServerAPI.sendToGroup(String.valueOf(newGroup.getId()), chatPacket);
 
@@ -108,6 +109,7 @@ public class GroupControlller {
                 .groupId(String.valueOf(friend.getFriendId())).chatType(ChatType.CHAT_TYPE_PUBLIC.getNumber())
                 .msgType(6).content("您已退出群聊").build();
         chatBody.setCreateTime(System.currentTimeMillis());
+        chatBody.setId(UUIDSessionIdGenerator.instance.sessionId(null));
         ImPacket chatPacket = new ImPacket(Command.COMMAND_GROUP_NOTIFY,new RespBody(Command.COMMAND_GROUP_NOTIFY,chatBody).toByte());
 
         for(int j=0;j<notifyChannels.size();j++){
@@ -145,6 +147,7 @@ public class GroupControlller {
                     .to(String.valueOf(friend.getMyId())).chatType(ChatType.CHAT_TYPE_PUBLIC.getNumber())
                     .msgType(6).content("您被邀请进入群聊 "+req.getGroupName()).build();
             chatBody.setCreateTime(System.currentTimeMillis());
+            chatBody.setId(UUIDSessionIdGenerator.instance.sessionId(null));
             ImPacket chatPacket = new ImPacket(Command.COMMAND_CHAT_REQ,new RespBody(Command.COMMAND_CHAT_REQ,chatBody).toByte());
 
             for(int j=0;j<notifyChannels.size();j++){
@@ -187,6 +190,7 @@ public class GroupControlller {
                     .groupId(String.valueOf(friend.getFriendId())).chatType(ChatType.CHAT_TYPE_PUBLIC.getNumber())
                     .msgType(6).content("您已被移除出群聊 "+group.getGroupName()).build();
             chatBody.setCreateTime(System.currentTimeMillis());
+            chatBody.setId(UUIDSessionIdGenerator.instance.sessionId(null));
             ImPacket chatPacket = new ImPacket(Command.COMMAND_GROUP_NOTIFY,new RespBody(Command.COMMAND_GROUP_NOTIFY,chatBody).toByte());
 
             for(int j=0;j<notifyChannels.size();j++){
@@ -216,6 +220,7 @@ public class GroupControlller {
                 .groupId(String.valueOf(req.getGroupId())).chatType(ChatType.CHAT_TYPE_PUBLIC.getNumber())
                 .msgType(6).content(group.getGroupName()+" 被解散了").build();
         chatBody.setCreateTime(System.currentTimeMillis());
+        chatBody.setId(UUIDSessionIdGenerator.instance.sessionId(null));
         ImPacket chatPacket = new ImPacket(Command.COMMAND_GROUP_DIS,new RespBody(Command.COMMAND_GROUP_DIS,chatBody).toByte());
 
         for(int i=0;i<members.size();i++) {
