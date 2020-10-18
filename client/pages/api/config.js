@@ -10,8 +10,8 @@ export default {
 				appid: 'wxb87cb9510aac006d',
 				bucket: 'xsjj-chat',
 				region: 'oss-cn-hongkong',
-				accessKeyId: 'LTAI4G4jPLck77YuoSAFNtkW',
-				accessKeySecret: 't3TNW1By9IkyO2cjyeigtegPtAXaG2'
+				accessKeyId: '',
+				accessKeySecret: ''
 			}
 		} else {
 			return {
@@ -21,8 +21,8 @@ export default {
 				appid: 'wxb87cb9510aac006d',
 				bucket: 'xsjj-chat',
 				region: 'oss-cn-hongkong',
-				accessKeyId: 'LTAI4G4jPLck77YuoSAFNtkW',
-				accessKeySecret: 't3TNW1By9IkyO2cjyeigtegPtAXaG2'
+				accessKeyId: '',
+				accessKeySecret: ''
 			}
 		}
 	}

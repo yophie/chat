@@ -41,6 +41,7 @@ export default {
 						friendId: f.friendId,
 						inGroup: false
 					}
+					item.avatar = item.avatar ? item.avatar : '../../static/icon/default_avatar.png'
 					data.list.push(item)
 				}
 			}
@@ -62,8 +63,13 @@ export default {
 			  }
 		  })
 	  } else {
-		  selectedList.push(uni.getStorageSync('userId'))
+		  let l = []
 		  selectedListName.push(uni.getStorageSync('userName'))
+		  
+		  for (let s of selectedList) {
+			  l.push(s)
+		  }
+		  l.push(uni.getStorageSync('userId'))
 		  let groupName = ''
 		  let i = 0
 		  for (let s of selectedListName) {
@@ -74,7 +80,7 @@ export default {
 			  i++
 			  if (i >= 3) break
 		  }
-		  http.post('api/group/new', {groupName: groupName, friends: selectedList}, function(res) {
+		  http.post('api/group/new', {groupName: groupName, friends: l}, function(res) {
 			if (res.code == '10031') {
 			  uni.navigateTo({
 				url: '/pages/chat/chatroom?id=' + res.groupId

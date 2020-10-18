@@ -92,6 +92,8 @@ export default {
 	  	data.imgList.push(rd.content)
 	  	item.content = rd.content + '?x-oss-process=image/auto-orient,1/resize,m_lfit,h_100/quality,q_90'
 		item.imgIndex = data.imgList.length - 1
+		item.width = '100upx'
+		item.height = '100upx'
 	  }
 	  if (data.isGroup) {
 	  	item.senderAvatar = rd.fromAvatar
@@ -100,6 +102,7 @@ export default {
 	  	if (item.isSelf) {
 	  		item.senderAvatar = uni.getStorageSync("avatar")
 	  		item.senderNick = uni.getStorageSync("userName")
+			item.senderAvatar = item.senderAvatar ? item.senderAvatar : '../../static/icon/default_avatar.png'
 	  	} else {
 			item.senderAvatar = data.friendAvatar
 			item.senderNick = data.friendName
@@ -174,6 +177,8 @@ export default {
 			data.imgList.push(item.content)
 			message.content = item.content + '?x-oss-process=image/auto-orient,1/resize,m_lfit,h_100/quality,q_90'
 			message.imgIndex = data.imgList.length - 1
+			message.width = '100upx'
+			message.height = '100upx'
 		}
 		if (data.isGroup) {
 			message.senderAvatar = item.fromAvatar

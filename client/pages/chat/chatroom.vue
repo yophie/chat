@@ -16,10 +16,8 @@
 							<redpacket :id="item.id" @click="openPacket" :senderNick="item.senderNick"
 									:senderAvatar = "item.senderAvatar"></redpacket>
 						</view>
-						<view v-if="item.type === 3" class="main" >
-							 <view class="radius img_message"
-							  @tap="preivewImg(item.imgIndex)" :style="[{backgroundImage: 'url(' + item.content + ')',height: item.height, width:item.width}]" @load="resize(item, $event)"></view> 
-							<!-- <image  :src="item.content" mode="aspectFit" @tap="preivewImg(item.imgIndex)" @load="resize(item, $event)"></image> -->
+						<view v-if="item.type === 3" class="main" :style="[{width: item.width, height:item.height}]">
+							<image class="radius img_message"  :src="item.content" mode="aspectFit" @tap="preivewImg(item.imgIndex)" @load="resize(item, $event)"></image>
 						</view>
 						<image class="cu-avatar radius" :src="item.senderAvatar" mode="aspectFill" @error="imageError(item)" ></image>
 					</view>
@@ -38,8 +36,8 @@
 									<redpacket :id="item.id" @click="openPacket" :senderNick="item.senderNick"
 											:senderAvatar = "item.senderAvatar" :isGroup="isGroup"></redpacket>
 								</view>
-								<view v-if="item.type === 3" class="main">
-									<image :src="item.content" class="radius img_message" mode="aspectFit" @tap="preivewImg(item.imgIndex)"></image>
+								<view v-if="item.type === 3" class="main" :style="[{width: item.width, height:item.height}]">
+									<image class="radius img_message"  :src="item.content" mode="aspectFit" @tap="preivewImg(item.imgIndex)" @load="resize(item, $event)"></image>
 								</view>
 							</view>
 							
@@ -195,10 +193,8 @@
 				})
 			},
 			resize(item, event) {
-				console.log(item)
-				console.log(event)
-				item.height = event.detail.height
-				item.width = event.detail.width
+				item.height = event.detail.height + 'px'
+				item.width = event.detail.width + 'px'
 			},
 			focusInput() {
 				this.isShowPlusMsgBar = false
@@ -346,8 +342,9 @@
 		height: 74upx;
 	}
 	.img_message {
-		width: 300upx;
-		height: 300upx;
+		width: 100%;
+		height: 100%;
+		max-width: 400upx;
 		background-position: right top;
 		background-size: contain; 
 		background-repeat: no-repeat;

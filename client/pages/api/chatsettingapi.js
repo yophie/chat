@@ -15,6 +15,7 @@ export default {
 					name: m.myName, 
 					avatar: m.myAvatar
 				}
+				item.avatar = item.avatar ? item.avatar : '../../static/icon/default_avatar.png'
 				data.memberList.push(item)
 			  }
 		  } else {
