@@ -54,8 +54,8 @@ export default {
 	  	 that.handleIncreChatMsg(data, result)
 	  })
 	  uni.$on('cmd36', function(result) {
-		  if (result.groupId == data.id) {
-			  data.name = result.content + '(' + data.groupMemNum + ')'
+		  if (result && result.data && result.data.groupId == data.id) {
+			  data.name = result.data.content + '(' + data.groupMemNum + ')'
 		  }
 	  })
   },

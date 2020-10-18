@@ -32,6 +32,8 @@
 <script>
 	import discoverapi from '@/pages/api/discoverapi.js'
 	import {uniNavBar,uniList,uniListItem,uniListChat} from '@dcloudio/uni-ui'
+	import {tabbarreddot} from '@/pages/api/common.js'
+	
 	export default {
 		name: 'discover',
 		components: {uniNavBar,uniList,uniListItem,uniListChat},
@@ -41,6 +43,9 @@
 			}
 			discoverapi.initDiscover(data)
 			return data
+		},
+		onShow() {
+			tabbarreddot()	
 		},
 		methods: {
 			toPost() {

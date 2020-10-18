@@ -1,4 +1,4 @@
-import {http, chatListTimeToString} from './common.js'
+import {http, chatListTimeToString, tabbarreddot} from './common.js'
 
 export default {
   chatList(data, result) {
@@ -49,8 +49,8 @@ export default {
 	  }
 	  if (result.cmd == 36) {
 		  for (let i = 0; i < data.list.length; i++) {
-			if (data.list[i].id == result.groupId) {
-				data.list[i].name = result.content
+			if (data.list[i].id == rd.groupId) {
+				data.list[i].name = rd.content
 				break
 			}
 		  }
@@ -108,6 +108,7 @@ export default {
 	  data.list.unshift(item)
   },
   getChatList(data) {
+	  tabbarreddot()
 	  let that = this
 	  http.get('api/chat/list', {}, function(res) {
 		  if (res.code == 10023) {

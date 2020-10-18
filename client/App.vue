@@ -2,7 +2,7 @@
 	import Vue from 'vue'
 	import wechatLogin from '@/pages/api/wechatLogin.js'
 	import webSocketHandle from '@/pages/api/webSocketHandle.js'
-	import {http, getToken} from '@/pages/api/common.js'
+	import {http, getToken, tabbarreddot} from '@/pages/api/common.js'
 	
 	export default {
 		onLaunch: function() { 
@@ -54,13 +54,7 @@
 						uni.$on("request", function(num) {
 							let requestNum = uni.getStorageSync("requestNum") + num
 							uni.setStorageSync("requestNum", requestNum)
-							if (requestNum > 0) {
-								uni.showTabBarRedDot({index:1});
-							} else {
-								uni.hideTabBarRedDot({
-									index:1
-								})
-							}
+							tabbarreddot()
 						})
 					} 
 				})

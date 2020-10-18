@@ -1,4 +1,4 @@
-import {http} from './common.js'
+import {http, tabbarreddot} from './common.js'
 
 export default {
   init (data) {
@@ -16,6 +16,7 @@ export default {
 			    content: '系统错误，请稍后再试！'
 			});
 		}
+		tabbarreddot()
 	})
   }
 }

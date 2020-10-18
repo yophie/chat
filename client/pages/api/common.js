@@ -290,3 +290,16 @@ export const discoverTimeToString = function(time) {
 	  }
   	  uni.setStorageSync("token", token)
   }
+  
+  export const tabbarreddot = function() {
+	  let applyCount = uni.getStorageSync("requestNum")
+	  if (applyCount <= 0) {
+	  	uni.hideTabBarRedDot({
+	  		index: 1
+	  	})
+	  } else {
+	  	uni.showTabBarRedDot({
+	  		index: 1
+	  	})
+	  }
+  }

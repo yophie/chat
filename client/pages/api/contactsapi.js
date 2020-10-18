@@ -1,4 +1,4 @@
-import {http} from './common.js'
+import {http, tabbarreddot} from './common.js'
 
 export default {
   contactList (data) {
@@ -25,6 +25,8 @@ export default {
 				}
 			}
 			data.count = data.list.length
+			uni.setStorageSync("requestNum", data.applyCount)
+			tabbarreddot()
 		}
 	})
   }
