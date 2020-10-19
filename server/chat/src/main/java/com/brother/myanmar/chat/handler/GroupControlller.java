@@ -143,7 +143,7 @@ public class GroupControlller {
             GroupDao.insertFriend(friend);
             List<ImChannelContext> notifyChannels = JimServerAPI.getByUserId(String.valueOf(req.getFriends().get(i)));
 
-            ChatBody chatBody = ChatBody.newBuilder().from(String.valueOf(request.getUserId()))
+            ChatBody chatBody = ChatBody.newBuilder().from(String.valueOf(request.getUserId())).groupId(String.valueOf(group.getGroupId()))
                     .to(String.valueOf(friend.getMyId())).chatType(ChatType.CHAT_TYPE_PUBLIC.getNumber())
                     .msgType(6).content("您被邀请进入群聊 "+req.getGroupName()).build();
             chatBody.setCreateTime(System.currentTimeMillis());
