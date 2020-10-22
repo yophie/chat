@@ -1,8 +1,9 @@
-import {http,chatroomTimeToString,getFromInfo} from './common.js'
+import {http,chatroomTimeToString,getFromInfo,transContent} from './common.js'
 import webSocketHandle from './webSocketHandle.js'
 let v
+
 export default {
-  chatroominit (data, v1, success) {
+  chatroominit (data, v1, reload) {
 	  v = v1
 	  let that = this
 	  
@@ -15,11 +16,16 @@ export default {
 			  if (!data.isGroup) {
 				  getFromInfo(data.id, function(fromInfo) {
 					  data.friendAvatar =  fromInfo ? fromInfo.avatar : ''
-					  data.friendName = fromInfo ? fromInfo.name : '',
-					  that.chatMsgInit(data)
+					  data.friendName = fromInfo ? fromInfo.name : ''
+					  if (reload) {
+						  that.chatMsgInit(data)
+					  }
+					  
 				  })
 			  } else {
-				  that.chatMsgInit(data)
+				 if (reload) {
+					  that.chatMsgInit(data)
+				}
 			  }
 		  } else {
 			  uni.showModal({
@@ -41,25 +47,33 @@ export default {
 	  		  // offset: 
 	  })
 	  let that = this
-	  uni.$on('cmd20', function(result) {
+	  let cmd20l,cmd11l,cmd33l,cmd35l,cmd36l
+	  uni.$once('cmd20', cmd20l = function(result) {
 		 that.handleChatMsg(data, result)
 	  })
-	  uni.$on('cmd11', function(result) {
+	  uni.$on('cmd11', cmd11l = function(result) {
 		 that.handleIncreChatMsg(data, result)
 	  })
-	  uni.$once('cmd33', function(result) {
+	  uni.$once('cmd33', cmd33l = function(result) {
 	  	 that.handleIncreChatMsg(data, result)
 	  })
-	  uni.$once('cmd35', function(result) {
+	  uni.$once('cmd35', cmd35l = function(result) {
 	  	 that.handleIncreChatMsg(data, result)
 	  })
-	  uni.$on('cmd36', function(result) {
+	  uni.$on('cmd36', cmd36l = function(result) {
 		  if (result && result.data && result.data.groupId == data.id) {
 			  data.name = result.data.content + '(' + data.groupMemNum + ')'
 		  }
 	  })
+	  data.listeners = [
+		  {c: 'cmd20', l: cmd20l},
+		  {c: 'cmd11', l: cmd11l},
+		  {c: 'cmd33', l: cmd33l},
+		  {c: 'cmd35', l: cmd35l},
+		  {c: 'cmd36', l: cmd36l}]
   },
   handleIncreChatMsg(data, result) {
+	  console.log(result)
 	  if (!result || !result.data || (result.cmd != 11 && result.cmd != 33 && result.cmd != 35)) {
 	  	  return
 	  }
@@ -71,11 +85,15 @@ export default {
 	  if (result.cmd == 33 || result.cmd == 35) {
 		  uni.showModal({
 		  	title: '提醒',
-		  	content: '您已被管理员踢出群聊！'
+			showCancel: false,
+		  	content: '您已被管理员踢出群聊！',
+			complete() {
+				uni.switchTab({
+					url: '/pages/chat/chat'
+				})
+			}
 		  })
-		  uni.switchTab({
-		  	url: '/pages/chat/chat'
-		  })
+		  
 		  return
 	  }
 	  let item = {
@@ -87,13 +105,18 @@ export default {
 			content: rd.content,
 			isSelf: rd.from == uni.getStorageSync("userId")
 	  }
-	  
+	  if (rd.msgType === 0 || (item.isSelf && rd.msgType === 1)) {
+		  item.content = transContent(rd.content, '22px')
+	  }
+	  if (!item.isSelf && rd.msgType === 1) {
+		  item.content = transContent('禁言消息：' + rd.content, '22px')
+	  }
 	  if (rd.msgType === 3) {
 	  	data.imgList.push(rd.content)
 	  	item.content = rd.content + '?x-oss-process=image/auto-orient,1/resize,m_lfit,h_100/quality,q_90'
 		item.imgIndex = data.imgList.length - 1
 		item.width = '100upx'
-		item.height = '100upx'
+		item.height = '100px'
 	  }
 	  if (data.isGroup) {
 	  	item.senderAvatar = rd.fromAvatar
@@ -173,12 +196,18 @@ export default {
 			content: item.content,
 			isSelf: isSelf
 		}
+		if (item.msgType === 0 || (message.isSelf && item.msgType === 1)) {
+		  message.content = transContent(item.content, '22px')
+		}
+		if (!message.isSelf && item.msgType === 1) {
+		  message.content = transContent('禁言消息：' + item.content, '22px')
+		}
 		if (item.msgType === 3) {
 			data.imgList.push(item.content)
 			message.content = item.content + '?x-oss-process=image/auto-orient,1/resize,m_lfit,h_100/quality,q_90'
 			message.imgIndex = data.imgList.length - 1
 			message.width = '100upx'
-			message.height = '100upx'
+			message.height = '100px'
 		}
 		if (data.isGroup) {
 			message.senderAvatar = item.fromAvatar
@@ -206,6 +235,8 @@ export default {
   },
 	sendMessage(data) {
 		if (data.sendMsg) {
+			//let content = data.sendMsg.replace(/<img code=".+?"[^>]*>/g , 'code')
+			let content = data.sendMsg.replace(/<img code="/g , '').replace(/!@#@!"[^>]*>/g , '')
 			let msg = {
 				cmd: 11,
 				from: uni.getStorageSync("userId"),
@@ -213,7 +244,7 @@ export default {
 				groupId: data.isGroup ? data.id : undefined,
 				chatType: data.isGroup ? 1 : 2,
 				msgType: 0,
-				content: data.sendMsg
+				content: content
 			}
 			webSocketHandle.sendMessage(msg)
 			// data.msgList.push(message)

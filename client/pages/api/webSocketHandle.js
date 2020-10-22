@@ -5,26 +5,20 @@ import config from './config.js'
 var socketMsgQueue = []
 const url = config.getConfig().websocketServerurl
 export default {
-	initpass(username, password) {
-		 let u = url + '?username=' + username + '&password=' + password
-		 this._init(u)
-	},
-	init(token) {
-		 let u = url + '?token=' + token
-		 this._init(u)
-	},
-	_init(u) {
+	init() {
 		let that = this
 		if (Vue.prototype.socketOpen == true) {
 			return
 		}
 		uni.connectSocket({
-		  url: u
+		  url: url + '?token=' + getToken()
 		});
 		uni.onSocketError(function (res) {
 			Vue.prototype.socketOpen = false
 		  console.log('WebSocket连接打开失败，请检查！');
-		  that.reconnect(u)
+		  if (getToken()) {
+			that.reconnect()
+		  }
 		});
 		uni.onSocketMessage(function (res) {
 		  that.handleMessage(res)
@@ -38,14 +32,16 @@ export default {
 		});
 		uni.onSocketClose(function(){
 			Vue.prototype.socketOpen = false;
-			that.reconnect(u)
+			if (getToken()) {
+				that.reconnect()
+			}
 		})
 		
 	},
 	reconnect(u) {
 	    setTimeout(function () {     //没连接上会一直重连，设置延迟避免请求过多
 	      uni.connectSocket({
-	        url: u
+	        url: url + '?token=' + getToken()
 	      });
 	    }, 2000);
 	},
@@ -61,6 +57,17 @@ export default {
 			uni.setStorageSync("userName", result.user.nick)
 			uni.setStorageSync("avatar", result.user.avatar)
 			uni.$emit("request", result.user.newFriends)
+			return
+		}
+		if (result && result.cmd == 37) { //可能退出本地登录
+			uni.showModal({
+				title: '提醒',
+				content: '账号在其他设备登录，请确保账号安全！'
+			})
+			uni.removeStorageSync('token')
+			uni.removeStorageSync("userId")
+			uni.removeStorageSync("userName")
+			uni.removeStorageSync("avatar")
 			return
 		}
 		if (result.cmd == 34) {

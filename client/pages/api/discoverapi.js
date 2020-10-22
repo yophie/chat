@@ -39,9 +39,12 @@ export default {
   initDiscover(data) {
 	  webSocketHandle.sendMessage({Cmd:27, type:2})
 	  let that = this
-	  uni.$on('cmd27', function(result) {
+	  let cmd27l
+	  uni.$on('cmd27', cmd27l = function(result) {
 		  that.handleDiscover(data, result)
 	  })
+	  data.listeners = [
+	  		  {c: 'cmd27', l: cmd27l}]
   },
   
   

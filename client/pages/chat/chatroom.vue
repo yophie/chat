@@ -9,7 +9,7 @@
 					<view v-if="item.isSelf" class="cu-item self">
 						<view v-if="item.type === 0 || item.type === 1" class="main">
 							<view class="content bg-selfContent">
-								<text class="text-black">{{item.content}}</text>
+								<rich-text class="text-black" :nodes="item.content"></rich-text>
 							</view>
 						</view>
 						<view v-if="item.type === 2" class="main">
@@ -29,7 +29,7 @@
 								</view>
 								<view v-if="item.type === 0 || item.type === 1" style="justify-content: flex-start; align-items: flex-start;">
 									<view class="content" :class="item.type === 1 ? 'bg-grey' : ''">
-										<text>{{(item.type === 1 ? '禁言消息：' : '') + item.content}}</text>
+										<rich-text class="text-black" :nodes="item.content"></rich-text>
 									</view>
 								</view>
 								<view v-if="item.type === 2" class="main">
@@ -51,25 +51,29 @@
 			<view :style="[{height: InputBottom + 'upx'}]"></view>
 		</view>
 		
-		<view class="cu-bar foot input chat_operate" style="background-color: #f5f5f5;" >
+		<view class="cu-bar foot chat_operate" style="background-color: #f5f5f5;" >
 			<!-- <view class="action">
 				<text class="cuIcon-sound text-grey"></text>
 			</view> -->
 			<view class="chat_input">
-				<view class="input_input">
-					<textarea class="solid-bottom bg-white input_textarea"
+				<view class="input_input" >
+					<!-- <textarea class="solid-bottom bg-white input_textarea"
 						:auto-height="true" :adjust-position="true" :focus="false" maxlength="100" cursor-spacing="10"
-					  @input="input" v-model="sendMsg" @focus="focusInput" @keyboardheightchange="handleKeyboard"></textarea>
+						v-model="sendMsg" @focus="focusInput" @keyboardheightchange="handleKeyboard"></textarea> -->
+					<!-- <editor id="editor"></editor> -->
+					<view id="chat_input" class="text-black solid-bottom bg-white input_textarea" :contenteditable="true"
+						@input="inputUpdate($event)" @paste.native.capture.prevent="paste($event)"></view>
 				</view>
 				<!-- <view class="action">
 					<text class="cuIcon-emojifill text-grey"></text>
 				</view> -->
-				<view v-if="!sendText" >
-					<span class="iconfont iconbiaoqing" style="margin-left: 15upx; font-size: 30px;" @click="showExpression"></span>
+				<span v-if="!isShowExpression" class="iconfont iconbiaoqing" style="margin-left: 15upx; font-size: 30px;" @click="showExpression"></span>
+				<span v-if="isShowExpression" class="iconfont iconkeyboard" style="margin-left: 15upx; font-size: 30px;" @click="editfocus()"></span>
+				<view v-if="!sendMsg" >
 					<uni-icons type="plus" size="30" style="margin-left: 15upx;" @click="showPlusMsgBar"></uni-icons>
 				</view>
 				
-				<button v-if="sendText" class="cu-btn bg-green shadow" style="margin-left: 15upx; width: 130upx; height:70upx ;" @click="sendMessage">发送</button>
+				<button v-if="sendMsg" class="cu-btn bg-green shadow" style="margin-left: 15upx; width: 135upx; height:70upx ;" @click="sendMessage">发送</button>
 			</view>
 			<view class="line"></view>
 			<view v-if="isShowPlusMsgBar" class="plus_button_area">
@@ -86,6 +90,11 @@
 					<text style="font-size: 20upx;">图片</text>
 				</view>
 			</view>
+			<view v-if="isShowExpression" class="expression_area">
+				<view v-for="({img, name}, key) in wxexe" :key="key" class="imglist_item" @tap="addExp(key)">
+					<image class="expression"  :src="'../../static/wxex/' + img"></image>
+				</view>
+			</view>
 		</view>
 		<uni-popup :id="packetId" ref="popup">
 			<open-packet :id="packetId" :senderNick="senderNick" :senderAvatar="senderAvatar" @open="recievePacket" @close="close"></open-packet>
@@ -99,6 +108,7 @@
 	import {uniNavBar, uniIcons, uniPopup} from '@dcloudio/uni-ui'
 	import redpacket from '@/pages/components/redpacket.vue'
 	import openPacket from '@/pages/chat/openPacket.vue'
+	import wxex from '@/pages/api/wxex.js'
 	
 	export default {
 		name: 'chatroom',
@@ -114,7 +124,6 @@
 				baseBottom: 100,
 				sendMsg: '',
 				maxID: 21,
-				sendText: false,
 				lastShowTime: 0,
 				isShowPlusMsgBar: false,
 				showPacket: false,
@@ -125,23 +134,34 @@
 				fromInfo: {},
 				friendAvatar: '',
 				friendName: '',
-				imgList: []
+				imgList: [],
+				fmap: {},
+				expression: wxex,
+				isShowExpression: false,
+				wxexe: wxex.wxex,
+				listeners: [],
+				reload: true
 			}
 			return data
 		},
 		onLoad(options) {
 			let id = options.id
 			this.id = id
-			chatroomapi.chatroominit(this.$data, this)
+		},
+		onShow() {
+			chatroomapi.chatroominit(this.$data, this, this.reload)
+			this.reload = false
+		},
+		onUnload() {
+			for (let cl of this.listeners) {
+				uni.$off(cl.c, cl.l)
+			}
 		},
 		onBackPress(event) {
 			this.BackPage()
 			return true
 		},
 		methods: {
-			input() {
-				this.sendText = this.sendMsg != ''
-			},
 			imageError: function(item) {
 				item.senderAvatar = '/static/icon/avatar.png'
 			},
@@ -157,12 +177,41 @@
 					})
 				}
 			},
+			inputUpdate(e) {
+				if (document.getElementById('chat_input').innerText.length > 200) {
+					e.preventDefault()
+					e.stopPropagation()
+				} else {
+					this.sendMsg = document.getElementById('chat_input').innerHTML
+				}
+			},
+			paste(e) {
+				let text = (e.originalEvent || e).clipboardData.getData('text/plain');
+				let rlen = 200 - document.getElementById('chat_input').innerText.length
+				if (text && rlen > 0) {
+					document.execCommand("insertText", false, text.substr(0, rlen));
+				}
+			},
 			sendMessage() {
 				chatroomapi.sendMessage(this.$data)
+				document.getElementById('chat_input').innerHTML = ''
 			},
-			handleKeyboard(event) {
+			addExp(code) {
+				if (document.getElementById('chat_input').innerText.length > 200) {
+					return
+				}
+				let imgurl = this.wxexe[code].img
+				document.getElementById('chat_input').focus();
+				
+				document.execCommand('insertHTML', true, 
+						'<image code="' + code + '!@#@!" src="../../static/wxex/' + imgurl + '" ' + 'style="vertical-align:middle;width:23px; height: 23px"/>');
+				document.getElementById('chat_input').blur()
+			},
+			editfocus() {
+				document.getElementById('chat_input').focus();
 				this.isShowPlusMsgBar = false
-				this.InputBottom = event.height + this.baseBottom
+				this.isShowExpression = false
+				// this.InputBottom = event.height + this.baseBottom
 				this.$nextTick(function(){
 					uni.pageScrollTo({
 						duration: 0,
@@ -170,10 +219,36 @@
 					})
 				})
 			},
+			// handleKeyboard(event) {
+			// 	document.getElementById('chat_input').focus();
+			// 	this.isShowPlusMsgBar = false
+			// 	this.isShowExpression = false
+			// 	this.InputBottom = event.height + this.baseBottom
+			// 	this.$nextTick(function(){
+			// 		uni.pageScrollTo({
+			// 			duration: 0,
+			// 			scrollTop: 99999999999
+			// 		})
+			// 	})
+			// },
 			showPlusMsgBar() {
 				uni.hideKeyboard()
 				this.isShowPlusMsgBar = true
+				this.isShowExpression = false
 				this.InputBottom = 350 + this.baseBottom
+				this.$nextTick(function(){
+					uni.pageScrollTo({
+						duration: 0,
+						scrollTop: 99999999999
+					})
+				})
+			},
+			showExpression() {
+				// document.getElementById('chat_input').focus();
+				uni.hideKeyboard()
+				this.isShowPlusMsgBar = false
+				this.isShowExpression = true
+				this.InputBottom = 400 + this.baseBottom
 				this.$nextTick(function(){
 					uni.pageScrollTo({
 						duration: 0,
@@ -183,6 +258,7 @@
 			},
 			hidePlusAndKey() {
 				this.isShowPlusMsgBar = false
+				this.isShowExpression = false
 				uni.hideKeyboard()
 				this.InputBottom = this.baseBottom
 				this.$nextTick(function(){
@@ -195,9 +271,6 @@
 			resize(item, event) {
 				item.height = event.detail.height + 'px'
 				item.width = event.detail.width + 'px'
-			},
-			focusInput() {
-				this.isShowPlusMsgBar = false
 			},
 			toSendPacket() {
 				let groupMemNum = this.groupMemNum > 0 ? this.groupMemNum : 0
@@ -287,9 +360,7 @@
 		flex-direction: row;
 		align-items: flex-end;
 		width: 100%;
-		min-height: 100upx;
-		padding-top: 15upx;
-		padding-bottom: 15upx;
+		padding: 15upx;
 		justify-content: space-between;
 	}
 	.plus_button_area {
@@ -320,6 +391,21 @@
 		justify-content: center;
 		margin-bottom: 10upx;
 	}
+	.expression_area {
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		height: 350upx;
+		background-color:#f5f5f5;
+		overflow-y: scroll;
+		margin: 15px;
+	}
+	.expression {
+		width:25px;
+		height:25px; 
+		margin: 10px;
+	}
 	.line {
 		border-top-color: #000000;
 		border-top-style: solid;
@@ -329,17 +415,16 @@
 	}
 	.input_textarea {
 		font-size: 35upx; 
-		margin-top: 12upx;
-		margin-bottom: 12upx;
-		margin-left: 15upx;
-		border: #FFFFFF 1px solid;
+		margin: 15upx;
+		overflow-wrap: break-word;
+	}
+	.input_textarea:focus{
+		outline: none;
 	}
 	.input_input {
-		margin-left: 15upx;
 		background-color: #FFFFFF;
 		width: 100%; 
 		border-radius: 8upx;
-		height: 74upx;
 	}
 	.img_message {
 		width: 100%;

@@ -39,13 +39,19 @@
 		components: {uniNavBar,uniList,uniListItem,uniListChat},
 		data() {
 			let data = {
-				list: []
+				list: [],
+				listeners: []
 			}
 			discoverapi.initDiscover(data)
 			return data
 		},
 		onShow() {
 			tabbarreddot()	
+		},
+		onUnload() {
+			for (let cl of this.listeners) {
+				uni.$off(cl.c, cl.l)
+			}
 		},
 		methods: {
 			toPost() {

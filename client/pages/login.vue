@@ -18,7 +18,7 @@
 					})
 				}
 			} else {
-				webSocketHandle.init(token)
+				webSocketHandle.init()
 				uni.switchTab({
 					url: "/pages/chat/chat"
 				})

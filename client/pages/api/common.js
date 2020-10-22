@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import config from './config.js'
+import wxex from './wxex.js'
 const OSS = require('ali-oss')
 
 const client = new OSS({
@@ -302,4 +303,65 @@ export const discoverTimeToString = function(time) {
 	  		index: 1
 	  	})
 	  }
+  }
+  
+  export const transContent = function(content, imgsize) {
+	  if (!content) {
+		  return
+	  }
+	  let cs = content.split('/:')
+	  let children = []
+	  
+	  for (let i=0; i<cs.length; i++) {
+		  let str = cs[i]
+		  if (i == 0) {
+			  if (str) {
+				  children.push({
+				  type: 'text',
+				  text: str
+				})
+			  } else {
+				  continue
+			  }
+		  } else {
+			  let imgurl = ''
+			  let j = 1
+			  for (; j < str.length && j < 8; j++) {
+				  let wxexi = wxex.wxex['/:' + str.substr(0, j + 1)]
+				  if (wxexi) {
+					  imgurl = wxexi.img
+					  break;
+				  }
+			  }
+ 			  if (imgurl) {
+				  children.push({
+					  name:"img",
+					  attrs: {
+					    style: 'vertical-align:middle;' + 'width:' + imgsize + '; height: ' + imgsize,
+					  	src: '../../static/wxex/' + imgurl
+					  },
+				  })
+				  if (str.substr(j + 1)) {
+					  children.push({
+						  type: 'text',
+						  text: str.substr(j + 1)
+						})
+				  }
+			  } else {
+				  children.push({
+					  type: 'text',
+					  text: '/:' + str
+					})
+			  }
+		  }
+	  }
+	  let node = [{
+				  name: 'div',
+				  attrs: {
+					  class: 'div-class',
+					  style: 'vertical-align:middle;'
+				  },
+				  children: children
+				  }]
+	  return node
   }

@@ -2100,6 +2100,7 @@ button.cuIcon.lg {
 	min-height: 30upx;
 	line-height: 30upx;
 	text-align: left;
+	word-break:break-all;
 }
 
 .cu-chat .cu-item>.main .content:not([class*="bg-"]) {

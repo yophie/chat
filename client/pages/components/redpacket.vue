@@ -39,17 +39,20 @@
 		},
 		data() {
 			return {
-				canRecive: true
+				canRecive: true,
+				listeners: []
 			}
 		},
 		mounted(options) {
 			redpacketApi.packetInit(this.$data, this.id)
 			let that = this
-			uni.$once('recievePacket' + that.id, function(id) {
+			let c
+			uni.$once('recievePacket' + that.id, c = function(id) {
 				if (that.id == id) {
 					that.canRecive = false
 				}
 			})
+			listeners.push({c: 'recievePacket', l: c})
 		},
 		methods: {
 			_onClick() {

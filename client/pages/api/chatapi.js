@@ -1,4 +1,4 @@
-import {http, chatListTimeToString, tabbarreddot} from './common.js'
+import {http, chatListTimeToString, tabbarreddot, transContent} from './common.js'
 
 export default {
   chatList(data, result) {
@@ -6,9 +6,14 @@ export default {
 	for (let chat of result) {
 		let lastMessage = JSON.parse(chat.lastMessage)
 		let lastContent = ''
-		if (lastMessage.msgType == 2) {
+		let isSelf = lastMessage.from == uni.getStorageSync("userId")
+		if (lastMessage.msgType === 0 || (isSelf && lastMessage.msgType === 1)) {
+			lastContent = transContent(lastMessage.content, '16px')
+		} else if (!isSelf && lastMessage.msgType === 1) {
+			lastContent = transContent("禁言消息" + lastMessage.content, '16px')
+		} else if (lastMessage.msgType === 2) {
 			lastContent = '[红包]'
-		} else if (lastMessage.msgType == 3) {
+		} else if (lastMessage.msgType === 3) {
 			lastContent = '[图片]'
 		} else {
 			lastContent = lastMessage.content
@@ -34,7 +39,7 @@ export default {
 	  let rd = result.data
 	  
 	  if (result.cmd == 33 || result.cmd == 35) {
-		  let id = result.groupId
+		  let id = rd.groupId
 		  let index = -1 
 		  for (let i = 0; i < data.list.length; i++) {
 			if (data.list[i].id == id) {
@@ -77,7 +82,7 @@ export default {
 			index = i
 			item.name = data.list[i].name
 			item.avatar = data.list[i].avatar
-			item.avatar = item.avatar ? item.avatar : '@/static/icon/default_avatar.png'
+			item.avatar = item.avatar ? item.avatar : '../../static/icon/default_avatar.png'
 			break
 		}
 	  }
@@ -113,15 +118,20 @@ export default {
 	  http.get('api/chat/list', {}, function(res) {
 		  if (res.code == 10023) {
 			  that.chatList(data, res.windows)
-			  uni.$on('cmd11', function(result) {
+			  let cmd11l,cmd33l,cmd35l
+			  uni.$on('cmd11', cmd11l = function(result) {
 				  that.handleMsg(data, result)
 			  })
-			  uni.$on('cmd33', function(result) {
+			  uni.$on('cmd33', cmd33l = function(result) {
 				  that.handleMsg(data, result)
 			  })
-			  uni.$on('cmd35', function(result) {
+			  uni.$on('cmd35', cmd35l = function(result) {
 			  	 that.handleMsg(data, result)
 			  })
+			  data.listeners = [
+			  		  {c: 'cmd11', l: cmd11l},
+			  		  {c: 'cmd33', l: cmd33l},
+			  		  {c: 'cmd35', l: cmd35l}]
 		  } else {
 			  uni.showModal({
 			      title: '错误提示',

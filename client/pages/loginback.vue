@@ -31,7 +31,7 @@
 				   }
 				   setToken(res.token)
 				   if (!state || state == '' || state == 'undefined' || state <= 0) {
-						webSocketHandle.init(res.token)
+						webSocketHandle.init()
 						uni.switchTab({
 							url: "/pages/chat/chat"
 						}) 

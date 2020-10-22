@@ -10,8 +10,11 @@
 		<view class="cpt-mask" v-if="isShowMenu" @tap.stop="hideMenu"></view>
 		<uni-list :border="true">
 			<uni-list-chat v-for="item in list" :key="item.id" 
-				:title="item.name" :avatar="item.avatar" :note="item.lastMsg" :clickable="true"
+				:title="item.name" :avatar="item.avatar"  :clickable="true"
 				:time="item.lastTime" badge-positon="left" :badge-text="item.unread" :to="'/pages/chat/chatroom?id=' + item.id">
+				<view slot="note">
+					<rich-text class="uni-list-chat__content-note uni-ellipsis" :nodes="item.lastMsg"></rich-text>
+				</view>
 			</uni-list-chat>
 		</uni-list>
 		<view v-if="list.length === 0" class="text-box">
@@ -24,20 +27,26 @@
 	import chatapi from '@/pages/api/chatapi.js'
 	import {uniNavBar, uniList,uniListItem,uniListChat} from '@dcloudio/uni-ui'
 	import menuBox from '@/pages/components/menuBox.vue'
-	
+	import wxex from '@/pages/api/wxex.js'
 	export default {
 		name: 'chat',
 		components: {uniList,uniListItem,uniListChat,uniNavBar,menuBox},
 		data() {
 			let data = {
 				list: [],
-				isShowMenu: false
+				isShowMenu: false,
+				listeners: []
 			};
 			return data;
 		},
 		onShow() {
 			this.list = []
 			chatapi.getChatList(this.$data);
+		},
+		onUnload() {
+			for (let cl of this.listeners) {
+				uni.$off(cl.c, cl.l)
+			}
 		},
 		methods: {
 			imageError(item) {
@@ -53,7 +62,7 @@
 	}
 </script>
 
-<style>
+<style lang="scss" scoped>
 	.text-box {
 		/* #ifndef APP-NVUE */
 		display: flex;
@@ -77,5 +86,22 @@
 	}  
 	.icon_item {
 		font-size: 40rpx;
+	}
+	.uni-list-chat__content-note {
+		margin-top: 3px;
+		color: #999;
+		font-size: 12px;
+		font-weight: normal;
+		overflow: hidden;
+	}
+	.uni-ellipsis {
+		/* #ifndef APP-NVUE */
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		/* #endif */
+		/* #ifdef APP-NVUE */
+		lines: 1;
+		/* #endif */
 	}
 </style>

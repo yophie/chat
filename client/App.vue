@@ -49,7 +49,7 @@
 			} else if (requestId <= 0) {
 				http.post('api/user/info', {}, function(res) {
 					if (res.code == '10003') {
-						webSocketHandle.init(token)
+						webSocketHandle.init()
 						uni.setStorageSync("requestNum", 0)
 						uni.$on("request", function(num) {
 							let requestNum = uni.getStorageSync("requestNum") + num

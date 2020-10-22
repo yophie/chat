@@ -44,7 +44,7 @@
 			  	});
 			  } else if (res.code == '10007' && res.token) {
 				  setToken(res.token)
-				  webSocketHandle.init(res.token)
+				  webSocketHandle.init()
 				  if (that.requestId > 0) {
 					  uni.navigateTo({
 					  	url: "/pages/chat/qrcodeRequest?id=" + that.requestId
