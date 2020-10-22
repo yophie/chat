@@ -112,7 +112,7 @@ export default {
 		  item.content = transContent('禁言消息：' + rd.content, '22px')
 	  }
 	  if (rd.msgType === 3) {
-	  	data.imgList.push(rd.content)
+	  	data.imgList.push(rd.content + '?x-oss-process=image/auto-orient,1/resize,m_lfit,w_' + uni.getSystemInfoSync().screenWidth + '/quality,q_90')
 	  	item.content = rd.content + '?x-oss-process=image/auto-orient,1/resize,m_lfit,h_100/quality,q_90'
 		item.imgIndex = data.imgList.length - 1
 		item.width = '100upx'
@@ -203,7 +203,7 @@ export default {
 		  message.content = transContent('禁言消息：' + item.content, '22px')
 		}
 		if (item.msgType === 3) {
-			data.imgList.push(item.content)
+			data.imgList.push(item.content + '?x-oss-process=image/auto-orient,1/resize,m_lfit,w_' + uni.getSystemInfoSync().screenWidth + '/quality,q_90')
 			message.content = item.content + '?x-oss-process=image/auto-orient,1/resize,m_lfit,h_100/quality,q_90'
 			message.imgIndex = data.imgList.length - 1
 			message.width = '100upx'
